@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NeuroRest | El sistema operativo con IA para restaurantes</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary": "#00687a",
+                    "on-tertiary-container": "#9863ff",
+                    "outline": "#76777d",
+                    "on-tertiary-fixed-variant": "#5a00c6",
+                    "error-container": "#ffdad6",
+                    "surface": "#fcf8fa",
+                    "on-primary-fixed": "#131b2e",
+                    "on-error-container": "#93000a",
+                    "surface-variant": "#e4e2e4",
+                    "on-background": "#1b1b1d",
+                    "tertiary-fixed-dim": "#d2bbff",
+                    "on-tertiary-fixed": "#25005a",
+                    "inverse-primary": "#bec6e0",
+                    "background": "#fcf8fa",
+                    "on-surface": "#1b1b1d",
+                    "on-surface-variant": "#45464d",
+                    "primary": "#000000",
+                    "error": "#ba1a1a",
+                    "on-secondary-fixed": "#001f26",
+                    "primary-fixed": "#dae2fd",
+                    "inverse-surface": "#303032",
+                    "primary-container": "#131b2e",
+                    "secondary-fixed-dim": "#4cd7f6",
+                    "surface-container": "#f0edef",
+                    "on-secondary-container": "#006172",
+                    "on-secondary": "#ffffff",
+                    "tertiary-container": "#25005a",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-on-surface": "#f3f0f2",
+                    "secondary-container": "#57dffe",
+                    "surface-container-highest": "#e4e2e4",
+                    "surface-container-low": "#f6f3f5",
+                    "on-error": "#ffffff",
+                    "surface-container-high": "#eae7e9",
+                    "tertiary": "#000000",
+                    "on-tertiary": "#ffffff",
+                    "outline-variant": "#c6c6cd",
+                    "on-primary": "#ffffff",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "surface-bright": "#fcf8fa",
+                    "surface-tint": "#565e74",
+                    "tertiary-fixed": "#eaddff",
+                    "on-secondary-fixed-variant": "#004e5c",
+                    "secondary-fixed": "#acedff",
+                    "primary-fixed-dim": "#bec6e0",
+                    "on-primary-container": "#7c839b",
+                    "surface-dim": "#dcd9db"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #fcf8fa; color: #1b1b1d; }
+        h1, h2, h3, .display-font { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-panel { background: rgba(252, 248, 250, 0.7); backdrop-filter: blur(20px); }
+        .ai-gradient-bg { background: linear-gradient(135deg, #25005a 0%, #9863ff 100%); }
+        .hero-gradient { background: radial-gradient(circle at top right, #dae2fd 0%, transparent 40%), radial-gradient(circle at bottom left, #f0edef 0%, transparent 40%); }
+    </style>
+</head>
+<body class="selection:bg-secondary-container selection:text-on-secondary-fixed">
+<!-- TopAppBar -->
+<nav class="fixed top-0 w-full z-50 bg-slate-50/70 dark:bg-slate-950/70 backdrop-blur-xl">
+<div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+<div class="text-2xl font-black tracking-tighter text-slate-900 dark:text-slate-50">NeuroRest</div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-slate-500 dark:text-slate-400 font-medium hover:text-slate-900 dark:hover:text-slate-50 transition-colors duration-300" href="#features">Features</a>
+<a class="text-slate-500 dark:text-slate-400 font-medium hover:text-slate-900 dark:hover:text-slate-50 transition-colors duration-300" href="#benefits">Benefits</a>
+<a class="text-slate-500 dark:text-slate-400 font-medium hover:text-slate-900 dark:hover:text-slate-50 transition-colors duration-300" href="#pricing">Pricing</a>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2.5 rounded-lg font-bold tracking-tight scale-95 active:scale-90 transition-transform">Request Demo</button>
+</div>
+</nav>
+<main class="pt-24 overflow-x-hidden">
+<!-- Section 1: Hero -->
+<section class="hero-gradient min-h-screen flex flex-col items-center justify-center px-8 py-20 text-center">
+<div class="max-w-4xl mx-auto space-y-8">
+<h1 class="text-5xl md:text-7xl font-extrabold tracking-tight text-primary leading-tight">
+                    El sistema operativo con IA para restaurantes
+                </h1>
+<p class="text-xl md:text-2xl text-on-surface-variant max-w-2xl mx-auto font-medium">
+                    Automatiza WhatsApp, Instagram y llamadas, toma pedidos, gestiona reservas y organiza todo tu restaurante en un solo dashboard.
+                </p>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+<button class="bg-primary text-on-primary px-8 py-4 rounded-xl font-bold text-lg hover:opacity-90 transition-all flex items-center gap-2">
+                        Solicitar demo
+                        <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<button class="bg-surface-container-high text-primary px-8 py-4 rounded-xl font-bold text-lg hover:bg-surface-container-highest transition-all">
+                        Ver cómo funciona
+                    </button>
+</div>
+</div>
+<!-- Hero Visual: Dashboard Mockup -->
+<div class="mt-20 w-full max-w-6xl mx-auto relative px-4">
+<div class="bg-surface-container-lowest rounded-3xl p-4 shadow-2xl overflow-hidden aspect-video border border-outline-variant/10">
+<img alt="Dashboard UI - Pedidos" class="w-full h-full object-cover rounded-2xl shadow-inner" src="https://lh3.googleusercontent.com/aida/ADBb0uipduZ_NUnDJ8mQbynZ2clbYQTi6e4omhbSrkgDED-TpxnloYck-zaEdHJJlVauVLhBFBJHWg8iET6B5hXkleCc2HZolkFylBBuC9fVFuvlxiLBboTeLRl-yAuJX6FMRG4v3dzYXM-jXOoOcQGBmVOOURwYE-zPS4Y2DId-x81yqYqFVzjZ6YIHQhDAqq53VZHGSitRaUvhtYHNioaUA4RlCONdeNvYTkO9aH4uJs0PguDdVRaiuN3cOAQu6MOpcU8OrlrRcyUCkw"/>
+</div>
+<!-- Floating Icons -->
+<div class="absolute -top-10 -left-10 hidden lg:block p-6 glass-panel rounded-2xl shadow-lg border border-white/20">
+<span class="material-symbols-outlined text-4xl text-[#25D366]">chat</span>
+</div>
+<div class="absolute -bottom-6 right-20 hidden lg:block p-6 glass-panel rounded-2xl shadow-lg border border-white/20">
+<span class="material-symbols-outlined text-4xl text-on-tertiary-container">analytics</span>
+</div>
+</div>
+</section>
+<!-- Section 2: Automation Attention -->
+<section class="py-32 px-8 bg-surface-container-low" id="features">
+<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+<div class="space-y-10">
+<h2 class="text-4xl md:text-5xl font-extrabold text-primary leading-tight">
+                        Automatizamos toda la atención de tu restaurante
+                    </h2>
+<p class="text-xl text-on-surface-variant leading-relaxed">
+                        NeuroRest responde automáticamente WhatsApp, Instagram y llamadas telefónicas. Entiende el contexto, el menú y la disponibilidad en tiempo real.
+                    </p>
+<div class="bg-secondary-container/30 border-l-4 border-secondary p-6 rounded-r-xl">
+<p class="text-on-secondary-fixed text-lg font-bold">
+                            "Nunca vuelvas a perder un mensaje o una llamada cuando el restaurante está ocupado."
+                        </p>
+</div>
+<ul class="space-y-6">
+<li class="flex items-center gap-4 text-on-surface-variant font-medium">
+<span class="material-symbols-outlined text-on-tertiary-container" data-weight="fill">check_circle</span>
+                            Respuestas instantáneas 24/7
+                        </li>
+<li class="flex items-center gap-4 text-on-surface-variant font-medium">
+<span class="material-symbols-outlined text-on-tertiary-container" data-weight="fill">check_circle</span>
+                            Sincronización con tu menú actual
+                        </li>
+<li class="flex items-center gap-4 text-on-surface-variant font-medium">
+<span class="material-symbols-outlined text-on-tertiary-container" data-weight="fill">check_circle</span>
+                            Confirmación de pedidos por voz y texto
+                        </li>
+</ul>
+</div>
+<div class="grid grid-cols-2 gap-6">
+<div class="space-y-6 mt-12">
+<div class="bg-surface-container-lowest p-8 rounded-3xl shadow-sm space-y-4">
+<span class="material-symbols-outlined text-3xl text-secondary">phone_in_talk</span>
+<h3 class="text-xl font-bold">Llamadas</h3>
+<p class="text-sm text-on-surface-variant">IA de voz que reserva mesas y toma pedidos telefónicos sin intervención humana.</p>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-3xl shadow-sm space-y-4">
+<span class="material-symbols-outlined text-3xl text-on-tertiary-container">shopping_cart</span>
+<h3 class="text-xl font-bold">Pedidos</h3>
+<p class="text-sm text-on-surface-variant">Gestión centralizada de todas las órdenes digitales.</p>
+</div>
+</div>
+<div class="space-y-6">
+<div class="bg-surface-container-lowest p-8 rounded-3xl shadow-sm space-y-4">
+<span class="material-symbols-outlined text-3xl text-[#E4405F]">camera_alt</span>
+<h3 class="text-xl font-bold">Instagram</h3>
+<p class="text-sm text-on-surface-variant">Convierte tus DMs y comentarios en reservas y ventas directas.</p>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-3xl shadow-sm space-y-4">
+<span class="material-symbols-outlined text-3xl text-on-secondary-fixed-variant">calendar_month</span>
+<h3 class="text-xl font-bold">Reservas</h3>
+<p class="text-sm text-on-surface-variant">Agenda inteligente que optimiza la rotación de tus mesas.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: One Place Dashboard -->
+<section class="py-32 px-8">
+<div class="max-w-7xl mx-auto text-center mb-20 space-y-6">
+<h2 class="text-4xl md:text-6xl font-extrabold text-primary">Todo tu restaurante en un solo lugar</h2>
+<p class="text-xl text-on-surface-variant max-w-3xl mx-auto">La infraestructura completa para operar tu negocio digitalmente sin fricciones.</p>
+</div>
+<div class="max-w-7xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Bento Grid Layout -->
+<div class="md:col-span-2 bg-surface-container p-1 rounded-3xl">
+<div class="bg-surface-container-lowest h-full rounded-[1.4rem] p-10 overflow-hidden relative group">
+<div class="max-w-md space-y-4 mb-8">
+<h3 class="text-2xl font-bold">Centro de conversaciones</h3>
+<p class="text-on-surface-variant">Todos los chats de WhatsApp, Instagram y pedidos en una sola bandeja de entrada inteligente.</p>
+</div>
+<div class="rounded-2xl overflow-hidden border border-outline-variant/10 shadow-lg">
+<img alt="Centro de conversaciones" class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida/ADBb0ujqY6QxY369KmIZNPhx4666-yUtOrfJ0QZ9R-pum7FdfGkPx9om2Nby3NcA8eUAoyuP1KK0eXiZF91E-oJQ7RoWJO0H50Bf80Zia5k79xVvQKdexOfAawFqEaSeREzlVsMY0GDUuCkmCNYah8O2O9u1SOqpkfKt2yIssRPgROkI_BEED6sBQOvTtuV_wEidDhfa7pcR0EN5-UuMZnHkNZ2ROSBypkDT_07TEHKFHBkO4CC2xo6vb_WR5zOC6Xx1CoKQVZQs5yjxIw"/>
+</div>
+</div>
+</div>
+<div class="bg-primary p-1 rounded-3xl">
+<div class="bg-primary-container h-full rounded-[1.4rem] p-10 text-white flex flex-col justify-between overflow-hidden relative group">
+<div class="space-y-4 z-10">
+<h3 class="text-2xl font-bold">Control de pedidos</h3>
+<p class="text-slate-400">Estado en tiempo real de cada orden desde que entra hasta que sale de cocina.</p>
+</div>
+<div class="mt-6 rounded-xl overflow-hidden border border-white/10 shadow-2xl z-10">
+<img alt="Control de pedidos" class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida/ADBb0ujJMDQnufejOczIVnCNs8cL2ii92GL_iGJxgvhcrTaYoErspNjcsWpea48Ap7oi6l8eoiq_6z7IKoHyEsf-OtKqPD7B8HU9qcXBdO5kBNjbLlDAsZUXJma02Xf9C4FrcR3nwWUFcm9o3J2FLHKeTgXJHa_zIhHoQCLlgD5j3AlGgk5c_WIUW5D1os7fLlefvjZEZd4yAZSyXIBgCB96D1M8G4C2D1TKjKq8k_oen8Gh138ufZvXn0FSN1mTUbCnPQox2N_OXXiOrMA"/>
+</div>
+<div class="flex items-center gap-2 bg-white/10 p-4 rounded-xl mt-8 z-10 backdrop-blur-md">
+<div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+<span class="text-sm font-medium">8 pedidos activos ahora</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container p-8 rounded-3xl space-y-4">
+<div class="w-12 h-12 rounded-xl bg-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-fixed">table_restaurant</span>
+</div>
+<h3 class="text-xl font-bold">Control de mesas</h3>
+<p class="text-on-surface-variant">Mapa interactivo de tu salón con disponibilidad en tiempo real.</p>
+</div>
+<div class="md:col-span-1 bg-surface-container p-1 rounded-3xl">
+<div class="bg-surface-container-lowest h-full rounded-[1.4rem] p-6 space-y-4 overflow-hidden group">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-tertiary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-on-tertiary-fixed">book_online</span>
+</div>
+<h3 class="text-xl font-bold">Agenda de reservas</h3>
+</div>
+<div class="rounded-xl overflow-hidden border border-outline-variant/10 shadow-md">
+<img alt="Agenda de reservas" class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida/ADBb0uggFL8ZB9t0wP5sQfwyYtxwj5O_72RniPFjGv65MgJDJOCkJdPfC8VqPOjCvi680hRVtHfNbKaXrlIK8_huqS_iuNZ2Oid_plG0A67FeEzihqL7Ltx0N3AyUplTNlDazxYf3ZsuBq4EvMV_8JsoaqD81TRwIPUv46d6lcdGp4Yebl4zBn-MoxdJMVCbu2EmKUJNZwAwUO0OLkXB0svBTwJFD5yBoykNMz1lfzqtyR4v1d_P2QU4hKogqMiYwjoU3H2eO2XgZc7Kdbs"/>
+</div>
+<p class="text-on-surface-variant text-sm">Evita el overbooking y gestiona depósitos de reserva automáticamente.</p>
+</div>
+</div>
+<div class="bg-surface-container p-8 rounded-3xl space-y-4">
+<div class="w-12 h-12 rounded-xl bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">restaurant_menu</span>
+</div>
+<h3 class="text-xl font-bold">Gestión del menú</h3>
+<p class="text-on-surface-variant">Actualiza precios y stock en todos los canales con un solo clic.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 4: CRM Focus -->
+<section class="py-32 px-8 bg-primary text-white overflow-hidden relative" id="benefits">
+<div class="absolute top-0 right-0 w-1/2 h-full opacity-10 bg-gradient-to-l from-on-tertiary-container to-transparent"></div>
+<div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-20">
+<div class="lg:w-1/2 space-y-10">
+<h2 class="text-4xl md:text-6xl font-extrabold leading-tight">Convierte clientes en clientes recurrentes</h2>
+<p class="text-xl text-slate-400">NeuroRest analiza el comportamiento de tus comensales y activa campañas de fidelización automáticas cuando detecta que llevan tiempo sin volver.</p>
+<div class="space-y-6">
+<div class="flex items-center gap-6 p-6 bg-white/5 rounded-2xl border border-white/10">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-error flex items-center justify-center">
+<span class="material-symbols-outlined">timer_off</span>
+</div>
+<div>
+<h4 class="font-bold">Cliente inactivo (21 días)</h4>
+<p class="text-sm text-slate-400">Juan no ha pedido su pizza favorita este mes.</p>
+</div>
+</div>
+<div class="flex items-center gap-6 p-6 bg-on-tertiary-container/20 rounded-2xl border border-on-tertiary-container/30 ml-8">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-on-tertiary-container flex items-center justify-center">
+<span class="material-symbols-outlined">campaign</span>
+</div>
+<div>
+<h4 class="font-bold">Promoción automática</h4>
+<p class="text-sm text-slate-400">IA envía cupón: "¡Te extrañamos Juan! 15% hoy."</p>
+</div>
+</div>
+<div class="flex items-center gap-6 p-6 bg-secondary/20 rounded-2xl border border-secondary/30 ml-16">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-secondary flex items-center justify-center">
+<span class="material-symbols-outlined">repeat</span>
+</div>
+<div>
+<h4 class="font-bold">Compra repetida</h4>
+<p class="text-sm text-slate-400">Juan vuelve a pedir. Cliente fidelizado con éxito.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="lg:w-1/2">
+<img alt="Customer Retention" class="rounded-3xl shadow-2xl grayscale hover:grayscale-0 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhAwv1TfFDa6nh1PPQKJybURDt0gFKFfN5JIbv1nyKdyjaS_ufqw9iJX7zuDOz0R_WZ9-iQOKo2l7JDeBJDeILWi1cIShUs2XDkUvhRRejZKJB_342quE6VFOB_pt1_35-_SkHTI0d3j3FmFzwY1vUzwhBzBdLYanw-sOEsA3keRbSLwARbc1fPN8ES_iRjZZz4yLOTMrz2FjEpfDtq8w0FSS7erNqW-UMusU9fMQsijenG-MQJ5RNYSt0xpQEndpvXaDzwOgsIqVp"/>
+</div>
+</div>
+</section>
+<!-- Section 5: Upselling IA -->
+<section class="py-32 px-8 bg-surface">
+<div class="max-w-4xl mx-auto text-center space-y-10">
+<div class="inline-block px-4 py-1.5 rounded-full bg-tertiary-container text-on-tertiary-container text-sm font-bold tracking-widest uppercase mb-4">Upselling Inteligente</div>
+<h2 class="text-4xl md:text-6xl font-extrabold text-primary leading-tight">La IA vende más por ti</h2>
+<p class="text-xl text-on-surface-variant">Nuestro algoritmo sugiere acompañamientos y extras de forma natural, aumentando el ticket promedio en un 22%.</p>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
+<div class="p-8 bg-white rounded-3xl shadow-sm border border-outline-variant/10 flex flex-col items-center text-center space-y-4">
+<div class="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl">fastfood</span>
+</div>
+<p class="italic text-on-surface-variant">"¿Quieres agregar unas <strong>papas fritas</strong> trufadas por solo $3?"</p>
+</div>
+<div class="p-8 bg-white rounded-3xl shadow-sm border border-outline-variant/10 flex flex-col items-center text-center space-y-4">
+<div class="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl">local_bar</span>
+</div>
+<p class="italic text-on-surface-variant">"¡Hoy tenemos <strong>promoción en bebidas</strong>! Agrega 2 por el precio de 1."</p>
+</div>
+<div class="p-8 bg-white rounded-3xl shadow-sm border border-outline-variant/10 flex flex-col items-center text-center space-y-4">
+<div class="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl">cake</span>
+</div>
+<p class="italic text-on-surface-variant">"¿Te gustaría cerrar con nuestro <strong>postre</strong> estrella de la casa?"</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 6: AI Business Analyst -->
+<section class="py-32 px-8 bg-surface-container-low">
+<div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-20">
+<div class="lg:w-1/2">
+<div class="bg-white rounded-3xl p-4 shadow-2xl border border-outline-variant/5 overflow-hidden group">
+<div class="flex items-center gap-3 border-b border-surface-container p-4 mb-2">
+<div class="w-10 h-10 rounded-full ai-gradient-bg flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-sm">psychology</span>
+</div>
+<span class="font-bold">Gerente IA del Restaurante</span>
+</div>
+<div class="rounded-xl overflow-hidden shadow-inner">
+<img alt="Gerente IA Chat" class="w-full h-auto object-cover transform group-hover:scale-102 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida/ADBb0ugZk6JaAYmrVcHeLYJzd16rXQd3gKqtzVb_--PZ0ZQMSCO_GargoURrsz7QOA3X9iPUdMmDE-s9WxbO3Q7LXimSeTStSm4wRrMVs1odQxiDjZzDtFfh9NHOYZDqENOcoU5ESkcWbKF1m2rCddM4lwDyX29rXze2CTGDMoVeTDDIL40QmOzS1ID4iXdfxfh-YGn31by8NhFi3dJMZy03pDck43eBYvb9NB5GQMsxkD-FfZjKEQzUJ5SSyF3_abvC2GOkCtRb8rhq_6Q"/>
+</div>
+</div>
+</div>
+<div class="lg:w-1/2 space-y-8">
+<h2 class="text-4xl md:text-5xl font-extrabold text-primary">Una IA que conoce todo tu negocio</h2>
+<p class="text-xl text-on-surface-variant leading-relaxed">Habla con tu restaurante. Obtén reportes financieros, tendencias de consumo y sugerencias estratégicas sin navegar por complejos menús.</p>
+<button class="flex items-center gap-3 text-on-tertiary-fixed-variant font-bold hover:gap-5 transition-all">
+                        Ver funciones de analítica
+                        <span class="material-symbols-outlined">arrow_right_alt</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Section 7: Process Flow -->
+<section class="py-32 px-8">
+<div class="max-w-7xl mx-auto text-center mb-24">
+<h2 class="text-4xl md:text-5xl font-extrabold text-primary">Mientras tú gestionas el restaurante,<br/> la IA atiende a tus clientes</h2>
+</div>
+<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-5 gap-4 relative">
+<!-- Connectors for larger screens -->
+<div class="hidden md:block absolute top-1/2 left-0 w-full h-px bg-outline-variant/30 -z-10"></div>
+<!-- Steps -->
+<div class="flex flex-col items-center space-y-6">
+<div class="w-16 h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-secondary border border-outline-variant/20">
+<span class="material-symbols-outlined">chat_bubble</span>
+</div>
+<div class="text-center">
+<h4 class="font-bold mb-2">Chat</h4>
+<p class="text-xs text-on-surface-variant">Cliente contacta por WhatsApp</p>
+</div>
+</div>
+<div class="flex flex-col items-center space-y-6">
+<div class="w-16 h-16 rounded-full ai-gradient-bg shadow-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined">bolt</span>
+</div>
+<div class="text-center">
+<h4 class="font-bold mb-2">Respuesta IA</h4>
+<p class="text-xs text-on-surface-variant">IA responde dudas y ofrece el menú</p>
+</div>
+</div>
+<div class="flex flex-col items-center space-y-6">
+<div class="w-16 h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-on-secondary-fixed border border-outline-variant/20">
+<span class="material-symbols-outlined">shopping_cart</span>
+</div>
+<div class="text-center">
+<h4 class="font-bold mb-2">Pedido</h4>
+<p class="text-xs text-on-surface-variant">Se procesa el pago y detalles</p>
+</div>
+</div>
+<div class="flex flex-col items-center space-y-6">
+<div class="w-16 h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-primary border border-outline-variant/20">
+<span class="material-symbols-outlined">dashboard</span>
+</div>
+<div class="text-center">
+<h4 class="font-bold mb-2">Dashboard</h4>
+<p class="text-xs text-on-surface-variant">Aparece en tu pantalla de cocina</p>
+</div>
+</div>
+<div class="flex flex-col items-center space-y-6">
+<div class="w-16 h-16 rounded-full bg-green-100 shadow-lg flex items-center justify-center text-green-700 border border-green-200">
+<span class="material-symbols-outlined">check</span>
+</div>
+<div class="text-center">
+<h4 class="font-bold mb-2">Update</h4>
+<p class="text-xs text-on-surface-variant">IA avisa al cliente cuando está listo</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 8: Guarantee -->
+<section class="py-32 px-8 bg-surface-container-high">
+<div class="max-w-5xl mx-auto bg-white rounded-[3rem] p-12 md:p-20 shadow-xl border border-white flex flex-col md:flex-row items-center gap-16">
+<div class="flex-shrink-0">
+<div class="w-48 h-48 rounded-full border-8 border-secondary-container flex flex-col items-center justify-center text-center p-6">
+<span class="material-symbols-outlined text-5xl text-secondary mb-2">verified_user</span>
+<span class="text-xs font-bold leading-none uppercase">Garantía de Satisfacción</span>
+</div>
+</div>
+<div class="space-y-6 text-center md:text-left">
+<h2 class="text-4xl font-extrabold text-primary leading-tight">Resultados o te devolvemos el dinero</h2>
+<p class="text-lg text-on-surface-variant">Estamos tan seguros de que NeuroRest transformará tu operación que ofrecemos un periodo de prueba de 30 días con garantía total de reembolso.</p>
+<button class="bg-primary text-on-primary px-10 py-5 rounded-2xl font-bold text-xl hover:scale-105 transition-transform">
+                        Solicitar demo gratuita
+                    </button>
+</div>
+</div>
+</section>
+<!-- Final CTA -->
+<section class="py-40 px-8 text-center space-y-12">
+<h2 class="text-5xl md:text-7xl font-extrabold text-primary tracking-tighter">Empieza a automatizar tu restaurante</h2>
+<p class="text-xl text-on-surface-variant max-w-2xl mx-auto font-medium">Únete a los más de 500 restaurantes que ya están escalando su operación con inteligencia artificial.</p>
+<div class="flex justify-center pt-8">
+<button class="ai-gradient-bg text-white px-12 py-6 rounded-2xl font-black text-2xl shadow-2xl hover:shadow-on-tertiary-container/30 transition-shadow">
+                    CONECTAR MI RESTAURANTE
+                </button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-16 px-8 mt-32 bg-slate-100 dark:bg-slate-900">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 max-w-7xl mx-auto">
+<div class="space-y-6">
+<div class="text-xl font-black text-slate-900 dark:text-slate-50">NeuroRest</div>
+<p class="text-slate-500 dark:text-slate-400 font-inter text-sm leading-relaxed">
+                    Elevando el estándar de la hospitalidad a través de la inteligencia artificial.
+                </p>
+</div>
+<div class="space-y-6">
+<h4 class="font-bold text-slate-900 dark:text-slate-50">Producto</h4>
+<ul class="space-y-4 font-inter text-sm leading-relaxed">
+<li><a class="text-slate-500 dark:text-slate-400 hover:underline transition-all" href="#">Features</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 hover:underline transition-all" href="#">Benefits</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 hover:underline transition-all" href="#">Pricing</a></li>
+</ul>
+</div>
+<div class="space-y-6">
+<h4 class="font-bold text-slate-900 dark:text-slate-50">Compañía</h4>
+<ul class="space-y-4 font-inter text-sm leading-relaxed">
+<li><a class="text-slate-500 dark:text-slate-400 hover:underline transition-all" href="#">Contact</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 hover:underline transition-all" href="#">Privacy Policy</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 hover:underline transition-all" href="#">Terms of Service</a></li>
+</ul>
+</div>
+<div class="space-y-6">
+<h4 class="font-bold text-slate-900 dark:text-slate-50">Boletín</h4>
+<div class="flex">
+<input class="bg-white dark:bg-slate-800 border-none rounded-l-lg focus:ring-0 w-full text-sm" placeholder="Tu email" type="email"/>
+<button class="bg-primary text-white px-4 rounded-r-lg font-bold text-xs uppercase">Unirse</button>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto mt-16 pt-8 border-t border-slate-200 dark:border-slate-800 text-center">
+<p class="text-slate-500 dark:text-slate-400 font-inter text-sm leading-relaxed">© 2024 NeuroRest Intelligence. All rights reserved.</p>
+</div>
+</footer>
+</body></html>
