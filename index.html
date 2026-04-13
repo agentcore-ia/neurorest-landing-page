@@ -277,46 +277,73 @@
 </div>
 </section>
 <!-- Section 4: CRM Focus -->
-<section class="py-32 px-8 bg-primary text-white overflow-hidden relative" id="benefits">
-<div class="absolute top-0 right-0 w-1/2 h-full opacity-10 bg-gradient-to-l from-on-tertiary-container to-transparent"></div>
-<div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-20">
-<div class="lg:w-1/2 space-y-10">
-<h2 class="text-4xl md:text-6xl font-extrabold leading-tight">Convierte clientes en clientes recurrentes</h2>
-<p class="text-xl text-slate-400">NeuroRest analiza el comportamiento de tus comensales y activa campañas de fidelización automáticas cuando detecta que llevan tiempo sin volver.</p>
-<div class="space-y-6">
-<div class="flex items-center gap-6 p-6 bg-white/5 rounded-2xl border border-white/10">
-<div class="flex-shrink-0 w-12 h-12 rounded-full bg-error flex items-center justify-center">
-<span class="material-symbols-outlined">timer_off</span>
-</div>
-<div>
-<h4 class="font-bold">Cliente inactivo (21 días)</h4>
-<p class="text-sm text-slate-400">Juan no ha pedido su pizza favorita este mes.</p>
-</div>
-</div>
-<div class="flex items-center gap-6 p-6 bg-on-tertiary-container/20 rounded-2xl border border-on-tertiary-container/30 ml-8">
-<div class="flex-shrink-0 w-12 h-12 rounded-full bg-on-tertiary-container flex items-center justify-center">
-<span class="material-symbols-outlined">campaign</span>
-</div>
-<div>
-<h4 class="font-bold">Promoción automática</h4>
-<p class="text-sm text-slate-400">IA envía cupón: "¡Te extrañamos Juan! 15% hoy."</p>
-</div>
-</div>
-<div class="flex items-center gap-6 p-6 bg-secondary/20 rounded-2xl border border-secondary/30 ml-16">
-<div class="flex-shrink-0 w-12 h-12 rounded-full bg-secondary flex items-center justify-center">
-<span class="material-symbols-outlined">repeat</span>
-</div>
-<div>
-<h4 class="font-bold">Compra repetida</h4>
-<p class="text-sm text-slate-400">Juan vuelve a pedir. Cliente fidelizado con éxito.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="lg:w-1/2">
-<img alt="Customer Retention" class="rounded-3xl shadow-2xl grayscale hover:grayscale-0 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhAwv1TfFDa6nh1PPQKJybURDt0gFKFfN5JIbv1nyKdyjaS_ufqw9iJX7zuDOz0R_WZ9-iQOKo2l7JDeBJDeILWi1cIShUs2XDkUvhRRejZKJB_342quE6VFOB_pt1_35-_SkHTI0d3j3FmFzwY1vUzwhBzBdLYanw-sOEsA3keRbSLwARbc1fPN8ES_iRjZZz4yLOTMrz2FjEpfDtq8w0FSS7erNqW-UMusU9fMQsijenG-MQJ5RNYSt0xpQEndpvXaDzwOgsIqVp"/>
-</div>
-</div>
+<section class="py-32 px-4 md:px-8 bg-surface-container-low" id="benefits">
+    <div class="max-w-[85rem] mx-auto bg-primary rounded-[3rem] p-10 lg:p-20 relative overflow-hidden flex flex-col lg:flex-row items-center gap-16 md:gap-24 shadow-2xl">
+        <!-- Background glows -->
+        <div class="absolute top-0 right-0 -m-32 w-96 h-96 bg-purple-600/30 rounded-full blur-[120px] pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 -m-32 w-96 h-96 bg-blue-600/30 rounded-full blur-[120px] pointer-events-none"></div>
+        
+        <!-- Text Content -->
+        <div class="lg:w-[45%] space-y-10 z-10">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-md">
+                <span class="material-symbols-outlined text-sm text-[#57dffe]">auto_awesome</span>
+                <span class="text-xs font-bold tracking-widest uppercase text-slate-200">CRM en Piloto Automático</span>
+            </div>
+            <h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-white">Convierte visitas en clientes <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#57dffe] to-[#9863ff]">recurrentes</span></h2>
+            <p class="text-xl text-slate-300 leading-relaxed font-light">NeuroRest analiza el historial de compras de tus comensales y despliega campañas de fidelización personalizadas, atrayendo ventas que habías dado por perdidas sin mover un solo dedo.</p>
+        </div>
+
+        <!-- Timeline Graphic -->
+        <div class="lg:w-[55%] w-full z-10">
+            <div class="space-y-8 relative">
+                <!-- Vline connector -->
+                <div class="absolute top-8 bottom-8 left-[2.25rem] w-0.5 bg-gradient-to-b from-red-500 via-[#9863ff] to-green-500 opacity-30 z-0 hidden sm:block"></div>
+
+                <!-- Step 1 -->
+                <div class="relative z-10 flex flex-col sm:flex-row sm:items-center gap-6 group">
+                    <div class="w-16 h-16 rounded-full bg-slate-900 border-2 border-red-500/50 flex flex-shrink-0 items-center justify-center shadow-[0_0_20px_rgba(239,68,68,0.2)] group-hover:scale-110 group-hover:border-red-500 transition-all duration-300">
+                        <span class="material-symbols-outlined text-red-400">timer_off</span>
+                    </div>
+                    <div class="flex-1 bg-white/5 border border-white/10 p-6 rounded-2xl backdrop-blur-md transform group-hover:translate-x-2 transition-transform duration-300 hover:bg-white/10">
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-3 gap-2">
+                            <h4 class="font-bold text-white text-lg">Cliente inactivo detectado</h4>
+                            <span class="text-xs font-bold tracking-wider bg-red-500/20 text-red-300 px-3 py-1 rounded w-fit">21 DÍAS</span>
+                        </div>
+                        <p class="text-slate-400 text-sm leading-relaxed">"Juan no ha pedido su pizza de pepperoni favorita en las últimas semanas."</p>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="relative z-10 flex flex-col sm:flex-row sm:items-center gap-6 group">
+                    <div class="w-16 h-16 rounded-full bg-slate-900 border-2 border-[#9863ff]/50 flex flex-shrink-0 items-center justify-center shadow-[0_0_20px_rgba(152,99,255,0.2)] group-hover:scale-110 group-hover:border-[#9863ff] transition-all duration-300">
+                        <span class="material-symbols-outlined text-[#9863ff]">campaign</span>
+                    </div>
+                    <div class="flex-1 bg-gradient-to-r from-[#9863ff]/20 to-white/5 border border-[#9863ff]/30 p-6 rounded-2xl backdrop-blur-md transform group-hover:translate-x-2 transition-transform duration-300">
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-3 gap-2">
+                            <h4 class="font-bold text-white text-lg">Acción proactiva de IA</h4>
+                            <span class="text-xs font-bold tracking-wider bg-[#9863ff]/20 text-[#d2bbff] px-3 py-1 rounded w-fit">WHATSAPP</span>
+                        </div>
+                        <p class="text-[#d2bbff] text-sm leading-relaxed font-medium">"¡Hola Juan, te extrañamos! Como sabemos que te gusta la pepperoni, hoy te regalamos un 15% OFF."</p>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="relative z-10 flex flex-col sm:flex-row sm:items-center gap-6 group">
+                    <div class="w-16 h-16 rounded-full bg-slate-900 border-2 border-green-500/50 flex flex-shrink-0 items-center justify-center shadow-[0_0_30px_rgba(34,197,94,0.2)] group-hover:scale-110 group-hover:border-green-500 transition-all duration-300">
+                        <span class="material-symbols-outlined text-green-400">task_alt</span>
+                    </div>
+                    <div class="flex-1 bg-white/5 border border-green-500/30 p-6 rounded-2xl backdrop-blur-md transform group-hover:translate-x-2 transition-transform duration-300 hover:bg-white/10 shadow-[0_0_30px_rgba(34,197,94,0.05)]">
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-3 gap-2">
+                            <h4 class="font-bold text-white text-lg">Retorno exitoso</h4>
+                            <span class="text-xs font-bold tracking-wider bg-green-500/20 text-green-300 px-3 py-1 rounded w-fit">+ VENTA</span>
+                        </div>
+                        <p class="text-slate-400 text-sm leading-relaxed">Juan redime el cupón. Cliente reactivado y fidelizado automáticamente.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
 </section>
 <!-- Section 5: Upselling IA -->
 <section class="py-32 px-8 bg-surface">
