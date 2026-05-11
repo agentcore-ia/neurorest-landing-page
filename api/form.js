@@ -1,6 +1,6 @@
 const RESEND_API_URL = 'https://api.resend.com/emails';
 const DEFAULT_TO_EMAIL = 'ventas@coreon.com.ar';
-const DEFAULT_FROM_EMAIL = 'NeuroRest <ventas@coreon.com.ar>';
+const DEFAULT_FROM_EMAIL = 'NeuroRest <forms@neurorest.com.ar>';
 
 function escapeHtml(value = '') {
   return String(value)
