@@ -1,6 +1,6 @@
 const RESEND_API_URL = 'https://api.resend.com/emails';
 const DEFAULT_TO_EMAIL = 'ventas@coreon.com.ar';
-const DEFAULT_FROM_EMAIL = 'NeuroRest Forms <onboarding@resend.dev>';
+const DEFAULT_FROM_EMAIL = 'NeuroRest <ventas@coreon.com.ar>';
 
 function escapeHtml(value = '') {
   return String(value)
@@ -55,7 +55,13 @@ module.exports = async (req, res) => {
     return res.status(500).json({ error: 'Missing RESEND_API_KEY' });
   }
 
-  const body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
+  let body;
+
+  try {
+    body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
+  } catch (error) {
+    return res.status(400).json({ error: 'Invalid JSON body' });
+  }
 
   if (!body?.type || !body?.phone) {
     return res.status(400).json({ error: 'Missing required fields' });
@@ -72,6 +78,7 @@ module.exports = async (req, res) => {
     headers: {
       Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
       'Content-Type': 'application/json',
+      'User-Agent': 'neurorest-landing-page/1.0',
     },
     body: JSON.stringify({
       from: process.env.FORMS_FROM_EMAIL || DEFAULT_FROM_EMAIL,
@@ -84,7 +91,11 @@ module.exports = async (req, res) => {
 
   if (!resendResponse.ok) {
     const errorText = await resendResponse.text();
-    return res.status(502).json({ error: 'Email provider error', detail: errorText });
+    return res.status(502).json({
+      error: 'Email provider error',
+      detail: errorText,
+      hint: 'Verifica RESEND_API_KEY y que el dominio del remitente esté validado en Resend.',
+    });
   }
 
   return res.status(200).json({ ok: true });
