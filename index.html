@@ -288,6 +288,83 @@
 <h2 class="text-4xl md:text-6xl font-extrabold text-primary leading-tight">Cada restaurante tiene su propio menú digital, diseñado para vender más</h2>
 <p class="text-xl text-on-surface-variant leading-relaxed">No usamos plantillas genéricas. Diseñamos un menú distinto para cada cuenta, adaptado a la identidad del restaurante, sus productos y su forma de vender. Nuestro equipo de diseño y marketing arma una experiencia pensada para convertir mejor.</p>
 </div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="space-y-4">
+<div class="mx-auto w-full max-w-[17rem] rounded-[2.75rem] bg-slate-950 p-3 shadow-[0_35px_70px_-24px_rgba(0,0,0,0.35)]">
+<div class="rounded-[2.2rem] bg-black overflow-hidden border border-white/10">
+<div class="h-8 flex items-center justify-center">
+<div class="h-1.5 w-24 rounded-full bg-white/15"></div>
+</div>
+<div class="relative aspect-[9/19.5] bg-surface-container-lowest">
+<video data-menu-video class="hidden h-full w-full object-cover" muted loop playsinline autoplay preload="metadata">
+<source src="./videos/totta.mp4" type="video/mp4"/>
+</video>
+<div data-menu-placeholder class="absolute inset-0 flex items-center justify-center bg-gradient-to-b from-[#fffaf2] to-[#f5ede3] p-6 text-center">
+<div class="space-y-3">
+<span class="material-symbols-outlined text-4xl text-[#ff6b1a]">play_circle</span>
+<p class="font-bold text-primary">Menú Totta</p>
+<p class="text-sm text-on-surface-variant">Coloca `videos/totta.mp4` para mostrar este ejemplo dentro del mockup.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="text-center space-y-1">
+<p class="font-bold text-primary">Ejemplo 1</p>
+<p class="text-sm text-on-surface-variant">Video del menú digital `totta`</p>
+</div>
+</div>
+<div class="space-y-4">
+<div class="mx-auto w-full max-w-[17rem] rounded-[2.75rem] bg-slate-950 p-3 shadow-[0_35px_70px_-24px_rgba(0,0,0,0.35)]">
+<div class="rounded-[2.2rem] bg-black overflow-hidden border border-white/10">
+<div class="h-8 flex items-center justify-center">
+<div class="h-1.5 w-24 rounded-full bg-white/15"></div>
+</div>
+<div class="relative aspect-[9/19.5] bg-surface-container-lowest">
+<video data-menu-video class="hidden h-full w-full object-cover" muted loop playsinline autoplay preload="metadata">
+<source src="./videos/burguer.mp4" type="video/mp4"/>
+</video>
+<div data-menu-placeholder class="absolute inset-0 flex items-center justify-center bg-gradient-to-b from-[#f8fbff] to-[#ebf1ff] p-6 text-center">
+<div class="space-y-3">
+<span class="material-symbols-outlined text-4xl text-[#2450ff]">play_circle</span>
+<p class="font-bold text-primary">Menú Burguer</p>
+<p class="text-sm text-on-surface-variant">Coloca `videos/burguer.mp4` para mostrar este ejemplo dentro del mockup.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="text-center space-y-1">
+<p class="font-bold text-primary">Ejemplo 2</p>
+<p class="text-sm text-on-surface-variant">Video del menú digital `burguer`</p>
+</div>
+</div>
+<div class="space-y-4">
+<div class="mx-auto w-full max-w-[17rem] rounded-[2.75rem] bg-slate-950 p-3 shadow-[0_35px_70px_-24px_rgba(0,0,0,0.35)]">
+<div class="rounded-[2.2rem] bg-black overflow-hidden border border-white/10">
+<div class="h-8 flex items-center justify-center">
+<div class="h-1.5 w-24 rounded-full bg-white/15"></div>
+</div>
+<div class="relative aspect-[9/19.5] bg-surface-container-lowest">
+<video data-menu-video class="hidden h-full w-full object-cover" muted loop playsinline autoplay preload="metadata">
+<source src="./videos/heladeria.mp4" type="video/mp4"/>
+</video>
+<div data-menu-placeholder class="absolute inset-0 flex items-center justify-center bg-gradient-to-b from-[#fff8ff] to-[#f1edff] p-6 text-center">
+<div class="space-y-3">
+<span class="material-symbols-outlined text-4xl text-[#7a49ff]">play_circle</span>
+<p class="font-bold text-primary">Menú Heladería</p>
+<p class="text-sm text-on-surface-variant">Coloca `videos/heladeria.mp4` para mostrar este ejemplo dentro del mockup.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="text-center space-y-1">
+<p class="font-bold text-primary">Ejemplo 3</p>
+<p class="text-sm text-on-surface-variant">Video del menú digital `heladeria`</p>
+</div>
+</div>
+</div>
 <div class="max-w-6xl mx-auto">
 <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
 <div class="bg-surface-container-low rounded-[2rem] p-8 border border-outline-variant/10">
@@ -922,6 +999,15 @@
     // prevent links jumping to top if href="#"
     document.querySelectorAll('a[href="#"]').forEach(a => {
         a.addEventListener('click', e => e.preventDefault());
+    });
+
+    document.querySelectorAll('[data-menu-video]').forEach(video => {
+        const placeholder = video.parentElement.querySelector('[data-menu-placeholder]');
+
+        video.addEventListener('loadeddata', () => {
+            video.classList.remove('hidden');
+            placeholder?.classList.add('hidden');
+        });
     });
 </script>
 </body></html>
