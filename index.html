@@ -92,6 +92,17 @@
         .phone-viewport { position: relative; height: 100%; overflow: hidden; }
         .phone-embed { width: 100%; height: 100%; border: 0; background: #fff; display: block; }
         .phone-scroll-mask { position: absolute; top: 0; right: 0; width: 12px; height: 100%; background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.96) 60%, rgba(255,255,255,1) 100%); pointer-events: none; }
+        @media (min-width: 1024px) {
+          .phone-viewport { display: flex; justify-content: center; align-items: flex-start; }
+          .phone-embed {
+            width: 390px;
+            min-width: 390px;
+            height: 121.9512195122%;
+            transform: scale(0.82);
+            transform-origin: top center;
+          }
+          .phone-scroll-mask { width: 0; }
+        }
     </style>
 </head>
 <body class="selection:bg-secondary-container selection:text-on-secondary-fixed">
