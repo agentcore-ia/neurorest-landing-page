@@ -90,7 +90,8 @@
         .phone-shell { background: linear-gradient(180deg, #0f1530 0%, #090d1f 100%); }
         .phone-screen { border-radius: 2.2rem; overflow: hidden; background: #000; }
         .phone-viewport { position: relative; height: 100%; overflow: hidden; }
-        .phone-embed { width: calc(100% + 18px); height: 100%; border: 0; margin-right: -18px; background: #fff; display: block; }
+        .phone-embed { width: 100%; height: 100%; border: 0; background: #fff; display: block; }
+        .phone-scroll-mask { position: absolute; top: 0; right: 0; width: 12px; height: 100%; background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.96) 60%, rgba(255,255,255,1) 100%); pointer-events: none; }
     </style>
 </head>
 <body class="selection:bg-secondary-container selection:text-on-secondary-fixed">
@@ -301,10 +302,11 @@
 Menú en vivo
 </span>
 </div>
-<div class="phone-shell mx-auto w-[calc(100vw-1.5rem)] max-w-[22rem] md:w-full md:max-w-[20rem] lg:max-w-[18rem] rounded-[2.9rem] p-3 shadow-[0_35px_70px_-24px_rgba(0,0,0,0.35)]">
+<div class="phone-shell mx-auto w-[calc(100vw-1.5rem)] max-w-[22rem] md:w-full md:max-w-[20rem] lg:max-w-[19rem] xl:max-w-[20rem] rounded-[2.9rem] p-3 shadow-[0_35px_70px_-24px_rgba(0,0,0,0.35)]">
 <div class="phone-screen relative border border-white/10">
 <div class="phone-viewport aspect-[9/19.5] bg-surface-container-lowest">
 <iframe src="https://www.menu.net.ar/totta" title="Menú Totta" class="phone-embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+<div class="phone-scroll-mask"></div>
 </div>
 </div>
 </div>
@@ -324,10 +326,11 @@ Ver menú en vivo
 Menú en vivo
 </span>
 </div>
-<div class="phone-shell mx-auto w-[calc(100vw-1.5rem)] max-w-[22rem] md:w-full md:max-w-[20rem] lg:max-w-[18rem] rounded-[2.9rem] p-3 shadow-[0_35px_70px_-24px_rgba(0,0,0,0.35)]">
+<div class="phone-shell mx-auto w-[calc(100vw-1.5rem)] max-w-[22rem] md:w-full md:max-w-[20rem] lg:max-w-[19rem] xl:max-w-[20rem] rounded-[2.9rem] p-3 shadow-[0_35px_70px_-24px_rgba(0,0,0,0.35)]">
 <div class="phone-screen relative border border-white/10">
 <div class="phone-viewport aspect-[9/19.5] bg-surface-container-lowest">
 <iframe src="https://www.menu.net.ar/burguer" title="Menú Burguer" class="phone-embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+<div class="phone-scroll-mask"></div>
 </div>
 </div>
 </div>
@@ -347,10 +350,11 @@ Ver menú en vivo
 Menú en vivo
 </span>
 </div>
-<div class="phone-shell mx-auto w-[calc(100vw-1.5rem)] max-w-[22rem] md:w-full md:max-w-[20rem] lg:max-w-[18rem] rounded-[2.9rem] p-3 shadow-[0_35px_70px_-24px_rgba(0,0,0,0.35)]">
+<div class="phone-shell mx-auto w-[calc(100vw-1.5rem)] max-w-[22rem] md:w-full md:max-w-[20rem] lg:max-w-[19rem] xl:max-w-[20rem] rounded-[2.9rem] p-3 shadow-[0_35px_70px_-24px_rgba(0,0,0,0.35)]">
 <div class="phone-screen relative border border-white/10">
 <div class="phone-viewport aspect-[9/19.5] bg-surface-container-lowest">
 <iframe src="https://www.menu.net.ar/heladeria" title="Menú Heladería" class="phone-embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+<div class="phone-scroll-mask"></div>
 </div>
 </div>
 </div>
