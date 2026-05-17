@@ -295,22 +295,13 @@
 <div class="phone-shell mx-auto w-full max-w-[17rem] rounded-[2.9rem] p-3 shadow-[0_35px_70px_-24px_rgba(0,0,0,0.35)]">
 <div class="phone-screen relative border border-white/10">
 <div class="relative aspect-[9/19.5] bg-surface-container-lowest">
-<video data-menu-video class="hidden h-full w-full object-cover" muted loop playsinline autoplay preload="metadata">
-<source src="./videos/totta.mp4" type="video/mp4"/>
-</video>
-<div data-menu-placeholder class="absolute inset-0 flex items-center justify-center bg-gradient-to-b from-[#fffaf2] to-[#f5ede3] p-6 text-center">
-<div class="space-y-3">
-<span class="material-symbols-outlined text-4xl text-[#ff6b1a]">play_circle</span>
-<p class="font-bold text-primary">Menú Totta</p>
-<p class="text-sm text-on-surface-variant">Coloca `videos/totta.mp4` para mostrar este ejemplo dentro del mockup.</p>
-</div>
-</div>
+<iframe src="https://www.menu.net.ar/totta" title="Menú Totta" class="h-full w-full border-0 bg-white" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 </div>
 </div>
 </div>
 <div class="text-center space-y-1">
 <p class="font-bold text-primary">Ejemplo 1</p>
-<p class="text-sm text-on-surface-variant">Video del menú digital `totta`</p>
+<p class="text-sm text-on-surface-variant">Menú digital en vivo `totta`</p>
 <a href="https://www.menu.net.ar/totta" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 mt-3 rounded-full bg-primary px-4 py-2 text-sm font-bold text-white hover:opacity-90 transition-opacity">
 <span class="material-symbols-outlined text-base">open_in_new</span>
 Ver menú en vivo
@@ -321,44 +312,26 @@ Ver menú en vivo
 <div class="phone-shell mx-auto w-full max-w-[17rem] rounded-[2.9rem] p-3 shadow-[0_35px_70px_-24px_rgba(0,0,0,0.35)]">
 <div class="phone-screen relative border border-white/10">
 <div class="relative aspect-[9/19.5] bg-surface-container-lowest">
-<video data-menu-video class="hidden h-full w-full object-cover" muted loop playsinline autoplay preload="metadata">
-<source src="./videos/burguer.mp4" type="video/mp4"/>
-</video>
-<div data-menu-placeholder class="absolute inset-0 flex items-center justify-center bg-gradient-to-b from-[#f8fbff] to-[#ebf1ff] p-6 text-center">
-<div class="space-y-3">
-<span class="material-symbols-outlined text-4xl text-[#2450ff]">play_circle</span>
-<p class="font-bold text-primary">Menú Burguer</p>
-<p class="text-sm text-on-surface-variant">Coloca `videos/burguer.mp4` para mostrar este ejemplo dentro del mockup.</p>
-</div>
-</div>
+<iframe src="https://www.menu.net.ar/burguer" title="Menú Burguer" class="h-full w-full border-0 bg-white" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 </div>
 </div>
 </div>
 <div class="text-center space-y-1">
 <p class="font-bold text-primary">Ejemplo 2</p>
-<p class="text-sm text-on-surface-variant">Video del menú digital `burguer`</p>
+<p class="text-sm text-on-surface-variant">Menú digital en vivo `burguer`</p>
 </div>
 </div>
 <div class="space-y-4">
 <div class="phone-shell mx-auto w-full max-w-[17rem] rounded-[2.9rem] p-3 shadow-[0_35px_70px_-24px_rgba(0,0,0,0.35)]">
 <div class="phone-screen relative border border-white/10">
 <div class="relative aspect-[9/19.5] bg-surface-container-lowest">
-<video data-menu-video class="hidden h-full w-full object-cover" muted loop playsinline autoplay preload="metadata">
-<source src="./videos/heladeria.mp4" type="video/mp4"/>
-</video>
-<div data-menu-placeholder class="absolute inset-0 flex items-center justify-center bg-gradient-to-b from-[#fff8ff] to-[#f1edff] p-6 text-center">
-<div class="space-y-3">
-<span class="material-symbols-outlined text-4xl text-[#7a49ff]">play_circle</span>
-<p class="font-bold text-primary">Menú Heladería</p>
-<p class="text-sm text-on-surface-variant">Coloca `videos/heladeria.mp4` para mostrar este ejemplo dentro del mockup.</p>
-</div>
-</div>
+<iframe src="https://www.menu.net.ar/heladeria" title="Menú Heladería" class="h-full w-full border-0 bg-white" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 </div>
 </div>
 </div>
 <div class="text-center space-y-1">
 <p class="font-bold text-primary">Ejemplo 3</p>
-<p class="text-sm text-on-surface-variant">Video del menú digital `heladeria`</p>
+<p class="text-sm text-on-surface-variant">Menú digital en vivo `heladeria`</p>
 </div>
 </div>
 </div>
@@ -998,13 +971,5 @@ Ver menú en vivo
         a.addEventListener('click', e => e.preventDefault());
     });
 
-    document.querySelectorAll('[data-menu-video]').forEach(video => {
-        const placeholder = video.parentElement.querySelector('[data-menu-placeholder]');
-
-        video.addEventListener('loadeddata', () => {
-            video.classList.remove('hidden');
-            placeholder?.classList.add('hidden');
-        });
-    });
 </script>
 </body></html>
