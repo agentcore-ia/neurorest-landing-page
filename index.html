@@ -89,6 +89,8 @@
         .hero-gradient { background: radial-gradient(circle at top right, #dae2fd 0%, transparent 40%), radial-gradient(circle at bottom left, #f0edef 0%, transparent 40%); }
         .phone-shell { background: linear-gradient(180deg, #0f1530 0%, #090d1f 100%); }
         .phone-screen { border-radius: 2.2rem; overflow: hidden; background: #000; }
+        .phone-viewport { position: relative; height: 100%; overflow: hidden; }
+        .phone-embed { width: calc(100% + 18px); height: 100%; border: 0; margin-right: -18px; background: #fff; display: block; }
     </style>
 </head>
 <body class="selection:bg-secondary-container selection:text-on-secondary-fixed">
@@ -291,7 +293,7 @@
 <h2 class="text-4xl md:text-6xl font-extrabold text-primary leading-tight">Cada restaurante tiene su propio menú digital, diseñado para vender más</h2>
 <p class="text-xl text-on-surface-variant leading-relaxed">No usamos plantillas genéricas. Diseñamos un menú distinto para cada cuenta, adaptado a la identidad del restaurante, sus productos y su forma de vender. Nuestro equipo de diseño y marketing arma una experiencia pensada para convertir mejor.</p>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8">
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-10 md:gap-8">
 <div class="space-y-4 min-w-0 overflow-hidden">
 <div class="flex justify-center">
 <span class="inline-flex max-w-full items-center gap-2 rounded-full bg-[#e8fff2] px-3 py-1 text-[11px] font-bold uppercase tracking-[0.12em] text-[#00a86b]">
@@ -299,10 +301,10 @@
 Menú en vivo
 </span>
 </div>
-<div class="phone-shell mx-auto w-[calc(100vw-1.5rem)] max-w-[22rem] md:w-full md:max-w-[17rem] rounded-[2.9rem] p-3 shadow-[0_35px_70px_-24px_rgba(0,0,0,0.35)]">
+<div class="phone-shell mx-auto w-[calc(100vw-1.5rem)] max-w-[22rem] md:w-full md:max-w-[20rem] lg:max-w-[18rem] rounded-[2.9rem] p-3 shadow-[0_35px_70px_-24px_rgba(0,0,0,0.35)]">
 <div class="phone-screen relative border border-white/10">
-<div class="relative aspect-[9/19.5] bg-surface-container-lowest">
-<iframe src="https://www.menu.net.ar/totta" title="Menú Totta" class="h-full w-full border-0 bg-white" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+<div class="phone-viewport aspect-[9/19.5] bg-surface-container-lowest">
+<iframe src="https://www.menu.net.ar/totta" title="Menú Totta" class="phone-embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 </div>
 </div>
 </div>
@@ -322,10 +324,10 @@ Ver menú en vivo
 Menú en vivo
 </span>
 </div>
-<div class="phone-shell mx-auto w-[calc(100vw-1.5rem)] max-w-[22rem] md:w-full md:max-w-[17rem] rounded-[2.9rem] p-3 shadow-[0_35px_70px_-24px_rgba(0,0,0,0.35)]">
+<div class="phone-shell mx-auto w-[calc(100vw-1.5rem)] max-w-[22rem] md:w-full md:max-w-[20rem] lg:max-w-[18rem] rounded-[2.9rem] p-3 shadow-[0_35px_70px_-24px_rgba(0,0,0,0.35)]">
 <div class="phone-screen relative border border-white/10">
-<div class="relative aspect-[9/19.5] bg-surface-container-lowest">
-<iframe src="https://www.menu.net.ar/burguer" title="Menú Burguer" class="h-full w-full border-0 bg-white" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+<div class="phone-viewport aspect-[9/19.5] bg-surface-container-lowest">
+<iframe src="https://www.menu.net.ar/burguer" title="Menú Burguer" class="phone-embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 </div>
 </div>
 </div>
@@ -345,10 +347,10 @@ Ver menú en vivo
 Menú en vivo
 </span>
 </div>
-<div class="phone-shell mx-auto w-[calc(100vw-1.5rem)] max-w-[22rem] md:w-full md:max-w-[17rem] rounded-[2.9rem] p-3 shadow-[0_35px_70px_-24px_rgba(0,0,0,0.35)]">
+<div class="phone-shell mx-auto w-[calc(100vw-1.5rem)] max-w-[22rem] md:w-full md:max-w-[20rem] lg:max-w-[18rem] rounded-[2.9rem] p-3 shadow-[0_35px_70px_-24px_rgba(0,0,0,0.35)]">
 <div class="phone-screen relative border border-white/10">
-<div class="relative aspect-[9/19.5] bg-surface-container-lowest">
-<iframe src="https://www.menu.net.ar/heladeria" title="Menú Heladería" class="h-full w-full border-0 bg-white" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+<div class="phone-viewport aspect-[9/19.5] bg-surface-container-lowest">
+<iframe src="https://www.menu.net.ar/heladeria" title="Menú Heladería" class="phone-embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 </div>
 </div>
 </div>
