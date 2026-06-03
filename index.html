@@ -92,43 +92,30 @@
         .phone-viewport { position: relative; height: 100%; overflow: hidden; }
         .phone-embed { width: 100%; height: 100%; border: 0; background: #fff; display: block; }
         .phone-scroll-mask { position: absolute; top: 0; right: 0; width: 12px; height: 100%; background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.96) 60%, rgba(255,255,255,1) 100%); pointer-events: none; }
-        .chat-step { opacity: 0; transform: translateY(16px) scale(0.98); animation-duration: 18s; animation-timing-function: ease-in-out; animation-iteration-count: infinite; animation-fill-mode: both; }
+        .chat-step { opacity: 0; transform: translateY(16px) scale(0.98); animation-duration: 14s; animation-timing-function: ease-in-out; animation-iteration-count: infinite; animation-fill-mode: both; }
         .chat-step-1 { animation-name: chat-flow-1; }
         .chat-step-2 { animation-name: chat-flow-2; }
         .chat-step-3 { animation-name: chat-flow-3; }
         .chat-step-4 { animation-name: chat-flow-4; }
-        .chat-step-5 { animation-name: chat-flow-5; }
-        .chat-typing { animation: typing-dots 1.2s ease-in-out infinite; }
-        .chat-typing:nth-child(2) { animation-delay: 0.18s; }
-        .chat-typing:nth-child(3) { animation-delay: 0.36s; }
         @keyframes chat-flow-1 {
           0% { opacity: 0; transform: translateY(16px) scale(0.98); }
-          4%, 86% { opacity: 1; transform: translateY(0) scale(1); }
+          5%, 86% { opacity: 1; transform: translateY(0) scale(1); }
           96%, 100% { opacity: 0; transform: translateY(-10px) scale(0.99); }
         }
         @keyframes chat-flow-2 {
-          0%, 10% { opacity: 0; transform: translateY(16px) scale(0.98); }
-          14%, 86% { opacity: 1; transform: translateY(0) scale(1); }
+          0%, 14% { opacity: 0; transform: translateY(16px) scale(0.98); }
+          19%, 86% { opacity: 1; transform: translateY(0) scale(1); }
           96%, 100% { opacity: 0; transform: translateY(-10px) scale(0.99); }
         }
         @keyframes chat-flow-3 {
-          0%, 22% { opacity: 0; transform: translateY(16px) scale(0.98); }
-          26%, 86% { opacity: 1; transform: translateY(0) scale(1); }
+          0%, 31% { opacity: 0; transform: translateY(16px) scale(0.98); }
+          36%, 86% { opacity: 1; transform: translateY(0) scale(1); }
           96%, 100% { opacity: 0; transform: translateY(-10px) scale(0.99); }
         }
         @keyframes chat-flow-4 {
-          0%, 34% { opacity: 0; transform: translateY(16px) scale(0.98); }
-          38%, 86% { opacity: 1; transform: translateY(0) scale(1); }
+          0%, 48% { opacity: 0; transform: translateY(16px) scale(0.98); }
+          53%, 86% { opacity: 1; transform: translateY(0) scale(1); }
           96%, 100% { opacity: 0; transform: translateY(-10px) scale(0.99); }
-        }
-        @keyframes chat-flow-5 {
-          0%, 46% { opacity: 0; transform: translateY(16px) scale(0.98); }
-          50%, 86% { opacity: 1; transform: translateY(0) scale(1); }
-          96%, 100% { opacity: 0; transform: translateY(-10px) scale(0.99); }
-        }
-        @keyframes typing-dots {
-          0%, 80%, 100% { opacity: 0.35; transform: translateY(0); }
-          40% { opacity: 1; transform: translateY(-3px); }
         }
         @media (min-width: 1024px) {
           .phone-viewport { display: flex; justify-content: center; align-items: flex-start; }
@@ -739,7 +726,7 @@ Ver menú en vivo
 </div>
 </div>
 </div>
-<div class="mx-auto w-full max-w-[28rem]">
+<div class="mx-auto w-full max-w-[24rem]">
 <div class="rounded-[2.6rem] bg-[#111827] p-3 shadow-[0_35px_80px_-30px_rgba(0,0,0,0.45)]">
 <div class="overflow-hidden rounded-[2rem] bg-[#e9f7ee]">
 <div class="bg-[#075e54] px-5 py-4 text-white flex items-center gap-3">
@@ -752,7 +739,7 @@ Ver menú en vivo
 </div>
 <span class="material-symbols-outlined ml-auto text-white/80">more_vert</span>
 </div>
-<div class="min-h-[33rem] p-4 sm:p-5 space-y-4 bg-[linear-gradient(135deg,rgba(255,255,255,0.56)_0%,rgba(210,244,224,0.72)_100%)]">
+<div class="min-h-[25rem] p-4 space-y-3 bg-[linear-gradient(135deg,rgba(255,255,255,0.56)_0%,rgba(210,244,224,0.72)_100%)]">
 <div class="chat-step chat-step-1 max-w-[82%] rounded-2xl rounded-tl-sm bg-white px-4 py-3 shadow-sm">
 <p class="text-[11px] font-bold uppercase tracking-widest text-[#007f51] mb-1">Cliente</p>
 <p class="text-sm text-slate-800">Hola, quiero pedir algo para cenar. ¿Tienen el menú a mano?</p>
@@ -774,26 +761,15 @@ Ver menú en vivo
 </div>
 <div class="chat-step chat-step-4 ml-auto max-w-[88%] rounded-2xl rounded-tr-sm bg-[#d9fdd3] px-4 py-3 shadow-sm">
 <p class="text-[11px] font-bold uppercase tracking-widest text-[#007f51] mb-1">Agente IA</p>
-<p class="text-sm text-slate-800">Pedido recibido. Ya lo envié a cocina con tus datos y el detalle completo.</p>
-<div class="mt-3 rounded-xl bg-white/70 p-3">
-<p class="text-xs font-bold text-primary">Pedido #1842</p>
-<p class="text-[11px] text-slate-500">Preparación estimada: 25 minutos</p>
-</div>
-<p class="text-[10px] text-slate-500 text-right mt-1">20:51 ✓✓</p>
-</div>
-<div class="chat-step chat-step-5 ml-auto max-w-[88%] rounded-2xl rounded-tr-sm bg-[#d9fdd3] px-4 py-3 shadow-sm">
-<p class="text-[11px] font-bold uppercase tracking-widest text-[#007f51] mb-1">Agente IA</p>
-<p class="text-sm text-slate-800">Acá podés seguir el estado del pedido en tiempo real.</p>
-<div class="mt-3 inline-flex items-center gap-2 rounded-full bg-[#075e54] px-4 py-2 text-xs font-bold text-white">
+<p class="text-sm text-slate-800">Pedido recibido. Lo envié a cocina y te dejo el seguimiento en tiempo real.</p>
+<div class="mt-3 flex flex-wrap items-center gap-2">
+<span class="rounded-full bg-white/70 px-3 py-2 text-xs font-bold text-primary">Pedido #1842</span>
+<span class="inline-flex items-center gap-2 rounded-full bg-[#075e54] px-4 py-2 text-xs font-bold text-white">
 <span class="material-symbols-outlined text-sm">near_me</span>
 Ver seguimiento
+</span>
 </div>
 <p class="text-[10px] text-slate-500 text-right mt-1">20:52 ✓✓</p>
-</div>
-<div class="inline-flex items-center gap-1 rounded-full bg-white px-4 py-3 shadow-sm">
-<span class="chat-typing h-2 w-2 rounded-full bg-slate-400"></span>
-<span class="chat-typing h-2 w-2 rounded-full bg-slate-400"></span>
-<span class="chat-typing h-2 w-2 rounded-full bg-slate-400"></span>
 </div>
 </div>
 </div>
