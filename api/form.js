@@ -1,6 +1,6 @@
 const RESEND_API_URL = 'https://api.resend.com/emails';
 const DEFAULT_TO_EMAIL = 'ventas@coreon.com.ar';
-const DEFAULT_FROM_EMAIL = 'Capta <forms@neurorest.com.ar>';
+const DEFAULT_FROM_EMAIL = 'capta <forms@neurorest.com.ar>';
 
 function escapeHtml(value = '') {
   return String(value)
@@ -16,7 +16,7 @@ function buildEmailPayload(body) {
     const phone = escapeHtml(body.phone || '');
 
     return {
-      subject: 'Nuevo lead desde newsletter - Capta',
+      subject: 'Nuevo lead desde newsletter - capta',
       html: `
         <h2>Nuevo registro desde el newsletter</h2>
         <p><strong>Teléfono:</strong> ${phone}</p>
@@ -30,7 +30,7 @@ function buildEmailPayload(body) {
   const phone = escapeHtml(body.phone || '');
 
   return {
-    subject: 'Nueva solicitud desde la landing de Capta',
+    subject: 'Nueva solicitud desde la landing de capta',
     html: `
       <h2>Nueva solicitud de contacto</h2>
       <p><strong>Nombre:</strong> ${name}</p>
