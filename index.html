@@ -160,7 +160,7 @@
                     El sistema operativo con IA para restaurantes
                 </h1>
 <p class="text-xl md:text-2xl text-on-surface-variant max-w-2xl mx-auto font-medium">
-                    Automatiza WhatsApp, Instagram y llamadas, toma pedidos, gestiona reservas, activa marketing automático y organiza todo tu restaurante en un solo dashboard.
+                    Automatiza WhatsApp, Instagram y llamadas, toma pedidos, controla caja, stock, pagos, delivery y marketing desde un solo dashboard.
                 </p>
 <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
 <button onclick="openModal()" class="bg-primary text-on-primary px-8 py-4 rounded-xl font-bold text-lg hover:opacity-90 transition-all flex items-center gap-2">
@@ -248,7 +248,7 @@
 <section class="py-32 px-8">
 <div class="max-w-7xl mx-auto text-center mb-20 space-y-6">
 <h2 class="text-4xl md:text-6xl font-extrabold text-primary">Todo tu restaurante en un solo lugar</h2>
-<p class="text-xl text-on-surface-variant max-w-3xl mx-auto">La infraestructura completa para operar tu negocio digitalmente, vender más y ejecutar marketing automático sin fricciones.</p>
+<p class="text-xl text-on-surface-variant max-w-3xl mx-auto">La infraestructura completa para operar tu negocio digitalmente: atención, ventas, caja, stock, pagos, delivery y marketing automático sin fricciones.</p>
 </div>
 <div class="max-w-7xl mx-auto space-y-12">
 <!-- Row 1: Centro de conversaciones (Wide) -->
@@ -306,7 +306,7 @@
 </div>
 
 <!-- Row 3: Smaller Features -->
-<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 mt-12">
     <div class="bg-surface-container p-8 md:p-10 rounded-[2rem] flex items-center gap-6 hover:bg-surface-container-high transition-colors">
         <div class="w-16 h-16 rounded-2xl bg-secondary flex items-center justify-center shrink-0 shadow-lg">
             <span class="material-symbols-outlined text-3xl text-on-secondary">table_restaurant</span>
@@ -325,6 +325,118 @@
             <p class="text-on-surface-variant">Actualiza precios y stock en todos los canales con un solo clic.</p>
         </div>
     </div>
+    <div class="bg-surface-container p-8 md:p-10 rounded-[2rem] flex items-center gap-6 hover:bg-surface-container-high transition-colors">
+        <div class="w-16 h-16 rounded-2xl bg-[#e8fff2] flex items-center justify-center shrink-0 shadow-lg">
+            <span class="material-symbols-outlined text-3xl text-[#00a86b]">inventory_2</span>
+        </div>
+        <div>
+            <h3 class="text-xl font-bold mb-2">Stock en tiempo real</h3>
+            <p class="text-on-surface-variant">Cada pedido descuenta insumos y bloquea productos agotados automáticamente.</p>
+        </div>
+    </div>
+    <div class="bg-surface-container p-8 md:p-10 rounded-[2rem] flex items-center gap-6 hover:bg-surface-container-high transition-colors">
+        <div class="w-16 h-16 rounded-2xl bg-[#fff1e8] flex items-center justify-center shrink-0 shadow-lg">
+            <span class="material-symbols-outlined text-3xl text-[#ff6b1a]">point_of_sale</span>
+        </div>
+        <div>
+            <h3 class="text-xl font-bold mb-2">Caja y movimientos</h3>
+            <p class="text-on-surface-variant">Registrá ingresos, egresos, proveedores y cierres desde el mismo panel.</p>
+        </div>
+    </div>
+</div>
+</div>
+</section>
+<!-- Section 4: Operations Suite -->
+<section class="py-32 px-4 md:px-8 bg-primary text-white">
+<div class="max-w-7xl mx-auto space-y-16">
+<div class="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-12 items-end">
+<div class="space-y-6">
+<div class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 border border-white/15">
+<span class="material-symbols-outlined text-[#57dffe] text-sm">hub</span>
+<span class="text-xs font-bold tracking-widest uppercase text-slate-200">Operación completa</span>
+</div>
+<h2 class="text-4xl md:text-6xl font-extrabold leading-tight">Más que pedidos: todo el circuito operativo bajo control</h2>
+</div>
+<p class="text-xl text-slate-300 leading-relaxed">Cada pedido mueve muchas piezas: pago, stock, comanda, repartidor, caja y seguimiento. capta conecta ese recorrido para que el restaurante venda más sin perder control operativo.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-8">
+<div class="rounded-[2rem] bg-white text-primary p-8 md:p-10 shadow-2xl space-y-8">
+<div>
+<p class="text-sm font-bold uppercase tracking-[0.2em] text-on-surface-variant mb-3">Pedido #1842</p>
+<h3 class="text-3xl font-extrabold">Flujo automático en vivo</h3>
+</div>
+<div class="space-y-4">
+<div class="flex items-center justify-between rounded-2xl bg-surface-container-low p-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#00a86b]">verified</span>
+<span class="font-bold">Pago verificado</span>
+</div>
+<span class="text-sm font-bold text-[#00a86b]">Mercado Pago</span>
+</div>
+<div class="flex items-center justify-between rounded-2xl bg-surface-container-low p-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#ff6b1a]">print</span>
+<span class="font-bold">Comanda impresa</span>
+</div>
+<span class="text-sm text-on-surface-variant">Cocina</span>
+</div>
+<div class="flex items-center justify-between rounded-2xl bg-surface-container-low p-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary">inventory</span>
+<span class="font-bold">Stock descontado</span>
+</div>
+<span class="text-sm text-on-surface-variant">En tiempo real</span>
+</div>
+<div class="flex items-center justify-between rounded-2xl bg-primary text-white p-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#57dffe]">two_wheeler</span>
+<span class="font-bold">Delivery asignado</span>
+</div>
+<span class="text-sm text-slate-300">Liquidación lista</span>
+</div>
+</div>
+<div class="rounded-2xl bg-[#e8fff2] p-5 border border-[#00a86b]/20">
+<p class="text-sm font-bold text-[#007f51] mb-1">Link para el cliente</p>
+<p class="text-on-surface-variant">El cliente recibe una página de seguimiento para ver si el pedido fue recibido, está en preparación o salió a reparto.</p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+<div class="rounded-[1.75rem] bg-white/10 border border-white/10 p-6">
+<span class="material-symbols-outlined text-[#57dffe] text-3xl mb-5">account_balance_wallet</span>
+<h3 class="text-xl font-extrabold mb-2">Integración con Mercado Pago</h3>
+<p class="text-slate-300 leading-relaxed">Verifica automáticamente transferencias y pagos para que el pedido avance sólo cuando corresponde.</p>
+</div>
+<div class="rounded-[1.75rem] bg-white/10 border border-white/10 p-6">
+<span class="material-symbols-outlined text-[#ffb86b] text-3xl mb-5">point_of_sale</span>
+<h3 class="text-xl font-extrabold mb-2">Sistema de caja</h3>
+<p class="text-slate-300 leading-relaxed">Control de ingresos, egresos, proveedores, retiros y movimientos diarios desde un panel claro.</p>
+</div>
+<div class="rounded-[1.75rem] bg-white/10 border border-white/10 p-6">
+<span class="material-symbols-outlined text-[#c4ff72] text-3xl mb-5">inventory_2</span>
+<h3 class="text-xl font-extrabold mb-2">Stock en tiempo real</h3>
+<p class="text-slate-300 leading-relaxed">Cuando un producto se agota, deja de venderse. Cada pedido descuenta automáticamente lo que corresponde.</p>
+</div>
+<div class="rounded-[1.75rem] bg-white/10 border border-white/10 p-6">
+<span class="material-symbols-outlined text-[#ff8f8f] text-3xl mb-5">map</span>
+<h3 class="text-xl font-extrabold mb-2">Delivery por zona</h3>
+<p class="text-slate-300 leading-relaxed">Trazás áreas en el mapa y definís precios de envío diferentes según la ubicación del cliente.</p>
+</div>
+<div class="rounded-[1.75rem] bg-white/10 border border-white/10 p-6">
+<span class="material-symbols-outlined text-[#9cc8ff] text-3xl mb-5">two_wheeler</span>
+<h3 class="text-xl font-extrabold mb-2">Liquidación de repartidores</h3>
+<p class="text-slate-300 leading-relaxed">Cada pedido puede asignarse a un delivery y la liquidación de cada repartidor se calcula automáticamente.</p>
+</div>
+<div class="rounded-[1.75rem] bg-white/10 border border-white/10 p-6">
+<span class="material-symbols-outlined text-[#e2c7ff] text-3xl mb-5">print</span>
+<h3 class="text-xl font-extrabold mb-2">Comandas automáticas</h3>
+<p class="text-slate-300 leading-relaxed">Los pedidos se imprimen en cocina sin copiar datos, sin reenviar mensajes y sin depender del equipo.</p>
+</div>
+<div class="rounded-[1.75rem] bg-white/10 border border-white/10 p-6 md:col-span-2">
+<span class="material-symbols-outlined text-[#00e0a4] text-3xl mb-5">share_location</span>
+<h3 class="text-xl font-extrabold mb-2">Link de seguimiento para el cliente</h3>
+<p class="text-slate-300 leading-relaxed">Después de pedir, el cliente recibe un link para consultar el estado en tiempo real: recibido, en preparación, listo o en camino.</p>
+</div>
+</div>
 </div>
 </div>
 </section>
