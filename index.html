@@ -123,6 +123,17 @@
           53%, 86% { opacity: 1; transform: translateY(0) scale(1); }
           96%, 100% { opacity: 0; transform: translateY(-10px) scale(0.99); }
         }
+
+        .capta-bg { background: #f7f4ec; background-image: linear-gradient(rgba(21, 24, 28, 0.045) 1px, transparent 1px), linear-gradient(90deg, rgba(21, 24, 28, 0.045) 1px, transparent 1px); background-size: 42px 42px; }
+        .ink-panel { background: #111827; color: #ffffff; }
+        .section-kicker { letter-spacing: 0.18em; text-transform: uppercase; font-size: 0.75rem; font-weight: 800; }
+        .soft-shadow { box-shadow: 0 28px 80px -38px rgba(17, 24, 39, 0.45); }
+        .dashboard-frame { background: linear-gradient(180deg, #ffffff 0%, #eef1f4 100%); border: 1px solid rgba(17,24,39,0.10); box-shadow: 0 34px 90px -45px rgba(17,24,39,0.58); }
+        .flow-line { background: linear-gradient(90deg, #00a86b 0%, #1d4ed8 42%, #ff6b1a 100%); }
+        .reveal-up { animation: reveal-up 780ms cubic-bezier(.2,.8,.2,1) both; }
+        .reveal-delay-1 { animation-delay: 120ms; }
+        .reveal-delay-2 { animation-delay: 240ms; }
+        @keyframes reveal-up { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
         @media (min-width: 1024px) {
           .phone-viewport { display: flex; justify-content: center; align-items: flex-start; }
           .phone-embed {
@@ -136,907 +147,297 @@
         }
     </style>
 </head>
-<body class="selection:bg-secondary-container selection:text-on-secondary-fixed">
+<body class="capta-bg selection:bg-[#00a86b] selection:text-white">
 <!-- TopAppBar -->
-<nav class="fixed top-0 w-full z-50 bg-slate-50/70 dark:bg-slate-950/70 backdrop-blur-xl">
-<div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
-<div class="flex items-center gap-3">
-<img src="/logo-capta.png" alt="capta" class="h-9 w-9 object-contain" />
-<div class="text-2xl font-black tracking-tighter text-slate-900 dark:text-slate-50">capta</div>
+<nav class="fixed top-0 w-full z-50 border-b border-black/10 bg-[#f7f4ec]/85 backdrop-blur-xl">
+<div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:px-8">
+<a href="#top" class="flex items-center gap-3" aria-label="capta inicio">
+<img src="/logo-capta.png" alt="capta" class="h-10 w-10 object-contain" />
+<span class="text-2xl font-black tracking-tight text-slate-950">capta</span>
+</a>
+<div class="hidden items-center gap-7 md:flex">
+<a class="text-sm font-bold text-slate-600 transition-colors hover:text-slate-950" href="#features">Plataforma</a>
+<a class="text-sm font-bold text-slate-600 transition-colors hover:text-slate-950" href="#operations">Operacion</a>
+<a class="text-sm font-bold text-slate-600 transition-colors hover:text-slate-950" href="#menu">Menus</a>
+<a class="text-sm font-bold text-slate-600 transition-colors hover:text-slate-950" href="#pricing">Precios</a>
 </div>
-<div class="hidden md:flex items-center space-x-8">
-<a class="text-slate-500 dark:text-slate-400 font-medium hover:text-slate-900 dark:hover:text-slate-50 transition-colors duration-300" href="#features">Funciones</a>
-<a class="text-slate-500 dark:text-slate-400 font-medium hover:text-slate-900 dark:hover:text-slate-50 transition-colors duration-300" href="#benefits">Beneficios</a>
-<a class="text-slate-500 dark:text-slate-400 font-medium hover:text-slate-900 dark:hover:text-slate-50 transition-colors duration-300" href="#pricing">Precios</a>
-</div>
-<button onclick="openModal()" class="bg-primary text-on-primary px-6 py-2.5 rounded-lg font-bold tracking-tight scale-95 active:scale-90 transition-transform">Solicitar Demo</button>
+<button onclick="openModal()" class="rounded-full bg-slate-950 px-5 py-2.5 text-sm font-black text-white transition-transform active:scale-95 md:px-6">Solicitar demo</button>
 </div>
 </nav>
-<main class="pt-24 overflow-x-hidden">
-<!-- Section 1: Hero -->
-<section class="hero-gradient min-h-screen flex flex-col items-center justify-center px-8 py-20 text-center">
-<div class="max-w-4xl mx-auto space-y-8">
-<h1 class="text-5xl md:text-7xl font-extrabold tracking-tight text-primary leading-tight">
-                    El sistema operativo con IA para restaurantes
-                </h1>
-<p class="text-xl md:text-2xl text-on-surface-variant max-w-2xl mx-auto font-medium">
-                    Automatiza WhatsApp, Instagram y llamadas, toma pedidos, controla caja, stock, pagos, delivery y marketing desde un solo dashboard.
-                </p>
-<div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-<button onclick="openModal()" class="bg-primary text-on-primary px-8 py-4 rounded-xl font-bold text-lg hover:opacity-90 transition-all flex items-center gap-2">
-                        Solicitar demo
-                        <span class="material-symbols-outlined">arrow_forward</span>
+<main id="top" class="overflow-x-hidden pt-16">
+<!-- Hero -->
+<section class="relative min-h-[92svh] overflow-hidden bg-slate-950 text-white">
+<img src="./dashboard.png" alt="Dashboard operativo de capta" class="absolute inset-0 h-full w-full object-cover opacity-40" />
+<div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,6,23,0.94)_0%,rgba(2,6,23,0.78)_44%,rgba(2,6,23,0.30)_100%)]"></div>
+<div class="relative mx-auto flex min-h-[92svh] max-w-7xl flex-col justify-between px-4 py-16 md:px-8 md:py-20">
+<div class="max-w-4xl space-y-8 pt-10 reveal-up">
+<div class="inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/10 px-4 py-2 backdrop-blur">
+<span class="h-2.5 w-2.5 rounded-full bg-[#00e0a4]"></span>
+<span class="section-kicker text-slate-200">Sistema operativo para restaurantes</span>
+</div>
+<h1 class="text-6xl font-black leading-[0.9] tracking-tight md:text-8xl lg:text-9xl">capta.ar</h1>
+<p class="max-w-3xl text-xl leading-relaxed text-slate-200 md:text-2xl">Atencion con IA, pedidos, caja, stock, pagos, delivery, menus digitales, marketing y seguimiento en tiempo real. Todo conectado para vender mas y operar con menos friccion.</p>
+<div class="flex flex-col gap-3 sm:flex-row">
+<button onclick="openModal()" class="inline-flex items-center justify-center gap-2 rounded-full bg-[#00e0a4] px-8 py-4 text-lg font-black text-slate-950 transition-transform active:scale-95">
+Ver demo
+<span class="material-symbols-outlined">arrow_forward</span>
 </button>
-<button onclick="document.getElementById('features').scrollIntoView({behavior: 'smooth'})" class="bg-surface-container-high text-primary px-8 py-4 rounded-xl font-bold text-lg hover:bg-surface-container-highest transition-all">
-                        Ver cómo funciona
-                    </button>
+<a href="#features" class="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-8 py-4 text-lg font-black text-white backdrop-blur transition-colors hover:bg-white/15">
+Explorar plataforma
+<span class="material-symbols-outlined">south</span>
+</a>
 </div>
 </div>
-<!-- Hero Visual: Dashboard Mockup -->
-<div class="mt-20 w-full max-w-6xl mx-auto relative px-4">
-<div class="bg-surface-container-lowest rounded-3xl p-4 shadow-2xl overflow-hidden aspect-video border border-outline-variant/10">
-<img alt="Dashboard UI - Pedidos" class="w-full h-full object-cover rounded-2xl shadow-inner" src="./dashboard.png"/>
+<div class="grid gap-3 pt-12 sm:grid-cols-3 reveal-up reveal-delay-2">
+<div class="border-t border-white/20 pt-4">
+<p class="text-3xl font-black">24/7</p>
+<p class="text-sm text-slate-300">atencion por WhatsApp, Instagram, llamadas y web</p>
 </div>
-<!-- Floating Icons -->
-<div class="absolute -top-10 -left-10 hidden lg:block p-6 glass-panel rounded-2xl shadow-lg border border-white/20">
-<span class="material-symbols-outlined text-4xl text-[#25D366]">chat</span>
+<div class="border-t border-white/20 pt-4">
+<p class="text-3xl font-black">1 panel</p>
+<p class="text-sm text-slate-300">pedidos, caja, stock, delivery y clientes</p>
 </div>
-<div class="absolute -bottom-6 right-20 hidden lg:block p-6 glass-panel rounded-2xl shadow-lg border border-white/20">
-<span class="material-symbols-outlined text-4xl text-on-tertiary-container">analytics</span>
-</div>
-</div>
-</section>
-<!-- Section 2: Automation Attention -->
-<section class="py-32 px-8 bg-surface-container-low" id="features">
-<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-<div class="space-y-10">
-<h2 class="text-4xl md:text-5xl font-extrabold text-primary leading-tight">
-                        Automatizamos toda la atención de tu restaurante
-                    </h2>
-<p class="text-xl text-on-surface-variant leading-relaxed">
-                        capta responde automáticamente WhatsApp, Instagram y llamadas telefónicas. También reactiva clientes con marketing automático, entendiendo el contexto, el menú y la disponibilidad en tiempo real.
-                    </p>
-<div class="bg-secondary-container/30 border-l-4 border-secondary p-6 rounded-r-xl">
-<p class="text-on-secondary-fixed text-lg font-bold">
-                            "Nunca vuelvas a perder un mensaje o una llamada cuando el restaurante está ocupado."
-                        </p>
-</div>
-<ul class="space-y-6">
-<li class="flex items-center gap-4 text-on-surface-variant font-medium">
-<span class="material-symbols-outlined text-on-tertiary-container" data-weight="fill">check_circle</span>
-                            Respuestas instantáneas 24/7
-                        </li>
-<li class="flex items-center gap-4 text-on-surface-variant font-medium">
-<span class="material-symbols-outlined text-on-tertiary-container" data-weight="fill">check_circle</span>
-                            Sincronización con tu menú actual
-                        </li>
-<li class="flex items-center gap-4 text-on-surface-variant font-medium">
-<span class="material-symbols-outlined text-on-tertiary-container" data-weight="fill">check_circle</span>
-                            Confirmación de pedidos por voz y texto
-                        </li>
-</ul>
-</div>
-<div class="grid grid-cols-2 gap-6">
-<div class="space-y-6 mt-12">
-<div class="bg-surface-container-lowest p-8 rounded-3xl shadow-sm space-y-4">
-<span class="material-symbols-outlined text-3xl text-secondary">phone_in_talk</span>
-<h3 class="text-xl font-bold">Llamadas</h3>
-<p class="text-sm text-on-surface-variant">IA de voz que reserva mesas y toma pedidos telefónicos sin intervención humana.</p>
-</div>
-<div class="bg-surface-container-lowest p-8 rounded-3xl shadow-sm space-y-4">
-<span class="material-symbols-outlined text-3xl text-on-tertiary-container">shopping_cart</span>
-<h3 class="text-xl font-bold">Pedidos</h3>
-<p class="text-sm text-on-surface-variant">Gestión centralizada de todas las órdenes digitales.</p>
-</div>
-</div>
-<div class="space-y-6">
-<div class="bg-surface-container-lowest p-8 rounded-3xl shadow-sm space-y-4">
-<span class="material-symbols-outlined text-3xl text-[#E4405F]">camera_alt</span>
-<h3 class="text-xl font-bold">Instagram</h3>
-<p class="text-sm text-on-surface-variant">Convierte tus DMs y comentarios en reservas y ventas directas.</p>
-</div>
-<div class="bg-surface-container-lowest p-8 rounded-3xl shadow-sm space-y-4">
-<span class="material-symbols-outlined text-3xl text-on-secondary-fixed-variant">calendar_month</span>
-<h3 class="text-xl font-bold">Reservas</h3>
-<p class="text-sm text-on-surface-variant">Agenda inteligente que optimiza la rotación de tus mesas.</p>
-</div>
+<div class="border-t border-white/20 pt-4">
+<p class="text-3xl font-black">+ ventas</p>
+<p class="text-sm text-slate-300">menu disenado para convertir y marketing automatico</p>
 </div>
 </div>
 </div>
 </section>
-<!-- Section 3: One Place Dashboard -->
-<section class="py-32 px-8">
-<div class="max-w-7xl mx-auto text-center mb-20 space-y-6">
-<h2 class="text-4xl md:text-6xl font-extrabold text-primary">Todo tu restaurante en un solo lugar</h2>
-<p class="text-xl text-on-surface-variant max-w-3xl mx-auto">La infraestructura completa para operar tu negocio digitalmente: atención, ventas, caja, stock, pagos, delivery y marketing automático sin fricciones.</p>
-</div>
-<div class="max-w-7xl mx-auto space-y-12">
-<!-- Row 1: Centro de conversaciones (Wide) -->
-<div class="bg-surface-container-lowest rounded-[2.5rem] border border-outline-variant/10 p-8 md:p-16 shadow-sm hover:shadow-xl transition-shadow duration-500 flex flex-col lg:flex-row items-center gap-12 group">
-    <div class="lg:w-1/3 space-y-6">
-        <div class="w-16 h-16 rounded-2xl bg-tertiary-fixed flex items-center justify-center shadow-inner">
-            <span class="material-symbols-outlined text-3xl text-on-tertiary-fixed">forum</span>
-        </div>
-        <h3 class="text-3xl md:text-4xl font-extrabold text-primary">Centro de conversaciones</h3>
-        <p class="text-lg text-on-surface-variant leading-relaxed">Todos los chats de WhatsApp, Instagram, pedidos y oportunidades de marketing en una sola bandeja de entrada inteligente.</p>
-    </div>
-    <div class="lg:w-2/3 rounded-2xl overflow-hidden border border-outline-variant/10 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] transform group-hover:-translate-y-2 transition-transform duration-500">
-        <img alt="Centro de conversaciones" class="w-full h-auto object-cover" src="./chat.png"/>
-    </div>
-</div>
 
-<!-- Row 2: Pedidos & Reservas -->
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-    <!-- Control de pedidos -->
-    <div class="bg-primary-container text-white rounded-[2.5rem] p-8 md:p-12 shadow-2xl flex flex-col space-y-10 relative overflow-hidden group">
-        <!-- Background decorative elements -->
-        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 bg-white/5 rounded-full blur-3xl"></div>
-        
-        <div class="z-10 space-y-6">
-            <div class="w-16 h-16 rounded-2xl bg-white/10 flex items-center justify-center backdrop-blur-md shadow-inner border border-white/10">
-                <span class="material-symbols-outlined text-3xl">receipt_long</span>
-            </div>
-            <h3 class="text-3xl md:text-4xl font-extrabold">Control de pedidos</h3>
-            <p class="text-lg text-slate-300">Estado en tiempo real de cada orden desde que entra hasta que sale de cocina.</p>
-        </div>
-        
-        <div class="z-10 rounded-xl overflow-hidden shadow-2xl border border-white/10 transform group-hover:scale-105 transition-transform duration-700 mt-auto">
-            <img alt="Control de pedidos" class="w-full h-auto" src="./pedidos.png"/>
-        </div>
-        
-        <div class="absolute bottom-8 left-12 z-20 flex items-center gap-3 bg-black/40 px-5 py-3 rounded-full backdrop-blur-md border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <div class="w-3 h-3 rounded-full bg-green-400 animate-pulse"></div>
-            <span class="text-sm font-bold tracking-wide">Sincronización activa</span>
-        </div>
-    </div>
-
-    <!-- Agenda de reservas -->
-    <div class="bg-surface-container-lowest rounded-[2.5rem] border border-outline-variant/10 p-8 md:p-12 shadow-sm hover:shadow-xl transition-shadow duration-500 flex flex-col space-y-10 group">
-        <div class="space-y-6">
-            <div class="w-16 h-16 rounded-2xl bg-secondary-container flex items-center justify-center shadow-inner">
-                <span class="material-symbols-outlined text-3xl text-on-secondary-container">book_online</span>
-            </div>
-            <h3 class="text-3xl md:text-4xl font-extrabold text-primary">Agenda de reservas</h3>
-            <p class="text-lg text-on-surface-variant leading-relaxed">Evita el overbooking y gestiona mesas y depósitos de reserva automáticamente.</p>
-        </div>
-        <div class="mt-auto rounded-xl overflow-hidden shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] border border-outline-variant/10 transform group-hover:scale-[1.03] transition-transform duration-700">
-            <img alt="Agenda de reservas" class="w-full h-auto" src="./RESERVAS.png"/>
-        </div>
-    </div>
+<!-- Platform Overview -->
+<section id="features" class="px-4 py-28 md:px-8 md:py-36">
+<div class="mx-auto max-w-7xl space-y-14">
+<div class="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
+<div class="space-y-5">
+<p class="section-kicker text-[#00687a]">La torre de control</p>
+<h2 class="text-5xl font-black leading-tight text-slate-950 md:text-7xl">Todo lo que pasa en tu restaurante, ordenado en tiempo real.</h2>
 </div>
-
-<!-- Row 3: Smaller Features -->
-<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 mt-12">
-    <div class="bg-surface-container p-8 md:p-10 rounded-[2rem] flex items-center gap-6 hover:bg-surface-container-high transition-colors">
-        <div class="w-16 h-16 rounded-2xl bg-secondary flex items-center justify-center shrink-0 shadow-lg">
-            <span class="material-symbols-outlined text-3xl text-on-secondary">table_restaurant</span>
-        </div>
-        <div>
-            <h3 class="text-xl font-bold mb-2">Control de mesas</h3>
-            <p class="text-on-surface-variant">Mapa interactivo de tu salón con disponibilidad en tiempo real.</p>
-        </div>
-    </div>
-    <div class="bg-surface-container p-8 md:p-10 rounded-[2rem] flex items-center gap-6 hover:bg-surface-container-high transition-colors">
-        <div class="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center shrink-0 shadow-lg">
-            <span class="material-symbols-outlined text-3xl text-on-primary">restaurant_menu</span>
-        </div>
-        <div>
-            <h3 class="text-xl font-bold mb-2">Gestión del menú</h3>
-            <p class="text-on-surface-variant">Actualiza precios y stock en todos los canales con un solo clic.</p>
-        </div>
-    </div>
-    <div class="bg-surface-container p-8 md:p-10 rounded-[2rem] flex items-center gap-6 hover:bg-surface-container-high transition-colors">
-        <div class="w-16 h-16 rounded-2xl bg-[#e8fff2] flex items-center justify-center shrink-0 shadow-lg">
-            <span class="material-symbols-outlined text-3xl text-[#00a86b]">inventory_2</span>
-        </div>
-        <div>
-            <h3 class="text-xl font-bold mb-2">Stock en tiempo real</h3>
-            <p class="text-on-surface-variant">Cada pedido descuenta insumos y bloquea productos agotados automáticamente.</p>
-        </div>
-    </div>
-    <div class="bg-surface-container p-8 md:p-10 rounded-[2rem] flex items-center gap-6 hover:bg-surface-container-high transition-colors">
-        <div class="w-16 h-16 rounded-2xl bg-[#fff1e8] flex items-center justify-center shrink-0 shadow-lg">
-            <span class="material-symbols-outlined text-3xl text-[#ff6b1a]">point_of_sale</span>
-        </div>
-        <div>
-            <h3 class="text-xl font-bold mb-2">Caja y movimientos</h3>
-            <p class="text-on-surface-variant">Registrá ingresos, egresos, proveedores y cierres desde el mismo panel.</p>
-        </div>
-    </div>
+<p class="text-xl leading-relaxed text-slate-600">capta conecta conversacion, pedido, pago, comanda, stock, caja, delivery, CRM y marketing. La operacion deja de vivir en chats sueltos, planillas y llamadas perdidas.</p>
+</div>
+<div class="dashboard-frame overflow-hidden rounded-[2rem] p-3 md:rounded-[2.5rem] md:p-5">
+<img src="./dashboard.png" alt="Dashboard central de capta" class="h-full w-full rounded-[1.5rem] object-cover" />
+</div>
+<div class="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+<div class="rounded-3xl bg-white p-7 soft-shadow">
+<span class="material-symbols-outlined mb-5 text-4xl text-[#00a86b]">forum</span>
+<h3 class="mb-2 text-2xl font-black text-slate-950">Atencion automatica</h3>
+<p class="leading-relaxed text-slate-600">Responde WhatsApp, Instagram y llamadas, resuelve dudas y guia al cliente hasta el pedido.</p>
+</div>
+<div class="rounded-3xl bg-[#111827] p-7 text-white soft-shadow">
+<span class="material-symbols-outlined mb-5 text-4xl text-[#57dffe]">receipt_long</span>
+<h3 class="mb-2 text-2xl font-black">Pedidos sin caos</h3>
+<p class="leading-relaxed text-slate-300">Cada orden llega clara, con productos, extras, datos del cliente y estado actualizado.</p>
+</div>
+<div class="rounded-3xl bg-white p-7 soft-shadow">
+<span class="material-symbols-outlined mb-5 text-4xl text-[#ff6b1a]">point_of_sale</span>
+<h3 class="mb-2 text-2xl font-black text-slate-950">Caja y proveedores</h3>
+<p class="leading-relaxed text-slate-600">Controla ingresos, egresos, retiros, proveedores y movimientos diarios desde un lugar.</p>
+</div>
+<div class="rounded-3xl bg-white p-7 soft-shadow">
+<span class="material-symbols-outlined mb-5 text-4xl text-[#2450ff]">campaign</span>
+<h3 class="mb-2 text-2xl font-black text-slate-950">Marketing automatico</h3>
+<p class="leading-relaxed text-slate-600">Reactiva clientes, promociona productos y aumenta recurrencia con mensajes inteligentes.</p>
+</div>
 </div>
 </div>
 </section>
-<!-- Section 4: Operations Suite -->
-<section class="py-32 px-4 md:px-8 bg-primary text-white">
-<div class="max-w-7xl mx-auto space-y-16">
-<div class="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-12 items-end">
-<div class="space-y-6">
-<div class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 border border-white/15">
-<span class="material-symbols-outlined text-[#57dffe] text-sm">hub</span>
-<span class="text-xs font-bold tracking-widest uppercase text-slate-200">Operación completa</span>
+
+<!-- Operations -->
+<section id="operations" class="bg-slate-950 px-4 py-28 text-white md:px-8 md:py-36">
+<div class="mx-auto max-w-7xl space-y-16">
+<div class="grid gap-8 lg:grid-cols-[1fr_0.8fr] lg:items-end">
+<div class="space-y-5">
+<p class="section-kicker text-[#00e0a4]">Operacion conectada</p>
+<h2 class="text-5xl font-black leading-tight md:text-7xl">Un pedido entra y capta mueve todo lo demas.</h2>
 </div>
-<h2 class="text-4xl md:text-6xl font-extrabold leading-tight">Más que pedidos: todo el circuito operativo bajo control</h2>
+<p class="text-xl leading-relaxed text-slate-300">El sistema verifica pagos, imprime comandas, descuenta stock, calcula delivery, asigna repartidor, liquida y mantiene informado al cliente.</p>
 </div>
-<p class="text-xl text-slate-300 leading-relaxed">Cada pedido mueve muchas piezas: pago, stock, comanda, repartidor, caja y seguimiento. capta conecta ese recorrido para que el restaurante venda más sin perder control operativo.</p>
-</div>
-<div class="grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-8">
-<div class="rounded-[2rem] bg-white text-primary p-8 md:p-10 shadow-2xl space-y-8">
+<div class="grid gap-6 lg:grid-cols-[0.95fr_1.25fr]">
+<div class="rounded-[2rem] bg-white p-6 text-slate-950 md:p-8">
+<div class="mb-8 flex items-start justify-between gap-4">
 <div>
-<p class="text-sm font-bold uppercase tracking-[0.2em] text-on-surface-variant mb-3">Pedido #1842</p>
-<h3 class="text-3xl font-extrabold">Flujo automático en vivo</h3>
+<p class="section-kicker text-slate-500">Pedido #1842</p>
+<h3 class="mt-2 text-3xl font-black">Automatizacion en vivo</h3>
 </div>
-<div class="space-y-4">
-<div class="flex items-center justify-between rounded-2xl bg-surface-container-low p-4">
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-[#00a86b]">verified</span>
-<span class="font-bold">Pago verificado</span>
+<span class="rounded-full bg-[#e8fff2] px-3 py-1 text-sm font-black text-[#007f51]">Activo</span>
 </div>
+<div class="space-y-3">
+<div class="flex items-center justify-between rounded-2xl bg-[#f3f6f8] p-4">
+<span class="inline-flex items-center gap-3 font-black"><span class="material-symbols-outlined text-[#00a86b]">verified</span>Pago verificado</span>
 <span class="text-sm font-bold text-[#00a86b]">Mercado Pago</span>
 </div>
-<div class="flex items-center justify-between rounded-2xl bg-surface-container-low p-4">
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-[#ff6b1a]">print</span>
-<span class="font-bold">Comanda impresa</span>
+<div class="flex items-center justify-between rounded-2xl bg-[#f3f6f8] p-4">
+<span class="inline-flex items-center gap-3 font-black"><span class="material-symbols-outlined text-[#ff6b1a]">print</span>Comanda impresa</span>
+<span class="text-sm text-slate-500">Cocina</span>
 </div>
-<span class="text-sm text-on-surface-variant">Cocina</span>
+<div class="flex items-center justify-between rounded-2xl bg-[#f3f6f8] p-4">
+<span class="inline-flex items-center gap-3 font-black"><span class="material-symbols-outlined text-[#2450ff]">inventory_2</span>Stock descontado</span>
+<span class="text-sm text-slate-500">en tiempo real</span>
 </div>
-<div class="flex items-center justify-between rounded-2xl bg-surface-container-low p-4">
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-secondary">inventory</span>
-<span class="font-bold">Stock descontado</span>
-</div>
-<span class="text-sm text-on-surface-variant">En tiempo real</span>
-</div>
-<div class="flex items-center justify-between rounded-2xl bg-primary text-white p-4">
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-[#57dffe]">two_wheeler</span>
-<span class="font-bold">Delivery asignado</span>
-</div>
-<span class="text-sm text-slate-300">Liquidación lista</span>
+<div class="flex items-center justify-between rounded-2xl bg-slate-950 p-4 text-white">
+<span class="inline-flex items-center gap-3 font-black"><span class="material-symbols-outlined text-[#57dffe]">two_wheeler</span>Delivery asignado</span>
+<span class="text-sm text-slate-300">liquidacion lista</span>
 </div>
 </div>
-<div class="rounded-2xl bg-[#e8fff2] p-5 border border-[#00a86b]/20">
-<p class="text-sm font-bold text-[#007f51] mb-1">Link para el cliente</p>
-<p class="text-on-surface-variant">El cliente recibe una página de seguimiento para ver si el pedido fue recibido, está en preparación o salió a reparto.</p>
 </div>
+<div class="grid gap-4 md:grid-cols-2">
+<div class="rounded-3xl border border-white/10 bg-white/10 p-6">
+<span class="material-symbols-outlined mb-5 text-4xl text-[#57dffe]">account_balance_wallet</span>
+<h3 class="mb-2 text-2xl font-black">Mercado Pago</h3>
+<p class="text-slate-300">Verifica pagos por transferencia para que el pedido avance cuando corresponde.</p>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-<div class="rounded-[1.75rem] bg-white/10 border border-white/10 p-6">
-<span class="material-symbols-outlined text-[#57dffe] text-3xl mb-5">account_balance_wallet</span>
-<h3 class="text-xl font-extrabold mb-2">Integración con Mercado Pago</h3>
-<p class="text-slate-300 leading-relaxed">Verifica automáticamente transferencias y pagos para que el pedido avance sólo cuando corresponde.</p>
+<div class="rounded-3xl border border-white/10 bg-white/10 p-6">
+<span class="material-symbols-outlined mb-5 text-4xl text-[#ffb86b]">point_of_sale</span>
+<h3 class="mb-2 text-2xl font-black">Sistema de caja</h3>
+<p class="text-slate-300">Ingresos, egresos, proveedores, retiros y cierres en un panel operativo.</p>
 </div>
-<div class="rounded-[1.75rem] bg-white/10 border border-white/10 p-6">
-<span class="material-symbols-outlined text-[#ffb86b] text-3xl mb-5">point_of_sale</span>
-<h3 class="text-xl font-extrabold mb-2">Sistema de caja</h3>
-<p class="text-slate-300 leading-relaxed">Control de ingresos, egresos, proveedores, retiros y movimientos diarios desde un panel claro.</p>
+<div class="rounded-3xl border border-white/10 bg-white/10 p-6">
+<span class="material-symbols-outlined mb-5 text-4xl text-[#c4ff72]">inventory</span>
+<h3 class="mb-2 text-2xl font-black">Stock real</h3>
+<p class="text-slate-300">Si un producto se termina, capta deja de venderlo y descuenta cada pedido.</p>
 </div>
-<div class="rounded-[1.75rem] bg-white/10 border border-white/10 p-6">
-<span class="material-symbols-outlined text-[#c4ff72] text-3xl mb-5">inventory_2</span>
-<h3 class="text-xl font-extrabold mb-2">Stock en tiempo real</h3>
-<p class="text-slate-300 leading-relaxed">Cuando un producto se agota, deja de venderse. Cada pedido descuenta automáticamente lo que corresponde.</p>
+<div class="rounded-3xl border border-white/10 bg-white/10 p-6">
+<span class="material-symbols-outlined mb-5 text-4xl text-[#ff8f8f]">map</span>
+<h3 class="mb-2 text-2xl font-black">Zonas de envio</h3>
+<p class="text-slate-300">Traza areas en el mapa y defini precios de delivery por ubicacion.</p>
 </div>
-<div class="rounded-[1.75rem] bg-white/10 border border-white/10 p-6">
-<span class="material-symbols-outlined text-[#ff8f8f] text-3xl mb-5">map</span>
-<h3 class="text-xl font-extrabold mb-2">Delivery por zona</h3>
-<p class="text-slate-300 leading-relaxed">Trazás áreas en el mapa y definís precios de envío diferentes según la ubicación del cliente.</p>
+<div class="rounded-3xl border border-white/10 bg-white/10 p-6">
+<span class="material-symbols-outlined mb-5 text-4xl text-[#9cc8ff]">two_wheeler</span>
+<h3 class="mb-2 text-2xl font-black">Liquidaciones</h3>
+<p class="text-slate-300">Asigna pedidos a repartidores y calcula automaticamente cuanto corresponde a cada uno.</p>
 </div>
-<div class="rounded-[1.75rem] bg-white/10 border border-white/10 p-6">
-<span class="material-symbols-outlined text-[#9cc8ff] text-3xl mb-5">two_wheeler</span>
-<h3 class="text-xl font-extrabold mb-2">Liquidación de repartidores</h3>
-<p class="text-slate-300 leading-relaxed">Cada pedido puede asignarse a un delivery y la liquidación de cada repartidor se calcula automáticamente.</p>
-</div>
-<div class="rounded-[1.75rem] bg-white/10 border border-white/10 p-6">
-<span class="material-symbols-outlined text-[#e2c7ff] text-3xl mb-5">print</span>
-<h3 class="text-xl font-extrabold mb-2">Comandas automáticas</h3>
-<p class="text-slate-300 leading-relaxed">Los pedidos se imprimen en cocina sin copiar datos, sin reenviar mensajes y sin depender del equipo.</p>
-</div>
-<div class="rounded-[1.75rem] bg-white/10 border border-white/10 p-6 md:col-span-2">
-<span class="material-symbols-outlined text-[#00e0a4] text-3xl mb-5">share_location</span>
-<h3 class="text-xl font-extrabold mb-2">Link de seguimiento para el cliente</h3>
-<p class="text-slate-300 leading-relaxed">Después de pedir, el cliente recibe un link para consultar el estado en tiempo real: recibido, en preparación, listo o en camino.</p>
+<div class="rounded-3xl border border-white/10 bg-white/10 p-6">
+<span class="material-symbols-outlined mb-5 text-4xl text-[#e2c7ff]">share_location</span>
+<h3 class="mb-2 text-2xl font-black">Seguimiento</h3>
+<p class="text-slate-300">El cliente recibe un link para ver el estado del pedido en tiempo real.</p>
 </div>
 </div>
 </div>
 </div>
 </section>
-<!-- Section 4: Custom Digital Menus -->
-<section class="py-32 px-2 sm:px-4 md:px-8 bg-surface overflow-x-hidden scroll-mt-28" id="menu">
-<div class="max-w-7xl mx-auto space-y-16">
-<div class="max-w-4xl space-y-6">
-<div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface-container border border-outline-variant/20">
-<span class="material-symbols-outlined text-on-tertiary-container text-sm">smartphone</span>
-<span class="text-xs font-bold tracking-widest uppercase text-on-surface-variant">Menús Digitales Personalizados</span>
-</div>
-<h2 class="text-4xl md:text-6xl font-extrabold text-primary leading-tight">Cada restaurante tiene su propio menú digital, diseñado para vender más</h2>
-<p class="text-xl text-on-surface-variant leading-relaxed">No usamos plantillas genéricas. Diseñamos un menú distinto para cada cuenta, adaptado a la identidad del restaurante, sus productos y su forma de vender. Nuestro equipo de diseño y marketing arma una experiencia pensada para convertir mejor.</p>
-</div>
-<div class="grid grid-cols-1 lg:grid-cols-3 gap-10 md:gap-8">
-<div class="space-y-4 min-w-0 overflow-hidden">
-<div class="flex justify-center">
-<span class="inline-flex max-w-full items-center gap-2 rounded-full bg-[#e8fff2] px-3 py-1 text-[11px] font-bold uppercase tracking-[0.12em] text-[#00a86b]">
-<span class="h-2 w-2 rounded-full bg-[#00a86b]"></span>
-Menú en vivo
-</span>
-</div>
-<div class="phone-shell mx-auto w-[calc(100vw-1.5rem)] max-w-[22rem] md:w-full md:max-w-[20rem] lg:max-w-[19rem] xl:max-w-[20rem] rounded-[2.9rem] p-3 shadow-[0_35px_70px_-24px_rgba(0,0,0,0.35)]">
-<div class="phone-screen relative border border-white/10">
-<div class="phone-viewport aspect-[9/19.5] bg-surface-container-lowest">
-<iframe src="https://www.menu.net.ar/totta" title="Menú Totta" class="phone-embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-<div class="phone-scroll-mask"></div>
-</div>
-</div>
-</div>
-<div class="text-center space-y-1">
-<p class="font-bold text-primary">Ejemplo 1</p>
-<p class="text-sm text-on-surface-variant">Menú digital en vivo `totta`</p>
-<a href="https://www.menu.net.ar/totta" target="_blank" rel="noopener noreferrer" class="inline-flex w-full max-w-[18rem] justify-center items-center gap-2 mt-3 rounded-full bg-primary px-4 py-2 text-sm font-bold text-white hover:opacity-90 transition-opacity">
-<span class="material-symbols-outlined text-base">open_in_new</span>
-Ver menú en vivo
-</a>
-</div>
-</div>
-<div class="space-y-4 min-w-0 overflow-hidden">
-<div class="flex justify-center">
-<span class="inline-flex max-w-full items-center gap-2 rounded-full bg-[#eef4ff] px-3 py-1 text-[11px] font-bold uppercase tracking-[0.12em] text-[#2450ff]">
-<span class="h-2 w-2 rounded-full bg-[#2450ff]"></span>
-Menú en vivo
-</span>
-</div>
-<div class="phone-shell mx-auto w-[calc(100vw-1.5rem)] max-w-[22rem] md:w-full md:max-w-[20rem] lg:max-w-[19rem] xl:max-w-[20rem] rounded-[2.9rem] p-3 shadow-[0_35px_70px_-24px_rgba(0,0,0,0.35)]">
-<div class="phone-screen relative border border-white/10">
-<div class="phone-viewport aspect-[9/19.5] bg-surface-container-lowest">
-<iframe src="https://www.menu.net.ar/burguer" title="Menú Burguer" class="phone-embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-<div class="phone-scroll-mask"></div>
-</div>
-</div>
-</div>
-<div class="text-center space-y-1">
-<p class="font-bold text-primary">Ejemplo 2</p>
-<p class="text-sm text-on-surface-variant">Menú digital en vivo `burguer`</p>
-<a href="https://www.menu.net.ar/burguer" target="_blank" rel="noopener noreferrer" class="inline-flex w-full max-w-[18rem] justify-center items-center gap-2 mt-3 rounded-full bg-primary px-4 py-2 text-sm font-bold text-white hover:opacity-90 transition-opacity">
-<span class="material-symbols-outlined text-base">open_in_new</span>
-Ver menú en vivo
-</a>
-</div>
-</div>
-<div class="space-y-4 min-w-0 overflow-hidden">
-<div class="flex justify-center">
-<span class="inline-flex max-w-full items-center gap-2 rounded-full bg-[#f3eeff] px-3 py-1 text-[11px] font-bold uppercase tracking-[0.12em] text-[#7a49ff]">
-<span class="h-2 w-2 rounded-full bg-[#7a49ff]"></span>
-Menú en vivo
-</span>
-</div>
-<div class="phone-shell mx-auto w-[calc(100vw-1.5rem)] max-w-[22rem] md:w-full md:max-w-[20rem] lg:max-w-[19rem] xl:max-w-[20rem] rounded-[2.9rem] p-3 shadow-[0_35px_70px_-24px_rgba(0,0,0,0.35)]">
-<div class="phone-screen relative border border-white/10">
-<div class="phone-viewport aspect-[9/19.5] bg-surface-container-lowest">
-<iframe src="https://www.menu.net.ar/heladeria" title="Menú Heladería" class="phone-embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-<div class="phone-scroll-mask"></div>
-</div>
-</div>
-</div>
-<div class="text-center space-y-1">
-<p class="font-bold text-primary">Ejemplo 3</p>
-<p class="text-sm text-on-surface-variant">Menú digital en vivo `heladeria`</p>
-<a href="https://www.menu.net.ar/heladeria" target="_blank" rel="noopener noreferrer" class="inline-flex w-full max-w-[18rem] justify-center items-center gap-2 mt-3 rounded-full bg-primary px-4 py-2 text-sm font-bold text-white hover:opacity-90 transition-opacity">
-<span class="material-symbols-outlined text-base">open_in_new</span>
-Ver menú en vivo
-</a>
-</div>
-</div>
-</div>
-<div class="max-w-6xl mx-auto">
-<div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-<div class="bg-surface-container-low rounded-[2rem] p-8 border border-outline-variant/10">
-<h3 class="text-2xl font-extrabold text-primary mb-3">Diseño hecho para cada cuenta</h3>
-<p class="text-on-surface-variant leading-relaxed">Cada menú respeta la identidad visual del restaurante, su propuesta gastronómica y el tipo de cliente que busca atraer.</p>
-</div>
-<div class="bg-surface-container-low rounded-[2rem] p-8 border border-outline-variant/10">
-<h3 class="text-2xl font-extrabold text-primary mb-3">Equipo de diseño y marketing</h3>
-<p class="text-on-surface-variant leading-relaxed">No es sólo una carta linda. Nuestro equipo trabaja el contenido, el orden de los productos, las promos y los destacados para mejorar conversión.</p>
-</div>
-<div class="bg-primary text-white rounded-[2rem] p-8 shadow-xl">
-<h3 class="text-2xl font-extrabold mb-3">Pensado para vender más</h3>
-<p class="text-slate-300 leading-relaxed">Los menús están estructurados para empujar productos clave, aumentar ticket promedio y facilitar que el cliente termine el pedido más rápido.</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Section 4: CRM Focus -->
-<section class="py-32 px-4 md:px-8 bg-surface-container-low" id="benefits">
-    <div class="max-w-[85rem] mx-auto bg-primary rounded-[3rem] p-10 lg:p-20 relative overflow-hidden flex flex-col lg:flex-row items-center gap-16 md:gap-24 shadow-2xl">
-        <!-- Background glows -->
-        <div class="absolute top-0 right-0 -m-32 w-96 h-96 bg-purple-600/30 rounded-full blur-[120px] pointer-events-none"></div>
-        <div class="absolute bottom-0 left-0 -m-32 w-96 h-96 bg-blue-600/30 rounded-full blur-[120px] pointer-events-none"></div>
-        
-        <!-- Text Content -->
-        <div class="lg:w-[45%] space-y-10 z-10">
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-md">
-                <span class="material-symbols-outlined text-sm text-[#57dffe]">auto_awesome</span>
-                <span class="text-xs font-bold tracking-widest uppercase text-slate-200">CRM en Piloto Automático</span>
-            </div>
-            <h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-white">Cada cliente queda <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#57dffe] to-[#9863ff]">mejor registrado</span></h2>
-            <p class="text-xl text-slate-300 leading-relaxed font-light">capta construye automáticamente el historial de cada comensal: qué compra, con qué frecuencia vuelve, cuánto gasta y qué prefiere. Así tu restaurante deja de atender conversaciones sueltas y empieza a operar con contexto real.</p>
-        </div>
 
-        <!-- Timeline Graphic -->
-        <div class="lg:w-[55%] w-full z-10">
-            <div class="space-y-8 relative">
-                <!-- Vline connector -->
-                <div class="absolute top-8 bottom-8 left-[2.25rem] w-0.5 bg-gradient-to-b from-red-500 via-[#9863ff] to-green-500 opacity-30 z-0 hidden sm:block"></div>
-
-                <!-- Step 1 -->
-                <div class="relative z-10 flex flex-col sm:flex-row sm:items-center gap-6 group">
-                    <div class="w-16 h-16 rounded-full bg-slate-900 border-2 border-red-500/50 flex flex-shrink-0 items-center justify-center shadow-[0_0_20px_rgba(239,68,68,0.2)] group-hover:scale-110 group-hover:border-red-500 transition-all duration-300">
-                        <span class="material-symbols-outlined text-red-400">timer_off</span>
-                    </div>
-                    <div class="flex-1 bg-white/5 border border-white/10 p-6 rounded-2xl backdrop-blur-md transform group-hover:translate-x-2 transition-transform duration-300 hover:bg-white/10">
-                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-3 gap-2">
-                            <h4 class="font-bold text-white text-lg">Historial unificado</h4>
-                            <span class="text-xs font-bold tracking-wider bg-red-500/20 text-red-300 px-3 py-1 rounded w-fit">CRM</span>
-                        </div>
-                        <p class="text-slate-400 text-sm leading-relaxed">Cada pedido, reserva y conversación suma datos al perfil del cliente en un solo lugar.</p>
-                    </div>
-                </div>
-
-                <!-- Step 2 -->
-                <div class="relative z-10 flex flex-col sm:flex-row sm:items-center gap-6 group">
-                    <div class="w-16 h-16 rounded-full bg-slate-900 border-2 border-[#9863ff]/50 flex flex-shrink-0 items-center justify-center shadow-[0_0_20px_rgba(152,99,255,0.2)] group-hover:scale-110 group-hover:border-[#9863ff] transition-all duration-300">
-                        <span class="material-symbols-outlined text-[#9863ff]">campaign</span>
-                    </div>
-                    <div class="flex-1 bg-gradient-to-r from-[#9863ff]/20 to-white/5 border border-[#9863ff]/30 p-6 rounded-2xl backdrop-blur-md transform group-hover:translate-x-2 transition-transform duration-300">
-                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-3 gap-2">
-                            <h4 class="font-bold text-white text-lg">Preferencias detectadas</h4>
-                            <span class="text-xs font-bold tracking-wider bg-[#9863ff]/20 text-[#d2bbff] px-3 py-1 rounded w-fit">INSIGHT</span>
-                        </div>
-                        <p class="text-[#d2bbff] text-sm leading-relaxed font-medium">La IA identifica productos favoritos, ticket promedio, frecuencia de compra y momentos de mayor consumo.</p>
-                    </div>
-                </div>
-
-                <!-- Step 3 -->
-                <div class="relative z-10 flex flex-col sm:flex-row sm:items-center gap-6 group">
-                    <div class="w-16 h-16 rounded-full bg-slate-900 border-2 border-green-500/50 flex flex-shrink-0 items-center justify-center shadow-[0_0_30px_rgba(34,197,94,0.2)] group-hover:scale-110 group-hover:border-green-500 transition-all duration-300">
-                        <span class="material-symbols-outlined text-green-400">task_alt</span>
-                    </div>
-                    <div class="flex-1 bg-white/5 border border-green-500/30 p-6 rounded-2xl backdrop-blur-md transform group-hover:translate-x-2 transition-transform duration-300 hover:bg-white/10 shadow-[0_0_30px_rgba(34,197,94,0.05)]">
-                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-3 gap-2">
-                            <h4 class="font-bold text-white text-lg">Segmentación lista para usar</h4>
-                            <span class="text-xs font-bold tracking-wider bg-green-500/20 text-green-300 px-3 py-1 rounded w-fit">ACCIONABLE</span>
-                        </div>
-                        <p class="text-slate-400 text-sm leading-relaxed">Tu equipo puede ver clientes VIP, frecuentes, inactivos o nuevos y tomar mejores decisiones en atención, ventas y fidelización.</p>
-                    </div>
-                </div>
-
-            </div>
-</div>
-</div>
-</section>
-<!-- Section 5: Automatic Marketing -->
-<section class="py-32 px-8 bg-surface">
-<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-<div class="space-y-8">
-<div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary-container/50 border border-secondary/10">
-<span class="material-symbols-outlined text-secondary text-sm">campaign</span>
-<span class="text-xs font-bold tracking-widest uppercase text-on-secondary-fixed">Marketing Automático</span>
-</div>
-<h2 class="text-3xl md:text-4xl font-extrabold text-primary leading-tight">Marketing automático para reactivar clientes y vender más</h2>
-<p class="text-xl text-on-surface-variant leading-relaxed">La plataforma detecta oportunidades de venta y ejecuta acciones automáticas para reactivar clientes, empujar promociones y aumentar frecuencia de compra desde WhatsApp.</p>
-<div class="space-y-5">
-<div class="flex gap-4">
-<div class="w-12 h-12 rounded-2xl bg-surface-container flex items-center justify-center shrink-0">
-<span class="material-symbols-outlined text-[#ff6b1a]">bolt</span>
-</div>
-<div>
-<h3 class="text-xl font-bold text-primary mb-1">Campañas que se disparan solas</h3>
-<p class="text-on-surface-variant">capta identifica clientes inactivos, horarios flojos o productos que querés mover y activa campañas sin esperar a que alguien las arme manualmente.</p>
-</div>
-</div>
-<div class="flex gap-4">
-<div class="w-12 h-12 rounded-2xl bg-surface-container flex items-center justify-center shrink-0">
-<span class="material-symbols-outlined text-[#9863ff]">person_search</span>
-</div>
-<div>
-<h3 class="text-xl font-bold text-primary mb-1">Mensajes personalizados</h3>
-<p class="text-on-surface-variant">Cada envío puede adaptarse al historial del cliente, sus pedidos favoritos y su frecuencia de compra para que la promoción tenga más chances de convertir.</p>
-</div>
-</div>
-<div class="flex gap-4">
-<div class="w-12 h-12 rounded-2xl bg-surface-container flex items-center justify-center shrink-0">
-<span class="material-symbols-outlined text-secondary">trending_up</span>
-</div>
-<div>
-<h3 class="text-xl font-bold text-primary mb-1">Más recurrencia, más ticket</h3>
-<p class="text-on-surface-variant">No sólo trae clientes de vuelta: también empuja combos, extras y promociones en el momento correcto para generar más ventas por cliente.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="bg-surface-container-low rounded-[2.5rem] border border-outline-variant/10 p-8 md:p-10 shadow-sm">
-<div class="space-y-6">
-<div class="flex items-center justify-between gap-4">
-<div>
-<p class="text-sm font-bold uppercase tracking-[0.2em] text-on-surface-variant">Secuencia automática</p>
-<h3 class="text-3xl font-extrabold text-primary mt-2">Ejemplo de campaña</h3>
-</div>
-<div class="rounded-full bg-white px-4 py-2 text-sm font-bold text-[#00a86b] border border-[#00a86b]/20">Activa</div>
-</div>
-<div class="space-y-4">
-<div class="rounded-2xl bg-white p-5 border border-outline-variant/10">
-<p class="text-sm font-bold text-[#ff6b1a] mb-1">Disparador</p>
-<p class="text-on-surface-variant">Hace 21 días que un cliente no compra.</p>
-</div>
-<div class="rounded-2xl bg-white p-5 border border-outline-variant/10">
-<p class="text-sm font-bold text-[#9863ff] mb-1">Mensaje automático</p>
-<p class="text-on-surface-variant">“Hola Juan, hoy tenés 15% OFF en tu burger favorita. ¿Te la reservo?”</p>
-</div>
-<div class="rounded-2xl bg-white p-5 border border-outline-variant/10">
-<p class="text-sm font-bold text-secondary mb-1">Objetivo</p>
-<p class="text-on-surface-variant">Reactivar al cliente, recuperar una venta perdida y abrir una nueva conversación lista para cerrar.</p>
-</div>
-<div class="rounded-2xl bg-primary text-white p-6">
-<p class="text-sm uppercase tracking-widest text-slate-300 mb-2">Resultado</p>
-<p class="text-2xl font-extrabold">Marketing que trabaja solo, todos los días</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Section 6: Points Program -->
-<section class="py-32 px-8 bg-surface-container-low">
-<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
-<div class="space-y-8">
-<div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-outline-variant/20">
-<span class="material-symbols-outlined text-secondary text-sm">workspace_premium</span>
-<span class="text-xs font-bold tracking-widest uppercase text-on-surface-variant">Sistema de Puntos</span>
-</div>
-<h2 class="text-4xl md:text-5xl font-extrabold text-primary leading-tight">Fideliza clientes con puntos canjeables en futuros pedidos</h2>
-<p class="text-xl text-on-surface-variant leading-relaxed">Cada vez que un cliente compra, suma puntos automáticamente. Después puede canjearlos por beneficios, descuentos o pedidos futuros. Así aumentas recurrencia, generas hábito y construyes una relación más fuerte con cada cliente.</p>
-<div class="space-y-4">
-<div class="flex gap-4 items-start">
-<div class="w-12 h-12 rounded-2xl bg-secondary-container flex items-center justify-center shrink-0">
-<span class="material-symbols-outlined text-on-secondary-container">shopping_bag</span>
-</div>
-<div>
-<h3 class="text-xl font-bold text-primary mb-1">Compra y acumula</h3>
-<p class="text-on-surface-variant">Cada pedido suma puntos sin fricción, sin depender del equipo y sin procesos manuales.</p>
-</div>
-</div>
-<div class="flex gap-4 items-start">
-<div class="w-12 h-12 rounded-2xl bg-tertiary-fixed flex items-center justify-center shrink-0">
-<span class="material-symbols-outlined text-on-tertiary-fixed">loyalty</span>
-</div>
-<div>
-<h3 class="text-xl font-bold text-primary mb-1">Canjes futuros</h3>
-<p class="text-on-surface-variant">Los clientes pueden usar sus puntos en pedidos siguientes, lo que los incentiva a volver antes y pedir más veces.</p>
-</div>
-</div>
-<div class="flex gap-4 items-start">
-<div class="w-12 h-12 rounded-2xl bg-surface-container-highest flex items-center justify-center shrink-0">
-<span class="material-symbols-outlined text-[#00a86b]">trending_up</span>
-</div>
-<div>
-<h3 class="text-xl font-bold text-primary mb-1">Más fidelización, más ventas</h3>
-<p class="text-on-surface-variant">No es sólo un premio: es una mecánica para aumentar la frecuencia de compra y mejorar el valor de vida de cada cliente.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="bg-white rounded-[2.5rem] border border-outline-variant/10 p-8 md:p-10 shadow-sm">
-<div class="space-y-6">
-<div class="flex items-center justify-between">
-<div>
-<p class="text-sm uppercase tracking-[0.2em] text-on-surface-variant font-bold">Cómo funciona</p>
-<h3 class="text-3xl font-extrabold text-primary mt-2">Ciclo de fidelización</h3>
-</div>
-<div class="rounded-full bg-[#e8fff2] text-[#00a86b] px-4 py-2 text-sm font-bold">Activo</div>
-</div>
-<div class="space-y-4">
-<div class="rounded-2xl bg-surface-container-low p-5">
-<p class="text-sm font-bold text-on-surface-variant mb-1">1. Pedido realizado</p>
-<p class="text-on-surface">El cliente compra y el sistema registra automáticamente puntos en su cuenta.</p>
-</div>
-<div class="rounded-2xl bg-surface-container-low p-5">
-<p class="text-sm font-bold text-on-surface-variant mb-1">2. Saldo disponible</p>
-<p class="text-on-surface">El cliente ve que ya tiene una recompensa futura y siente incentivo real para volver.</p>
-</div>
-<div class="rounded-2xl bg-surface-container-low p-5">
-<p class="text-sm font-bold text-on-surface-variant mb-1">3. Canje en próximo pedido</p>
-<p class="text-on-surface">Usa sus puntos en una compra futura y vuelve a entrar en el ciclo de consumo.</p>
-</div>
-<div class="rounded-2xl bg-primary text-white p-6">
-<p class="text-sm uppercase tracking-widest text-slate-300 mb-2">Impacto</p>
-<p class="text-2xl font-extrabold">Más recurrencia y una base de clientes más leal</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Section 5: Upselling IA -->
-<section class="py-32 px-8 bg-surface">
-<div class="max-w-4xl mx-auto text-center space-y-10">
-<div class="inline-block px-4 py-1.5 rounded-full bg-tertiary-container text-on-tertiary-container text-sm font-bold tracking-widest uppercase mb-4">Upselling Inteligente</div>
-<h2 class="text-4xl md:text-6xl font-extrabold text-primary leading-tight">La IA vende más por ti</h2>
-<p class="text-xl text-on-surface-variant">Nuestro algoritmo sugiere acompañamientos y extras de forma natural, aumentando el ticket promedio en un 22%.</p>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
-<div class="p-8 bg-white rounded-3xl shadow-sm border border-outline-variant/10 flex flex-col items-center text-center space-y-4">
-<div class="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center">
-<span class="material-symbols-outlined text-3xl">fastfood</span>
-</div>
-<p class="italic text-on-surface-variant">"¿Quieres agregar unas <strong>papas fritas</strong> trufadas por solo $3?"</p>
-</div>
-<div class="p-8 bg-white rounded-3xl shadow-sm border border-outline-variant/10 flex flex-col items-center text-center space-y-4">
-<div class="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center">
-<span class="material-symbols-outlined text-3xl">local_bar</span>
-</div>
-<p class="italic text-on-surface-variant">"¡Hoy tenemos <strong>promoción en bebidas</strong>! Agrega 2 por el precio de 1."</p>
-</div>
-<div class="p-8 bg-white rounded-3xl shadow-sm border border-outline-variant/10 flex flex-col items-center text-center space-y-4">
-<div class="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center">
-<span class="material-symbols-outlined text-3xl">cake</span>
-</div>
-<p class="italic text-on-surface-variant">"¿Te gustaría cerrar con nuestro <strong>postre</strong> estrella de la casa?"</p>
-</div>
-</div>
-</div>
-</section>
-<!-- Section 6: AI Business Analyst -->
-<section class="py-32 px-8 bg-surface-container-low">
-<div class="max-w-[90rem] mx-auto flex flex-col lg:flex-row items-center justify-between gap-16">
-<div class="lg:w-[60%] w-full order-2 lg:order-1">
-<div class="bg-white rounded-3xl p-6 shadow-2xl border border-outline-variant/10 overflow-hidden group">
-<div class="flex items-center justify-between border-b border-surface-container p-4 mb-4">
-<div class="flex items-center gap-4">
-<div class="w-12 h-12 rounded-full ai-gradient-bg flex items-center justify-center text-white shadow-inner">
-<span class="material-symbols-outlined">psychology</span>
-</div>
-<div>
-<h4 class="font-bold text-lg leading-tight">Gerente IA</h4>
-<p class="text-xs text-green-600 font-medium">En línea</p>
-</div>
-</div>
-<div class="flex gap-2">
-<div class="w-3 h-3 rounded-full bg-outline-variant/40"></div>
-<div class="w-3 h-3 rounded-full bg-outline-variant/40"></div>
-<div class="w-3 h-3 rounded-full bg-outline-variant/40"></div>
-</div>
-</div>
-<div class="rounded-2xl overflow-hidden shadow-inner bg-surface-container-lowest">
-<img alt="Gerente IA Chat" class="w-full h-auto object-cover object-top hover:object-bottom transform transition-all duration-[4000ms] ease-in-out" src="./GERENTE IA.png"/>
-</div>
-</div>
-</div>
-<div class="lg:w-[40%] space-y-10 order-1 lg:order-2">
-<div class="inline-block px-4 py-2 rounded-full bg-tertiary-fixed text-on-tertiary-fixed text-sm font-bold tracking-widest uppercase">Inteligencia Artificial</div>
-<h2 class="text-4xl md:text-6xl font-extrabold text-primary leading-tight">Una IA que conoce todo tu negocio</h2>
-<p class="text-xl text-on-surface-variant leading-relaxed">Habla con tu restaurante. Obtén reportes financieros, tendencias de consumo, sugerencias estratégicas y recomendaciones para tus campañas de marketing automático sin navegar por complejos menús ni tablas frías.</p>
-<button onclick="openModal('analytic')" class="flex items-center gap-3 bg-primary text-white px-8 py-4 rounded-xl font-bold hover:bg-slate-800 transition-all shadow-lg active:scale-95 text-lg">
-                        Ver funciones de analítica
-                        <span class="material-symbols-outlined">arrow_right_alt</span>
-</button>
-</div>
-</div>
-</section>
-<!-- Section 7: WhatsApp Order Flow -->
-<section class="py-32 px-4 md:px-8 bg-surface">
-<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
-<div class="space-y-8">
-<div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#e7fff1] border border-[#00a86b]/15">
-<span class="material-symbols-outlined text-[#00a86b] text-sm">forum</span>
-<span class="text-xs font-bold tracking-widest uppercase text-[#007f51]">Flujo por WhatsApp</span>
-</div>
-<h2 class="text-4xl md:text-5xl font-extrabold text-primary leading-tight">El cliente pide por WhatsApp y capta guía todo el recorrido</h2>
-<p class="text-xl text-on-surface-variant leading-relaxed">La IA responde, comparte el menú digital, recibe la confirmación del pedido y envía el link de seguimiento sin que tu equipo tenga que intervenir en cada mensaje.</p>
-<div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-<div class="rounded-2xl bg-surface-container-low p-5 border border-outline-variant/10">
-<span class="material-symbols-outlined text-[#00a86b] mb-3">restaurant_menu</span>
-<h3 class="font-bold text-primary mb-1">Menú al instante</h3>
-<p class="text-sm text-on-surface-variant">El cliente recibe el acceso directo para elegir productos y extras.</p>
-</div>
-<div class="rounded-2xl bg-surface-container-low p-5 border border-outline-variant/10">
-<span class="material-symbols-outlined text-secondary mb-3">receipt_long</span>
-<h3 class="font-bold text-primary mb-1">Pedido ordenado</h3>
-<p class="text-sm text-on-surface-variant">La cocina ve el pedido completo con datos claros.</p>
-</div>
-<div class="rounded-2xl bg-surface-container-low p-5 border border-outline-variant/10">
-<span class="material-symbols-outlined text-[#ff6b1a] mb-3">two_wheeler</span>
-<h3 class="font-bold text-primary mb-1">Seguimiento</h3>
-<p class="text-sm text-on-surface-variant">El cliente puede consultar el estado sin volver a escribir.</p>
-</div>
-</div>
-</div>
-<div class="mx-auto w-full max-w-[24rem]">
-<div class="rounded-[2.6rem] bg-[#111827] p-3 shadow-[0_35px_80px_-30px_rgba(0,0,0,0.45)]">
+<!-- Order Flow -->
+<section class="px-4 py-28 md:px-8 md:py-36">
+<div class="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+<div class="space-y-7">
+<p class="section-kicker text-[#00687a]">WhatsApp que vende</p>
+<h2 class="text-5xl font-black leading-tight text-slate-950 md:text-6xl">El cliente escribe. capta conversa, vende y ordena.</h2>
+<p class="text-xl leading-relaxed text-slate-600">La conversacion no termina en una respuesta automatica. capta lleva al cliente al menu, recibe el pedido, confirma datos y manda el link de seguimiento.</p>
+<div class="grid gap-3 sm:grid-cols-3">
+<div class="rounded-2xl bg-white p-5 soft-shadow"><span class="material-symbols-outlined text-[#00a86b]">restaurant_menu</span><p class="mt-2 font-black">Menu al instante</p></div>
+<div class="rounded-2xl bg-white p-5 soft-shadow"><span class="material-symbols-outlined text-[#2450ff]">receipt_long</span><p class="mt-2 font-black">Pedido claro</p></div>
+<div class="rounded-2xl bg-white p-5 soft-shadow"><span class="material-symbols-outlined text-[#ff6b1a]">two_wheeler</span><p class="mt-2 font-black">Seguimiento</p></div>
+</div>
+</div>
+<div class="mx-auto w-full max-w-[25rem]">
+<div class="rounded-[2.5rem] bg-[#111827] p-3 soft-shadow">
 <div class="overflow-hidden rounded-[2rem] bg-[#e9f7ee]">
-<div class="bg-[#075e54] px-5 py-4 text-white flex items-center gap-3">
-<div class="h-10 w-10 rounded-full bg-white/15 flex items-center justify-center">
-<span class="material-symbols-outlined text-2xl">smart_toy</span>
+<div class="flex items-center gap-3 bg-[#075e54] px-5 py-4 text-white">
+<div class="flex h-10 w-10 items-center justify-center rounded-full bg-white/15"><span class="material-symbols-outlined">storefront</span></div>
+<div><p class="font-black">Restaurante</p><p class="text-xs text-white/70">En linea por WhatsApp</p></div>
+<span class="material-symbols-outlined ml-auto text-white/75">more_vert</span>
 </div>
-<div class="min-w-0">
-<p class="font-bold leading-tight">Restaurante</p>
-<p class="text-xs text-white/70">En línea por WhatsApp</p>
-</div>
-<span class="material-symbols-outlined ml-auto text-white/80">more_vert</span>
-</div>
-<div class="min-h-[25rem] p-4 space-y-3 bg-[linear-gradient(135deg,rgba(255,255,255,0.56)_0%,rgba(210,244,224,0.72)_100%)]">
-<div class="chat-step chat-step-1 max-w-[82%] rounded-2xl rounded-tl-sm bg-white px-4 py-3 shadow-sm">
-<p class="text-[11px] font-bold uppercase tracking-widest text-[#007f51] mb-1">Cliente</p>
-<p class="text-sm text-slate-800">Hola! ¿Están tomando pedidos? Quiero pedir algo para esta noche.</p>
-<p class="text-[10px] text-slate-400 text-right mt-1">20:47</p>
-</div>
-<div class="chat-step chat-step-2 ml-auto max-w-[86%] rounded-2xl rounded-tr-sm bg-[#d9fdd3] px-4 py-3 shadow-sm">
-<p class="text-[11px] font-bold uppercase tracking-widest text-[#007f51] mb-1">Restaurante</p>
-<p class="text-sm text-slate-800">Hola! Sí, estamos tomando pedidos. Te paso el menú para que veas todo y elijas tranquilo.</p>
-<div class="mt-3 rounded-xl bg-white/70 border border-[#00a86b]/20 p-3">
-<p class="text-xs font-bold text-primary">restaurante.menu.net.ar</p>
-<p class="text-[11px] text-slate-500">Menú, precios, extras y promos</p>
-</div>
-<p class="text-[10px] text-slate-500 text-right mt-1">20:47 ✓✓</p>
-</div>
-<div class="chat-step chat-step-3 max-w-[84%] rounded-2xl rounded-tl-sm bg-white px-4 py-3 shadow-sm">
-<p class="text-[11px] font-bold uppercase tracking-widest text-[#007f51] mb-1">Cliente</p>
-<p class="text-sm text-slate-800">Dale, ya lo armé desde el menú: pizza grande, empanadas y una bebida.</p>
-<p class="text-[10px] text-slate-400 text-right mt-1">20:51</p>
-</div>
-<div class="chat-step chat-step-4 ml-auto max-w-[88%] rounded-2xl rounded-tr-sm bg-[#d9fdd3] px-4 py-3 shadow-sm">
-<p class="text-[11px] font-bold uppercase tracking-widest text-[#007f51] mb-1">Restaurante</p>
-<p class="text-sm text-slate-800">Perfecto, ya entró. Lo mandamos a cocina y acá podés seguir cómo va.</p>
-<div class="mt-3 flex flex-wrap items-center gap-2">
-<span class="rounded-full bg-white/70 px-3 py-2 text-xs font-bold text-primary">Pedido #1842</span>
-<span class="inline-flex items-center gap-2 rounded-full bg-[#075e54] px-4 py-2 text-xs font-bold text-white">
-<span class="material-symbols-outlined text-sm">near_me</span>
-Ver seguimiento
-</span>
-</div>
-<p class="text-[10px] text-slate-500 text-right mt-1">20:52 ✓✓</p>
-</div>
+<div class="min-h-[25rem] space-y-3 bg-[linear-gradient(135deg,rgba(255,255,255,0.58)_0%,rgba(210,244,224,0.78)_100%)] p-4">
+<div class="chat-step chat-step-1 max-w-[82%] rounded-2xl rounded-tl-sm bg-white px-4 py-3 shadow-sm"><p class="text-[11px] font-black uppercase tracking-widest text-[#007f51]">Cliente</p><p class="text-sm text-slate-800">Hola! Estan tomando pedidos? Quiero pedir algo para esta noche.</p><p class="mt-1 text-right text-[10px] text-slate-400">20:47</p></div>
+<div class="chat-step chat-step-2 ml-auto max-w-[86%] rounded-2xl rounded-tr-sm bg-[#d9fdd3] px-4 py-3 shadow-sm"><p class="text-[11px] font-black uppercase tracking-widest text-[#007f51]">Restaurante</p><p class="text-sm text-slate-800">Si, estamos tomando pedidos. Te paso el menu para que elijas tranquilo.</p><div class="mt-3 rounded-xl border border-[#00a86b]/20 bg-white/70 p-3"><p class="text-xs font-black text-slate-950">restaurante.menu.net.ar</p><p class="text-[11px] text-slate-500">Menu, precios, extras y promos</p></div><p class="mt-1 text-right text-[10px] text-slate-500">20:47 visto</p></div>
+<div class="chat-step chat-step-3 max-w-[84%] rounded-2xl rounded-tl-sm bg-white px-4 py-3 shadow-sm"><p class="text-[11px] font-black uppercase tracking-widest text-[#007f51]">Cliente</p><p class="text-sm text-slate-800">Listo, arme el pedido desde el menu: pizza, empanadas y bebida.</p><p class="mt-1 text-right text-[10px] text-slate-400">20:51</p></div>
+<div class="chat-step chat-step-4 ml-auto max-w-[88%] rounded-2xl rounded-tr-sm bg-[#d9fdd3] px-4 py-3 shadow-sm"><p class="text-[11px] font-black uppercase tracking-widest text-[#007f51]">Restaurante</p><p class="text-sm text-slate-800">Perfecto, ya entro. Lo mandamos a cocina y aca podes seguir como va.</p><div class="mt-3 flex flex-wrap gap-2"><span class="rounded-full bg-white/70 px-3 py-2 text-xs font-black text-slate-950">Pedido #1842</span><span class="inline-flex items-center gap-2 rounded-full bg-[#075e54] px-4 py-2 text-xs font-black text-white"><span class="material-symbols-outlined text-sm">near_me</span>Ver seguimiento</span></div><p class="mt-1 text-right text-[10px] text-slate-500">20:52 visto</p></div>
 </div>
 </div>
 </div>
 </div>
 </div>
 </section>
-<!-- Section 8: Guarantee -->
-<section class="py-32 px-8 bg-surface-container-high">
-<div class="max-w-5xl mx-auto bg-white rounded-[3rem] p-12 md:p-20 shadow-xl border border-white flex flex-col md:flex-row items-center gap-16">
-<div class="flex-shrink-0">
-<div class="w-48 h-48 rounded-full border-8 border-secondary-container flex flex-col items-center justify-center text-center p-6">
-<span class="material-symbols-outlined text-5xl text-secondary mb-2">verified_user</span>
-<span class="text-xs font-bold leading-none uppercase">Garantía de Satisfacción</span>
+
+<!-- Menus -->
+<section id="menu" class="scroll-mt-28 bg-[#eef3f6] px-4 py-28 md:px-8 md:py-36">
+<div class="mx-auto max-w-7xl space-y-14">
+<div class="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+<div class="space-y-5">
+<p class="section-kicker text-[#2450ff]">Menus digitales personalizados</p>
+<h2 class="text-5xl font-black leading-tight text-slate-950 md:text-7xl">Cada menu se disena para vender, no solo para mostrar productos.</h2>
 </div>
+<p class="text-xl leading-relaxed text-slate-600">Diseno, marketing, orden de categorias, promos, destacados y experiencia mobile pensada para que el cliente termine el pedido mas rapido.</p>
 </div>
-<div class="space-y-6 text-center md:text-left">
-<h2 class="text-4xl font-extrabold text-primary leading-tight">Resultados o te devolvemos el dinero</h2>
-<p class="text-lg text-on-surface-variant">Estamos tan seguros de que capta transformará tu operación que ofrecemos un periodo de prueba de 30 días con garantía total de reembolso.</p>
-<button onclick="openModal()" class="bg-primary text-on-primary px-10 py-5 rounded-2xl font-bold text-xl hover:scale-105 transition-transform">
-                        Solicitar demo gratuita
-                    </button>
+<div class="grid gap-10 lg:grid-cols-3">
+<div class="space-y-4 min-w-0 overflow-hidden"><div class="flex justify-center"><span class="rounded-full bg-[#e8fff2] px-4 py-1 text-xs font-black uppercase tracking-widest text-[#00a86b]">Menu en vivo</span></div><div class="phone-shell mx-auto w-[calc(100vw-1.5rem)] max-w-[22rem] rounded-[2.9rem] p-3 shadow-[0_35px_70px_-24px_rgba(0,0,0,0.35)] md:w-full md:max-w-[20rem] lg:max-w-[19rem]"><div class="phone-screen relative border border-white/10"><div class="phone-viewport aspect-[9/19.5] bg-white"><iframe src="https://www.menu.net.ar/totta" title="Menu Totta" class="phone-embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe><div class="phone-scroll-mask"></div></div></div></div><div class="text-center"><p class="font-black text-slate-950">Totta</p><a href="https://www.menu.net.ar/totta" target="_blank" rel="noopener noreferrer" class="mt-3 inline-flex w-full max-w-[18rem] items-center justify-center gap-2 rounded-full bg-slate-950 px-4 py-2 text-sm font-black text-white"><span class="material-symbols-outlined text-base">open_in_new</span>Ver menu</a></div></div>
+<div class="space-y-4 min-w-0 overflow-hidden"><div class="flex justify-center"><span class="rounded-full bg-[#eef4ff] px-4 py-1 text-xs font-black uppercase tracking-widest text-[#2450ff]">Menu en vivo</span></div><div class="phone-shell mx-auto w-[calc(100vw-1.5rem)] max-w-[22rem] rounded-[2.9rem] p-3 shadow-[0_35px_70px_-24px_rgba(0,0,0,0.35)] md:w-full md:max-w-[20rem] lg:max-w-[19rem]"><div class="phone-screen relative border border-white/10"><div class="phone-viewport aspect-[9/19.5] bg-white"><iframe src="https://www.menu.net.ar/burguer" title="Menu Burguer" class="phone-embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe><div class="phone-scroll-mask"></div></div></div></div><div class="text-center"><p class="font-black text-slate-950">Burger</p><a href="https://www.menu.net.ar/burguer" target="_blank" rel="noopener noreferrer" class="mt-3 inline-flex w-full max-w-[18rem] items-center justify-center gap-2 rounded-full bg-slate-950 px-4 py-2 text-sm font-black text-white"><span class="material-symbols-outlined text-base">open_in_new</span>Ver menu</a></div></div>
+<div class="space-y-4 min-w-0 overflow-hidden"><div class="flex justify-center"><span class="rounded-full bg-[#fff1e8] px-4 py-1 text-xs font-black uppercase tracking-widest text-[#ff6b1a]">Menu en vivo</span></div><div class="phone-shell mx-auto w-[calc(100vw-1.5rem)] max-w-[22rem] rounded-[2.9rem] p-3 shadow-[0_35px_70px_-24px_rgba(0,0,0,0.35)] md:w-full md:max-w-[20rem] lg:max-w-[19rem]"><div class="phone-screen relative border border-white/10"><div class="phone-viewport aspect-[9/19.5] bg-white"><iframe src="https://www.menu.net.ar/heladeria" title="Menu Heladeria" class="phone-embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe><div class="phone-scroll-mask"></div></div></div></div><div class="text-center"><p class="font-black text-slate-950">Heladeria</p><a href="https://www.menu.net.ar/heladeria" target="_blank" rel="noopener noreferrer" class="mt-3 inline-flex w-full max-w-[18rem] items-center justify-center gap-2 rounded-full bg-slate-950 px-4 py-2 text-sm font-black text-white"><span class="material-symbols-outlined text-base">open_in_new</span>Ver menu</a></div></div>
 </div>
 </div>
 </section>
+
+<!-- Benefits -->
+<section id="benefits" class="px-4 py-28 md:px-8 md:py-36">
+<div class="mx-auto max-w-7xl space-y-14">
+<div class="max-w-4xl space-y-5">
+<p class="section-kicker text-[#ff6b1a]">Beneficios que se sienten en caja</p>
+<h2 class="text-5xl font-black leading-tight text-slate-950 md:text-7xl">Menos tareas manuales. Mas pedidos bien cerrados. Mas clientes que vuelven.</h2>
+</div>
+<div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+<div class="rounded-3xl bg-white p-8 soft-shadow"><span class="material-symbols-outlined mb-5 text-4xl text-[#00a86b]">schedule</span><h3 class="mb-2 text-2xl font-black">No perdes horas pico</h3><p class="text-slate-600">La IA responde mientras el equipo cocina, cobra o atiende mesas.</p></div>
+<div class="rounded-3xl bg-white p-8 soft-shadow"><span class="material-symbols-outlined mb-5 text-4xl text-[#2450ff]">trending_up</span><h3 class="mb-2 text-2xl font-black">Sube el ticket promedio</h3><p class="text-slate-600">Sugerencias de extras, combos y promociones aparecen en el momento correcto.</p></div>
+<div class="rounded-3xl bg-white p-8 soft-shadow"><span class="material-symbols-outlined mb-5 text-4xl text-[#ff6b1a]">loyalty</span><h3 class="mb-2 text-2xl font-black">Fidelizacion con puntos</h3><p class="text-slate-600">Cada compra suma puntos canjeables para incentivar el proximo pedido.</p></div>
+<div class="rounded-3xl bg-white p-8 soft-shadow"><span class="material-symbols-outlined mb-5 text-4xl text-[#00687a]">groups</span><h3 class="mb-2 text-2xl font-black">CRM automatico</h3><p class="text-slate-600">Historial, preferencias, frecuencia de compra y segmentos sin cargar datos a mano.</p></div>
+<div class="rounded-3xl bg-white p-8 soft-shadow"><span class="material-symbols-outlined mb-5 text-4xl text-[#7a49ff]">psychology</span><h3 class="mb-2 text-2xl font-black">Gerente IA</h3><p class="text-slate-600">Reportes, tendencias, recomendaciones y lectura del negocio en lenguaje simple.</p></div>
+<div class="rounded-3xl bg-slate-950 p-8 text-white soft-shadow"><span class="material-symbols-outlined mb-5 text-4xl text-[#57dffe]">monitoring</span><h3 class="mb-2 text-2xl font-black">Control total</h3><p class="text-slate-300">Del mensaje inicial al cierre de caja, todo queda registrado y visible.</p></div>
+</div>
+</div>
+</section>
+
+<!-- AI + dashboard -->
+<section class="bg-[#111827] px-4 py-28 text-white md:px-8 md:py-36">
+<div class="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
+<div class="overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-4 soft-shadow">
+<img alt="Gerente IA de capta" src="./GERENTE IA.png" class="w-full rounded-[1.25rem] object-cover" />
+</div>
+<div class="space-y-7">
+<p class="section-kicker text-[#57dffe]">Gerente IA</p>
+<h2 class="text-5xl font-black leading-tight md:text-6xl">Preguntale a tu restaurante que esta pasando.</h2>
+<p class="text-xl leading-relaxed text-slate-300">Ventas por canal, productos mas pedidos, horarios fuertes, clientes inactivos, campanas recomendadas y movimientos clave del negocio en una conversacion.</p>
+<button onclick="openModal('analytic')" class="inline-flex items-center gap-2 rounded-full bg-white px-7 py-4 font-black text-slate-950 transition-transform active:scale-95">Ver analitica <span class="material-symbols-outlined">arrow_forward</span></button>
+</div>
+</div>
+</section>
+
+<!-- Pricing -->
+<section id="pricing" class="bg-[#f7f4ec] px-4 py-28 md:px-8 md:py-36">
+<div class="mx-auto max-w-7xl space-y-12">
+<div class="grid gap-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+<div><p class="section-kicker text-[#00687a]">Planes</p><h2 class="mt-4 text-5xl font-black text-slate-950 md:text-7xl">Elegi como activar capta.</h2></div>
+<p class="text-xl leading-relaxed text-slate-600">Planes simples para empezar con atencion automatica, crecer con marketing y operar con automatizacion total.</p>
+</div>
+<div class="grid gap-5 lg:grid-cols-3">
+<div class="rounded-[2rem] bg-white p-8 soft-shadow"><h3 class="mb-3 text-3xl font-black">Plan Base</h3><p class="mb-7 text-slate-600">Ideal para automatizar la atencion diaria.</p><p class="text-5xl font-black">$ 50.000</p><p class="mb-8 mt-1 text-slate-500">por mes</p><ul class="space-y-3 text-slate-700"><li>&#10003; Atencion automatica por WhatsApp e Instagram</li><li>&#10003; Toma de pedidos automatica</li><li>&#10003; Gestion de reservas</li><li>&#10003; Control de mesas</li><li>&#10003; Dashboard central en tiempo real</li><li>&#10003; Organizacion de pedidos y clientes</li></ul></div>
+<div class="rounded-[2rem] border-2 border-[#00a86b] bg-[#e8fff2] p-8 soft-shadow"><div class="mb-4 inline-flex rounded-full bg-[#00a86b] px-3 py-1 text-xs font-black uppercase tracking-widest text-white">Mas elegido</div><h3 class="mb-3 text-3xl font-black">Plan Growth</h3><p class="mb-7 text-slate-700">Mas ventas, marketing y menu personalizado.</p><p class="text-5xl font-black">$ 65.000</p><p class="mb-8 mt-1 text-slate-600">por mes</p><ul class="space-y-3 text-slate-800"><li>&#10003; Todo el Plan Base</li><li>&#10003; Marketing automatico con IA</li><li>&#10003; Promociones para reactivar clientes</li><li>&#10003; Recomendaciones para aumentar ticket</li><li>&#10003; Asistente IA para el dueno</li><li>&#10003; Pagina de menu personalizada</li><li>&#10003; CRM avanzado de clientes</li></ul></div>
+<div class="rounded-[2rem] bg-slate-950 p-8 text-white soft-shadow"><div class="mb-4 inline-flex rounded-full bg-[#dbe7ff] px-3 py-1 text-xs font-black uppercase tracking-widest text-[#2450ff]">Con llamadas</div><h3 class="mb-3 text-3xl font-black">Plan Pro</h3><p class="mb-7 text-slate-300">Automatizacion total del restaurante.</p><p class="text-5xl font-black">$ 85.000</p><p class="mt-1 text-slate-400">por mes</p><p class="mb-8 mt-4 font-black text-[#ffb86b]">+ $ 400 por minuto de llamada</p><ul class="space-y-3 text-slate-200"><li>&#10003; Todo el Plan Growth</li><li>&#10003; Atencion automatica de llamadas con IA</li><li>&#10003; Toma de pedidos por telefono</li><li>&#10003; Reservas automaticas por llamada</li><li>&#10003; Consultas del menu por voz</li><li>&#10003; Atencion simultanea de multiples llamadas</li></ul></div>
+</div>
+</div>
+</section>
+
 <!-- Final CTA -->
-<section class="py-40 px-8 text-center space-y-12">
-<h2 class="text-5xl md:text-7xl font-extrabold text-primary tracking-tighter">Empieza a automatizar tu restaurante</h2>
-<p class="text-xl text-on-surface-variant max-w-2xl mx-auto font-medium">Únete a los más de 500 restaurantes que ya están escalando su operación, su atención y su marketing con inteligencia artificial.</p>
-<div class="flex justify-center pt-8">
-<button onclick="openModal()" class="ai-gradient-bg text-white px-12 py-6 rounded-2xl font-black text-2xl shadow-2xl hover:shadow-on-tertiary-container/30 transition-shadow">
-                    CONECTAR MI RESTAURANTE
-                </button>
-</div>
-</section>
-<!-- Section 9: Pricing -->
-<section class="py-32 px-8 bg-surface-container-low" id="pricing">
-<div class="max-w-7xl mx-auto">
-<div class="max-w-3xl space-y-4 mb-12">
-<h2 class="text-4xl md:text-6xl font-extrabold text-primary">Elegí tu plan</h2>
-<p class="text-xl text-on-surface-variant">Seleccioná el plan que querés activar antes de ir a Mercado Pago.</p>
-</div>
-<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-<div class="rounded-[2rem] border border-outline-variant/60 bg-white p-8 flex flex-col min-h-[36rem] shadow-sm">
-<div class="mb-6">
-<h3 class="text-3xl font-extrabold text-primary mb-3">Plan Base</h3>
-<p class="text-lg text-on-surface-variant leading-relaxed">Ideal para automatizar la atención diaria</p>
-</div>
-<div class="mb-8">
-<p class="text-5xl font-extrabold tracking-tight text-primary">$ 50.000</p>
-<p class="text-xl text-on-surface-variant mt-2">por mes</p>
-</div>
-<ul class="space-y-4 text-lg text-on-surface-variant leading-relaxed">
-<li class="flex gap-3"><span class="text-[#00a86b] font-bold">✓</span><span>Atención automática por WhatsApp e Instagram 24/7</span></li>
-<li class="flex gap-3"><span class="text-[#00a86b] font-bold">✓</span><span>Toma de pedidos automática</span></li>
-<li class="flex gap-3"><span class="text-[#00a86b] font-bold">✓</span><span>Gestión de reservas</span></li>
-<li class="flex gap-3"><span class="text-[#00a86b] font-bold">✓</span><span>Control de mesas</span></li>
-<li class="flex gap-3"><span class="text-[#00a86b] font-bold">✓</span><span>Dashboard central en tiempo real</span></li>
-<li class="flex gap-3"><span class="text-[#00a86b] font-bold">✓</span><span>Organización de pedidos y clientes</span></li>
-</ul>
-</div>
-<div class="rounded-[2rem] border-2 border-[#ff6b1a] bg-[#fff8f0] p-8 flex flex-col min-h-[36rem] shadow-sm">
-<div class="mb-6">
-<h3 class="text-3xl font-extrabold text-primary mb-3">Plan Growth</h3>
-<p class="text-lg text-on-surface-variant leading-relaxed">Más ventas y marketing automático con IA</p>
-</div>
-<div class="mb-8">
-<p class="text-5xl font-extrabold tracking-tight text-primary">$ 65.000</p>
-<p class="text-xl text-on-surface-variant mt-2">por mes</p>
-</div>
-<ul class="space-y-4 text-lg text-on-surface-variant leading-relaxed">
-<li class="flex gap-3"><span class="text-[#00a86b] font-bold">✓</span><span>Todo el Plan Base</span></li>
-<li class="flex gap-3"><span class="text-[#00a86b] font-bold">✓</span><span>Marketing automático con IA</span></li>
-<li class="flex gap-3"><span class="text-[#00a86b] font-bold">✓</span><span>Promociones automáticas para reactivar clientes</span></li>
-<li class="flex gap-3"><span class="text-[#00a86b] font-bold">✓</span><span>Recomendaciones IA para aumentar el ticket promedio</span></li>
-<li class="flex gap-3"><span class="text-[#00a86b] font-bold">✓</span><span>Asistente IA para el dueño</span></li>
-<li class="flex gap-3"><span class="text-[#00a86b] font-bold">✓</span><span>Página de menú personalizada</span></li>
-<li class="flex gap-3"><span class="text-[#00a86b] font-bold">✓</span><span>CRM avanzado de clientes</span></li>
-</ul>
-</div>
-<div class="rounded-[2rem] border border-outline-variant/60 bg-white p-8 flex flex-col min-h-[36rem] shadow-sm">
-<div class="flex items-start justify-between gap-4 mb-6">
-<div>
-<h3 class="text-3xl font-extrabold text-primary mb-3">Plan Pro</h3>
-<p class="text-lg text-on-surface-variant leading-relaxed">Automatización total del restaurante</p>
-</div>
-<span class="shrink-0 rounded-full bg-[#dbe7ff] px-4 py-2 text-sm font-bold text-[#2450ff]">Con llamadas</span>
-</div>
-<div class="mb-3">
-<p class="text-5xl font-extrabold tracking-tight text-primary">$ 85.000</p>
-<p class="text-xl text-on-surface-variant mt-2">por mes</p>
-</div>
-<p class="text-[#ff5a1f] text-xl font-extrabold mb-6">+ $ 400 por minuto de llamada</p>
-<ul class="space-y-4 text-lg text-on-surface-variant leading-relaxed">
-<li class="flex gap-3"><span class="text-[#00a86b] font-bold">✓</span><span>Todo el Plan Growth</span></li>
-<li class="flex gap-3"><span class="text-[#00a86b] font-bold">✓</span><span>Atención automática de llamadas con IA</span></li>
-<li class="flex gap-3"><span class="text-[#00a86b] font-bold">✓</span><span>Toma de pedidos por teléfono</span></li>
-<li class="flex gap-3"><span class="text-[#00a86b] font-bold">✓</span><span>Reservas automáticas por llamada</span></li>
-<li class="flex gap-3"><span class="text-[#00a86b] font-bold">✓</span><span>Respuesta de consultas del menú por voz</span></li>
-<li class="flex gap-3"><span class="text-[#00a86b] font-bold">✓</span><span>Atención simultánea de múltiples llamadas</span></li>
-</ul>
-</div>
-</div>
+<section class="bg-slate-950 px-4 py-28 text-center text-white md:px-8 md:py-36">
+<div class="mx-auto max-w-5xl space-y-8">
+<p class="section-kicker text-[#00e0a4]">Demo guiada</p>
+<h2 class="text-5xl font-black leading-tight md:text-7xl">Converti capta en el centro operativo de tu restaurante.</h2>
+<p class="mx-auto max-w-3xl text-xl leading-relaxed text-slate-300">Te mostramos como entra un pedido, como se verifica el pago, como se imprime la comanda, como se descuenta stock y como el cliente sigue su orden en tiempo real.</p>
+<button onclick="openModal()" class="inline-flex items-center justify-center gap-2 rounded-full bg-[#00e0a4] px-9 py-5 text-xl font-black text-slate-950 transition-transform active:scale-95">Solicitar demo <span class="material-symbols-outlined">arrow_forward</span></button>
 </div>
 </section>
 </main>
+
 <!-- Footer -->
-<footer class="w-full py-16 px-8 mt-32 bg-slate-100 dark:bg-slate-900">
-<div class="grid grid-cols-1 md:grid-cols-4 gap-12 max-w-7xl mx-auto">
-<div class="space-y-6">
-<div class="flex items-center gap-3">
-<img src="/logo-capta.png" alt="capta" class="h-8 w-8 object-contain" />
-<div class="text-xl font-black text-slate-900 dark:text-slate-50">capta</div>
+<footer class="bg-[#f7f4ec] px-4 py-14 md:px-8">
+<div class="mx-auto grid max-w-7xl gap-10 md:grid-cols-4">
+<div class="space-y-5 md:col-span-2">
+<div class="flex items-center gap-3"><img src="/logo-capta.png" alt="capta" class="h-10 w-10 object-contain" /><span class="text-2xl font-black text-slate-950">capta</span></div>
+<p class="max-w-md text-slate-600">El sistema operativo para restaurantes que quieren vender mas, operar mejor y dejar de depender de procesos manuales.</p>
 </div>
-<p class="text-slate-500 dark:text-slate-400 font-inter text-sm leading-relaxed">
-                    Elevando el estándar de la hospitalidad a través de la inteligencia artificial.
-                </p>
+<div><h4 class="mb-4 font-black text-slate-950">Producto</h4><ul class="space-y-3 text-sm font-bold text-slate-600"><li><a href="#features" class="hover:text-slate-950">Plataforma</a></li><li><a href="#operations" class="hover:text-slate-950">Operacion</a></li><li><a href="#menu" class="hover:text-slate-950">Menus</a></li><li><a href="#pricing" class="hover:text-slate-950">Precios</a></li></ul></div>
+<div><h4 class="mb-4 font-black text-slate-950">Boletin</h4><form name="newsletter" onsubmit="submitNewsletter(event)" class="flex" id="newsletter-form"><input name="phone" id="newsletter-phone" class="w-full rounded-l-full border border-black/10 bg-white px-4 py-3 text-sm focus:ring-0" placeholder="Tu celular" type="tel" required/><button type="submit" class="rounded-r-full bg-slate-950 px-5 text-xs font-black uppercase text-white">Unirse</button></form><div id="newsletter-success" class="mt-2 hidden text-sm font-bold text-[#00a86b]">Gracias por unirte!</div></div>
 </div>
-<div class="space-y-6">
-<h4 class="font-bold text-slate-900 dark:text-slate-50">Producto</h4>
-<ul class="space-y-4 font-inter text-sm leading-relaxed">
-<li><a class="text-slate-500 dark:text-slate-400 hover:underline transition-all" href="#">Funciones</a></li>
-<li><a class="text-slate-500 dark:text-slate-400 hover:underline transition-all" href="#">Beneficios</a></li>
-<li><a class="text-slate-500 dark:text-slate-400 hover:underline transition-all" href="#pricing">Precios</a></li>
-</ul>
-</div>
-<div class="space-y-6">
-<h4 class="font-bold text-slate-900 dark:text-slate-50">Compañía</h4>
-<ul class="space-y-4 font-inter text-sm leading-relaxed">
-<li><a class="text-slate-500 dark:text-slate-400 hover:underline transition-all" href="#">Contact</a></li>
-<li><a class="text-slate-500 dark:text-slate-400 hover:underline transition-all" href="#">Privacy Policy</a></li>
-<li><a class="text-slate-500 dark:text-slate-400 hover:underline transition-all" href="#">Terms of Service</a></li>
-</ul>
-</div>
-<div class="space-y-6">
-<h4 class="font-bold text-slate-900 dark:text-slate-50">Boletín</h4>
-<form name="newsletter" onsubmit="submitNewsletter(event)" class="flex" id="newsletter-form">
-<input name="phone" id="newsletter-phone" class="bg-white dark:bg-slate-800 border-none rounded-l-lg focus:ring-0 w-full text-sm" placeholder="Tu número de celular" type="tel" required/>
-<button type="submit" class="bg-primary text-white px-4 rounded-r-lg font-bold text-xs uppercase">Unirse</button>
-</form>
-<div id="newsletter-success" class="hidden text-sm text-green-600 mt-2 font-medium">¡Gracias por unirte!</div>
-</div>
-</div>
-<div class="max-w-7xl mx-auto mt-16 pt-8 border-t border-slate-200 dark:border-slate-800 text-center">
-<p class="text-slate-500 dark:text-slate-400 font-inter text-sm leading-relaxed">© 2024 capta Intelligence. All rights reserved.</p>
-</div>
+<div class="mx-auto mt-12 max-w-7xl border-t border-black/10 pt-6 text-sm text-slate-500">&copy; 2026 capta. Todos los derechos reservados.</div>
 </footer>
 
 <!-- Modal Backdrop -->
