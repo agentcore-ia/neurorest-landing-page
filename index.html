@@ -22,36 +22,36 @@
         theme: {
           extend: {
             "colors": {
-                    "secondary": "#00687a",
-                    "on-tertiary-container": "#9863ff",
+                    "secondary": "#c8460c",
+                    "on-tertiary-container": "#ff6b1a",
                     "outline": "#76777d",
-                    "on-tertiary-fixed-variant": "#5a00c6",
+                    "on-tertiary-fixed-variant": "#c8460c",
                     "error-container": "#ffdad6",
                     "surface": "#fcf8fa",
                     "on-primary-fixed": "#131b2e",
                     "on-error-container": "#93000a",
                     "surface-variant": "#e4e2e4",
                     "on-background": "#1b1b1d",
-                    "tertiary-fixed-dim": "#d2bbff",
-                    "on-tertiary-fixed": "#25005a",
-                    "inverse-primary": "#bec6e0",
+                    "tertiary-fixed-dim": "#ffd6bd",
+                    "on-tertiary-fixed": "#c8460c",
+                    "inverse-primary": "#ffd6bd",
                     "background": "#fcf8fa",
                     "on-surface": "#1b1b1d",
                     "on-surface-variant": "#45464d",
                     "primary": "#000000",
                     "error": "#ba1a1a",
-                    "on-secondary-fixed": "#001f26",
-                    "primary-fixed": "#dae2fd",
+                    "on-secondary-fixed": "#3a1708",
+                    "primary-fixed": "#fff1e8",
                     "inverse-surface": "#303032",
                     "primary-container": "#131b2e",
-                    "secondary-fixed-dim": "#4cd7f6",
+                    "secondary-fixed-dim": "#ffb27a",
                     "surface-container": "#f0edef",
-                    "on-secondary-container": "#006172",
+                    "on-secondary-container": "#c8460c",
                     "on-secondary": "#ffffff",
-                    "tertiary-container": "#25005a",
+                    "tertiary-container": "#c8460c",
                     "surface-container-lowest": "#ffffff",
                     "inverse-on-surface": "#f3f0f2",
-                    "secondary-container": "#57dffe",
+                    "secondary-container": "#ff9f45",
                     "surface-container-highest": "#e4e2e4",
                     "surface-container-low": "#f6f3f5",
                     "on-error": "#ffffff",
@@ -63,11 +63,11 @@
                     "on-primary-fixed-variant": "#3f465c",
                     "surface-bright": "#fcf8fa",
                     "surface-tint": "#565e74",
-                    "tertiary-fixed": "#eaddff",
-                    "on-secondary-fixed-variant": "#004e5c",
-                    "secondary-fixed": "#acedff",
-                    "primary-fixed-dim": "#bec6e0",
-                    "on-primary-container": "#7c839b",
+                    "tertiary-fixed": "#fff1e8",
+                    "on-secondary-fixed-variant": "#c8460c",
+                    "secondary-fixed": "#fff1e8",
+                    "primary-fixed-dim": "#ffd6bd",
+                    "on-primary-container": "#c8460c",
                     "surface-dim": "#dcd9db"
             },
             "borderRadius": {
@@ -91,8 +91,8 @@
         h1, h2, h3, .display-font { font-family: 'Manrope', sans-serif; }
         .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
         .glass-panel { background: rgba(252, 248, 250, 0.7); backdrop-filter: blur(20px); }
-        .ai-gradient-bg { background: linear-gradient(135deg, #25005a 0%, #9863ff 100%); }
-        .hero-gradient { background: radial-gradient(circle at top right, #dae2fd 0%, transparent 40%), radial-gradient(circle at bottom left, #f0edef 0%, transparent 40%); }
+        .ai-gradient-bg { background: linear-gradient(135deg, #ff6b1a 0%, #c8460c 100%); }
+        .hero-gradient { background: radial-gradient(circle at top right, #fff1e8 0%, transparent 40%), radial-gradient(circle at bottom left, #f0edef 0%, transparent 40%); }
         .phone-shell { background: linear-gradient(180deg, #0f1530 0%, #090d1f 100%); }
         .phone-screen { border-radius: 2.2rem; overflow: hidden; background: #000; }
         .phone-viewport { position: relative; height: 100%; overflow: hidden; }
@@ -128,8 +128,8 @@
         .ink-panel { background: #111827; color: #ffffff; }
         .section-kicker { letter-spacing: 0.18em; text-transform: uppercase; font-size: 0.75rem; font-weight: 800; }
         .soft-shadow { box-shadow: 0 28px 80px -38px rgba(17, 24, 39, 0.45); }
-        .dashboard-frame { background: linear-gradient(180deg, #ffffff 0%, #eef1f4 100%); border: 1px solid rgba(17,24,39,0.10); box-shadow: 0 34px 90px -45px rgba(17,24,39,0.58); }
-        .flow-line { background: linear-gradient(90deg, #00a86b 0%, #1d4ed8 42%, #ff6b1a 100%); }
+        .dashboard-frame { background: linear-gradient(180deg, #ffffff 0%, #fff1e8 100%); border: 1px solid rgba(17,24,39,0.10); box-shadow: 0 34px 90px -45px rgba(17,24,39,0.58); }
+        .flow-line { background: linear-gradient(90deg, #ff6b1a 0%, #ff9f45 42%, #c8460c 100%); }
         .reveal-up { animation: reveal-up 780ms cubic-bezier(.2,.8,.2,1) both; }
         .reveal-delay-1 { animation-delay: 120ms; }
         .reveal-delay-2 { animation-delay: 240ms; }
@@ -147,7 +147,7 @@
         }
     </style>
 </head>
-<body class="capta-bg selection:bg-[#00a86b] selection:text-white">
+<body class="capta-bg selection:bg-[#ff6b1a] selection:text-white">
 <!-- TopAppBar -->
 <nav class="fixed top-0 w-full z-50 border-b border-black/10 bg-[#f7f4ec]/85 backdrop-blur-xl">
 <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:px-8">
@@ -172,13 +172,13 @@
 <div class="relative mx-auto flex min-h-[92svh] max-w-7xl flex-col justify-between px-4 py-16 md:px-8 md:py-20">
 <div class="max-w-4xl space-y-8 pt-10 reveal-up">
 <div class="inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/10 px-4 py-2 backdrop-blur">
-<span class="h-2.5 w-2.5 rounded-full bg-[#00e0a4]"></span>
+<span class="h-2.5 w-2.5 rounded-full bg-[#ff6b1a]"></span>
 <span class="section-kicker text-slate-200">Sistema operativo para restaurantes</span>
 </div>
 <h1 class="text-6xl font-black leading-[0.9] tracking-tight md:text-8xl lg:text-9xl">capta.ar</h1>
 <p class="max-w-3xl text-xl leading-relaxed text-slate-200 md:text-2xl">Atencion con IA, pedidos, caja, stock, pagos, delivery, menus digitales, marketing y seguimiento en tiempo real. Todo conectado para vender mas y operar con menos friccion.</p>
 <div class="flex flex-col gap-3 sm:flex-row">
-<button onclick="openModal()" class="inline-flex items-center justify-center gap-2 rounded-full bg-[#00e0a4] px-8 py-4 text-lg font-black text-slate-950 transition-transform active:scale-95">
+<button onclick="openModal()" class="inline-flex items-center justify-center gap-2 rounded-full bg-[#ff6b1a] px-8 py-4 text-lg font-black text-slate-950 transition-transform active:scale-95">
 Ver demo
 <span class="material-symbols-outlined">arrow_forward</span>
 </button>
@@ -210,7 +210,7 @@ Explorar plataforma
 <div class="mx-auto max-w-7xl space-y-14">
 <div class="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
 <div class="space-y-5">
-<p class="section-kicker text-[#00687a]">La torre de control</p>
+<p class="section-kicker text-[#c8460c]">La torre de control</p>
 <h2 class="text-5xl font-black leading-tight text-slate-950 md:text-7xl">Todo lo que pasa en tu restaurante, ordenado en tiempo real.</h2>
 </div>
 <p class="text-xl leading-relaxed text-slate-600">capta conecta conversacion, pedido, pago, comanda, stock, caja, delivery, CRM y marketing. La operacion deja de vivir en chats sueltos, planillas y llamadas perdidas.</p>
@@ -220,12 +220,12 @@ Explorar plataforma
 </div>
 <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
 <div class="rounded-3xl bg-white p-7 soft-shadow">
-<span class="material-symbols-outlined mb-5 text-4xl text-[#00a86b]">forum</span>
+<span class="material-symbols-outlined mb-5 text-4xl text-[#ff6b1a]">forum</span>
 <h3 class="mb-2 text-2xl font-black text-slate-950">Atencion automatica</h3>
 <p class="leading-relaxed text-slate-600">Responde WhatsApp, Instagram y llamadas, resuelve dudas y guia al cliente hasta el pedido.</p>
 </div>
 <div class="rounded-3xl bg-[#111827] p-7 text-white soft-shadow">
-<span class="material-symbols-outlined mb-5 text-4xl text-[#57dffe]">receipt_long</span>
+<span class="material-symbols-outlined mb-5 text-4xl text-[#ff9f45]">receipt_long</span>
 <h3 class="mb-2 text-2xl font-black">Pedidos sin caos</h3>
 <p class="leading-relaxed text-slate-300">Cada orden llega clara, con productos, extras, datos del cliente y estado actualizado.</p>
 </div>
@@ -235,7 +235,7 @@ Explorar plataforma
 <p class="leading-relaxed text-slate-600">Controla ingresos, egresos, retiros, proveedores y movimientos diarios desde un lugar.</p>
 </div>
 <div class="rounded-3xl bg-white p-7 soft-shadow">
-<span class="material-symbols-outlined mb-5 text-4xl text-[#2450ff]">campaign</span>
+<span class="material-symbols-outlined mb-5 text-4xl text-[#c8460c]">campaign</span>
 <h3 class="mb-2 text-2xl font-black text-slate-950">Marketing automatico</h3>
 <p class="leading-relaxed text-slate-600">Reactiva clientes, promociona productos y aumenta recurrencia con mensajes inteligentes.</p>
 </div>
@@ -248,7 +248,7 @@ Explorar plataforma
 <div class="mx-auto max-w-7xl space-y-16">
 <div class="grid gap-8 lg:grid-cols-[1fr_0.8fr] lg:items-end">
 <div class="space-y-5">
-<p class="section-kicker text-[#00e0a4]">Operacion conectada</p>
+<p class="section-kicker text-[#ff6b1a]">Operacion conectada</p>
 <h2 class="text-5xl font-black leading-tight md:text-7xl">Un pedido entra y capta mueve todo lo demas.</h2>
 </div>
 <p class="text-xl leading-relaxed text-slate-300">El sistema verifica pagos, imprime comandas, descuenta stock, calcula delivery, asigna repartidor, liquida y mantiene informado al cliente.</p>
@@ -260,55 +260,55 @@ Explorar plataforma
 <p class="section-kicker text-slate-500">Pedido #1842</p>
 <h3 class="mt-2 text-3xl font-black">Automatizacion en vivo</h3>
 </div>
-<span class="rounded-full bg-[#e8fff2] px-3 py-1 text-sm font-black text-[#007f51]">Activo</span>
+<span class="rounded-full bg-[#fff1e8] px-3 py-1 text-sm font-black text-[#c8460c]">Activo</span>
 </div>
 <div class="space-y-3">
 <div class="flex items-center justify-between rounded-2xl bg-[#f3f6f8] p-4">
-<span class="inline-flex items-center gap-3 font-black"><span class="material-symbols-outlined text-[#00a86b]">verified</span>Pago verificado</span>
-<span class="text-sm font-bold text-[#00a86b]">Mercado Pago</span>
+<span class="inline-flex items-center gap-3 font-black"><span class="material-symbols-outlined text-[#ff6b1a]">verified</span>Pago verificado</span>
+<span class="text-sm font-bold text-[#ff6b1a]">Mercado Pago</span>
 </div>
 <div class="flex items-center justify-between rounded-2xl bg-[#f3f6f8] p-4">
 <span class="inline-flex items-center gap-3 font-black"><span class="material-symbols-outlined text-[#ff6b1a]">print</span>Comanda impresa</span>
 <span class="text-sm text-slate-500">Cocina</span>
 </div>
 <div class="flex items-center justify-between rounded-2xl bg-[#f3f6f8] p-4">
-<span class="inline-flex items-center gap-3 font-black"><span class="material-symbols-outlined text-[#2450ff]">inventory_2</span>Stock descontado</span>
+<span class="inline-flex items-center gap-3 font-black"><span class="material-symbols-outlined text-[#c8460c]">inventory_2</span>Stock descontado</span>
 <span class="text-sm text-slate-500">en tiempo real</span>
 </div>
 <div class="flex items-center justify-between rounded-2xl bg-slate-950 p-4 text-white">
-<span class="inline-flex items-center gap-3 font-black"><span class="material-symbols-outlined text-[#57dffe]">two_wheeler</span>Delivery asignado</span>
+<span class="inline-flex items-center gap-3 font-black"><span class="material-symbols-outlined text-[#ff9f45]">two_wheeler</span>Delivery asignado</span>
 <span class="text-sm text-slate-300">liquidacion lista</span>
 </div>
 </div>
 </div>
 <div class="grid gap-4 md:grid-cols-2">
 <div class="rounded-3xl border border-white/10 bg-white/10 p-6">
-<span class="material-symbols-outlined mb-5 text-4xl text-[#57dffe]">account_balance_wallet</span>
+<span class="material-symbols-outlined mb-5 text-4xl text-[#ff9f45]">account_balance_wallet</span>
 <h3 class="mb-2 text-2xl font-black">Mercado Pago</h3>
 <p class="text-slate-300">Verifica pagos por transferencia para que el pedido avance cuando corresponde.</p>
 </div>
 <div class="rounded-3xl border border-white/10 bg-white/10 p-6">
-<span class="material-symbols-outlined mb-5 text-4xl text-[#ffb86b]">point_of_sale</span>
+<span class="material-symbols-outlined mb-5 text-4xl text-[#ff9f45]">point_of_sale</span>
 <h3 class="mb-2 text-2xl font-black">Sistema de caja</h3>
 <p class="text-slate-300">Ingresos, egresos, proveedores, retiros y cierres en un panel operativo.</p>
 </div>
 <div class="rounded-3xl border border-white/10 bg-white/10 p-6">
-<span class="material-symbols-outlined mb-5 text-4xl text-[#c4ff72]">inventory</span>
+<span class="material-symbols-outlined mb-5 text-4xl text-[#ffd7b8]">inventory</span>
 <h3 class="mb-2 text-2xl font-black">Stock real</h3>
 <p class="text-slate-300">Si un producto se termina, capta deja de venderlo y descuenta cada pedido.</p>
 </div>
 <div class="rounded-3xl border border-white/10 bg-white/10 p-6">
-<span class="material-symbols-outlined mb-5 text-4xl text-[#ff8f8f]">map</span>
+<span class="material-symbols-outlined mb-5 text-4xl text-[#ffb27a]">map</span>
 <h3 class="mb-2 text-2xl font-black">Zonas de envio</h3>
 <p class="text-slate-300">Traza areas en el mapa y defini precios de delivery por ubicacion.</p>
 </div>
 <div class="rounded-3xl border border-white/10 bg-white/10 p-6">
-<span class="material-symbols-outlined mb-5 text-4xl text-[#9cc8ff]">two_wheeler</span>
+<span class="material-symbols-outlined mb-5 text-4xl text-[#ffbf8a]">two_wheeler</span>
 <h3 class="mb-2 text-2xl font-black">Liquidaciones</h3>
 <p class="text-slate-300">Asigna pedidos a repartidores y calcula automaticamente cuanto corresponde a cada uno.</p>
 </div>
 <div class="rounded-3xl border border-white/10 bg-white/10 p-6">
-<span class="material-symbols-outlined mb-5 text-4xl text-[#e2c7ff]">share_location</span>
+<span class="material-symbols-outlined mb-5 text-4xl text-[#ffd6bd]">share_location</span>
 <h3 class="mb-2 text-2xl font-black">Seguimiento</h3>
 <p class="text-slate-300">El cliente recibe un link para ver el estado del pedido en tiempo real.</p>
 </div>
@@ -321,28 +321,28 @@ Explorar plataforma
 <section class="px-4 py-28 md:px-8 md:py-36">
 <div class="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
 <div class="space-y-7">
-<p class="section-kicker text-[#00687a]">WhatsApp que vende</p>
+<p class="section-kicker text-[#c8460c]">WhatsApp que vende</p>
 <h2 class="text-5xl font-black leading-tight text-slate-950 md:text-6xl">El cliente escribe. capta conversa, vende y ordena.</h2>
 <p class="text-xl leading-relaxed text-slate-600">La conversacion no termina en una respuesta automatica. capta lleva al cliente al menu, recibe el pedido, confirma datos y manda el link de seguimiento.</p>
 <div class="grid gap-3 sm:grid-cols-3">
-<div class="rounded-2xl bg-white p-5 soft-shadow"><span class="material-symbols-outlined text-[#00a86b]">restaurant_menu</span><p class="mt-2 font-black">Menu al instante</p></div>
-<div class="rounded-2xl bg-white p-5 soft-shadow"><span class="material-symbols-outlined text-[#2450ff]">receipt_long</span><p class="mt-2 font-black">Pedido claro</p></div>
+<div class="rounded-2xl bg-white p-5 soft-shadow"><span class="material-symbols-outlined text-[#ff6b1a]">restaurant_menu</span><p class="mt-2 font-black">Menu al instante</p></div>
+<div class="rounded-2xl bg-white p-5 soft-shadow"><span class="material-symbols-outlined text-[#c8460c]">receipt_long</span><p class="mt-2 font-black">Pedido claro</p></div>
 <div class="rounded-2xl bg-white p-5 soft-shadow"><span class="material-symbols-outlined text-[#ff6b1a]">two_wheeler</span><p class="mt-2 font-black">Seguimiento</p></div>
 </div>
 </div>
 <div class="mx-auto w-full max-w-[25rem]">
 <div class="rounded-[2.5rem] bg-[#111827] p-3 soft-shadow">
-<div class="overflow-hidden rounded-[2rem] bg-[#e9f7ee]">
-<div class="flex items-center gap-3 bg-[#075e54] px-5 py-4 text-white">
+<div class="overflow-hidden rounded-[2rem] bg-[#fff8f2]">
+<div class="flex items-center gap-3 bg-[#c8460c] px-5 py-4 text-white">
 <div class="flex h-10 w-10 items-center justify-center rounded-full bg-white/15"><span class="material-symbols-outlined">storefront</span></div>
 <div><p class="font-black">Restaurante</p><p class="text-xs text-white/70">En linea por WhatsApp</p></div>
 <span class="material-symbols-outlined ml-auto text-white/75">more_vert</span>
 </div>
-<div class="min-h-[25rem] space-y-3 bg-[linear-gradient(135deg,rgba(255,255,255,0.58)_0%,rgba(210,244,224,0.78)_100%)] p-4">
-<div class="chat-step chat-step-1 max-w-[82%] rounded-2xl rounded-tl-sm bg-white px-4 py-3 shadow-sm"><p class="text-[11px] font-black uppercase tracking-widest text-[#007f51]">Cliente</p><p class="text-sm text-slate-800">Hola! Estan tomando pedidos? Quiero pedir algo para esta noche.</p><p class="mt-1 text-right text-[10px] text-slate-400">20:47</p></div>
-<div class="chat-step chat-step-2 ml-auto max-w-[86%] rounded-2xl rounded-tr-sm bg-[#d9fdd3] px-4 py-3 shadow-sm"><p class="text-[11px] font-black uppercase tracking-widest text-[#007f51]">Restaurante</p><p class="text-sm text-slate-800">Si, estamos tomando pedidos. Te paso el menu para que elijas tranquilo.</p><div class="mt-3 rounded-xl border border-[#00a86b]/20 bg-white/70 p-3"><p class="text-xs font-black text-slate-950">restaurante.menu.net.ar</p><p class="text-[11px] text-slate-500">Menu, precios, extras y promos</p></div><p class="mt-1 text-right text-[10px] text-slate-500">20:47 visto</p></div>
-<div class="chat-step chat-step-3 max-w-[84%] rounded-2xl rounded-tl-sm bg-white px-4 py-3 shadow-sm"><p class="text-[11px] font-black uppercase tracking-widest text-[#007f51]">Cliente</p><p class="text-sm text-slate-800">Listo, arme el pedido desde el menu: pizza, empanadas y bebida.</p><p class="mt-1 text-right text-[10px] text-slate-400">20:51</p></div>
-<div class="chat-step chat-step-4 ml-auto max-w-[88%] rounded-2xl rounded-tr-sm bg-[#d9fdd3] px-4 py-3 shadow-sm"><p class="text-[11px] font-black uppercase tracking-widest text-[#007f51]">Restaurante</p><p class="text-sm text-slate-800">Perfecto, ya entro. Lo mandamos a cocina y aca podes seguir como va.</p><div class="mt-3 flex flex-wrap gap-2"><span class="rounded-full bg-white/70 px-3 py-2 text-xs font-black text-slate-950">Pedido #1842</span><span class="inline-flex items-center gap-2 rounded-full bg-[#075e54] px-4 py-2 text-xs font-black text-white"><span class="material-symbols-outlined text-sm">near_me</span>Ver seguimiento</span></div><p class="mt-1 text-right text-[10px] text-slate-500">20:52 visto</p></div>
+<div class="min-h-[25rem] space-y-3 bg-[linear-gradient(135deg,rgba(255,255,255,0.72)_0%,rgba(255,226,204,0.78)_100%)] p-4">
+<div class="chat-step chat-step-1 max-w-[82%] rounded-2xl rounded-tl-sm bg-white px-4 py-3 shadow-sm"><p class="text-[11px] font-black uppercase tracking-widest text-[#c8460c]">Cliente</p><p class="text-sm text-slate-800">Hola! Estan tomando pedidos? Quiero pedir algo para esta noche.</p><p class="mt-1 text-right text-[10px] text-slate-400">20:47</p></div>
+<div class="chat-step chat-step-2 ml-auto max-w-[86%] rounded-2xl rounded-tr-sm bg-[#fff1e8] px-4 py-3 shadow-sm"><p class="text-[11px] font-black uppercase tracking-widest text-[#c8460c]">Restaurante</p><p class="text-sm text-slate-800">Si, estamos tomando pedidos. Te paso el menu para que elijas tranquilo.</p><div class="mt-3 rounded-xl border border-[#ff6b1a]/20 bg-white/70 p-3"><p class="text-xs font-black text-slate-950">restaurante.menu.net.ar</p><p class="text-[11px] text-slate-500">Menu, precios, extras y promos</p></div><p class="mt-1 text-right text-[10px] text-slate-500">20:47 visto</p></div>
+<div class="chat-step chat-step-3 max-w-[84%] rounded-2xl rounded-tl-sm bg-white px-4 py-3 shadow-sm"><p class="text-[11px] font-black uppercase tracking-widest text-[#c8460c]">Cliente</p><p class="text-sm text-slate-800">Listo, arme el pedido desde el menu: pizza, empanadas y bebida.</p><p class="mt-1 text-right text-[10px] text-slate-400">20:51</p></div>
+<div class="chat-step chat-step-4 ml-auto max-w-[88%] rounded-2xl rounded-tr-sm bg-[#fff1e8] px-4 py-3 shadow-sm"><p class="text-[11px] font-black uppercase tracking-widest text-[#c8460c]">Restaurante</p><p class="text-sm text-slate-800">Perfecto, ya entro. Lo mandamos a cocina y aca podes seguir como va.</p><div class="mt-3 flex flex-wrap gap-2"><span class="rounded-full bg-white/70 px-3 py-2 text-xs font-black text-slate-950">Pedido #1842</span><span class="inline-flex items-center gap-2 rounded-full bg-[#c8460c] px-4 py-2 text-xs font-black text-white"><span class="material-symbols-outlined text-sm">near_me</span>Ver seguimiento</span></div><p class="mt-1 text-right text-[10px] text-slate-500">20:52 visto</p></div>
 </div>
 </div>
 </div>
@@ -351,18 +351,18 @@ Explorar plataforma
 </section>
 
 <!-- Menus -->
-<section id="menu" class="scroll-mt-28 bg-[#eef3f6] px-4 py-28 md:px-8 md:py-36">
+<section id="menu" class="scroll-mt-28 bg-[#fff8f2] px-4 py-28 md:px-8 md:py-36">
 <div class="mx-auto max-w-7xl space-y-14">
 <div class="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
 <div class="space-y-5">
-<p class="section-kicker text-[#2450ff]">Menus digitales personalizados</p>
+<p class="section-kicker text-[#c8460c]">Menus digitales personalizados</p>
 <h2 class="text-5xl font-black leading-tight text-slate-950 md:text-7xl">Cada menu se disena para vender, no solo para mostrar productos.</h2>
 </div>
 <p class="text-xl leading-relaxed text-slate-600">Diseno, marketing, orden de categorias, promos, destacados y experiencia mobile pensada para que el cliente termine el pedido mas rapido.</p>
 </div>
 <div class="grid gap-10 lg:grid-cols-3">
-<div class="space-y-4 min-w-0 overflow-hidden"><div class="flex justify-center"><span class="rounded-full bg-[#e8fff2] px-4 py-1 text-xs font-black uppercase tracking-widest text-[#00a86b]">Menu en vivo</span></div><div class="phone-shell mx-auto w-[calc(100vw-1.5rem)] max-w-[22rem] rounded-[2.9rem] p-3 shadow-[0_35px_70px_-24px_rgba(0,0,0,0.35)] md:w-full md:max-w-[20rem] lg:max-w-[19rem]"><div class="phone-screen relative border border-white/10"><div class="phone-viewport aspect-[9/19.5] bg-white"><iframe src="https://www.menu.net.ar/totta" title="Menu Totta" class="phone-embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe><div class="phone-scroll-mask"></div></div></div></div><div class="text-center"><p class="font-black text-slate-950">Totta</p><a href="https://www.menu.net.ar/totta" target="_blank" rel="noopener noreferrer" class="mt-3 inline-flex w-full max-w-[18rem] items-center justify-center gap-2 rounded-full bg-slate-950 px-4 py-2 text-sm font-black text-white"><span class="material-symbols-outlined text-base">open_in_new</span>Ver menu</a></div></div>
-<div class="space-y-4 min-w-0 overflow-hidden"><div class="flex justify-center"><span class="rounded-full bg-[#eef4ff] px-4 py-1 text-xs font-black uppercase tracking-widest text-[#2450ff]">Menu en vivo</span></div><div class="phone-shell mx-auto w-[calc(100vw-1.5rem)] max-w-[22rem] rounded-[2.9rem] p-3 shadow-[0_35px_70px_-24px_rgba(0,0,0,0.35)] md:w-full md:max-w-[20rem] lg:max-w-[19rem]"><div class="phone-screen relative border border-white/10"><div class="phone-viewport aspect-[9/19.5] bg-white"><iframe src="https://www.menu.net.ar/burguer" title="Menu Burguer" class="phone-embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe><div class="phone-scroll-mask"></div></div></div></div><div class="text-center"><p class="font-black text-slate-950">Burger</p><a href="https://www.menu.net.ar/burguer" target="_blank" rel="noopener noreferrer" class="mt-3 inline-flex w-full max-w-[18rem] items-center justify-center gap-2 rounded-full bg-slate-950 px-4 py-2 text-sm font-black text-white"><span class="material-symbols-outlined text-base">open_in_new</span>Ver menu</a></div></div>
+<div class="space-y-4 min-w-0 overflow-hidden"><div class="flex justify-center"><span class="rounded-full bg-[#fff1e8] px-4 py-1 text-xs font-black uppercase tracking-widest text-[#ff6b1a]">Menu en vivo</span></div><div class="phone-shell mx-auto w-[calc(100vw-1.5rem)] max-w-[22rem] rounded-[2.9rem] p-3 shadow-[0_35px_70px_-24px_rgba(0,0,0,0.35)] md:w-full md:max-w-[20rem] lg:max-w-[19rem]"><div class="phone-screen relative border border-white/10"><div class="phone-viewport aspect-[9/19.5] bg-white"><iframe src="https://www.menu.net.ar/totta" title="Menu Totta" class="phone-embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe><div class="phone-scroll-mask"></div></div></div></div><div class="text-center"><p class="font-black text-slate-950">Totta</p><a href="https://www.menu.net.ar/totta" target="_blank" rel="noopener noreferrer" class="mt-3 inline-flex w-full max-w-[18rem] items-center justify-center gap-2 rounded-full bg-slate-950 px-4 py-2 text-sm font-black text-white"><span class="material-symbols-outlined text-base">open_in_new</span>Ver menu</a></div></div>
+<div class="space-y-4 min-w-0 overflow-hidden"><div class="flex justify-center"><span class="rounded-full bg-[#fff1e8] px-4 py-1 text-xs font-black uppercase tracking-widest text-[#c8460c]">Menu en vivo</span></div><div class="phone-shell mx-auto w-[calc(100vw-1.5rem)] max-w-[22rem] rounded-[2.9rem] p-3 shadow-[0_35px_70px_-24px_rgba(0,0,0,0.35)] md:w-full md:max-w-[20rem] lg:max-w-[19rem]"><div class="phone-screen relative border border-white/10"><div class="phone-viewport aspect-[9/19.5] bg-white"><iframe src="https://www.menu.net.ar/burguer" title="Menu Burguer" class="phone-embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe><div class="phone-scroll-mask"></div></div></div></div><div class="text-center"><p class="font-black text-slate-950">Burger</p><a href="https://www.menu.net.ar/burguer" target="_blank" rel="noopener noreferrer" class="mt-3 inline-flex w-full max-w-[18rem] items-center justify-center gap-2 rounded-full bg-slate-950 px-4 py-2 text-sm font-black text-white"><span class="material-symbols-outlined text-base">open_in_new</span>Ver menu</a></div></div>
 <div class="space-y-4 min-w-0 overflow-hidden"><div class="flex justify-center"><span class="rounded-full bg-[#fff1e8] px-4 py-1 text-xs font-black uppercase tracking-widest text-[#ff6b1a]">Menu en vivo</span></div><div class="phone-shell mx-auto w-[calc(100vw-1.5rem)] max-w-[22rem] rounded-[2.9rem] p-3 shadow-[0_35px_70px_-24px_rgba(0,0,0,0.35)] md:w-full md:max-w-[20rem] lg:max-w-[19rem]"><div class="phone-screen relative border border-white/10"><div class="phone-viewport aspect-[9/19.5] bg-white"><iframe src="https://www.menu.net.ar/heladeria" title="Menu Heladeria" class="phone-embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe><div class="phone-scroll-mask"></div></div></div></div><div class="text-center"><p class="font-black text-slate-950">Heladeria</p><a href="https://www.menu.net.ar/heladeria" target="_blank" rel="noopener noreferrer" class="mt-3 inline-flex w-full max-w-[18rem] items-center justify-center gap-2 rounded-full bg-slate-950 px-4 py-2 text-sm font-black text-white"><span class="material-symbols-outlined text-base">open_in_new</span>Ver menu</a></div></div>
 </div>
 </div>
@@ -376,12 +376,12 @@ Explorar plataforma
 <h2 class="text-5xl font-black leading-tight text-slate-950 md:text-7xl">Menos tareas manuales. Mas pedidos bien cerrados. Mas clientes que vuelven.</h2>
 </div>
 <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-<div class="rounded-3xl bg-white p-8 soft-shadow"><span class="material-symbols-outlined mb-5 text-4xl text-[#00a86b]">schedule</span><h3 class="mb-2 text-2xl font-black">No perdes horas pico</h3><p class="text-slate-600">La IA responde mientras el equipo cocina, cobra o atiende mesas.</p></div>
-<div class="rounded-3xl bg-white p-8 soft-shadow"><span class="material-symbols-outlined mb-5 text-4xl text-[#2450ff]">trending_up</span><h3 class="mb-2 text-2xl font-black">Sube el ticket promedio</h3><p class="text-slate-600">Sugerencias de extras, combos y promociones aparecen en el momento correcto.</p></div>
+<div class="rounded-3xl bg-white p-8 soft-shadow"><span class="material-symbols-outlined mb-5 text-4xl text-[#ff6b1a]">schedule</span><h3 class="mb-2 text-2xl font-black">No perdes horas pico</h3><p class="text-slate-600">La IA responde mientras el equipo cocina, cobra o atiende mesas.</p></div>
+<div class="rounded-3xl bg-white p-8 soft-shadow"><span class="material-symbols-outlined mb-5 text-4xl text-[#c8460c]">trending_up</span><h3 class="mb-2 text-2xl font-black">Sube el ticket promedio</h3><p class="text-slate-600">Sugerencias de extras, combos y promociones aparecen en el momento correcto.</p></div>
 <div class="rounded-3xl bg-white p-8 soft-shadow"><span class="material-symbols-outlined mb-5 text-4xl text-[#ff6b1a]">loyalty</span><h3 class="mb-2 text-2xl font-black">Fidelizacion con puntos</h3><p class="text-slate-600">Cada compra suma puntos canjeables para incentivar el proximo pedido.</p></div>
-<div class="rounded-3xl bg-white p-8 soft-shadow"><span class="material-symbols-outlined mb-5 text-4xl text-[#00687a]">groups</span><h3 class="mb-2 text-2xl font-black">CRM automatico</h3><p class="text-slate-600">Historial, preferencias, frecuencia de compra y segmentos sin cargar datos a mano.</p></div>
-<div class="rounded-3xl bg-white p-8 soft-shadow"><span class="material-symbols-outlined mb-5 text-4xl text-[#7a49ff]">psychology</span><h3 class="mb-2 text-2xl font-black">Gerente IA</h3><p class="text-slate-600">Reportes, tendencias, recomendaciones y lectura del negocio en lenguaje simple.</p></div>
-<div class="rounded-3xl bg-slate-950 p-8 text-white soft-shadow"><span class="material-symbols-outlined mb-5 text-4xl text-[#57dffe]">monitoring</span><h3 class="mb-2 text-2xl font-black">Control total</h3><p class="text-slate-300">Del mensaje inicial al cierre de caja, todo queda registrado y visible.</p></div>
+<div class="rounded-3xl bg-white p-8 soft-shadow"><span class="material-symbols-outlined mb-5 text-4xl text-[#c8460c]">groups</span><h3 class="mb-2 text-2xl font-black">CRM automatico</h3><p class="text-slate-600">Historial, preferencias, frecuencia de compra y segmentos sin cargar datos a mano.</p></div>
+<div class="rounded-3xl bg-white p-8 soft-shadow"><span class="material-symbols-outlined mb-5 text-4xl text-[#c8460c]">psychology</span><h3 class="mb-2 text-2xl font-black">Gerente IA</h3><p class="text-slate-600">Reportes, tendencias, recomendaciones y lectura del negocio en lenguaje simple.</p></div>
+<div class="rounded-3xl bg-slate-950 p-8 text-white soft-shadow"><span class="material-symbols-outlined mb-5 text-4xl text-[#ff9f45]">monitoring</span><h3 class="mb-2 text-2xl font-black">Control total</h3><p class="text-slate-300">Del mensaje inicial al cierre de caja, todo queda registrado y visible.</p></div>
 </div>
 </div>
 </section>
@@ -393,7 +393,7 @@ Explorar plataforma
 <img alt="Gerente IA de capta" src="./GERENTE IA.png" class="w-full rounded-[1.25rem] object-cover" />
 </div>
 <div class="space-y-7">
-<p class="section-kicker text-[#57dffe]">Gerente IA</p>
+<p class="section-kicker text-[#ff9f45]">Gerente IA</p>
 <h2 class="text-5xl font-black leading-tight md:text-6xl">Preguntale a tu restaurante que esta pasando.</h2>
 <p class="text-xl leading-relaxed text-slate-300">Ventas por canal, productos mas pedidos, horarios fuertes, clientes inactivos, campanas recomendadas y movimientos clave del negocio en una conversacion.</p>
 <button onclick="openModal('analytic')" class="inline-flex items-center gap-2 rounded-full bg-white px-7 py-4 font-black text-slate-950 transition-transform active:scale-95">Ver analitica <span class="material-symbols-outlined">arrow_forward</span></button>
@@ -405,13 +405,13 @@ Explorar plataforma
 <section id="pricing" class="bg-[#f7f4ec] px-4 py-28 md:px-8 md:py-36">
 <div class="mx-auto max-w-7xl space-y-12">
 <div class="grid gap-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
-<div><p class="section-kicker text-[#00687a]">Planes</p><h2 class="mt-4 text-5xl font-black text-slate-950 md:text-7xl">Elegi como activar capta.</h2></div>
+<div><p class="section-kicker text-[#c8460c]">Planes</p><h2 class="mt-4 text-5xl font-black text-slate-950 md:text-7xl">Elegi como activar capta.</h2></div>
 <p class="text-xl leading-relaxed text-slate-600">Planes simples para empezar con atencion automatica, crecer con marketing y operar con automatizacion total.</p>
 </div>
 <div class="grid gap-5 lg:grid-cols-3">
 <div class="rounded-[2rem] bg-white p-8 soft-shadow"><h3 class="mb-3 text-3xl font-black">Plan Base</h3><p class="mb-7 text-slate-600">Ideal para automatizar la atencion diaria.</p><p class="text-5xl font-black">$ 50.000</p><p class="mb-8 mt-1 text-slate-500">por mes</p><ul class="space-y-3 text-slate-700"><li>&#10003; Atencion automatica por WhatsApp e Instagram</li><li>&#10003; Toma de pedidos automatica</li><li>&#10003; Gestion de reservas</li><li>&#10003; Control de mesas</li><li>&#10003; Dashboard central en tiempo real</li><li>&#10003; Organizacion de pedidos y clientes</li></ul></div>
-<div class="rounded-[2rem] border-2 border-[#00a86b] bg-[#e8fff2] p-8 soft-shadow"><div class="mb-4 inline-flex rounded-full bg-[#00a86b] px-3 py-1 text-xs font-black uppercase tracking-widest text-white">Mas elegido</div><h3 class="mb-3 text-3xl font-black">Plan Growth</h3><p class="mb-7 text-slate-700">Mas ventas, marketing y menu personalizado.</p><p class="text-5xl font-black">$ 65.000</p><p class="mb-8 mt-1 text-slate-600">por mes</p><ul class="space-y-3 text-slate-800"><li>&#10003; Todo el Plan Base</li><li>&#10003; Marketing automatico con IA</li><li>&#10003; Promociones para reactivar clientes</li><li>&#10003; Recomendaciones para aumentar ticket</li><li>&#10003; Asistente IA para el dueno</li><li>&#10003; Pagina de menu personalizada</li><li>&#10003; CRM avanzado de clientes</li></ul></div>
-<div class="rounded-[2rem] bg-slate-950 p-8 text-white soft-shadow"><div class="mb-4 inline-flex rounded-full bg-[#dbe7ff] px-3 py-1 text-xs font-black uppercase tracking-widest text-[#2450ff]">Con llamadas</div><h3 class="mb-3 text-3xl font-black">Plan Pro</h3><p class="mb-7 text-slate-300">Automatizacion total del restaurante.</p><p class="text-5xl font-black">$ 85.000</p><p class="mt-1 text-slate-400">por mes</p><p class="mb-8 mt-4 font-black text-[#ffb86b]">+ $ 400 por minuto de llamada</p><ul class="space-y-3 text-slate-200"><li>&#10003; Todo el Plan Growth</li><li>&#10003; Atencion automatica de llamadas con IA</li><li>&#10003; Toma de pedidos por telefono</li><li>&#10003; Reservas automaticas por llamada</li><li>&#10003; Consultas del menu por voz</li><li>&#10003; Atencion simultanea de multiples llamadas</li></ul></div>
+<div class="rounded-[2rem] border-2 border-[#ff6b1a] bg-[#fff1e8] p-8 soft-shadow"><div class="mb-4 inline-flex rounded-full bg-[#ff6b1a] px-3 py-1 text-xs font-black uppercase tracking-widest text-white">Mas elegido</div><h3 class="mb-3 text-3xl font-black">Plan Growth</h3><p class="mb-7 text-slate-700">Mas ventas, marketing y menu personalizado.</p><p class="text-5xl font-black">$ 65.000</p><p class="mb-8 mt-1 text-slate-600">por mes</p><ul class="space-y-3 text-slate-800"><li>&#10003; Todo el Plan Base</li><li>&#10003; Marketing automatico con IA</li><li>&#10003; Promociones para reactivar clientes</li><li>&#10003; Recomendaciones para aumentar ticket</li><li>&#10003; Asistente IA para el dueno</li><li>&#10003; Pagina de menu personalizada</li><li>&#10003; CRM avanzado de clientes</li></ul></div>
+<div class="rounded-[2rem] bg-slate-950 p-8 text-white soft-shadow"><div class="mb-4 inline-flex rounded-full bg-[#fff1e8] px-3 py-1 text-xs font-black uppercase tracking-widest text-[#c8460c]">Con llamadas</div><h3 class="mb-3 text-3xl font-black">Plan Pro</h3><p class="mb-7 text-slate-300">Automatizacion total del restaurante.</p><p class="text-5xl font-black">$ 85.000</p><p class="mt-1 text-slate-400">por mes</p><p class="mb-8 mt-4 font-black text-[#ff9f45]">+ $ 400 por minuto de llamada</p><ul class="space-y-3 text-slate-200"><li>&#10003; Todo el Plan Growth</li><li>&#10003; Atencion automatica de llamadas con IA</li><li>&#10003; Toma de pedidos por telefono</li><li>&#10003; Reservas automaticas por llamada</li><li>&#10003; Consultas del menu por voz</li><li>&#10003; Atencion simultanea de multiples llamadas</li></ul></div>
 </div>
 </div>
 </section>
@@ -419,10 +419,10 @@ Explorar plataforma
 <!-- Final CTA -->
 <section class="bg-slate-950 px-4 py-28 text-center text-white md:px-8 md:py-36">
 <div class="mx-auto max-w-5xl space-y-8">
-<p class="section-kicker text-[#00e0a4]">Demo guiada</p>
+<p class="section-kicker text-[#ff6b1a]">Demo guiada</p>
 <h2 class="text-5xl font-black leading-tight md:text-7xl">Converti capta en el centro operativo de tu restaurante.</h2>
 <p class="mx-auto max-w-3xl text-xl leading-relaxed text-slate-300">Te mostramos como entra un pedido, como se verifica el pago, como se imprime la comanda, como se descuenta stock y como el cliente sigue su orden en tiempo real.</p>
-<button onclick="openModal()" class="inline-flex items-center justify-center gap-2 rounded-full bg-[#00e0a4] px-9 py-5 text-xl font-black text-slate-950 transition-transform active:scale-95">Solicitar demo <span class="material-symbols-outlined">arrow_forward</span></button>
+<button onclick="openModal()" class="inline-flex items-center justify-center gap-2 rounded-full bg-[#ff6b1a] px-9 py-5 text-xl font-black text-slate-950 transition-transform active:scale-95">Solicitar demo <span class="material-symbols-outlined">arrow_forward</span></button>
 </div>
 </section>
 </main>
@@ -435,7 +435,7 @@ Explorar plataforma
 <p class="max-w-md text-slate-600">El sistema operativo para restaurantes que quieren vender mas, operar mejor y dejar de depender de procesos manuales.</p>
 </div>
 <div><h4 class="mb-4 font-black text-slate-950">Producto</h4><ul class="space-y-3 text-sm font-bold text-slate-600"><li><a href="#features" class="hover:text-slate-950">Plataforma</a></li><li><a href="#operations" class="hover:text-slate-950">Operacion</a></li><li><a href="#menu" class="hover:text-slate-950">Menus</a></li><li><a href="#pricing" class="hover:text-slate-950">Precios</a></li></ul></div>
-<div><h4 class="mb-4 font-black text-slate-950">Boletin</h4><form name="newsletter" onsubmit="submitNewsletter(event)" class="flex" id="newsletter-form"><input name="phone" id="newsletter-phone" class="w-full rounded-l-full border border-black/10 bg-white px-4 py-3 text-sm focus:ring-0" placeholder="Tu celular" type="tel" required/><button type="submit" class="rounded-r-full bg-slate-950 px-5 text-xs font-black uppercase text-white">Unirse</button></form><div id="newsletter-success" class="mt-2 hidden text-sm font-bold text-[#00a86b]">Gracias por unirte!</div></div>
+<div><h4 class="mb-4 font-black text-slate-950">Boletin</h4><form name="newsletter" onsubmit="submitNewsletter(event)" class="flex" id="newsletter-form"><input name="phone" id="newsletter-phone" class="w-full rounded-l-full border border-black/10 bg-white px-4 py-3 text-sm focus:ring-0" placeholder="Tu celular" type="tel" required/><button type="submit" class="rounded-r-full bg-slate-950 px-5 text-xs font-black uppercase text-white">Unirse</button></form><div id="newsletter-success" class="mt-2 hidden text-sm font-bold text-[#ff6b1a]">Gracias por unirte!</div></div>
 </div>
 <div class="mx-auto mt-12 max-w-7xl border-t border-black/10 pt-6 text-sm text-slate-500">&copy; 2026 capta. Todos los derechos reservados.</div>
 </footer>
