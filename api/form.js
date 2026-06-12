@@ -1,6 +1,6 @@
 const RESEND_API_URL = 'https://api.resend.com/emails';
 const DEFAULT_TO_EMAIL = 'ventas@coreon.com.ar';
-const DEFAULT_FROM_EMAIL = 'NeuroRest <forms@neurorest.com.ar>';
+const DEFAULT_FROM_EMAIL = 'Capta <forms@neurorest.com.ar>';
 
 function escapeHtml(value = '') {
   return String(value)
@@ -16,7 +16,7 @@ function buildEmailPayload(body) {
     const phone = escapeHtml(body.phone || '');
 
     return {
-      subject: 'Nuevo lead desde newsletter - NeuroRest',
+      subject: 'Nuevo lead desde newsletter - Capta',
       html: `
         <h2>Nuevo registro desde el newsletter</h2>
         <p><strong>Teléfono:</strong> ${phone}</p>
@@ -30,7 +30,7 @@ function buildEmailPayload(body) {
   const phone = escapeHtml(body.phone || '');
 
   return {
-    subject: 'Nueva solicitud desde la landing de NeuroRest',
+    subject: 'Nueva solicitud desde la landing de Capta',
     html: `
       <h2>Nueva solicitud de contacto</h2>
       <p><strong>Nombre:</strong> ${name}</p>
@@ -78,7 +78,7 @@ module.exports = async (req, res) => {
     headers: {
       Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
       'Content-Type': 'application/json',
-      'User-Agent': 'neurorest-landing-page/1.0',
+      'User-Agent': 'capta-landing-page/1.0',
     },
     body: JSON.stringify({
       from: process.env.FORMS_FROM_EMAIL || DEFAULT_FROM_EMAIL,
