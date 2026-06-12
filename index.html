@@ -166,29 +166,32 @@
 </nav>
 <main id="top" class="overflow-x-hidden pt-16">
 <!-- Hero -->
-<section class="relative min-h-[92svh] overflow-hidden bg-slate-950 text-white">
-<img src="./dashboard.png" alt="Dashboard operativo de capta" class="absolute inset-0 h-full w-full object-cover opacity-40" />
-<div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,6,23,0.94)_0%,rgba(2,6,23,0.78)_44%,rgba(2,6,23,0.30)_100%)]"></div>
-<div class="relative mx-auto flex min-h-[92svh] max-w-7xl flex-col justify-between px-4 py-16 md:px-8 md:py-20">
-<div class="max-w-4xl space-y-8 pt-10 reveal-up">
+<section class="relative overflow-hidden bg-slate-950 text-white">
+<img src="./dashboard.png" alt="Dashboard operativo de capta" class="absolute inset-0 hidden h-full w-full object-cover opacity-40 md:block" />
+<div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,107,26,0.32),transparent_34%),linear-gradient(180deg,rgba(2,6,23,0.98)_0%,rgba(2,6,23,0.94)_100%)] md:bg-[linear-gradient(90deg,rgba(2,6,23,0.94)_0%,rgba(2,6,23,0.78)_44%,rgba(2,6,23,0.30)_100%)]"></div>
+<div class="relative mx-auto flex min-h-[92svh] max-w-7xl flex-col justify-between px-4 py-10 md:px-8 md:py-20">
+<div class="max-w-4xl space-y-6 pt-8 md:space-y-8 md:pt-10 reveal-up">
 <div class="inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/10 px-4 py-2 backdrop-blur">
 <span class="h-2.5 w-2.5 rounded-full bg-[#ff6b1a]"></span>
 <span class="section-kicker text-slate-200">Sistema operativo para restaurantes</span>
 </div>
-<h1 class="text-6xl font-black leading-[0.9] tracking-tight md:text-8xl lg:text-9xl">capta.ar</h1>
-<p class="max-w-3xl text-xl leading-relaxed text-slate-200 md:text-2xl">Atencion con IA, pedidos, caja, stock, pagos, delivery, menus digitales, marketing y seguimiento en tiempo real. Todo conectado para vender mas y operar con menos friccion.</p>
+<h1 class="text-5xl font-black leading-[0.92] tracking-tight sm:text-6xl md:text-8xl lg:text-9xl">capta.ar</h1>
+<p class="max-w-3xl text-lg leading-relaxed text-slate-200 md:text-2xl">Atencion con IA, pedidos, caja, stock, pagos, delivery, menus digitales, marketing y seguimiento en tiempo real. Todo conectado para vender mas y operar con menos friccion.</p>
 <div class="flex flex-col gap-3 sm:flex-row">
-<button onclick="openModal()" class="inline-flex items-center justify-center gap-2 rounded-full bg-[#ff6b1a] px-8 py-4 text-lg font-black text-slate-950 transition-transform active:scale-95">
+<button onclick="openModal()" class="inline-flex items-center justify-center gap-2 rounded-full bg-[#ff6b1a] px-7 py-3.5 text-base font-black text-slate-950 transition-transform active:scale-95 md:px-8 md:py-4 md:text-lg">
 Ver demo
 <span class="material-symbols-outlined">arrow_forward</span>
 </button>
-<a href="#features" class="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-8 py-4 text-lg font-black text-white backdrop-blur transition-colors hover:bg-white/15">
+<a href="#features" class="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-7 py-3.5 text-base font-black text-white backdrop-blur transition-colors hover:bg-white/15 md:px-8 md:py-4 md:text-lg">
 Explorar plataforma
 <span class="material-symbols-outlined">south</span>
 </a>
 </div>
 </div>
-<div class="grid gap-3 pt-12 sm:grid-cols-3 reveal-up reveal-delay-2">
+<div class="mt-10 rounded-[1.75rem] border border-white/10 bg-white/10 p-2 shadow-2xl backdrop-blur md:hidden reveal-up reveal-delay-1">
+<img src="./dashboard.png" alt="Dashboard operativo de capta" class="aspect-[16/10] w-full rounded-[1.35rem] object-cover object-left-top" />
+</div>
+<div class="grid gap-3 pt-8 sm:grid-cols-3 md:pt-12 reveal-up reveal-delay-2">
 <div class="border-t border-white/20 pt-4">
 <p class="text-3xl font-black">24/7</p>
 <p class="text-sm text-slate-300">atencion por WhatsApp, Instagram, llamadas y web</p>
