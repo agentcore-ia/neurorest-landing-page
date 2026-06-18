@@ -145,12 +145,28 @@
         .tracking-step-3 { animation-delay: 1.8s; }
         .tracking-step-4 { animation-delay: 2.7s; }
         .tracking-detail { animation: tracking-detail 8s ease-in-out infinite; }
+        .chaos-card { animation: chaos-drift 8s ease-in-out infinite; }
+        .chaos-card-2 { animation-delay: -1.7s; }
+        .chaos-card-3 { animation-delay: -3.1s; }
+        .chaos-card-4 { animation-delay: -4.6s; }
+        .capta-flow { stroke-dasharray: 12 16; animation: capta-flow 14s linear infinite; }
+        .capta-node { animation: node-breathe 5.5s ease-in-out infinite; }
+        .capta-node-2 { animation-delay: .8s; }
+        .capta-node-3 { animation-delay: 1.6s; }
+        .capta-node-4 { animation-delay: 2.4s; }
+        .order-chip { animation: order-settle 7s ease-in-out infinite; }
+        .order-chip-2 { animation-delay: .9s; }
+        .order-chip-3 { animation-delay: 1.8s; }
         @keyframes reveal-up { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes pulse-dot { 0%, 100% { opacity: .72; box-shadow: 0 0 0 0 rgba(255,107,26,0.25); } 50% { opacity: 1; box-shadow: 0 0 0 9px rgba(255,107,26,0); } }
         @keyframes gentle-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
         @keyframes tracking-line { 0%, 8% { transform: scaleY(.04); } 28% { transform: scaleY(.34); } 50% { transform: scaleY(.66); } 72%, 86% { transform: scaleY(1); } 100% { transform: scaleY(.04); } }
         @keyframes tracking-step { 0%, 10% { opacity: .38; transform: translateY(3px); } 22%, 78% { opacity: 1; transform: translateY(0); } 100% { opacity: .38; transform: translateY(3px); } }
         @keyframes tracking-detail { 0%, 18% { transform: translateY(6px); opacity: .55; } 34%, 82% { transform: translateY(0); opacity: 1; } 100% { transform: translateY(6px); opacity: .55; } }
+        @keyframes chaos-drift { 0%, 100% { transform: translate3d(0,0,0) rotate(-1deg); opacity: .82; } 45% { transform: translate3d(10px,-8px,0) rotate(1.4deg); opacity: 1; } 70% { transform: translate3d(-7px,5px,0) rotate(-.6deg); opacity: .74; } }
+        @keyframes capta-flow { to { stroke-dashoffset: -224; } }
+        @keyframes node-breathe { 0%, 100% { transform: scale(1); opacity: .88; } 50% { transform: scale(1.045); opacity: 1; } }
+        @keyframes order-settle { 0%, 100% { transform: translateY(0); opacity: .78; } 38%, 72% { transform: translateY(-4px); opacity: 1; } }
         @media (prefers-reduced-motion: reduce) {
           *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
         }
@@ -261,6 +277,101 @@ Explorar plataforma
 <span class="material-symbols-outlined mb-5 text-4xl text-[#c8460c]">campaign</span>
 <h3 class="mb-2 text-2xl font-black text-slate-950">Marketing automático</h3>
 <p class="leading-relaxed text-slate-600">Reactiva clientes, promociona productos y aumenta recurrencia con mensajes inteligentes.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Comparison -->
+<section class="px-4 py-28 md:px-8 md:py-36">
+<div class="mx-auto max-w-7xl space-y-12">
+<div class="mx-auto max-w-4xl space-y-5 text-center">
+<p class="section-kicker text-[#c8460c]">Antes y después</p>
+<h2 class="text-5xl font-black leading-tight text-slate-950 md:text-7xl">Del quilombo operativo a una cocina que respira.</h2>
+<p class="mx-auto max-w-3xl text-xl leading-relaxed text-slate-600">Sin Capta, cada canal compite por atención. Con Capta, los mensajes, pedidos y estados entran en un flujo claro para que el equipo trabaje con paz.</p>
+</div>
+<div class="grid gap-6 lg:grid-cols-2">
+<div class="relative overflow-hidden rounded-[2.5rem] bg-slate-950 p-5 text-white soft-shadow md:p-8">
+<div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_18%,rgba(255,107,26,.22),transparent_28%),radial-gradient(circle_at_82%_72%,rgba(255,159,69,.12),transparent_30%)]"></div>
+<div class="relative mb-8 flex items-start justify-between gap-4">
+<div>
+<p class="section-kicker text-[#ff9f45]">Sin Capta</p>
+<h3 class="mt-3 text-4xl font-black md:text-5xl">Todo suelto, todo urgente.</h3>
+</div>
+<span class="rounded-full bg-white/10 px-4 py-2 text-sm font-black text-white/70">Caos</span>
+</div>
+<div class="relative min-h-[28rem] overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] p-4 md:p-6">
+<div class="chaos-card absolute left-5 top-8 w-[72%] rounded-2xl bg-white p-4 text-slate-950 shadow-2xl md:w-[58%]">
+<p class="text-xs font-black uppercase tracking-widest text-slate-400">WhatsApp</p>
+<p class="mt-2 font-black">¿Me tomás un pedido?</p>
+<p class="mt-1 text-sm text-slate-500">sin responder hace 12 min</p>
+</div>
+<div class="chaos-card chaos-card-2 absolute right-4 top-28 w-[70%] rounded-2xl border border-white/10 bg-[#231815] p-4 shadow-2xl md:w-[55%]">
+<p class="text-xs font-black uppercase tracking-widest text-[#ff9f45]">Instagram</p>
+<p class="mt-2 font-black">Consulta por reserva</p>
+<p class="mt-1 text-sm text-white/50">perdida entre mensajes</p>
+</div>
+<div class="chaos-card chaos-card-3 absolute bottom-28 left-8 w-[78%] rounded-2xl bg-[#fff1e8] p-4 text-slate-950 shadow-2xl md:w-[62%]">
+<p class="text-xs font-black uppercase tracking-widest text-[#c8460c]">Caja</p>
+<p class="mt-2 font-black">Pago sin verificar</p>
+<p class="mt-1 text-sm text-slate-500">nadie sabe si preparar</p>
+</div>
+<div class="chaos-card chaos-card-4 absolute bottom-6 right-5 w-[72%] rounded-2xl bg-white/10 p-4 shadow-2xl md:w-[56%]">
+<p class="text-xs font-black uppercase tracking-widest text-white/45">Cocina</p>
+<p class="mt-2 font-black">Pedido anotado a mano</p>
+<p class="mt-1 text-sm text-white/50">faltan extras y dirección</p>
+</div>
+<div class="absolute left-1/2 top-1/2 h-32 w-32 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#ff6b1a]/30 bg-[#ff6b1a]/10 blur-sm"></div>
+</div>
+<div class="relative mt-6 grid gap-3 sm:grid-cols-3">
+<div class="rounded-2xl bg-white/10 p-4"><p class="font-black">Mensajes sin responder</p></div>
+<div class="rounded-2xl bg-white/10 p-4"><p class="font-black">Pedidos incompletos</p></div>
+<div class="rounded-2xl bg-white/10 p-4"><p class="font-black">Equipo saturado</p></div>
+</div>
+</div>
+<div class="relative overflow-hidden rounded-[2.5rem] border border-[#ff6b1a]/20 bg-white p-5 soft-shadow md:p-8">
+<div class="absolute inset-0 bg-[radial-gradient(circle_at_18%_12%,rgba(255,107,26,.16),transparent_30%),radial-gradient(circle_at_84%_80%,rgba(255,159,69,.18),transparent_32%)]"></div>
+<div class="relative mb-8 flex items-start justify-between gap-4">
+<div>
+<p class="section-kicker text-[#c8460c]">Con Capta</p>
+<h3 class="mt-3 text-4xl font-black text-slate-950 md:text-5xl">Todo entra ordenado.</h3>
+</div>
+<span class="inline-flex items-center gap-2 rounded-full bg-[#fff1e8] px-4 py-2 text-sm font-black text-[#c8460c]"><span class="pulse-dot h-2 w-2 rounded-full bg-[#ff6b1a]"></span>En vivo</span>
+</div>
+<div class="relative min-h-[28rem] overflow-hidden rounded-[2rem] bg-[#fff8f2] p-4 md:p-6">
+<svg class="absolute inset-0 h-full w-full" viewBox="0 0 620 420" preserveAspectRatio="none" aria-hidden="true">
+<path class="capta-flow" d="M80 95 C210 70 250 190 310 210 C382 235 420 330 540 312" fill="none" stroke="#ff6b1a" stroke-width="6" stroke-linecap="round" opacity=".42"/>
+<path class="capta-flow" d="M78 318 C210 342 245 244 310 210 C390 168 432 90 540 105" fill="none" stroke="#c8460c" stroke-width="5" stroke-linecap="round" opacity=".22"/>
+</svg>
+<div class="relative grid h-full min-h-[25rem] place-items-center">
+<div class="rounded-[2rem] bg-slate-950 p-6 text-white shadow-[0_26px_80px_-42px_rgba(17,24,39,.8)]">
+<p class="text-xs font-black uppercase tracking-[0.18em] text-[#ff9f45]">Capta centraliza</p>
+<p class="mt-2 text-3xl font-black">Pedido #1842</p>
+<p class="mt-2 text-sm text-white/60">tomado, cobrado y enviado a cocina</p>
+</div>
+<div class="capta-node absolute left-3 top-8 max-w-[9.75rem] rounded-2xl bg-white p-4 shadow-xl md:left-8 md:max-w-[11rem]">
+<span class="material-symbols-outlined text-[#ff6b1a]">forum</span>
+<p class="mt-2 text-sm font-black text-slate-950">WhatsApp respondido</p>
+</div>
+<div class="capta-node capta-node-2 absolute right-3 top-10 max-w-[9.75rem] rounded-2xl bg-white p-4 shadow-xl md:right-8 md:max-w-[11rem]">
+<span class="material-symbols-outlined text-[#c8460c]">payments</span>
+<p class="mt-2 text-sm font-black text-slate-950">Pago verificado</p>
+</div>
+<div class="capta-node capta-node-3 absolute bottom-8 left-3 max-w-[9.75rem] rounded-2xl bg-white p-4 shadow-xl md:left-8 md:max-w-[11rem]">
+<span class="material-symbols-outlined text-[#ff6b1a]">restaurant_menu</span>
+<p class="mt-2 text-sm font-black text-slate-950">Pedido completo</p>
+</div>
+<div class="capta-node capta-node-4 absolute bottom-8 right-3 max-w-[9.75rem] rounded-2xl bg-white p-4 shadow-xl md:right-8 md:max-w-[11rem]">
+<span class="material-symbols-outlined text-[#c8460c]">two_wheeler</span>
+<p class="mt-2 text-sm font-black text-slate-950">Delivery asignado</p>
+</div>
+</div>
+</div>
+<div class="relative mt-6 grid gap-3 sm:grid-cols-3">
+<div class="order-chip rounded-2xl bg-[#fff1e8] p-4 text-[#c8460c]"><p class="font-black">Pedidos tomados</p></div>
+<div class="order-chip order-chip-2 rounded-2xl bg-[#fff1e8] p-4 text-[#c8460c]"><p class="font-black">Estados claros</p></div>
+<div class="order-chip order-chip-3 rounded-2xl bg-[#fff1e8] p-4 text-[#c8460c]"><p class="font-black">Paz operativa</p></div>
+</div>
 </div>
 </div>
 </div>
