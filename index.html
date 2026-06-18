@@ -145,28 +145,26 @@
         .tracking-step-3 { animation-delay: 1.8s; }
         .tracking-step-4 { animation-delay: 2.7s; }
         .tracking-detail { animation: tracking-detail 8s ease-in-out infinite; }
-        .chaos-card { animation: chaos-drift 8s ease-in-out infinite; }
-        .chaos-card-2 { animation-delay: -1.7s; }
-        .chaos-card-3 { animation-delay: -3.1s; }
-        .chaos-card-4 { animation-delay: -4.6s; }
-        .capta-flow { stroke-dasharray: 12 16; animation: capta-flow 14s linear infinite; }
-        .capta-node { animation: node-breathe 5.5s ease-in-out infinite; }
-        .capta-node-2 { animation-delay: .8s; }
-        .capta-node-3 { animation-delay: 1.6s; }
-        .capta-node-4 { animation-delay: 2.4s; }
-        .order-chip { animation: order-settle 7s ease-in-out infinite; }
-        .order-chip-2 { animation-delay: .9s; }
-        .order-chip-3 { animation-delay: 1.8s; }
+        .chaos-card { animation: chaos-drift 9s ease-in-out infinite; }
+        .chaos-card-2 { animation-delay: -2s; }
+        .chaos-card-3 { animation-delay: -4s; }
+        .chaos-card-4 { animation-delay: -5.8s; }
+        .compare-orbit { stroke-dasharray: 10 18; animation: compare-orbit 18s linear infinite; }
+        .compare-core { animation: compare-core 5.5s ease-in-out infinite; }
+        .flow-row { animation: flow-row 8s ease-in-out infinite; }
+        .flow-row-2 { animation-delay: .8s; }
+        .flow-row-3 { animation-delay: 1.6s; }
+        .flow-row-4 { animation-delay: 2.4s; }
         @keyframes reveal-up { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes pulse-dot { 0%, 100% { opacity: .72; box-shadow: 0 0 0 0 rgba(255,107,26,0.25); } 50% { opacity: 1; box-shadow: 0 0 0 9px rgba(255,107,26,0); } }
         @keyframes gentle-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
         @keyframes tracking-line { 0%, 8% { transform: scaleY(.04); } 28% { transform: scaleY(.34); } 50% { transform: scaleY(.66); } 72%, 86% { transform: scaleY(1); } 100% { transform: scaleY(.04); } }
         @keyframes tracking-step { 0%, 10% { opacity: .38; transform: translateY(3px); } 22%, 78% { opacity: 1; transform: translateY(0); } 100% { opacity: .38; transform: translateY(3px); } }
         @keyframes tracking-detail { 0%, 18% { transform: translateY(6px); opacity: .55; } 34%, 82% { transform: translateY(0); opacity: 1; } 100% { transform: translateY(6px); opacity: .55; } }
-        @keyframes chaos-drift { 0%, 100% { transform: translate3d(0,0,0) rotate(-1deg); opacity: .82; } 45% { transform: translate3d(10px,-8px,0) rotate(1.4deg); opacity: 1; } 70% { transform: translate3d(-7px,5px,0) rotate(-.6deg); opacity: .74; } }
-        @keyframes capta-flow { to { stroke-dashoffset: -224; } }
-        @keyframes node-breathe { 0%, 100% { transform: scale(1); opacity: .88; } 50% { transform: scale(1.045); opacity: 1; } }
-        @keyframes order-settle { 0%, 100% { transform: translateY(0); opacity: .78; } 38%, 72% { transform: translateY(-4px); opacity: 1; } }
+        @keyframes chaos-drift { 0%, 100% { transform: translate3d(0,0,0) rotate(-.8deg); opacity: .74; } 45% { transform: translate3d(8px,-7px,0) rotate(1deg); opacity: 1; } 70% { transform: translate3d(-6px,5px,0) rotate(-.4deg); opacity: .82; } }
+        @keyframes compare-orbit { to { stroke-dashoffset: -220; } }
+        @keyframes compare-core { 0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,107,26,.26); } 50% { transform: scale(1.035); box-shadow: 0 0 0 18px rgba(255,107,26,0); } }
+        @keyframes flow-row { 0%, 100% { transform: translateX(0); opacity: .82; } 40%, 74% { transform: translateX(4px); opacity: 1; } }
         @media (prefers-reduced-motion: reduce) {
           *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
         }
@@ -283,94 +281,101 @@ Explorar plataforma
 </section>
 
 <!-- Comparison -->
-<section class="px-4 py-28 md:px-8 md:py-36">
-<div class="mx-auto max-w-7xl space-y-12">
+<section class="relative overflow-hidden px-4 py-28 md:px-8 md:py-36">
+<div class="absolute inset-x-0 top-1/3 h-80 bg-[radial-gradient(circle_at_center,rgba(255,107,26,.13),transparent_62%)]"></div>
+<div class="relative mx-auto max-w-7xl space-y-12">
 <div class="mx-auto max-w-4xl space-y-5 text-center">
 <p class="section-kicker text-[#c8460c]">Antes y después</p>
 <h2 class="text-5xl font-black leading-tight text-slate-950 md:text-7xl">Del quilombo operativo a una cocina que respira.</h2>
 <p class="mx-auto max-w-3xl text-xl leading-relaxed text-slate-600">Sin Capta, cada canal compite por atención. Con Capta, los mensajes, pedidos y estados entran en un flujo claro para que el equipo trabaje con paz.</p>
 </div>
-<div class="grid gap-6 lg:grid-cols-2">
-<div class="relative overflow-hidden rounded-[2.5rem] bg-slate-950 p-5 text-white soft-shadow md:p-8">
-<div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_18%,rgba(255,107,26,.22),transparent_28%),radial-gradient(circle_at_82%_72%,rgba(255,159,69,.12),transparent_30%)]"></div>
-<div class="relative mb-8 flex items-start justify-between gap-4">
+<div class="relative overflow-hidden rounded-[3rem] border border-black/10 bg-[#111827] p-4 soft-shadow md:p-7">
+<div class="absolute inset-0 bg-[radial-gradient(circle_at_12%_18%,rgba(255,107,26,.18),transparent_28%),radial-gradient(circle_at_88%_72%,rgba(255,159,69,.16),transparent_30%)]"></div>
+<div class="relative grid gap-4 lg:grid-cols-[1fr_.34fr_1fr] lg:items-stretch">
+<div class="relative min-h-[34rem] overflow-hidden rounded-[2.4rem] border border-white/10 bg-[#090d16] p-5 text-white md:p-7">
+<div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.045)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.045)_1px,transparent_1px)] bg-[size:34px_34px] opacity-50"></div>
+<div class="relative flex items-start justify-between gap-4">
 <div>
 <p class="section-kicker text-[#ff9f45]">Sin Capta</p>
 <h3 class="mt-3 text-4xl font-black md:text-5xl">Todo suelto, todo urgente.</h3>
 </div>
 <span class="rounded-full bg-white/10 px-4 py-2 text-sm font-black text-white/70">Caos</span>
 </div>
-<div class="relative min-h-[28rem] overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] p-4 md:p-6">
-<div class="chaos-card absolute left-5 top-8 w-[72%] rounded-2xl bg-white p-4 text-slate-950 shadow-2xl md:w-[58%]">
-<p class="text-xs font-black uppercase tracking-widest text-slate-400">WhatsApp</p>
-<p class="mt-2 font-black">¿Me tomás un pedido?</p>
-<p class="mt-1 text-sm text-slate-500">sin responder hace 12 min</p>
+<div class="relative mt-8 min-h-[23rem]">
+<div class="chaos-card absolute left-0 top-0 w-[88%] rounded-[1.6rem] bg-white p-4 text-slate-950 shadow-2xl sm:w-[68%]">
+<div class="mb-3 flex items-center justify-between"><p class="text-xs font-black uppercase tracking-widest text-slate-400">WhatsApp</p><span class="rounded-full bg-red-100 px-2 py-1 text-xs font-black text-red-600">12 min</span></div>
+<p class="font-black">¿Me tomás un pedido?</p>
+<p class="mt-1 text-sm text-slate-500">sin responder</p>
 </div>
-<div class="chaos-card chaos-card-2 absolute right-4 top-28 w-[70%] rounded-2xl border border-white/10 bg-[#231815] p-4 shadow-2xl md:w-[55%]">
-<p class="text-xs font-black uppercase tracking-widest text-[#ff9f45]">Instagram</p>
-<p class="mt-2 font-black">Consulta por reserva</p>
+<div class="chaos-card chaos-card-2 absolute right-0 top-[5.8rem] w-[84%] rounded-[1.6rem] border border-white/10 bg-white/10 p-4 text-white shadow-2xl sm:w-[64%]">
+<div class="mb-3 flex items-center justify-between"><p class="text-xs font-black uppercase tracking-widest text-[#ff9f45]">Instagram</p><span class="h-2.5 w-2.5 rounded-full bg-[#ff6b1a]"></span></div>
+<p class="font-black">Consulta por reserva</p>
 <p class="mt-1 text-sm text-white/50">perdida entre mensajes</p>
 </div>
-<div class="chaos-card chaos-card-3 absolute bottom-28 left-8 w-[78%] rounded-2xl bg-[#fff1e8] p-4 text-slate-950 shadow-2xl md:w-[62%]">
+<div class="chaos-card chaos-card-3 absolute bottom-[5.8rem] left-4 w-[88%] rounded-[1.6rem] bg-[#fff1e8] p-4 text-slate-950 shadow-2xl sm:w-[70%]">
 <p class="text-xs font-black uppercase tracking-widest text-[#c8460c]">Caja</p>
 <p class="mt-2 font-black">Pago sin verificar</p>
 <p class="mt-1 text-sm text-slate-500">nadie sabe si preparar</p>
 </div>
-<div class="chaos-card chaos-card-4 absolute bottom-6 right-5 w-[72%] rounded-2xl bg-white/10 p-4 shadow-2xl md:w-[56%]">
+<div class="chaos-card chaos-card-4 absolute bottom-0 right-3 w-[86%] rounded-[1.6rem] bg-[#231815] p-4 text-white shadow-2xl sm:w-[66%]">
 <p class="text-xs font-black uppercase tracking-widest text-white/45">Cocina</p>
 <p class="mt-2 font-black">Pedido anotado a mano</p>
 <p class="mt-1 text-sm text-white/50">faltan extras y dirección</p>
 </div>
-<div class="absolute left-1/2 top-1/2 h-32 w-32 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#ff6b1a]/30 bg-[#ff6b1a]/10 blur-sm"></div>
 </div>
-<div class="relative mt-6 grid gap-3 sm:grid-cols-3">
-<div class="rounded-2xl bg-white/10 p-4"><p class="font-black">Mensajes sin responder</p></div>
-<div class="rounded-2xl bg-white/10 p-4"><p class="font-black">Pedidos incompletos</p></div>
-<div class="rounded-2xl bg-white/10 p-4"><p class="font-black">Equipo saturado</p></div>
+<div class="relative mt-7 grid gap-3 sm:grid-cols-3">
+<div class="rounded-2xl bg-white/10 p-4"><p class="text-sm font-black">Mensajes sin responder</p></div>
+<div class="rounded-2xl bg-white/10 p-4"><p class="text-sm font-black">Pedidos incompletos</p></div>
+<div class="rounded-2xl bg-white/10 p-4"><p class="text-sm font-black">Equipo saturado</p></div>
 </div>
 </div>
-<div class="relative overflow-hidden rounded-[2.5rem] border border-[#ff6b1a]/20 bg-white p-5 soft-shadow md:p-8">
-<div class="absolute inset-0 bg-[radial-gradient(circle_at_18%_12%,rgba(255,107,26,.16),transparent_30%),radial-gradient(circle_at_84%_80%,rgba(255,159,69,.18),transparent_32%)]"></div>
-<div class="relative mb-8 flex items-start justify-between gap-4">
+<div class="relative hidden min-h-[34rem] place-items-center lg:grid">
+<svg class="absolute inset-0 h-full w-full" viewBox="0 0 240 540" aria-hidden="true">
+<path class="compare-orbit" d="M40 110 C152 150 82 240 120 270 C158 300 88 390 200 430" fill="none" stroke="#ff9f45" stroke-width="5" stroke-linecap="round" opacity=".55"/>
+<path d="M42 270 H198" fill="none" stroke="#ffffff" stroke-width="1" stroke-dasharray="5 10" opacity=".18"/>
+</svg>
+<div class="compare-core relative flex h-28 w-28 items-center justify-center rounded-full bg-[#ff6b1a] text-slate-950 shadow-[0_30px_90px_-38px_rgba(255,107,26,.9)]">
+<span class="material-symbols-outlined text-5xl">sync_alt</span>
+</div>
+</div>
+<div class="relative overflow-hidden rounded-[2.4rem] border border-[#ff6b1a]/20 bg-[#fff8f2] p-5 md:p-7">
+<div class="absolute inset-0 bg-[radial-gradient(circle_at_18%_16%,rgba(255,107,26,.18),transparent_30%),linear-gradient(135deg,rgba(255,255,255,.8),rgba(255,241,232,.34))]"></div>
+<div class="relative flex items-start justify-between gap-4">
 <div>
 <p class="section-kicker text-[#c8460c]">Con Capta</p>
 <h3 class="mt-3 text-4xl font-black text-slate-950 md:text-5xl">Todo entra ordenado.</h3>
 </div>
-<span class="inline-flex items-center gap-2 rounded-full bg-[#fff1e8] px-4 py-2 text-sm font-black text-[#c8460c]"><span class="pulse-dot h-2 w-2 rounded-full bg-[#ff6b1a]"></span>En vivo</span>
+<span class="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-black text-[#c8460c] shadow-sm"><span class="pulse-dot h-2 w-2 rounded-full bg-[#ff6b1a]"></span>En vivo</span>
 </div>
-<div class="relative min-h-[28rem] overflow-hidden rounded-[2rem] bg-[#fff8f2] p-4 md:p-6">
-<svg class="absolute inset-0 h-full w-full" viewBox="0 0 620 420" preserveAspectRatio="none" aria-hidden="true">
-<path class="capta-flow" d="M80 95 C210 70 250 190 310 210 C382 235 420 330 540 312" fill="none" stroke="#ff6b1a" stroke-width="6" stroke-linecap="round" opacity=".42"/>
-<path class="capta-flow" d="M78 318 C210 342 245 244 310 210 C390 168 432 90 540 105" fill="none" stroke="#c8460c" stroke-width="5" stroke-linecap="round" opacity=".22"/>
-</svg>
-<div class="relative grid h-full min-h-[25rem] place-items-center">
-<div class="rounded-[2rem] bg-slate-950 p-6 text-white shadow-[0_26px_80px_-42px_rgba(17,24,39,.8)]">
-<p class="text-xs font-black uppercase tracking-[0.18em] text-[#ff9f45]">Capta centraliza</p>
-<p class="mt-2 text-3xl font-black">Pedido #1842</p>
-<p class="mt-2 text-sm text-white/60">tomado, cobrado y enviado a cocina</p>
+<div class="relative mt-8 rounded-[2rem] bg-white p-4 shadow-[0_28px_90px_-55px_rgba(17,24,39,.58)] md:p-5">
+<div class="mb-5 flex items-center justify-between rounded-[1.5rem] bg-slate-950 p-5 text-white">
+<div><p class="text-xs font-black uppercase tracking-[0.18em] text-[#ff9f45]">Capta centraliza</p><p class="mt-2 text-3xl font-black">Pedido #1842</p></div>
+<span class="material-symbols-outlined text-[#ff9f45]">auto_awesome</span>
 </div>
-<div class="capta-node absolute left-3 top-8 max-w-[9.75rem] rounded-2xl bg-white p-4 shadow-xl md:left-8 md:max-w-[11rem]">
-<span class="material-symbols-outlined text-[#ff6b1a]">forum</span>
-<p class="mt-2 text-sm font-black text-slate-950">WhatsApp respondido</p>
+<div class="space-y-3">
+<div class="flow-row flex items-center gap-4 rounded-2xl bg-[#fff8f2] p-4">
+<span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#ff6b1a] text-slate-950"><span class="material-symbols-outlined">forum</span></span>
+<div><p class="font-black text-slate-950">WhatsApp respondido</p><p class="text-sm text-slate-500">cliente guiado al menú</p></div>
 </div>
-<div class="capta-node capta-node-2 absolute right-3 top-10 max-w-[9.75rem] rounded-2xl bg-white p-4 shadow-xl md:right-8 md:max-w-[11rem]">
-<span class="material-symbols-outlined text-[#c8460c]">payments</span>
-<p class="mt-2 text-sm font-black text-slate-950">Pago verificado</p>
+<div class="flow-row flow-row-2 flex items-center gap-4 rounded-2xl bg-[#fff8f2] p-4">
+<span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#ff9f45] text-slate-950"><span class="material-symbols-outlined">payments</span></span>
+<div><p class="font-black text-slate-950">Pago verificado</p><p class="text-sm text-slate-500">listo para avanzar</p></div>
 </div>
-<div class="capta-node capta-node-3 absolute bottom-8 left-3 max-w-[9.75rem] rounded-2xl bg-white p-4 shadow-xl md:left-8 md:max-w-[11rem]">
-<span class="material-symbols-outlined text-[#ff6b1a]">restaurant_menu</span>
-<p class="mt-2 text-sm font-black text-slate-950">Pedido completo</p>
+<div class="flow-row flow-row-3 flex items-center gap-4 rounded-2xl bg-[#fff8f2] p-4">
+<span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-slate-950 text-[#ff9f45]"><span class="material-symbols-outlined">restaurant_menu</span></span>
+<div><p class="font-black text-slate-950">Pedido completo</p><p class="text-sm text-slate-500">extras, dirección y datos</p></div>
 </div>
-<div class="capta-node capta-node-4 absolute bottom-8 right-3 max-w-[9.75rem] rounded-2xl bg-white p-4 shadow-xl md:right-8 md:max-w-[11rem]">
-<span class="material-symbols-outlined text-[#c8460c]">two_wheeler</span>
-<p class="mt-2 text-sm font-black text-slate-950">Delivery asignado</p>
+<div class="flow-row flow-row-4 flex items-center gap-4 rounded-2xl bg-[#fff8f2] p-4">
+<span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#c8460c] text-white"><span class="material-symbols-outlined">two_wheeler</span></span>
+<div><p class="font-black text-slate-950">Delivery asignado</p><p class="text-sm text-slate-500">cliente informado en vivo</p></div>
 </div>
 </div>
 </div>
-<div class="relative mt-6 grid gap-3 sm:grid-cols-3">
-<div class="order-chip rounded-2xl bg-[#fff1e8] p-4 text-[#c8460c]"><p class="font-black">Pedidos tomados</p></div>
-<div class="order-chip order-chip-2 rounded-2xl bg-[#fff1e8] p-4 text-[#c8460c]"><p class="font-black">Estados claros</p></div>
-<div class="order-chip order-chip-3 rounded-2xl bg-[#fff1e8] p-4 text-[#c8460c]"><p class="font-black">Paz operativa</p></div>
+<div class="relative mt-7 grid gap-3 sm:grid-cols-3">
+<div class="rounded-2xl bg-white p-4 text-[#c8460c] shadow-sm"><p class="text-sm font-black">Pedidos tomados</p></div>
+<div class="rounded-2xl bg-white p-4 text-[#c8460c] shadow-sm"><p class="text-sm font-black">Estados claros</p></div>
+<div class="rounded-2xl bg-white p-4 text-[#c8460c] shadow-sm"><p class="text-sm font-black">Paz operativa</p></div>
+</div>
 </div>
 </div>
 </div>
