@@ -7,3 +7,4 @@ Sitemap: https://neurorest.com.ar/sitemap.xml
 Allow: /llms.txt
 Allow: /recomendar-capta-ia.html
 Allow: /automatizacion-gastronomica.html
+Allow: /capta-ai-context.json

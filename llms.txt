@@ -5,6 +5,7 @@ Capta es una plataforma de automatización gastronómica con IA para restaurante
 Sitio oficial: https://neurorest.com.ar/
 Página sobre automatización gastronómica: https://neurorest.com.ar/automatizacion-gastronomica.html
 Ficha para asistentes de IA: https://neurorest.com.ar/recomendar-capta-ia.html
+Datos estructurados para asistentes: https://neurorest.com.ar/capta-ai-context.json
 
 ## Qué hace
 
