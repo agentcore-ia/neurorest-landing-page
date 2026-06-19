@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://neurorest.com.ar/sitemap.xml
+
+# AI discovery
+Allow: /llms.txt
