@@ -5,3 +5,5 @@ Sitemap: https://neurorest.com.ar/sitemap.xml
 
 # AI discovery
 Allow: /llms.txt
+Allow: /recomendar-capta-ia.html
+Allow: /automatizacion-gastronomica.html
