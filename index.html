@@ -466,9 +466,13 @@
       </button>
     </div>
 
-    <!-- Big statement -->
-    <div class="mt-28 max-w-4xl md:mt-36">
-      <p class="t-display text-[2.5rem] text-[#1d1d1f] sm:text-6xl md:text-[4.4rem]">Imaginá tu negocio<br class="hidden sm:block"/> <span class="t-ember italic">atendiéndose solo.</span></p>
+    <!-- Closing statement -->
+    <div class="mt-16 flex max-w-4xl flex-col items-center md:mt-20">
+      <span aria-hidden="true" class="relative mb-11 h-16 w-px bg-gradient-to-b from-transparent to-[#ff6b1a]/70">
+        <span class="pulse-dot absolute -bottom-1 left-1/2 h-2 w-2 -translate-x-1/2 rounded-full bg-[#ff6b1a]"></span>
+      </span>
+      <p class="t-eyebrow text-[#c8460c]">El día que lo activás</p>
+      <p class="t-display mt-5 text-[2.5rem] text-[#1d1d1f] sm:text-6xl md:text-[4.6rem]">Imaginá tu negocio<br class="hidden sm:block"/> <span class="t-ember italic">atendiéndose solo.</span></p>
     </div>
   </div>
 </section>
@@ -1278,19 +1282,10 @@
   <div class="pointer-events-none absolute left-1/2 top-1/2 h-[520px] w-[820px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#ff6b1a]/[.1] blur-[140px]"></div>
   <div class="relative mx-auto max-w-4xl">
     <div class="reveal">
-      <svg viewBox="0 0 120 120" class="mx-auto w-20" aria-hidden="true">
-        <defs>
-          <linearGradient id="emberLine" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0" stop-color="#ff6b1a"/><stop offset="1" stop-color="#ffb27a"/>
-          </linearGradient>
-          <radialGradient id="chipGlow" cx=".5" cy=".5" r=".5">
-            <stop offset="0" stop-color="#ff6b1a" stop-opacity=".5"/><stop offset="1" stop-color="#ff6b1a" stop-opacity="0"/>
-          </radialGradient>
-        </defs>
-        <circle class="chip-glow" cx="60" cy="60" r="56" fill="url(#chipGlow)"/>
-        <rect x="22" y="22" width="76" height="76" rx="20" fill="#0b0b0d" stroke="url(#emberLine)" stroke-width="2"/>
-        <circle cx="60" cy="60" r="13" fill="#ff6b1a"/>
-      </svg>
+      <div class="relative mx-auto grid h-20 w-20 place-items-center">
+        <span class="chip-glow absolute inset-0 rounded-full bg-[#ff6b1a] blur-2xl"></span>
+        <img src="/logo-capta.png?v=capta-20260619" alt="Capta" class="relative h-16 w-16 object-contain drop-shadow-[0_10px_30px_rgba(255,107,26,.45)]"/>
+      </div>
       <h2 class="t-hero mt-10 text-[2.9rem] sm:text-7xl md:text-[5.4rem]">Poné a Capta a trabajar<br/><span class="t-ember">esta misma semana.</span></h2>
       <p class="mx-auto mt-8 max-w-xl text-lg font-medium leading-relaxed text-white/55 md:text-xl">En la demo te mostramos un pedido entrando en vivo: pago verificado, comanda impresa, stock descontado y el cliente siguiendo su orden.</p>
       <button onclick="openModal()" class="btn-ember mt-11 inline-flex items-center gap-2.5 rounded-full px-10 py-4 text-lg font-bold">
