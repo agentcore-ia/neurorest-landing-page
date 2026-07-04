@@ -111,7 +111,7 @@
   html, body { overflow-x: hidden; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    background: var(--carbon);
+    background: var(--paper);
     color: var(--ink);
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
@@ -149,20 +149,29 @@
   .scene [class*="ph-"], .scene .bar, .scene .ln-draw { animation-play-state: paused; }
   .scene.in-view [class*="ph-"], .scene.in-view .bar, .scene.in-view .ln-draw { animation-play-state: running; }
 
-  /* ============ Hero circuit ============ */
-  .trace { fill: none; stroke: rgba(255,255,255,.09); stroke-width: 1.5; stroke-linecap: round; }
-  .comet {
-    fill: none; stroke: url(#emberLine); stroke-width: 2.25; stroke-linecap: round;
-    stroke-dasharray: 13 87;
-    animation: comet 3.4s linear infinite;
-  }
-  @keyframes comet { from { stroke-dashoffset: 100; } to { stroke-dashoffset: 0; } }
+  /* ============ Hero — torre de control ============ */
   .chip-glow { animation: chip-breathe 5.5s ease-in-out infinite; }
   @keyframes chip-breathe { 0%,100% { opacity: .3; } 50% { opacity: .75; } }
-  .chip-ring { animation: chip-ring 5.5s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
-  @keyframes chip-ring { 0%,100% { opacity: .14; transform: scale(1); } 50% { opacity: .3; transform: scale(1.015); } }
-  .hero-pill { fill: rgba(255,255,255,.05); stroke: rgba(255,255,255,.12); }
-  .hero-pill-txt { fill: rgba(255,255,255,.88); font-size: 14px; font-weight: 600; }
+  .live-dot { animation: live-dot 2.4s ease-in-out infinite; }
+  @keyframes live-dot {
+    0%,100% { box-shadow: 0 0 0 0 rgba(48,209,88,.4); }
+    50% { box-shadow: 0 0 0 7px rgba(48,209,88,0); }
+  }
+  .ev { opacity: 0; animation: 12s ease-in-out infinite; }
+  .ev-1 { animation-name: ev-1; }
+  .ev-2 { animation-name: ev-2; }
+  .ev-3 { animation-name: ev-3; }
+  .ev-4 { animation-name: ev-4; }
+  @keyframes ev-1 { 0% {opacity:0; transform:translateY(14px);} 4%,90% {opacity:1; transform:none;} 97%,100% {opacity:0; transform:translateY(-8px);} }
+  @keyframes ev-2 { 0%,7% {opacity:0; transform:translateY(14px);} 11%,90% {opacity:1; transform:none;} 97%,100% {opacity:0; transform:translateY(-8px);} }
+  @keyframes ev-3 { 0%,14% {opacity:0; transform:translateY(14px);} 18%,90% {opacity:1; transform:none;} 97%,100% {opacity:0; transform:translateY(-8px);} }
+  @keyframes ev-4 { 0%,21% {opacity:0; transform:translateY(14px);} 25%,90% {opacity:1; transform:none;} 97%,100% {opacity:0; transform:translateY(-8px);} }
+  .tbl { fill: #232327; animation: tbl-flash 8s ease-in-out infinite; }
+  .tb2 { animation-delay: 1s; } .tb3 { animation-delay: 2s; } .tb4 { animation-delay: 3s; }
+  .tb5 { animation-delay: 4s; } .tb6 { animation-delay: 5s; } .tb7 { animation-delay: 6s; } .tb8 { animation-delay: 7s; }
+  @keyframes tbl-flash { 0%,5% { fill: #ff6b1a; } 11%,100% { fill: #232327; } }
+  .spark { stroke-dasharray: 1; stroke-dashoffset: 1; animation: spark 6.5s ease-in-out infinite; }
+  @keyframes spark { 0%,6% { stroke-dashoffset: 1; } 55%,92% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: 1; } }
 
   /* ============ Scene 01 — chat ============ */
   .msg { opacity: 0; animation: 13s ease-in-out infinite; }
@@ -234,10 +243,24 @@
   .cursor-blink { animation: cursor-blink 1.1s step-end infinite; }
   @keyframes cursor-blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
 
+  /* ============ Funciones — mini SVGs ============ */
+  .qr-line { animation: qr-line 2.4s ease-in-out infinite alternate; }
+  @keyframes qr-line { from { transform: translateY(0); } to { transform: translateY(74px); } }
+  .wallet-drop { animation: wallet-drop 5s ease-in-out infinite; }
+  @keyframes wallet-drop { 0%,12% { transform: translateY(-26px); } 42%,80% { transform: translateY(4px); } 100% { transform: translateY(-26px); } }
+  .theme-cycle { animation: theme-cycle 7.5s ease-in-out infinite; }
+  @keyframes theme-cycle {
+    0%, 30%   { fill: #ff6b1a; }
+    33%, 63%  { fill: #1d1d1f; }
+    66%, 97%  { fill: #7c5cff; }
+    100%      { fill: #ff6b1a; }
+  }
+
   /* ============ Cards / misc ============ */
   .lift { transition: transform .55s cubic-bezier(.2,.7,.3,1), box-shadow .55s cubic-bezier(.2,.7,.3,1); }
   .lift:hover { transform: translateY(-6px); }
   .hairline { box-shadow: inset 0 0 0 1px rgba(0,0,0,.07); }
+  .card-fn { background: #fff; box-shadow: 0 2px 10px rgba(29,29,31,.04), 0 22px 55px -40px rgba(29,29,31,.18); }
   .btn-ember {
     background: linear-gradient(135deg, #ff7c30 0%, #f25b06 100%);
     color: #fff;
@@ -246,22 +269,22 @@
   }
   .btn-ember:hover { transform: scale(1.04); box-shadow: 0 20px 50px -14px rgba(255,107,26,.85); }
   .btn-ember:active { transform: scale(.96); }
-  .btn-ghost-dark {
-    background: rgba(255,255,255,.08); color: #fff;
-    box-shadow: inset 0 0 0 1px rgba(255,255,255,.14);
-    transition: background .3s ease, transform .4s cubic-bezier(.2,.7,.3,1);
+  .btn-ghost-light {
+    background: #fff; color: #1d1d1f;
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,.1), 0 10px 30px -20px rgba(0,0,0,.25);
+    transition: transform .4s cubic-bezier(.2,.7,.3,1), box-shadow .3s ease;
   }
-  .btn-ghost-dark:hover { background: rgba(255,255,255,.14); transform: scale(1.03); }
+  .btn-ghost-light:hover { transform: scale(1.03); box-shadow: inset 0 0 0 1px rgba(0,0,0,.16), 0 14px 36px -18px rgba(0,0,0,.3); }
 
-  /* ============ Menú phones (functional embed sizing) ============ */
-  .shell { background: linear-gradient(180deg, #1a1a1d 0%, #0508 100%); background-color:#0a0a0c; }
+  /* ============ Menú phones (embed sizing) ============ */
+  .shell { background: linear-gradient(180deg, #1a1a1d 0%, #050508 100%); background-color:#0a0a0c; }
   .shell-screen { border-radius: 2.1rem; overflow: hidden; background: #000; }
   .shell-viewport { position: relative; height: 100%; overflow: hidden; }
   .shell-embed { width: 100%; height: 100%; border: 0; background: #fff; display: block; }
   .shell-mask { position: absolute; top: 0; right: 0; width: 12px; height: 100%; background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.96) 60%, #fff 100%); pointer-events: none; }
   @media (min-width: 1024px) {
-    .shell-viewport { display: flex; justify-content: center; align-items: flex-start; }
-    .shell-embed { width: 390px; min-width: 390px; height: 121.9512195122%; transform: scale(0.82); transform-origin: top center; }
+    /* screen interior = 300px shell - 2*10px padding = 280px; iframe rendered at 390px and scaled 280/390 */
+    .shell-embed { width: 390px; min-width: 390px; height: 139.2857%; transform: scale(0.717948); transform-origin: top left; }
     .shell-mask { width: 0; }
   }
 
@@ -291,12 +314,13 @@
       <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><rect x="1" y="1" width="18" height="18" rx="5.5" fill="none" stroke="#ff6b1a" stroke-width="1.8"/><circle cx="10" cy="10" r="3.2" fill="#ff6b1a"/></svg>
       <span class="text-[15px] font-bold tracking-[-0.02em] text-white">Capta</span>
     </a>
-    <div class="hidden items-center gap-8 md:flex">
+    <div class="hidden items-center gap-7 md:flex">
       <a class="text-[12.5px] font-medium text-white/65 transition-colors hover:text-white" href="#features">Atiende</a>
       <a class="text-[12.5px] font-medium text-white/65 transition-colors hover:text-white" href="#menu">Vende</a>
       <a class="text-[12.5px] font-medium text-white/65 transition-colors hover:text-white" href="#operations">Cobra</a>
       <a class="text-[12.5px] font-medium text-white/65 transition-colors hover:text-white" href="#entrega">Entrega</a>
       <a class="text-[12.5px] font-medium text-white/65 transition-colors hover:text-white" href="#piensa">Piensa</a>
+      <a class="text-[12.5px] font-medium text-white/65 transition-colors hover:text-white" href="#funciones">Funciones</a>
       <a class="text-[12.5px] font-medium text-white/65 transition-colors hover:text-white" href="#pricing">Precios</a>
     </div>
     <button onclick="openModal()" class="rounded-full bg-white/10 px-4 py-1.5 text-[12.5px] font-semibold text-white ring-1 ring-white/15 transition hover:bg-[#ff6b1a] hover:ring-[#ff6b1a]">Demo</button>
@@ -305,178 +329,133 @@
 
 <main id="top">
 
-<!-- ════════════════ HERO — EL CHIP ════════════════ -->
-<section class="relative overflow-hidden bg-black text-white">
-  <div class="pointer-events-none absolute left-1/2 top-[58%] h-[560px] w-[860px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#ff6b1a]/[.07] blur-[120px]"></div>
+<!-- ════════════════ HERO — TORRE DE CONTROL ════════════════ -->
+<section class="relative overflow-hidden bg-[#f7f6f3] text-[#1d1d1f]">
+  <div class="pointer-events-none absolute -top-48 left-1/2 h-[560px] w-[980px] -translate-x-1/2 rounded-full bg-[#ff6b1a]/[.12] blur-[140px]"></div>
+  <div class="pointer-events-none absolute bottom-0 right-[-220px] h-[420px] w-[620px] rounded-full bg-[#ffbe8a]/[.18] blur-[120px]"></div>
 
-  <div class="relative mx-auto max-w-6xl px-5 pt-32 text-center md:px-8 md:pt-40">
-    <p class="t-eyebrow reveal in-view text-[#ff9345]">Capta · Sistema operativo gastronómico</p>
-    <h1 class="t-hero reveal in-view mx-auto mt-6 max-w-[13ch] text-[3.3rem] sm:text-7xl md:text-[6.4rem]" data-d="1">
-      El <span class="t-ember">cerebro</span> de tu restaurante.
-    </h1>
-    <p class="reveal in-view mx-auto mt-7 max-w-[36ch] text-lg font-medium leading-relaxed text-white/55 sm:max-w-xl md:text-[1.4rem]" data-d="2">
-      Una IA que atiende, vende, cobra, entrega y piensa por tu local. Todos los días, a toda hora.
-    </p>
-    <div class="reveal in-view mt-9 flex flex-col items-center justify-center gap-3.5 sm:flex-row" data-d="3">
-      <button onclick="openModal()" class="btn-ember inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-[15px] font-bold">
-        Solicitar demo
-        <span class="material-symbols-outlined text-[19px]">arrow_forward</span>
-      </button>
-      <a href="#pricing" class="btn-ghost-dark inline-flex items-center gap-1.5 rounded-full px-7 py-3.5 text-[15px] font-bold">
-        Ver planes
-        <span class="material-symbols-outlined text-[19px]">chevron_right</span>
-      </a>
+  <div class="relative mx-auto max-w-6xl px-5 pb-16 pt-32 md:px-8 md:pb-24 md:pt-44">
+    <div class="mx-auto max-w-4xl text-center">
+      <p class="t-eyebrow reveal in-view text-[#c8460c]">Plataforma integral · IA para gastronomía</p>
+      <h1 class="t-hero reveal in-view mx-auto mt-6 text-[2.9rem] sm:text-7xl md:text-[5.7rem]" data-d="1">
+        El <span class="t-ember">sistema operativo</span><br class="hidden sm:block"/> de tu restaurante.
+      </h1>
+      <p class="reveal in-view mx-auto mt-7 max-w-[38ch] text-lg font-medium leading-relaxed text-[#6e6e73] sm:max-w-2xl md:text-[1.35rem]" data-d="2">
+        Pedidos, mesas, reservas, pagos, marketing y clientes: toda la operación en un solo lugar, automatizada con IA las 24 horas.
+      </p>
+      <div class="reveal in-view mt-9 flex flex-col items-center justify-center gap-3.5 sm:flex-row" data-d="3">
+        <button onclick="openModal()" class="btn-ember inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-[15px] font-bold">
+          Solicitar demo
+          <span class="material-symbols-outlined text-[19px]">arrow_forward</span>
+        </button>
+        <a href="#pricing" class="btn-ghost-light inline-flex items-center gap-1.5 rounded-full px-7 py-3.5 text-[15px] font-bold">
+          Ver planes
+          <span class="material-symbols-outlined text-[19px]">chevron_right</span>
+        </a>
+      </div>
     </div>
-  </div>
 
-  <!-- Circuit scene · desktop -->
-  <div class="relative mx-auto mt-10 hidden max-w-6xl px-8 md:block">
-    <svg viewBox="0 0 1000 620" class="w-full" role="img" aria-label="Capta conecta WhatsApp, Instagram y llamadas con cocina, caja, stock, delivery y cliente">
-      <defs>
-        <linearGradient id="emberLine" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0" stop-color="#ff6b1a"/><stop offset="1" stop-color="#ffb27a"/>
-        </linearGradient>
-        <radialGradient id="chipGlow" cx=".5" cy=".5" r=".5">
-          <stop offset="0" stop-color="#ff6b1a" stop-opacity=".5"/><stop offset="1" stop-color="#ff6b1a" stop-opacity="0"/>
-        </radialGradient>
-        <pattern id="dotgrid" width="30" height="30" patternUnits="userSpaceOnUse">
-          <circle cx="1.5" cy="1.5" r="1.2" fill="#fff" opacity=".045"/>
-        </pattern>
-      </defs>
-      <rect width="1000" height="620" fill="url(#dotgrid)"/>
+    <!-- Torre de control en vivo -->
+    <div class="reveal in-view relative mx-auto mt-16 max-w-5xl md:mt-20" data-d="3">
+      <div class="rounded-[1.9rem] bg-[#0c0c0e] p-5 shadow-[0_70px_150px_-60px_rgba(0,0,0,.65)] ring-1 ring-black/40 md:p-7">
+        <!-- deck header -->
+        <div class="mb-5 flex items-center justify-between">
+          <div class="flex items-center gap-2.5">
+            <span class="live-dot h-2 w-2 rounded-full bg-[#30d158]"></span>
+            <p class="text-[12px] font-black uppercase tracking-[0.16em] text-white/50">Torre de control · en vivo</p>
+          </div>
+          <span class="hidden rounded-md bg-white/[.06] px-3 py-1 text-[11px] font-semibold text-white/40 sm:block">app.capta.ar</span>
+        </div>
 
-      <!-- input traces -->
-      <path id="tin1" class="trace" d="M200 150 H330 Q360 150 360 180 V240 Q360 270 390 270 H420"/>
-      <path id="tin2" class="trace" d="M200 310 H420"/>
-      <path id="tin3" class="trace" d="M200 470 H330 Q360 470 360 440 V380 Q360 350 390 350 H420"/>
-      <use href="#tin1" class="comet" pathLength="100" style="animation-delay:-.4s"/>
-      <use href="#tin2" class="comet" pathLength="100" style="animation-delay:-1.7s"/>
-      <use href="#tin3" class="comet" pathLength="100" style="animation-delay:-2.6s"/>
+        <div class="grid gap-4 lg:grid-cols-[1.15fr_.85fr]">
+          <!-- live feed -->
+          <div class="space-y-3">
+            <div class="ev ev-1 flex items-center gap-4 rounded-2xl bg-white/[.06] p-4 ring-1 ring-white/[.06]">
+              <span class="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[#ff6b1a]/15 text-[#ff9345]"><span class="material-symbols-outlined text-[22px]">forum</span></span>
+              <div class="min-w-0">
+                <p class="truncate text-[14px] font-bold text-white">Nuevo pedido por WhatsApp</p>
+                <p class="truncate text-[12.5px] font-medium text-white/45">#1844 · 2x burger doble + papas</p>
+              </div>
+              <span class="ml-auto shrink-0 rounded-full bg-white/[.08] px-2.5 py-1 text-[10.5px] font-bold text-white/50">hace 5 s</span>
+            </div>
+            <div class="ev ev-2 flex items-center gap-4 rounded-2xl bg-white/[.06] p-4 ring-1 ring-white/[.06]">
+              <span class="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[#30d158]/15 text-[#30d158]"><span class="material-symbols-outlined text-[22px]">verified</span></span>
+              <div class="min-w-0">
+                <p class="truncate text-[14px] font-bold text-white">Pago verificado</p>
+                <p class="truncate text-[12.5px] font-medium text-white/45">$12.400 · transferencia Mercado Pago</p>
+              </div>
+              <span class="ml-auto shrink-0 rounded-full bg-white/[.08] px-2.5 py-1 text-[10.5px] font-bold text-white/50">auto</span>
+            </div>
+            <div class="ev ev-3 flex items-center gap-4 rounded-2xl bg-white/[.06] p-4 ring-1 ring-white/[.06]">
+              <span class="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-white/10 text-white/80"><span class="material-symbols-outlined text-[22px]">print</span></span>
+              <div class="min-w-0">
+                <p class="truncate text-[14px] font-bold text-white">Comanda impresa en cocina</p>
+                <p class="truncate text-[12.5px] font-medium text-white/45">stock descontado en tiempo real</p>
+              </div>
+              <span class="ml-auto shrink-0 rounded-full bg-white/[.08] px-2.5 py-1 text-[10.5px] font-bold text-white/50">auto</span>
+            </div>
+            <div class="ev ev-4 flex items-center gap-4 rounded-2xl bg-white/[.06] p-4 ring-1 ring-white/[.06]">
+              <span class="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[#ff9345]/15 text-[#ffbe8a]"><span class="material-symbols-outlined text-[22px]">two_wheeler</span></span>
+              <div class="min-w-0">
+                <p class="truncate text-[14px] font-bold text-white">Repartidor asignado</p>
+                <p class="truncate text-[12.5px] font-medium text-white/45">seguimiento en vivo enviado al cliente</p>
+              </div>
+              <span class="ml-auto shrink-0 rounded-full bg-white/[.08] px-2.5 py-1 text-[10.5px] font-bold text-white/50">auto</span>
+            </div>
+          </div>
 
-      <!-- output traces -->
-      <path id="tout1" class="trace" d="M580 270 H620 Q650 270 650 240 V140 Q650 110 680 110 H800"/>
-      <path id="tout2" class="trace" d="M580 290 H640 Q670 290 670 260 V240 Q670 210 700 210 H800"/>
-      <path id="tout3" class="trace" d="M580 310 H800"/>
-      <path id="tout4" class="trace" d="M580 330 H640 Q670 330 670 360 V380 Q670 410 700 410 H800"/>
-      <path id="tout5" class="trace" d="M580 350 H620 Q650 350 650 380 V480 Q650 510 680 510 H800"/>
-      <use href="#tout1" class="comet" pathLength="100" style="animation-delay:-.9s"/>
-      <use href="#tout2" class="comet" pathLength="100" style="animation-delay:-2.1s"/>
-      <use href="#tout3" class="comet" pathLength="100" style="animation-delay:-.1s"/>
-      <use href="#tout4" class="comet" pathLength="100" style="animation-delay:-2.9s"/>
-      <use href="#tout5" class="comet" pathLength="100" style="animation-delay:-1.3s"/>
+          <!-- widgets -->
+          <div class="grid gap-4">
+            <div class="rounded-2xl bg-white/[.06] p-5 ring-1 ring-white/[.06]">
+              <div class="flex items-center justify-between">
+                <p class="text-[11px] font-black uppercase tracking-[0.15em] text-white/40">Mesas</p>
+                <span class="text-[11px] font-bold text-[#30d158]">8 activas</span>
+              </div>
+              <svg viewBox="0 0 232 104" class="mt-4 w-full" aria-hidden="true">
+                <g font-size="13" font-weight="700">
+                  <rect class="tbl"     x="0"   y="0"  width="46" height="46" rx="11"/>
+                  <rect class="tbl tb2" x="62"  y="0"  width="46" height="46" rx="11"/>
+                  <rect class="tbl tb3" x="124" y="0"  width="46" height="46" rx="11"/>
+                  <rect class="tbl tb4" x="186" y="0"  width="46" height="46" rx="11"/>
+                  <rect class="tbl tb5" x="0"   y="58" width="46" height="46" rx="11"/>
+                  <rect class="tbl tb6" x="62"  y="58" width="46" height="46" rx="11"/>
+                  <rect class="tbl tb7" x="124" y="58" width="46" height="46" rx="11"/>
+                  <rect class="tbl tb8" x="186" y="58" width="46" height="46" rx="11"/>
+                  <text x="23"  y="28" text-anchor="middle" fill="#ffffff66">1</text>
+                  <text x="85"  y="28" text-anchor="middle" fill="#ffffff66">2</text>
+                  <text x="147" y="28" text-anchor="middle" fill="#ffffff66">3</text>
+                  <text x="209" y="28" text-anchor="middle" fill="#ffffff66">4</text>
+                  <text x="23"  y="86" text-anchor="middle" fill="#ffffff66">5</text>
+                  <text x="85"  y="86" text-anchor="middle" fill="#ffffff66">6</text>
+                  <text x="147" y="86" text-anchor="middle" fill="#ffffff66">7</text>
+                  <text x="209" y="86" text-anchor="middle" fill="#ffffff66">8</text>
+                </g>
+              </svg>
+              <p class="mt-3.5 text-[12.5px] font-semibold text-white/55"><span class="text-[#ff9345]">Mesa 4</span> pidió la cuenta desde el QR</p>
+            </div>
+            <div class="rounded-2xl bg-white/[.06] p-5 ring-1 ring-white/[.06]">
+              <p class="text-[11px] font-black uppercase tracking-[0.15em] text-white/40">Ventas de hoy</p>
+              <p class="mt-2 text-[1.9rem] font-extrabold tracking-[-0.03em] text-white">$ 486.200</p>
+              <svg viewBox="0 0 220 56" class="mt-2 w-full" aria-hidden="true">
+                <path class="spark" pathLength="1" d="M4 48 L34 42 L64 44 L94 32 L124 26 L154 30 L184 12 L216 16" fill="none" stroke="#ff9345" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <p class="mt-2 text-[12.5px] font-semibold text-[#30d158]">▲ 18% vs. el viernes pasado</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-      <!-- input pills -->
-      <g>
-        <rect x="52" y="128" width="148" height="44" rx="22" class="hero-pill"/>
-        <circle cx="80" cy="150" r="4" fill="#ff6b1a"/>
-        <text x="96" y="155" class="hero-pill-txt">WhatsApp</text>
-      </g>
-      <g>
-        <rect x="52" y="288" width="148" height="44" rx="22" class="hero-pill"/>
-        <circle cx="80" cy="310" r="4" fill="#ff9345"/>
-        <text x="96" y="315" class="hero-pill-txt">Instagram</text>
-      </g>
-      <g>
-        <rect x="52" y="448" width="148" height="44" rx="22" class="hero-pill"/>
-        <circle cx="80" cy="470" r="4" fill="#ffbe8a"/>
-        <text x="96" y="475" class="hero-pill-txt">Llamadas</text>
-      </g>
-
-      <!-- output pills -->
-      <g>
-        <rect x="800" y="88" width="148" height="44" rx="22" class="hero-pill"/>
-        <circle cx="828" cy="110" r="4" fill="#ff6b1a"/>
-        <text x="844" y="115" class="hero-pill-txt">Cocina</text>
-      </g>
-      <g>
-        <rect x="800" y="188" width="148" height="44" rx="22" class="hero-pill"/>
-        <circle cx="828" cy="210" r="4" fill="#ff9345"/>
-        <text x="844" y="215" class="hero-pill-txt">Caja</text>
-      </g>
-      <g>
-        <rect x="800" y="288" width="148" height="44" rx="22" class="hero-pill"/>
-        <circle cx="828" cy="310" r="4" fill="#ffbe8a"/>
-        <text x="844" y="315" class="hero-pill-txt">Stock</text>
-      </g>
-      <g>
-        <rect x="800" y="388" width="148" height="44" rx="22" class="hero-pill"/>
-        <circle cx="828" cy="410" r="4" fill="#ff9345"/>
-        <text x="844" y="415" class="hero-pill-txt">Delivery</text>
-      </g>
-      <g>
-        <rect x="800" y="488" width="148" height="44" rx="22" class="hero-pill"/>
-        <circle cx="828" cy="510" r="4" fill="#ff6b1a"/>
-        <text x="844" y="515" class="hero-pill-txt">Cliente</text>
-      </g>
-
-      <!-- chip -->
-      <circle class="chip-glow" cx="500" cy="310" r="150" fill="url(#chipGlow)"/>
-      <rect class="chip-ring" x="404" y="214" width="192" height="192" rx="44" fill="none" stroke="#ff6b1a"/>
-      <rect x="420" y="230" width="160" height="160" rx="36" fill="#0b0b0d" stroke="url(#emberLine)" stroke-width="2.5"/>
-      <rect x="438" y="248" width="124" height="124" rx="26" fill="none" stroke="#ff6b1a" stroke-opacity=".16"/>
-      <text x="500" y="305" text-anchor="middle" font-size="30" font-weight="800" letter-spacing="-1.5" fill="#fff">Capta</text>
-      <text x="500" y="336" text-anchor="middle" font-size="13" font-weight="700" letter-spacing="4" fill="#ff9345">OS</text>
-    </svg>
-  </div>
-
-  <!-- Circuit scene · mobile -->
-  <div class="relative mx-auto mt-12 max-w-md px-6 md:hidden">
-    <svg viewBox="0 0 400 560" class="w-full" role="img" aria-label="Capta conecta tus canales con toda la operación">
-      <path id="min1" class="trace" d="M70 64 V110 Q70 140 100 140 H140 Q170 140 170 170 V200"/>
-      <path id="min2" class="trace" d="M200 64 V200"/>
-      <path id="min3" class="trace" d="M330 64 V110 Q330 140 300 140 H260 Q230 140 230 170 V200"/>
-      <use href="#min1" class="comet" pathLength="100" style="animation-delay:-.5s"/>
-      <use href="#min2" class="comet" pathLength="100" style="animation-delay:-1.8s"/>
-      <use href="#min3" class="comet" pathLength="100" style="animation-delay:-2.7s"/>
-      <path id="mout1" class="trace" d="M170 340 V370 Q170 400 140 400 H100 Q70 400 70 430 V496"/>
-      <path id="mout2" class="trace" d="M200 340 V496"/>
-      <path id="mout3" class="trace" d="M230 340 V370 Q230 400 260 400 H300 Q330 400 330 430 V496"/>
-      <use href="#mout1" class="comet" pathLength="100" style="animation-delay:-1.1s"/>
-      <use href="#mout2" class="comet" pathLength="100" style="animation-delay:-.2s"/>
-      <use href="#mout3" class="comet" pathLength="100" style="animation-delay:-2.2s"/>
-
-      <g>
-        <rect x="16" y="24" width="108" height="40" rx="20" class="hero-pill"/>
-        <text x="70" y="49" text-anchor="middle" class="hero-pill-txt" font-size="13">WhatsApp</text>
-      </g>
-      <g>
-        <rect x="146" y="24" width="108" height="40" rx="20" class="hero-pill"/>
-        <text x="200" y="49" text-anchor="middle" class="hero-pill-txt" font-size="13">Instagram</text>
-      </g>
-      <g>
-        <rect x="276" y="24" width="108" height="40" rx="20" class="hero-pill"/>
-        <text x="330" y="49" text-anchor="middle" class="hero-pill-txt" font-size="13">Llamadas</text>
-      </g>
-      <g>
-        <rect x="16" y="496" width="108" height="40" rx="20" class="hero-pill"/>
-        <text x="70" y="521" text-anchor="middle" class="hero-pill-txt" font-size="13">Cocina</text>
-      </g>
-      <g>
-        <rect x="146" y="496" width="108" height="40" rx="20" class="hero-pill"/>
-        <text x="200" y="521" text-anchor="middle" class="hero-pill-txt" font-size="13">Delivery</text>
-      </g>
-      <g>
-        <rect x="276" y="496" width="108" height="40" rx="20" class="hero-pill"/>
-        <text x="330" y="521" text-anchor="middle" class="hero-pill-txt" font-size="13">Cliente</text>
-      </g>
-
-      <circle class="chip-glow" cx="200" cy="270" r="110" fill="url(#chipGlow)"/>
-      <rect class="chip-ring" x="118" y="188" width="164" height="164" rx="38" fill="none" stroke="#ff6b1a"/>
-      <rect x="130" y="200" width="140" height="140" rx="32" fill="#0b0b0d" stroke="url(#emberLine)" stroke-width="2.5"/>
-      <text x="200" y="266" text-anchor="middle" font-size="26" font-weight="800" letter-spacing="-1.2" fill="#fff">Capta</text>
-      <text x="200" y="294" text-anchor="middle" font-size="12" font-weight="700" letter-spacing="4" fill="#ff9345">OS</text>
-    </svg>
-  </div>
-
-  <!-- stat strip -->
-  <div class="relative mx-auto flex max-w-4xl flex-wrap items-center justify-center gap-x-10 gap-y-3 px-6 pb-20 pt-14 text-[13px] font-semibold text-white/45 md:pb-24">
-    <span><span class="text-white">24/7</span> atención</span>
-    <span class="hidden h-1 w-1 rounded-full bg-[#ff6b1a] sm:block"></span>
-    <span><span class="text-white">3</span> canales</span>
-    <span class="hidden h-1 w-1 rounded-full bg-[#ff6b1a] sm:block"></span>
-    <span><span class="text-white">1</span> plataforma</span>
-    <span class="hidden h-1 w-1 rounded-full bg-[#ff6b1a] sm:block"></span>
-    <span><span class="text-white">0</span> mensajes sin responder</span>
+    <!-- stat strip -->
+    <div class="relative mx-auto flex max-w-4xl flex-wrap items-center justify-center gap-x-10 gap-y-3 pt-12 text-[13px] font-semibold text-[#86868b]">
+      <span><span class="text-[#1d1d1f]">24/7</span> atención</span>
+      <span class="hidden h-1 w-1 rounded-full bg-[#ff6b1a] sm:block"></span>
+      <span><span class="text-[#1d1d1f]">3</span> canales</span>
+      <span class="hidden h-1 w-1 rounded-full bg-[#ff6b1a] sm:block"></span>
+      <span><span class="text-[#1d1d1f]">1</span> plataforma</span>
+      <span class="hidden h-1 w-1 rounded-full bg-[#ff6b1a] sm:block"></span>
+      <span><span class="text-[#1d1d1f]">0</span> mensajes sin responder</span>
+    </div>
   </div>
 </section>
 
@@ -489,7 +468,7 @@
       <p class="mt-7 max-w-lg text-lg font-medium leading-relaxed text-[#6e6e73] md:text-xl">La IA de Capta contesta WhatsApp, Instagram y llamadas: resuelve dudas, pasa el menú, toma el pedido y confirma los datos. Tu equipo no toca el teléfono.</p>
       <ul class="mt-9 space-y-4 text-[15px] font-semibold text-[#1d1d1f]">
         <li class="flex items-center gap-3"><span class="grid h-7 w-7 place-items-center rounded-full bg-[#fff1e8] text-[#ff6b1a]"><span class="material-symbols-outlined text-[16px]">bolt</span></span>Responde al instante, incluso en hora pico</li>
-        <li class="flex items-center gap-3"><span class="grid h-7 w-7 place-items-center rounded-full bg-[#fff1e8] text-[#ff6b1a]"><span class="material-symbols-outlined text-[16px]">call</span></span>Atiende varias llamadas a la vez</li>
+        <li class="flex items-center gap-3"><span class="grid h-7 w-7 place-items-center rounded-full bg-[#fff1e8] text-[#ff6b1a]"><span class="material-symbols-outlined text-[16px]">call</span></span>Atiende varias llamadas a la vez y deriva cuando hace falta</li>
         <li class="flex items-center gap-3"><span class="grid h-7 w-7 place-items-center rounded-full bg-[#fff1e8] text-[#ff6b1a]"><span class="material-symbols-outlined text-[16px]">event_available</span></span>Toma reservas y controla mesas</li>
       </ul>
     </div>
@@ -569,12 +548,12 @@
     <div class="reveal mx-auto max-w-3xl text-center">
       <p class="t-eyebrow text-[#ff6b1a]">02 · Vende</p>
       <h2 class="t-display mt-5 text-4xl text-[#1d1d1f] sm:text-6xl md:text-[4.4rem]">Un menú que trabaja para vos.</h2>
-      <p class="mx-auto mt-7 max-w-2xl text-lg font-medium leading-relaxed text-[#6e6e73] md:text-xl">Diseño, promos, destacados y una experiencia mobile pensada para cerrar el pedido más rápido. Estos tres están en producción ahora mismo — tocalos.</p>
+      <p class="mx-auto mt-7 max-w-2xl text-lg font-medium leading-relaxed text-[#6e6e73] md:text-xl">Nada de plantillas genéricas: cada menú se diseña con el logo, los colores y el estilo de tu marca. Promos, destacados y una experiencia mobile que cierra el pedido más rápido. Estos tres están en producción — tocalos.</p>
     </div>
 
     <div class="mt-20 grid gap-14 lg:grid-cols-3 lg:gap-8">
       <div class="reveal min-w-0 lg:mt-10">
-        <div class="shell mx-auto w-[calc(100vw-3rem)] max-w-[20rem] rounded-[2.7rem] p-2.5 shadow-[0_50px_100px_-40px_rgba(0,0,0,.5)] md:w-full lg:max-w-[18.5rem]">
+        <div class="shell mx-auto w-[calc(100vw-3rem)] max-w-[20rem] rounded-[2.7rem] p-2.5 shadow-[0_50px_100px_-40px_rgba(0,0,0,.5)] md:w-full lg:w-[300px]">
           <div class="shell-screen relative">
             <div class="shell-viewport aspect-[9/19.5] bg-white">
               <iframe src="https://www.menu.net.ar/totta" title="Menú Totta" class="shell-embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -588,7 +567,7 @@
         </div>
       </div>
       <div class="reveal min-w-0" data-d="1">
-        <div class="shell mx-auto w-[calc(100vw-3rem)] max-w-[20rem] rounded-[2.7rem] p-2.5 shadow-[0_50px_100px_-40px_rgba(0,0,0,.55)] md:w-full lg:max-w-[18.5rem]">
+        <div class="shell mx-auto w-[calc(100vw-3rem)] max-w-[20rem] rounded-[2.7rem] p-2.5 shadow-[0_50px_100px_-40px_rgba(0,0,0,.55)] md:w-full lg:w-[300px]">
           <div class="shell-screen relative">
             <div class="shell-viewport aspect-[9/19.5] bg-white">
               <iframe src="https://www.menu.net.ar/burguer" title="Menú Burguer" class="shell-embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -602,7 +581,7 @@
         </div>
       </div>
       <div class="reveal min-w-0 lg:mt-10" data-d="2">
-        <div class="shell mx-auto w-[calc(100vw-3rem)] max-w-[20rem] rounded-[2.7rem] p-2.5 shadow-[0_50px_100px_-40px_rgba(0,0,0,.5)] md:w-full lg:max-w-[18.5rem]">
+        <div class="shell mx-auto w-[calc(100vw-3rem)] max-w-[20rem] rounded-[2.7rem] p-2.5 shadow-[0_50px_100px_-40px_rgba(0,0,0,.5)] md:w-full lg:w-[300px]">
           <div class="shell-screen relative">
             <div class="shell-viewport aspect-[9/19.5] bg-white">
               <iframe src="https://www.menu.net.ar/heladeria" title="Menú Heladería" class="shell-embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -625,7 +604,7 @@
     <div class="reveal max-w-3xl">
       <p class="t-eyebrow text-[#ff6b1a]">03 · Cobra</p>
       <h2 class="t-display mt-5 text-4xl text-[#1d1d1f] sm:text-6xl md:text-[4.4rem]">El pago se verifica solo.<br/>La comanda se imprime sola.</h2>
-      <p class="mt-7 max-w-xl text-lg font-medium leading-relaxed text-[#6e6e73] md:text-xl">Cuando entra una transferencia, Capta la cruza con el pedido, manda la comanda a cocina y descuenta el stock. Nadie revisa el homebanking en plena hora pico.</p>
+      <p class="mt-7 max-w-xl text-lg font-medium leading-relaxed text-[#6e6e73] md:text-xl">Cuando entra una transferencia, Capta la cruza con el pedido, manda la comanda a cocina y descuenta el stock. Sin errores, sin comprobantes falsos, sin revisar el homebanking en plena hora pico.</p>
     </div>
 
     <!-- SVG payment scene -->
@@ -715,9 +694,9 @@
         <p class="mt-2 text-[14px] font-medium leading-relaxed text-[#6e6e73]">Si un producto se termina, Capta deja de venderlo. Cada pedido descuenta en tiempo real.</p>
       </div>
       <div class="reveal rounded-3xl bg-[#f5f5f7] p-7 lift" data-d="2">
-        <span class="material-symbols-outlined text-3xl text-[#ff6b1a]">campaign</span>
-        <h3 class="mt-4 text-lg font-bold text-[#1d1d1f]">Marketing que vuelve</h3>
-        <p class="mt-2 text-[14px] font-medium leading-relaxed text-[#6e6e73]">Promos y mensajes inteligentes que reactivan clientes y suben el ticket promedio.</p>
+        <span class="material-symbols-outlined text-3xl text-[#ff6b1a]">qr_code_2</span>
+        <h3 class="mt-4 text-lg font-bold text-[#1d1d1f]">Pagos desde la mesa</h3>
+        <p class="mt-2 text-[14px] font-medium leading-relaxed text-[#6e6e73]">El cliente ve su cuenta con el QR, paga desde el celular y divide la cuenta si querés.</p>
       </div>
     </div>
   </div>
@@ -791,7 +770,7 @@
     <div class="reveal order-1 lg:order-2">
       <p class="t-eyebrow text-[#ff6b1a]">04 · Entrega</p>
       <h2 class="t-display mt-5 text-4xl text-[#1d1d1f] sm:text-6xl md:text-[4.4rem]">Zonas, repartidores y clientes. Coordinados.</h2>
-      <p class="mt-7 max-w-lg text-lg font-medium leading-relaxed text-[#6e6e73] md:text-xl">Trazá tus zonas en el mapa con precio por ubicación. Capta asigna el pedido al repartidor, calcula su liquidación y le manda al cliente un link para seguir todo en vivo.</p>
+      <p class="mt-7 max-w-lg text-lg font-medium leading-relaxed text-[#6e6e73] md:text-xl">Trazá tus zonas en el mapa con precio por ubicación. Capta asigna el pedido al repartidor, calcula su liquidación y le manda al cliente un link para seguir todo en vivo: recibido, en preparación, en camino, entregado.</p>
       <div class="mt-9 grid gap-3 sm:grid-cols-2">
         <div class="rounded-2xl bg-white p-6 lift">
           <span class="material-symbols-outlined text-[#ff6b1a]">map</span>
@@ -806,7 +785,7 @@
         <div class="rounded-2xl bg-white p-6 lift">
           <span class="material-symbols-outlined text-[#ff6b1a]">share_location</span>
           <p class="mt-2 text-[15px] font-bold text-[#1d1d1f]">Seguimiento en vivo</p>
-          <p class="mt-1 text-[13px] font-medium text-[#6e6e73]">Recibido → en cocina → en camino → entregado.</p>
+          <p class="mt-1 text-[13px] font-medium text-[#6e6e73]">Un link automático por cada pedido.</p>
         </div>
         <div class="rounded-2xl bg-white p-6 lift">
           <span class="material-symbols-outlined text-[#ff6b1a]">support_agent</span>
@@ -825,7 +804,7 @@
     <div class="reveal">
       <p class="t-eyebrow text-[#ff9345]">05 · Piensa</p>
       <h2 class="t-display mt-5 text-4xl sm:text-6xl md:text-[4.4rem]">Preguntale a tu restaurante <span class="t-ember">qué está pasando.</span></h2>
-      <p class="mt-7 max-w-lg text-lg font-medium leading-relaxed text-white/55 md:text-xl">El Gerente IA lee tu negocio y te lo cuenta en simple: ventas por canal, productos top, horas pico, clientes que hace rato no vuelven y qué campaña conviene lanzar.</p>
+      <p class="mt-7 max-w-lg text-lg font-medium leading-relaxed text-white/55 md:text-xl">El Gerente IA lee tu negocio y te lo cuenta en simple: ventas por canal, productos top, horas pico, clientes que hace rato no vuelven y qué campaña conviene lanzar. Desde cualquier lugar, en tiempo real.</p>
       <button onclick="openModal('analytic')" class="mt-9 inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-[15px] font-bold text-black transition-transform hover:scale-105 active:scale-95">
         Ver la analítica
         <span class="material-symbols-outlined text-[19px]">arrow_forward</span>
@@ -887,6 +866,141 @@
           <text x="322" y="372" font-size="12.5" font-weight="700" fill="#fff">Sugerencia: promo martes</text>
         </g>
       </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ FUNCIONES — LA PLATAFORMA COMPLETA ════════════════ -->
+<section id="funciones" class="scroll-mt-14 bg-[#f5f5f7] px-5 py-28 md:px-8 md:py-40">
+  <div class="mx-auto max-w-6xl">
+    <div class="reveal mx-auto max-w-3xl text-center">
+      <p class="t-eyebrow text-[#ff6b1a]">La plataforma completa</p>
+      <h2 class="t-display mt-5 text-4xl text-[#1d1d1f] sm:text-6xl md:text-[4.4rem]">Una sola plataforma.<br/>Todas las herramientas.</h2>
+      <p class="mx-auto mt-7 max-w-2xl text-lg font-medium leading-relaxed text-[#6e6e73] md:text-xl">Capta no solo responde mensajes: centraliza y automatiza la atención, los pedidos, las reservas, las llamadas, el marketing, los clientes y la administración del negocio.</p>
+    </div>
+
+    <!-- featured -->
+    <div class="mt-16 grid gap-5 md:grid-cols-2">
+      <div class="card-fn reveal lift flex flex-col items-center gap-7 rounded-[1.8rem] p-8 sm:flex-row md:p-9">
+        <div class="min-w-0 flex-1">
+          <h3 class="text-[1.35rem] font-extrabold tracking-tight text-[#1d1d1f]">Menú digital con tu identidad</h3>
+          <p class="mt-2.5 text-[14.5px] font-medium leading-relaxed text-[#6e6e73]">No es una plantilla genérica: logo, colores, categorías y estilo propios de tu marca. La experiencia se siente tuya, no igual a la de todos.</p>
+        </div>
+        <svg viewBox="0 0 90 130" class="w-[74px] shrink-0" aria-hidden="true">
+          <rect x="4" y="4" width="82" height="122" rx="16" fill="#fff" stroke="#1d1d1f" stroke-opacity=".16" stroke-width="2"/>
+          <rect class="theme-cycle" x="13" y="13" width="64" height="26" rx="8"/>
+          <rect x="13" y="49" width="64" height="9" rx="4.5" fill="#e8e6e2"/>
+          <rect x="13" y="64" width="48" height="9" rx="4.5" fill="#e8e6e2"/>
+          <rect x="13" y="79" width="56" height="9" rx="4.5" fill="#e8e6e2"/>
+          <circle cx="27" cy="108" r="6" fill="#ff6b1a"/>
+          <circle cx="45" cy="108" r="6" fill="#1d1d1f"/>
+          <circle cx="63" cy="108" r="6" fill="#7c5cff"/>
+        </svg>
+      </div>
+
+      <div class="card-fn reveal lift flex flex-col items-center gap-7 rounded-[1.8rem] p-8 sm:flex-row md:p-9" data-d="1">
+        <div class="min-w-0 flex-1">
+          <h3 class="text-[1.35rem] font-extrabold tracking-tight text-[#1d1d1f]">Mesas con QR</h3>
+          <p class="mt-2.5 text-[14.5px] font-medium leading-relaxed text-[#6e6e73]">El cliente escanea el QR de su mesa: ve el menú, pide, consulta su cuenta, paga desde el celular, divide la cuenta y deja su calificación.</p>
+        </div>
+        <svg viewBox="0 0 110 110" class="w-[80px] shrink-0" aria-hidden="true">
+          <rect x="5" y="5" width="100" height="100" rx="18" fill="#fff" stroke="#1d1d1f" stroke-opacity=".16" stroke-width="2"/>
+          <g fill="#1d1d1f">
+            <rect x="20" y="20" width="22" height="22" rx="5"/><rect x="26" y="26" width="10" height="10" rx="2" fill="#fff"/>
+            <rect x="68" y="20" width="22" height="22" rx="5"/><rect x="74" y="26" width="10" height="10" rx="2" fill="#fff"/>
+            <rect x="20" y="68" width="22" height="22" rx="5"/><rect x="26" y="74" width="10" height="10" rx="2" fill="#fff"/>
+            <rect x="52" y="22" width="7" height="7" rx="2"/><rect x="52" y="36" width="7" height="7" rx="2"/>
+            <rect x="68" y="52" width="7" height="7" rx="2"/><rect x="82" y="52" width="7" height="7" rx="2"/>
+            <rect x="52" y="52" width="7" height="7" rx="2"/><rect x="52" y="68" width="7" height="7" rx="2"/>
+            <rect x="68" y="68" width="7" height="7" rx="2"/><rect x="82" y="82" width="7" height="7" rx="2"/>
+            <rect x="52" y="82" width="7" height="7" rx="2"/><rect x="68" y="82" width="7" height="7" rx="2"/>
+          </g>
+          <rect class="qr-line" x="12" y="14" width="86" height="5" rx="2.5" fill="#ff6b1a" opacity=".9"/>
+        </svg>
+      </div>
+
+      <div class="card-fn reveal lift flex flex-col items-center gap-7 rounded-[1.8rem] p-8 sm:flex-row md:p-9">
+        <div class="min-w-0 flex-1">
+          <h3 class="text-[1.35rem] font-extrabold tracking-tight text-[#1d1d1f]">Marketing automatizado</h3>
+          <p class="mt-2.5 text-[14.5px] font-medium leading-relaxed text-[#6e6e73]">Capta analiza el comportamiento de tus clientes: detecta inactivos, envía promos personalizadas, recuerda fechas especiales y los hace volver. Solo.</p>
+        </div>
+        <svg viewBox="0 0 120 120" class="w-[84px] shrink-0" aria-hidden="true">
+          <circle class="pin-ring" cx="60" cy="60" r="34" fill="none" stroke="#ff6b1a" stroke-width="2"/>
+          <circle class="pin-ring" cx="60" cy="60" r="34" fill="none" stroke="#ff9345" stroke-width="2" style="animation-delay:1.3s"/>
+          <circle cx="60" cy="60" r="34" fill="#fff1e8"/>
+          <path d="M42 64 L82 42 L66 82 L58 66 Z" fill="#ff6b1a"/>
+          <path d="M58 66 L82 42" stroke="#c8460c" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+
+      <div class="card-fn reveal lift flex flex-col items-center gap-7 rounded-[1.8rem] p-8 sm:flex-row md:p-9" data-d="1">
+        <div class="min-w-0 flex-1">
+          <h3 class="text-[1.35rem] font-extrabold tracking-tight text-[#1d1d1f]">Fidelización con Wallet</h3>
+          <p class="mt-2.5 text-[14.5px] font-medium leading-relaxed text-[#6e6e73]">Puntos, beneficios y recompensas que aumentan la frecuencia de compra — con tarjeta de fidelización en Apple Wallet y Google Wallet.</p>
+        </div>
+        <svg viewBox="0 0 150 120" class="w-[96px] shrink-0" aria-hidden="true">
+          <defs>
+            <linearGradient id="cardGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#ff7c30"/><stop offset="1" stop-color="#f25b06"/>
+            </linearGradient>
+          </defs>
+          <rect x="18" y="52" width="114" height="56" rx="14" fill="#26262b"/>
+          <g class="wallet-drop">
+            <rect x="30" y="30" width="90" height="56" rx="10" fill="url(#cardGrad)"/>
+            <text x="42" y="52" font-size="10" font-weight="800" letter-spacing="1" fill="#fff">CAPTA CLUB</text>
+            <circle cx="46" cy="68" r="5" fill="#fff"/>
+            <circle cx="62" cy="68" r="5" fill="#fff"/>
+            <circle cx="78" cy="68" r="5" fill="#fff" opacity=".55"/>
+            <circle cx="94" cy="68" r="5" fill="#fff" opacity=".35"/>
+          </g>
+          <path d="M18 78 Q18 66 30 66 H120 Q132 66 132 78 V94 Q132 108 118 108 H32 Q18 108 18 94 Z" fill="#1d1d1f"/>
+          <text x="75" y="93" text-anchor="middle" font-size="9.5" font-weight="700" letter-spacing="1.5" fill="#ffffff88">WALLET</text>
+        </svg>
+      </div>
+    </div>
+
+    <!-- all functions -->
+    <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div class="card-fn reveal rounded-3xl p-7 lift">
+        <span class="material-symbols-outlined text-3xl text-[#ff6b1a]">monitoring</span>
+        <h3 class="mt-4 text-[16px] font-bold text-[#1d1d1f]">Dashboard operativo</h3>
+        <p class="mt-2 text-[13.5px] font-medium leading-relaxed text-[#6e6e73]">Pedidos, mesas, conversaciones, reservas, campañas y métricas en tiempo real.</p>
+      </div>
+      <div class="card-fn reveal rounded-3xl p-7 lift" data-d="1">
+        <span class="material-symbols-outlined text-3xl text-[#ff6b1a]">groups</span>
+        <h3 class="mt-4 text-[16px] font-bold text-[#1d1d1f]">CRM completo</h3>
+        <p class="mt-2 text-[13.5px] font-medium leading-relaxed text-[#6e6e73]">Historial, preferencias, conversaciones y frecuencia de cada cliente, centralizados.</p>
+      </div>
+      <div class="card-fn reveal rounded-3xl p-7 lift" data-d="2">
+        <span class="material-symbols-outlined text-3xl text-[#ff6b1a]">query_stats</span>
+        <h3 class="mt-4 text-[16px] font-bold text-[#1d1d1f]">Analíticas</h3>
+        <p class="mt-2 text-[13.5px] font-medium leading-relaxed text-[#6e6e73]">Ventas, productos más vendidos, clientes recurrentes y evolución de la facturación.</p>
+      </div>
+      <div class="card-fn reveal rounded-3xl p-7 lift" data-d="3">
+        <span class="material-symbols-outlined text-3xl text-[#ff6b1a]">support_agent</span>
+        <h3 class="mt-4 text-[16px] font-bold text-[#1d1d1f]">Llamadas con IA</h3>
+        <p class="mt-2 text-[13.5px] font-medium leading-relaxed text-[#6e6e73]">Atiende el teléfono, responde consultas, toma pedidos y agenda reservas.</p>
+      </div>
+      <div class="card-fn reveal rounded-3xl p-7 lift">
+        <span class="material-symbols-outlined text-3xl text-[#ff6b1a]">qr_code_scanner</span>
+        <h3 class="mt-4 text-[16px] font-bold text-[#1d1d1f]">Pagos desde la mesa</h3>
+        <p class="mt-2 text-[13.5px] font-medium leading-relaxed text-[#6e6e73]">Cuenta por QR, pago desde el celular y división de cuenta si lo habilitás.</p>
+      </div>
+      <div class="card-fn reveal rounded-3xl p-7 lift" data-d="1">
+        <span class="material-symbols-outlined text-3xl text-[#ff6b1a]">event_available</span>
+        <h3 class="mt-4 text-[16px] font-bold text-[#1d1d1f]">Reservas automáticas</h3>
+        <p class="mt-2 text-[13.5px] font-medium leading-relaxed text-[#6e6e73]">Por chat o por llamada, directo a la agenda y al control de mesas.</p>
+      </div>
+      <div class="card-fn reveal rounded-3xl p-7 lift" data-d="2">
+        <span class="material-symbols-outlined text-3xl text-[#ff6b1a]">tune</span>
+        <h3 class="mt-4 text-[16px] font-bold text-[#1d1d1f]">Configuración total</h3>
+        <p class="mt-2 text-[13.5px] font-medium leading-relaxed text-[#6e6e73]">Horarios, métodos de pago, zonas, mesas, reglas del negocio y comportamiento de la IA.</p>
+      </div>
+      <div class="card-fn reveal rounded-3xl p-7 lift" data-d="3">
+        <span class="material-symbols-outlined text-3xl text-[#ff6b1a]">domain</span>
+        <h3 class="mt-4 text-[16px] font-bold text-[#1d1d1f]">Multi-sucursal</h3>
+        <p class="mt-2 text-[13.5px] font-medium leading-relaxed text-[#6e6e73]">Escalá de un local a varias sucursales sin cambiar de sistema.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -988,7 +1102,7 @@
           <span class="text-[16px] font-bold text-[#1d1d1f] md:text-lg">¿Para qué tipo de local sirve?</span>
           <span class="qa-x material-symbols-outlined shrink-0 text-[#ff6b1a]">add</span>
         </button>
-        <div class="qa-body"><div><p class="px-7 pb-6 text-[14.5px] font-medium leading-relaxed text-[#6e6e73]">Restaurantes, bares, cafeterías, heladerías, hamburgueserías, pizzerías y locales gastronómicos que venden por delivery, take away o salón.</p></div></div>
+        <div class="qa-body"><div><p class="px-7 pb-6 text-[14.5px] font-medium leading-relaxed text-[#6e6e73]">Restaurantes, bares, cafeterías, heladerías, hamburgueserías, pizzerías y locales gastronómicos que venden por delivery, take away o salón. Funciona para una o varias sucursales.</p></div></div>
       </div>
       <div class="qa">
         <button class="qa-toggle flex w-full items-center justify-between gap-6 px-7 py-5 text-left" aria-expanded="false">
@@ -1002,7 +1116,7 @@
           <span class="text-[16px] font-bold text-[#1d1d1f] md:text-lg">¿Qué cambia en el día a día?</span>
           <span class="qa-x material-symbols-outlined shrink-0 text-[#ff6b1a]">add</span>
         </button>
-        <div class="qa-body"><div><p class="px-7 pb-6 text-[14.5px] font-medium leading-relaxed text-[#6e6e73]">Ningún mensaje sin responder, ningún pedido incompleto, pagos automatizados, equipo ordenado y clientes informados en tiempo real.</p></div></div>
+        <div class="qa-body"><div><p class="px-7 pb-6 text-[14.5px] font-medium leading-relaxed text-[#6e6e73]">Ningún mensaje sin responder, ningún pedido incompleto, pagos automatizados, equipo ordenado y clientes informados en tiempo real. Y el negocio se administra desde cualquier lugar.</p></div></div>
       </div>
     </div>
   </div>
@@ -1014,6 +1128,14 @@
   <div class="relative mx-auto max-w-4xl">
     <div class="reveal">
       <svg viewBox="0 0 120 120" class="mx-auto w-20" aria-hidden="true">
+        <defs>
+          <linearGradient id="emberLine" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#ff6b1a"/><stop offset="1" stop-color="#ffb27a"/>
+          </linearGradient>
+          <radialGradient id="chipGlow" cx=".5" cy=".5" r=".5">
+            <stop offset="0" stop-color="#ff6b1a" stop-opacity=".5"/><stop offset="1" stop-color="#ff6b1a" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
         <circle class="chip-glow" cx="60" cy="60" r="56" fill="url(#chipGlow)"/>
         <rect x="22" y="22" width="76" height="76" rx="20" fill="#0b0b0d" stroke="url(#emberLine)" stroke-width="2"/>
         <circle cx="60" cy="60" r="13" fill="#ff6b1a"/>
@@ -1046,6 +1168,7 @@
         <li><a href="#features" class="transition-colors hover:text-[#1d1d1f]">Plataforma</a></li>
         <li><a href="#operations" class="transition-colors hover:text-[#1d1d1f]">Operación</a></li>
         <li><a href="#menu" class="transition-colors hover:text-[#1d1d1f]">Menús</a></li>
+        <li><a href="#funciones" class="transition-colors hover:text-[#1d1d1f]">Funciones</a></li>
         <li><a href="#pricing" class="transition-colors hover:text-[#1d1d1f]">Precios</a></li>
         <li><a href="/automatizacion-gastronomica.html" class="transition-colors hover:text-[#1d1d1f]">Automatizaci&oacute;n gastron&oacute;mica</a></li>
       </ul>
