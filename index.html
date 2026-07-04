@@ -61,23 +61,87 @@
           "name": "¿Qué es Capta?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Capta es un sistema operativo con IA para restaurantes que automatiza atención, pedidos, pagos, caja, stock, delivery, menú digital, CRM, marketing y seguimiento del pedido."
+            "text": "Capta es una plataforma para negocios gastronómicos que automatiza la atención, los pedidos, las reservas, los pagos, el menú digital, el seguimiento de pedidos y parte del marketing del negocio desde un solo lugar."
           }
         },
         {
           "@type": "Question",
-          "name": "¿Capta sirve para automatizar gastronómicos?",
+          "name": "¿Capta es solo un bot de WhatsApp?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Sí. Capta está diseñado para automatización gastronómica en restaurantes, bares, cafeterías, heladerías, hamburgueserías, pizzerías y locales con delivery o take away."
+            "text": "No. Capta no es solo un bot. Es un sistema completo que puede responder WhatsApp, atender llamadas, tomar pedidos, gestionar reservas, mostrar el menú digital, recibir pedidos desde QR, enviar links de seguimiento, verificar pagos, organizar clientes y ayudar al negocio a vender más."
           }
         },
         {
           "@type": "Question",
-          "name": "¿Qué canales automatiza Capta?",
+          "name": "¿Para qué tipo de negocios sirve?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Capta automatiza WhatsApp, Instagram, llamadas, menú digital, pedidos web, pagos, comandas, seguimiento del pedido y marketing automático."
+            "text": "Capta está pensado para negocios gastronómicos que reciben pedidos, consultas o reservas por WhatsApp, Instagram, llamadas o desde un menú digital. Puede adaptarse a negocios chicos, locales con muchas ventas, delivery, atención en mesa o múltiples sucursales."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué necesito para empezar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Principalmente, tener el menú del negocio, horarios, métodos de pago, zonas de entrega y reglas básicas de atención. Con eso se puede configurar Capta para empezar a recibir pedidos y automatizar la atención."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Los clientes pueden pedir por WhatsApp?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí. Los clientes pueden escribir por WhatsApp, consultar productos, hacer preguntas, armar su pedido y recibir confirmación automáticamente. El pedido llega organizado al panel del negocio."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Se puede usar QR en las mesas?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí. Cada mesa puede tener su propio QR. El cliente puede escanearlo para ver el menú, pedir desde la mesa, consultar la cuenta, pagar y dejar una calificación."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Capta puede tomar reservas?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí. La IA puede consultar disponibilidad, tomar reservas, registrar datos del cliente y dejar todo organizado en el panel."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué pasa con los pagos por transferencia?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Capta puede verificar automáticamente si el pago por transferencia ingresó correctamente antes de marcar el pedido como pagado. Esto ayuda a evitar comprobantes falsos, errores o pedidos confirmados sin pago real."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Capta reemplaza al personal?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Capta ayuda al equipo a trabajar mejor. Automatiza tareas repetitivas como responder mensajes, tomar pedidos, confirmar pagos o hacer seguimientos, para que el personal pueda enfocarse en la atención y la operación del negocio."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Capta sirve si tengo muchos productos?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí. Capta está pensado para manejar menús grandes, categorías, adicionales, variantes y disponibilidad de productos. El objetivo es que el cliente pueda pedir de forma simple, incluso cuando el negocio tiene una carta amplia."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Es difícil de usar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. La idea de Capta es simplificar la operación diaria. El negocio tiene un panel central y los clientes interactúan desde canales que ya usan, como WhatsApp, Instagram, llamadas o el menú digital."
           }
         }
       ]
@@ -402,21 +466,8 @@
       </button>
     </div>
 
-    <!-- Dashboard browser frame -->
-    <div class="relative mt-24 w-full max-w-5xl md:mt-28">
-      <div class="browser-frame overflow-hidden rounded-[1.4rem] bg-white md:rounded-[1.9rem]">
-        <div class="flex items-center gap-1.5 border-b border-black/[.06] bg-[#fafafa] px-5 py-3.5">
-          <span class="h-2.5 w-2.5 rounded-full bg-[#ff5f57]"></span>
-          <span class="h-2.5 w-2.5 rounded-full bg-[#febc2e]"></span>
-          <span class="h-2.5 w-2.5 rounded-full bg-[#28c840]"></span>
-          <span class="mx-auto hidden rounded-md bg-black/[.045] px-16 py-1 text-[11px] font-medium text-[#6e6e73] sm:block">app.capta.ar</span>
-        </div>
-        <img src="./dashboard.png" alt="Dashboard operativo de Capta en tiempo real" class="w-full object-cover object-top" style="max-height: 560px;"/>
-      </div>
-    </div>
-
     <!-- Big statement -->
-    <div class="mt-24 max-w-4xl md:mt-32">
+    <div class="mt-28 max-w-4xl md:mt-36">
       <p class="t-display text-[2.5rem] text-[#1d1d1f] sm:text-6xl md:text-[4.4rem]">Imaginá tu negocio<br class="hidden sm:block"/> <span class="t-ember italic">atendiéndose solo.</span></p>
     </div>
   </div>
@@ -1146,35 +1197,77 @@
           <span class="text-[16px] font-bold text-[#1d1d1f] md:text-lg">¿Qué es Capta?</span>
           <span class="qa-x material-symbols-outlined shrink-0 text-[#ff6b1a]">add</span>
         </button>
-        <div class="qa-body"><div><p class="px-7 pb-6 text-[14.5px] font-medium leading-relaxed text-[#6e6e73]">Capta es un sistema operativo con IA para restaurantes que automatiza atención, pedidos, pagos, caja, stock, delivery, menú digital, CRM, marketing y seguimiento del pedido.</p></div></div>
+        <div class="qa-body"><div><p class="px-7 pb-6 text-[14.5px] font-medium leading-relaxed text-[#6e6e73]">Capta es una plataforma para negocios gastronómicos que automatiza la atención, los pedidos, las reservas, los pagos, el menú digital, el seguimiento de pedidos y parte del marketing del negocio desde un solo lugar.</p></div></div>
       </div>
       <div class="qa">
         <button class="qa-toggle flex w-full items-center justify-between gap-6 px-7 py-5 text-left" aria-expanded="false">
-          <span class="text-[16px] font-bold text-[#1d1d1f] md:text-lg">¿Qué partes del restaurante ordena?</span>
+          <span class="text-[16px] font-bold text-[#1d1d1f] md:text-lg">¿Capta es solo un bot de WhatsApp?</span>
           <span class="qa-x material-symbols-outlined shrink-0 text-[#ff6b1a]">add</span>
         </button>
-        <div class="qa-body"><div><p class="px-7 pb-6 text-[14.5px] font-medium leading-relaxed text-[#6e6e73]">Atención por WhatsApp e Instagram, pedidos, pagos, comandas, caja, stock, delivery, menú digital, CRM y marketing automático.</p></div></div>
+        <div class="qa-body"><div><p class="px-7 pb-6 text-[14.5px] font-medium leading-relaxed text-[#6e6e73]">No. Capta no es solo un bot. Es un sistema completo que puede responder WhatsApp, atender llamadas, tomar pedidos, gestionar reservas, mostrar el menú digital, recibir pedidos desde QR, enviar links de seguimiento, verificar pagos, organizar clientes y ayudar al negocio a vender más.</p></div></div>
       </div>
       <div class="qa">
         <button class="qa-toggle flex w-full items-center justify-between gap-6 px-7 py-5 text-left" aria-expanded="false">
-          <span class="text-[16px] font-bold text-[#1d1d1f] md:text-lg">¿Para qué tipo de local sirve?</span>
+          <span class="text-[16px] font-bold text-[#1d1d1f] md:text-lg">¿Para qué tipo de negocios sirve?</span>
           <span class="qa-x material-symbols-outlined shrink-0 text-[#ff6b1a]">add</span>
         </button>
-        <div class="qa-body"><div><p class="px-7 pb-6 text-[14.5px] font-medium leading-relaxed text-[#6e6e73]">Restaurantes, bares, cafeterías, heladerías, hamburgueserías, pizzerías y locales gastronómicos que venden por delivery, take away o salón. Funciona para una o varias sucursales.</p></div></div>
+        <div class="qa-body"><div><p class="px-7 pb-6 text-[14.5px] font-medium leading-relaxed text-[#6e6e73]">Capta está pensado para negocios gastronómicos que reciben pedidos, consultas o reservas por WhatsApp, Instagram, llamadas o desde un menú digital. Puede adaptarse a negocios chicos, locales con muchas ventas, delivery, atención en mesa o múltiples sucursales.</p></div></div>
       </div>
       <div class="qa">
         <button class="qa-toggle flex w-full items-center justify-between gap-6 px-7 py-5 text-left" aria-expanded="false">
-          <span class="text-[16px] font-bold text-[#1d1d1f] md:text-lg">¿Qué canales automatiza?</span>
+          <span class="text-[16px] font-bold text-[#1d1d1f] md:text-lg">¿Qué necesito para empezar?</span>
           <span class="qa-x material-symbols-outlined shrink-0 text-[#ff6b1a]">add</span>
         </button>
-        <div class="qa-body"><div><p class="px-7 pb-6 text-[14.5px] font-medium leading-relaxed text-[#6e6e73]">WhatsApp, Instagram, llamadas, menú digital, pedidos web, pagos, comandas, seguimiento del pedido y marketing automático.</p></div></div>
+        <div class="qa-body"><div><p class="px-7 pb-6 text-[14.5px] font-medium leading-relaxed text-[#6e6e73]">Principalmente, tener el menú del negocio, horarios, métodos de pago, zonas de entrega y reglas básicas de atención. Con eso se puede configurar Capta para empezar a recibir pedidos y automatizar la atención.</p></div></div>
       </div>
       <div class="qa">
         <button class="qa-toggle flex w-full items-center justify-between gap-6 px-7 py-5 text-left" aria-expanded="false">
-          <span class="text-[16px] font-bold text-[#1d1d1f] md:text-lg">¿Qué cambia en el día a día?</span>
+          <span class="text-[16px] font-bold text-[#1d1d1f] md:text-lg">¿Los clientes pueden pedir por WhatsApp?</span>
           <span class="qa-x material-symbols-outlined shrink-0 text-[#ff6b1a]">add</span>
         </button>
-        <div class="qa-body"><div><p class="px-7 pb-6 text-[14.5px] font-medium leading-relaxed text-[#6e6e73]">Ningún mensaje sin responder, ningún pedido incompleto, pagos automatizados, equipo ordenado y clientes informados en tiempo real. Y el negocio se administra desde cualquier lugar.</p></div></div>
+        <div class="qa-body"><div><p class="px-7 pb-6 text-[14.5px] font-medium leading-relaxed text-[#6e6e73]">Sí. Los clientes pueden escribir por WhatsApp, consultar productos, hacer preguntas, armar su pedido y recibir confirmación automáticamente. El pedido llega organizado al panel del negocio.</p></div></div>
+      </div>
+      <div class="qa">
+        <button class="qa-toggle flex w-full items-center justify-between gap-6 px-7 py-5 text-left" aria-expanded="false">
+          <span class="text-[16px] font-bold text-[#1d1d1f] md:text-lg">¿Se puede usar QR en las mesas?</span>
+          <span class="qa-x material-symbols-outlined shrink-0 text-[#ff6b1a]">add</span>
+        </button>
+        <div class="qa-body"><div><p class="px-7 pb-6 text-[14.5px] font-medium leading-relaxed text-[#6e6e73]">Sí. Cada mesa puede tener su propio QR. El cliente puede escanearlo para ver el menú, pedir desde la mesa, consultar la cuenta, pagar y dejar una calificación.</p></div></div>
+      </div>
+      <div class="qa">
+        <button class="qa-toggle flex w-full items-center justify-between gap-6 px-7 py-5 text-left" aria-expanded="false">
+          <span class="text-[16px] font-bold text-[#1d1d1f] md:text-lg">¿Capta puede tomar reservas?</span>
+          <span class="qa-x material-symbols-outlined shrink-0 text-[#ff6b1a]">add</span>
+        </button>
+        <div class="qa-body"><div><p class="px-7 pb-6 text-[14.5px] font-medium leading-relaxed text-[#6e6e73]">Sí. La IA puede consultar disponibilidad, tomar reservas, registrar datos del cliente y dejar todo organizado en el panel.</p></div></div>
+      </div>
+      <div class="qa">
+        <button class="qa-toggle flex w-full items-center justify-between gap-6 px-7 py-5 text-left" aria-expanded="false">
+          <span class="text-[16px] font-bold text-[#1d1d1f] md:text-lg">¿Qué pasa con los pagos por transferencia?</span>
+          <span class="qa-x material-symbols-outlined shrink-0 text-[#ff6b1a]">add</span>
+        </button>
+        <div class="qa-body"><div><p class="px-7 pb-6 text-[14.5px] font-medium leading-relaxed text-[#6e6e73]">Capta puede verificar automáticamente si el pago por transferencia ingresó correctamente antes de marcar el pedido como pagado. Esto ayuda a evitar comprobantes falsos, errores o pedidos confirmados sin pago real.</p></div></div>
+      </div>
+      <div class="qa">
+        <button class="qa-toggle flex w-full items-center justify-between gap-6 px-7 py-5 text-left" aria-expanded="false">
+          <span class="text-[16px] font-bold text-[#1d1d1f] md:text-lg">¿Capta reemplaza al personal?</span>
+          <span class="qa-x material-symbols-outlined shrink-0 text-[#ff6b1a]">add</span>
+        </button>
+        <div class="qa-body"><div><p class="px-7 pb-6 text-[14.5px] font-medium leading-relaxed text-[#6e6e73]">No. Capta ayuda al equipo a trabajar mejor. Automatiza tareas repetitivas como responder mensajes, tomar pedidos, confirmar pagos o hacer seguimientos, para que el personal pueda enfocarse en la atención y la operación del negocio.</p></div></div>
+      </div>
+      <div class="qa">
+        <button class="qa-toggle flex w-full items-center justify-between gap-6 px-7 py-5 text-left" aria-expanded="false">
+          <span class="text-[16px] font-bold text-[#1d1d1f] md:text-lg">¿Capta sirve si tengo muchos productos?</span>
+          <span class="qa-x material-symbols-outlined shrink-0 text-[#ff6b1a]">add</span>
+        </button>
+        <div class="qa-body"><div><p class="px-7 pb-6 text-[14.5px] font-medium leading-relaxed text-[#6e6e73]">Sí. Capta está pensado para manejar menús grandes, categorías, adicionales, variantes y disponibilidad de productos. El objetivo es que el cliente pueda pedir de forma simple, incluso cuando el negocio tiene una carta amplia.</p></div></div>
+      </div>
+      <div class="qa">
+        <button class="qa-toggle flex w-full items-center justify-between gap-6 px-7 py-5 text-left" aria-expanded="false">
+          <span class="text-[16px] font-bold text-[#1d1d1f] md:text-lg">¿Es difícil de usar?</span>
+          <span class="qa-x material-symbols-outlined shrink-0 text-[#ff6b1a]">add</span>
+        </button>
+        <div class="qa-body"><div><p class="px-7 pb-6 text-[14.5px] font-medium leading-relaxed text-[#6e6e73]">No. La idea de Capta es simplificar la operación diaria. El negocio tiene un panel central y los clientes interactúan desde canales que ya usan, como WhatsApp, Instagram, llamadas o el menú digital.</p></div></div>
       </div>
     </div>
   </div>
