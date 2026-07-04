@@ -102,253 +102,180 @@
 <style>
   :root {
     --ink: #1d1d1f;
-    --muted: #6e6e73;
-    --bg: #ffffff;
-    --bg-soft: #f5f5f7;
+    --paper: #ffffff;
+    --paper-dim: #f5f5f7;
+    --carbon: #000000;
+    --muted: #86868b;
     --accent: #ff6b1a;
-    --accent-warm: #ff9f45;
-    --accent-deep: #c8460c;
   }
   html, body { overflow-x: hidden; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    background: var(--bg);
+    background: var(--carbon);
     color: var(--ink);
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
   .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+  svg text { font-family: 'Inter', sans-serif; }
 
-  /* ---------- Typography ---------- */
-  .display {
-    font-weight: 800;
-    letter-spacing: -0.045em;
-    line-height: 1.02;
-  }
-  .display-hero {
-    font-weight: 800;
-    letter-spacing: -0.05em;
-    line-height: 0.98;
-  }
-  .eyebrow {
-    font-size: 0.8125rem;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-  }
-  .grad-text {
-    background: linear-gradient(92deg, #ff6b1a 0%, #ff9f45 55%, #ffb27a 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-  .grad-text-dark {
-    background: linear-gradient(92deg, #ff8a3d 0%, #ffb27a 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+  /* ============ Type ============ */
+  .t-display { font-weight: 800; letter-spacing: -0.05em; line-height: 1.0; }
+  .t-hero    { font-weight: 800; letter-spacing: -0.055em; line-height: 0.96; }
+  .t-eyebrow { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; }
+  .t-ember {
+    background: linear-gradient(95deg, #ff6b1a 0%, #ff9345 50%, #ffbe8a 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
   }
 
-  /* ---------- Nav ---------- */
-  .nav-glass {
-    background: rgba(255, 255, 255, 0.72);
-    backdrop-filter: saturate(180%) blur(22px);
-    -webkit-backdrop-filter: saturate(180%) blur(22px);
-    transition: box-shadow .4s ease, background .4s ease;
-  }
-  .nav-glass.scrolled {
-    background: rgba(255, 255, 255, 0.86);
-    box-shadow: 0 1px 0 rgba(0,0,0,0.06), 0 12px 40px -18px rgba(0,0,0,0.14);
+  /* ============ Nav ============ */
+  .nav-veil {
+    background: rgba(18, 18, 20, 0.72);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
   }
 
-  /* ---------- Scroll reveal ---------- */
+  /* ============ Reveal ============ */
   .reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 1s cubic-bezier(.21,.61,.35,1), transform 1s cubic-bezier(.21,.61,.35,1);
-    will-change: opacity, transform;
+    opacity: 0; transform: translateY(34px);
+    transition: opacity 1.05s cubic-bezier(.22,.6,.32,1), transform 1.05s cubic-bezier(.22,.6,.32,1);
   }
   .reveal.in-view { opacity: 1; transform: none; }
-  .reveal[data-delay="1"] { transition-delay: .12s; }
-  .reveal[data-delay="2"] { transition-delay: .24s; }
-  .reveal[data-delay="3"] { transition-delay: .36s; }
-  .reveal[data-delay="4"] { transition-delay: .48s; }
+  .reveal[data-d="1"] { transition-delay: .12s; }
+  .reveal[data-d="2"] { transition-delay: .24s; }
+  .reveal[data-d="3"] { transition-delay: .36s; }
 
-  /* ---------- Hero ---------- */
-  .hero-aurora {
-    background:
-      radial-gradient(58% 42% at 18% 12%, rgba(255,107,26,0.09), transparent 62%),
-      radial-gradient(50% 40% at 84% 18%, rgba(255,159,69,0.11), transparent 60%),
-      radial-gradient(60% 46% at 50% 96%, rgba(255,214,189,0.22), transparent 64%),
-      linear-gradient(180deg, #ffffff 0%, #fbf9f7 100%);
-  }
-  .hero-orbit { position: absolute; left: 50%; top: 46%; width: min(1180px, 150vw); transform: translate(-50%, -50%); pointer-events: none; }
-  .orbit-ring { fill: none; stroke: rgba(29,29,31,0.07); stroke-width: 1; }
-  .orbit-spin   { transform-origin: 450px 450px; animation: orbit-spin 46s linear infinite; }
-  .orbit-spin-2 { transform-origin: 450px 450px; animation: orbit-spin 64s linear infinite reverse; }
-  .orbit-spin-3 { transform-origin: 450px 450px; animation: orbit-spin 88s linear infinite; }
-  @keyframes orbit-spin { to { transform: rotate(360deg); } }
+  /* ============ Scenes: pause until visible ============ */
+  .scene [class*="ph-"], .scene .bar, .scene .ln-draw { animation-play-state: paused; }
+  .scene.in-view [class*="ph-"], .scene.in-view .bar, .scene.in-view .ln-draw { animation-play-state: running; }
 
-  .underline-draw { stroke-dasharray: 1; stroke-dashoffset: 1; }
-  .in-view .underline-draw, .loaded .underline-draw { animation: draw-line 1.1s cubic-bezier(.55,.06,.35,1) .55s forwards; }
-  @keyframes draw-line { to { stroke-dashoffset: 0; } }
+  /* ============ Hero circuit ============ */
+  .trace { fill: none; stroke: rgba(255,255,255,.09); stroke-width: 1.5; stroke-linecap: round; }
+  .comet {
+    fill: none; stroke: url(#emberLine); stroke-width: 2.25; stroke-linecap: round;
+    stroke-dasharray: 13 87;
+    animation: comet 3.4s linear infinite;
+  }
+  @keyframes comet { from { stroke-dashoffset: 100; } to { stroke-dashoffset: 0; } }
+  .chip-glow { animation: chip-breathe 5.5s ease-in-out infinite; }
+  @keyframes chip-breathe { 0%,100% { opacity: .3; } 50% { opacity: .75; } }
+  .chip-ring { animation: chip-ring 5.5s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+  @keyframes chip-ring { 0%,100% { opacity: .14; transform: scale(1); } 50% { opacity: .3; transform: scale(1.015); } }
+  .hero-pill { fill: rgba(255,255,255,.05); stroke: rgba(255,255,255,.12); }
+  .hero-pill-txt { fill: rgba(255,255,255,.88); font-size: 14px; font-weight: 600; }
 
-  .float-slow { animation: float-y 7s ease-in-out infinite; }
-  .float-slower { animation: float-y 9s ease-in-out infinite; animation-delay: -3.2s; }
-  @keyframes float-y { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+  /* ============ Scene 01 — chat ============ */
+  .msg { opacity: 0; animation: 13s ease-in-out infinite; }
+  .m1 { animation-name: msg-1; }
+  .mt1 { animation-name: msg-t1; }
+  .m2 { animation-name: msg-2; }
+  .m3 { animation-name: msg-3; }
+  .mt2 { animation-name: msg-t2; }
+  .m4 { animation-name: msg-4; }
+  .m5 { animation-name: msg-5; }
+  @keyframes msg-1  { 0% {opacity:0; transform:translateY(12px);} 3%,90% {opacity:1; transform:none;} 97%,100% {opacity:0; transform:translateY(-6px);} }
+  @keyframes msg-t1 { 0%,6% {opacity:0;} 9%,15% {opacity:1;} 18%,100% {opacity:0;} }
+  @keyframes msg-2  { 0%,18% {opacity:0; transform:translateY(12px);} 21%,90% {opacity:1; transform:none;} 97%,100% {opacity:0; transform:translateY(-6px);} }
+  @keyframes msg-3  { 0%,36% {opacity:0; transform:translateY(12px);} 39%,90% {opacity:1; transform:none;} 97%,100% {opacity:0; transform:translateY(-6px);} }
+  @keyframes msg-t2 { 0%,44% {opacity:0;} 47%,53% {opacity:1;} 56%,100% {opacity:0;} }
+  @keyframes msg-4  { 0%,56% {opacity:0; transform:translateY(12px);} 59%,90% {opacity:1; transform:none;} 97%,100% {opacity:0; transform:translateY(-6px);} }
+  @keyframes msg-5  { 0%,72% {opacity:0; transform:translateY(10px) scale(.96);} 76%,90% {opacity:1; transform:none;} 97%,100% {opacity:0;} }
+  .tydot { animation: tydot 1s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+  .tydot2 { animation-delay: .16s; } .tydot3 { animation-delay: .32s; }
+  @keyframes tydot { 0%,100% { transform: translateY(0); opacity:.45; } 40% { transform: translateY(-3.5px); opacity:1; } }
 
-  .glass-chip {
-    background: rgba(255,255,255,0.78);
-    backdrop-filter: blur(18px) saturate(160%);
-    -webkit-backdrop-filter: blur(18px) saturate(160%);
-    box-shadow: 0 24px 60px -28px rgba(29,29,31,0.32), inset 0 0 0 1px rgba(255,255,255,0.7);
-  }
-  .device-frame {
-    box-shadow:
-      0 0 0 1px rgba(0,0,0,0.05),
-      0 40px 110px -40px rgba(29,29,31,0.4),
-      0 18px 50px -30px rgba(29,29,31,0.28);
-  }
-  .pulse-dot { animation: pulse-dot 2.6s ease-in-out infinite; }
-  @keyframes pulse-dot {
-    0%,100% { box-shadow: 0 0 0 0 rgba(255,107,26,0.35); }
-    50% { box-shadow: 0 0 0 8px rgba(255,107,26,0); }
-  }
+  /* ============ Scene 03 — cobro/comanda ============ */
+  .ph-card   { opacity:0; animation: ph-card 9s ease-in-out infinite; }
+  .ph-dash1  { opacity:0; animation: ph-dash1 9s ease-in-out infinite; }
+  .ph-check  { opacity:0; animation: ph-check 9s ease-in-out infinite; }
+  .ph-tick   { stroke-dasharray: 1; stroke-dashoffset: 1; animation: ph-tick 9s ease-in-out infinite; }
+  .ph-dash2  { opacity:0; animation: ph-dash2 9s ease-in-out infinite; }
+  .ph-print  { animation: ph-print 9s ease-in-out infinite; }
+  .ph-chip1  { opacity:0; animation: ph-chip1 9s ease-in-out infinite; }
+  .ph-chip2  { opacity:0; animation: ph-chip2 9s ease-in-out infinite; }
+  .ph-chip3  { opacity:0; animation: ph-chip3 9s ease-in-out infinite; }
+  .dashflow  { stroke-dasharray: 4 8; animation: dashflow 1s linear infinite; }
+  @keyframes dashflow { to { stroke-dashoffset: -24; } }
+  @keyframes ph-card  { 0% {opacity:0; transform:translateX(-26px);} 6%,88% {opacity:1; transform:none;} 96%,100% {opacity:0;} }
+  @keyframes ph-dash1 { 0%,7% {opacity:0;} 11%,88% {opacity:1;} 96%,100% {opacity:0;} }
+  @keyframes ph-check { 0%,11% {opacity:0; transform:scale(.85); transform-origin:center; transform-box:fill-box;} 15%,88% {opacity:1; transform:scale(1);} 96%,100% {opacity:0;} }
+  @keyframes ph-tick  { 0%,14% {stroke-dashoffset:1;} 22%,100% {stroke-dashoffset:0;} }
+  @keyframes ph-dash2 { 0%,18% {opacity:0;} 22%,88% {opacity:1;} 96%,100% {opacity:0;} }
+  @keyframes ph-print { 0%,22% {transform:translateY(-118px);} 42%,100% {transform:translateY(0);} }
+  @keyframes ph-chip1 { 0%,46% {opacity:0; transform:translateY(8px);}  51%,88% {opacity:1; transform:none;} 96%,100% {opacity:0;} }
+  @keyframes ph-chip2 { 0%,52% {opacity:0; transform:translateY(8px);}  57%,88% {opacity:1; transform:none;} 96%,100% {opacity:0;} }
+  @keyframes ph-chip3 { 0%,58% {opacity:0; transform:translateY(8px);}  63%,88% {opacity:1; transform:none;} 96%,100% {opacity:0;} }
 
-  /* ---------- Flow pipeline (dark section) ---------- */
-  .flow-base { stroke: rgba(255,255,255,0.10); }
-  .flow-dash {
-    stroke-dasharray: 3 20;
-    stroke-linecap: round;
-    animation: flow-dash 1.6s linear infinite;
-  }
-  @keyframes flow-dash { to { stroke-dashoffset: -46; } }
-  .node-pulse { transform-origin: center; transform-box: fill-box; animation: node-pulse 3.4s ease-out infinite; }
-  .node-pulse-2 { animation-delay: .55s; }
-  .node-pulse-3 { animation-delay: 1.1s; }
-  .node-pulse-4 { animation-delay: 1.65s; }
-  .node-pulse-5 { animation-delay: 2.2s; }
-  @keyframes node-pulse {
-    0% { transform: scale(.6); opacity: .9; }
-    70%, 100% { transform: scale(2.1); opacity: 0; }
-  }
-  .flow-step-v { position: relative; }
-  .flow-step-v::before {
-    content: ""; position: absolute; left: 1.05rem; top: 2.6rem; bottom: -1.4rem; width: 2px;
-    background: linear-gradient(180deg, rgba(255,107,26,.7), rgba(255,159,69,.16));
-  }
-  .flow-step-v:last-child::before { display: none; }
+  /* ============ Scene 04 — mapa ============ */
+  .ph-route { stroke-dasharray: 1; stroke-dashoffset: 1; animation: ph-route 10s ease-in-out infinite; }
+  @keyframes ph-route { 0%,5% {stroke-dashoffset:1;} 38%,92% {stroke-dashoffset:0;} 98%,100% {stroke-dashoffset:1;} }
+  .ph-eta { opacity:0; animation: ph-eta 10s ease-in-out infinite; }
+  @keyframes ph-eta { 0%,40% {opacity:0; transform:translateY(6px);} 46%,90% {opacity:1; transform:none;} 96%,100% {opacity:0;} }
+  .zone-pulse { animation: zone-pulse 4s ease-in-out infinite; }
+  @keyframes zone-pulse { 0%,100% { fill-opacity: .07; } 50% { fill-opacity: .16; } }
+  .pin-ring { transform-origin: center; transform-box: fill-box; animation: pin-ring 2.6s ease-out infinite; }
+  @keyframes pin-ring { 0% { transform: scale(.4); opacity: .8; } 75%,100% { transform: scale(2); opacity: 0; } }
 
-  /* ---------- Chat animation ---------- */
-  .chat-step { opacity: 0; transform: translateY(16px) scale(0.98); animation-duration: 14s; animation-timing-function: ease-in-out; animation-iteration-count: infinite; animation-fill-mode: both; }
-  .chat-step-1 { animation-name: chat-flow-1; }
-  .chat-step-2 { animation-name: chat-flow-2; }
-  .chat-step-3 { animation-name: chat-flow-3; }
-  .chat-step-4 { animation-name: chat-flow-4; }
-  @keyframes chat-flow-1 {
-    0% { opacity: 0; transform: translateY(16px) scale(0.98); }
-    5%, 86% { opacity: 1; transform: translateY(0) scale(1); }
-    96%, 100% { opacity: 0; transform: translateY(-10px) scale(0.99); }
-  }
-  @keyframes chat-flow-2 {
-    0%, 14% { opacity: 0; transform: translateY(16px) scale(0.98); }
-    19%, 86% { opacity: 1; transform: translateY(0) scale(1); }
-    96%, 100% { opacity: 0; transform: translateY(-10px) scale(0.99); }
-  }
-  @keyframes chat-flow-3 {
-    0%, 31% { opacity: 0; transform: translateY(16px) scale(0.98); }
-    36%, 86% { opacity: 1; transform: translateY(0) scale(1); }
-    96%, 100% { opacity: 0; transform: translateY(-10px) scale(0.99); }
-  }
-  @keyframes chat-flow-4 {
-    0%, 48% { opacity: 0; transform: translateY(16px) scale(0.98); }
-    53%, 86% { opacity: 1; transform: translateY(0) scale(1); }
-    96%, 100% { opacity: 0; transform: translateY(-10px) scale(0.99); }
-  }
+  /* ============ Scene 05 — analítica ============ */
+  .bar { transform-origin: bottom center; transform-box: fill-box; transform: scaleY(0); animation: bar-grow 11s cubic-bezier(.2,.7,.3,1) infinite; }
+  .bar1 { animation-delay: 0s; } .bar2 { animation-delay: .12s; } .bar3 { animation-delay: .24s; }
+  .bar4 { animation-delay: .36s; } .bar5 { animation-delay: .48s; } .bar6 { animation-delay: .6s; } .bar7 { animation-delay: .72s; }
+  @keyframes bar-grow { 0%,8% {transform:scaleY(0);} 16%,90% {transform:scaleY(1);} 97%,100% {transform:scaleY(0);} }
+  .ln-draw { stroke-dasharray: 1; stroke-dashoffset: 1; animation: ln-draw 11s ease-in-out infinite; }
+  @keyframes ln-draw { 0%,20% {stroke-dashoffset:1;} 42%,92% {stroke-dashoffset:0;} 98%,100% {stroke-dashoffset:1;} }
+  .ph-ask { opacity:0; animation: ph-ask 11s ease-in-out infinite; }
+  @keyframes ph-ask { 0% {opacity:0; transform:translateY(8px);} 5%,90% {opacity:1; transform:none;} 97%,100% {opacity:0;} }
+  .ph-ans1 { opacity:0; animation: ph-ans1 11s ease-in-out infinite; }
+  .ph-ans2 { opacity:0; animation: ph-ans2 11s ease-in-out infinite; }
+  .ph-peak { opacity:0; animation: ph-peak 11s ease-in-out infinite; }
+  @keyframes ph-peak { 0%,44% {opacity:0; transform:translateY(6px);} 50%,90% {opacity:1; transform:none;} 97%,100% {opacity:0;} }
+  @keyframes ph-ans1 { 0%,52% {opacity:0; transform:translateY(8px);} 58%,90% {opacity:1; transform:none;} 97%,100% {opacity:0;} }
+  @keyframes ph-ans2 { 0%,58% {opacity:0; transform:translateY(8px);} 64%,90% {opacity:1; transform:none;} 97%,100% {opacity:0;} }
+  .cursor-blink { animation: cursor-blink 1.1s step-end infinite; }
+  @keyframes cursor-blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
 
-  /* ---------- Tracking timeline ---------- */
-  .tracking-line-fill { transform-origin: top; animation: tracking-line 8s cubic-bezier(.65,0,.25,1) infinite; }
-  @keyframes tracking-line { 0%, 8% { transform: scaleY(.04); } 28% { transform: scaleY(.34); } 50% { transform: scaleY(.66); } 72%, 86% { transform: scaleY(1); } 100% { transform: scaleY(.04); } }
-  .tracking-step { animation: tracking-step 8s ease-in-out infinite; }
-  .tracking-step-2 { animation-delay: .9s; }
-  .tracking-step-3 { animation-delay: 1.8s; }
-  .tracking-step-4 { animation-delay: 2.7s; }
-  @keyframes tracking-step { 0%, 10% { opacity: .38; transform: translateY(3px); } 22%, 78% { opacity: 1; transform: translateY(0); } 100% { opacity: .38; transform: translateY(3px); } }
+  /* ============ Cards / misc ============ */
+  .lift { transition: transform .55s cubic-bezier(.2,.7,.3,1), box-shadow .55s cubic-bezier(.2,.7,.3,1); }
+  .lift:hover { transform: translateY(-6px); }
+  .hairline { box-shadow: inset 0 0 0 1px rgba(0,0,0,.07); }
+  .btn-ember {
+    background: linear-gradient(135deg, #ff7c30 0%, #f25b06 100%);
+    color: #fff;
+    box-shadow: 0 14px 38px -14px rgba(255,107,26,.7);
+    transition: transform .4s cubic-bezier(.2,.7,.3,1), box-shadow .4s ease;
+  }
+  .btn-ember:hover { transform: scale(1.04); box-shadow: 0 20px 50px -14px rgba(255,107,26,.85); }
+  .btn-ember:active { transform: scale(.96); }
+  .btn-ghost-dark {
+    background: rgba(255,255,255,.08); color: #fff;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.14);
+    transition: background .3s ease, transform .4s cubic-bezier(.2,.7,.3,1);
+  }
+  .btn-ghost-dark:hover { background: rgba(255,255,255,.14); transform: scale(1.03); }
 
-  /* ---------- Cards ---------- */
-  .card-soft {
-    background: #fff;
-    border-radius: 1.75rem;
-    box-shadow: 0 2px 10px rgba(29,29,31,0.04), 0 24px 60px -40px rgba(29,29,31,0.18);
-    transition: transform .5s cubic-bezier(.21,.61,.35,1), box-shadow .5s cubic-bezier(.21,.61,.35,1);
-  }
-  .card-soft:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 14px rgba(29,29,31,0.05), 0 40px 90px -44px rgba(29,29,31,0.3);
-  }
-  .card-dark {
-    background: linear-gradient(160deg, #131316 0%, #000 100%);
-    border-radius: 1.75rem;
-    box-shadow: 0 30px 80px -44px rgba(0,0,0,0.6);
-    transition: transform .5s cubic-bezier(.21,.61,.35,1);
-  }
-  .card-dark:hover { transform: translateY(-5px); }
-
-  /* ---------- Phone / menú embeds ---------- */
-  .phone-shell { background: linear-gradient(180deg, #17171a 0%, #060608 100%); }
-  .phone-screen { border-radius: 2.2rem; overflow: hidden; background: #000; }
-  .phone-viewport { position: relative; height: 100%; overflow: hidden; }
-  .phone-embed { width: 100%; height: 100%; border: 0; background: #fff; display: block; }
-  .phone-scroll-mask { position: absolute; top: 0; right: 0; width: 12px; height: 100%; background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.96) 60%, rgba(255,255,255,1) 100%); pointer-events: none; }
+  /* ============ Menú phones (functional embed sizing) ============ */
+  .shell { background: linear-gradient(180deg, #1a1a1d 0%, #0508 100%); background-color:#0a0a0c; }
+  .shell-screen { border-radius: 2.1rem; overflow: hidden; background: #000; }
+  .shell-viewport { position: relative; height: 100%; overflow: hidden; }
+  .shell-embed { width: 100%; height: 100%; border: 0; background: #fff; display: block; }
+  .shell-mask { position: absolute; top: 0; right: 0; width: 12px; height: 100%; background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.96) 60%, #fff 100%); pointer-events: none; }
   @media (min-width: 1024px) {
-    .phone-viewport { display: flex; justify-content: center; align-items: flex-start; }
-    .phone-embed {
-      width: 390px;
-      min-width: 390px;
-      height: 121.9512195122%;
-      transform: scale(0.82);
-      transform-origin: top center;
-    }
-    .phone-scroll-mask { width: 0; }
+    .shell-viewport { display: flex; justify-content: center; align-items: flex-start; }
+    .shell-embed { width: 390px; min-width: 390px; height: 121.9512195122%; transform: scale(0.82); transform-origin: top center; }
+    .shell-mask { width: 0; }
   }
 
-  /* ---------- FAQ accordion ---------- */
-  .faq-item { border-bottom: 1px solid rgba(29,29,31,0.09); }
-  .faq-answer {
-    display: grid;
-    grid-template-rows: 0fr;
-    transition: grid-template-rows .55s cubic-bezier(.21,.61,.35,1);
-  }
-  .faq-item.open .faq-answer { grid-template-rows: 1fr; }
-  .faq-answer > div { overflow: hidden; }
-  .faq-chevron { transition: transform .45s cubic-bezier(.21,.61,.35,1); }
-  .faq-item.open .faq-chevron { transform: rotate(45deg); }
-
-  /* ---------- Ticker ---------- */
-  .ticker-track { display: flex; gap: 3.5rem; width: max-content; animation: ticker 34s linear infinite; }
-  @keyframes ticker { to { transform: translateX(-50%); } }
-
-  /* ---------- Buttons ---------- */
-  .btn-primary {
-    background: var(--ink);
-    color: #fff;
-    transition: transform .35s cubic-bezier(.21,.61,.35,1), background .3s ease, box-shadow .35s ease;
-  }
-  .btn-primary:hover { transform: scale(1.03); background: #000; box-shadow: 0 18px 45px -20px rgba(0,0,0,0.5); }
-  .btn-primary:active { transform: scale(.97); }
-  .btn-accent {
-    background: linear-gradient(135deg, #ff6b1a 0%, #f0560a 100%);
-    color: #fff;
-    box-shadow: 0 16px 40px -18px rgba(255,107,26,0.65);
-    transition: transform .35s cubic-bezier(.21,.61,.35,1), box-shadow .35s ease;
-  }
-  .btn-accent:hover { transform: scale(1.03); box-shadow: 0 22px 55px -18px rgba(255,107,26,0.8); }
-  .btn-accent:active { transform: scale(.97); }
-  .link-arrow { transition: gap .3s ease; }
-  .link-arrow:hover { gap: .65rem; }
+  /* ============ FAQ ============ */
+  .qa { background:#fff; border-radius: 1.35rem; transition: box-shadow .4s ease; }
+  .qa.open { box-shadow: 0 24px 60px -34px rgba(29,29,31,.25); }
+  .qa-body { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .5s cubic-bezier(.2,.7,.3,1); }
+  .qa.open .qa-body { grid-template-rows: 1fr; }
+  .qa-body > div { overflow: hidden; }
+  .qa-x { transition: transform .4s cubic-bezier(.2,.7,.3,1); }
+  .qa.open .qa-x { transform: rotate(45deg); }
 
   @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+    *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
     .reveal { opacity: 1; transform: none; }
   }
 </style>
@@ -357,735 +284,764 @@
 </head>
 <body class="selection:bg-[#ff6b1a] selection:text-white">
 
-<!-- ======================= NAV ======================= -->
-<nav id="siteNav" class="nav-glass fixed inset-x-0 top-0 z-50">
-  <div class="mx-auto flex h-[52px] max-w-6xl items-center justify-between px-5 md:px-8">
-    <a href="#top" class="flex items-center gap-2.5" aria-label="Capta inicio">
-      <span class="grid h-7 w-7 place-items-center rounded-full bg-[#ff6b1a] text-[13px] font-black leading-none text-white shadow-[0_6px_16px_-6px_rgba(255,107,26,.7)]">C</span>
-      <span class="text-[1.15rem] font-extrabold tracking-[-0.03em] text-[#1d1d1f]">Capta</span>
+<!-- ════════════════ NAV ════════════════ -->
+<nav class="nav-veil fixed inset-x-0 top-0 z-50">
+  <div class="mx-auto flex h-12 max-w-5xl items-center justify-between px-5 md:px-6">
+    <a href="#top" class="flex items-center gap-2" aria-label="Capta inicio">
+      <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><rect x="1" y="1" width="18" height="18" rx="5.5" fill="none" stroke="#ff6b1a" stroke-width="1.8"/><circle cx="10" cy="10" r="3.2" fill="#ff6b1a"/></svg>
+      <span class="text-[15px] font-bold tracking-[-0.02em] text-white">Capta</span>
     </a>
-    <div class="hidden items-center gap-9 md:flex">
-      <a class="text-[13px] font-medium text-[#1d1d1f]/75 transition-colors hover:text-[#1d1d1f]" href="#features">Plataforma</a>
-      <a class="text-[13px] font-medium text-[#1d1d1f]/75 transition-colors hover:text-[#1d1d1f]" href="#operations">Operación</a>
-      <a class="text-[13px] font-medium text-[#1d1d1f]/75 transition-colors hover:text-[#1d1d1f]" href="#menu">Menús</a>
-      <a class="text-[13px] font-medium text-[#1d1d1f]/75 transition-colors hover:text-[#1d1d1f]" href="#pricing">Precios</a>
-      <a class="text-[13px] font-medium text-[#1d1d1f]/75 transition-colors hover:text-[#1d1d1f]" href="#faq">FAQ</a>
+    <div class="hidden items-center gap-8 md:flex">
+      <a class="text-[12.5px] font-medium text-white/65 transition-colors hover:text-white" href="#features">Atiende</a>
+      <a class="text-[12.5px] font-medium text-white/65 transition-colors hover:text-white" href="#menu">Vende</a>
+      <a class="text-[12.5px] font-medium text-white/65 transition-colors hover:text-white" href="#operations">Cobra</a>
+      <a class="text-[12.5px] font-medium text-white/65 transition-colors hover:text-white" href="#entrega">Entrega</a>
+      <a class="text-[12.5px] font-medium text-white/65 transition-colors hover:text-white" href="#piensa">Piensa</a>
+      <a class="text-[12.5px] font-medium text-white/65 transition-colors hover:text-white" href="#pricing">Precios</a>
     </div>
-    <button onclick="openModal()" class="rounded-full bg-[#ff6b1a] px-4 py-1.5 text-[13px] font-bold text-white shadow-[0_8px_20px_-8px_rgba(255,107,26,.8)] transition-transform hover:scale-105 active:scale-95">Comenzar</button>
+    <button onclick="openModal()" class="rounded-full bg-white/10 px-4 py-1.5 text-[12.5px] font-semibold text-white ring-1 ring-white/15 transition hover:bg-[#ff6b1a] hover:ring-[#ff6b1a]">Demo</button>
   </div>
 </nav>
 
 <main id="top">
 
-<!-- ======================= HERO ======================= -->
-<section class="hero-aurora relative overflow-hidden">
-  <!-- Animated orbit SVG -->
-  <svg class="hero-orbit" viewBox="0 0 900 900" aria-hidden="true">
-    <circle class="orbit-ring" cx="450" cy="450" r="210"/>
-    <circle class="orbit-ring" cx="450" cy="450" r="315"/>
-    <circle class="orbit-ring" cx="450" cy="450" r="425"/>
-    <g class="orbit-spin">
-      <circle cx="450" cy="240" r="5.5" fill="#ff6b1a"/>
-      <circle cx="450" cy="240" r="12" fill="none" stroke="#ff6b1a" stroke-opacity=".25"/>
-    </g>
-    <g class="orbit-spin-2">
-      <circle cx="450" cy="135" r="4.5" fill="#ff9f45"/>
-      <circle cx="765" cy="450" r="3.5" fill="#1d1d1f" opacity=".28"/>
-    </g>
-    <g class="orbit-spin-3">
-      <circle cx="450" cy="25" r="4" fill="#c8460c" opacity=".55"/>
-      <circle cx="25" cy="450" r="3" fill="#ff6b1a" opacity=".45"/>
-    </g>
-  </svg>
+<!-- ════════════════ HERO — EL CHIP ════════════════ -->
+<section class="relative overflow-hidden bg-black text-white">
+  <div class="pointer-events-none absolute left-1/2 top-[58%] h-[560px] w-[860px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#ff6b1a]/[.07] blur-[120px]"></div>
 
-  <div class="relative mx-auto flex max-w-6xl flex-col items-center px-5 pb-24 pt-36 text-center md:px-8 md:pb-32 md:pt-44">
-    <div class="reveal in-view loaded max-w-4xl">
-      <span class="inline-flex items-center gap-2 rounded-full bg-white/70 px-4 py-1.5 text-[12px] font-bold tracking-wide text-[#c8460c] shadow-[0_8px_30px_-14px_rgba(200,70,12,.4)] ring-1 ring-black/[.045] backdrop-blur">
-        <span class="pulse-dot h-1.5 w-1.5 rounded-full bg-[#ff6b1a]"></span>
-        IA para gastronomía · 24/7
-      </span>
-      <h1 class="display-hero mx-auto mt-7 max-w-[15ch] text-[3.1rem] text-[#1d1d1f] sm:text-7xl md:text-[6.2rem]">
-        Tu restaurante,<br/>
-        <span class="relative inline-block">
-          <span class="grad-text">en piloto automático.</span>
-          <svg class="absolute -bottom-4 left-0 w-full md:-bottom-7" viewBox="0 0 400 22" fill="none" aria-hidden="true">
-            <path class="underline-draw" pathLength="1" d="M6 16 C 90 6, 260 6, 394 14" stroke="#ff6b1a" stroke-width="4" stroke-linecap="round" opacity=".8"/>
-          </svg>
-        </span>
-      </h1>
-      <p class="mx-auto mt-8 max-w-[34ch] text-lg font-medium leading-relaxed text-[#6e6e73] sm:max-w-xl md:text-[1.45rem]">
-        Capta atiende, vende, cobra y organiza toda tu operación con IA. Vos te ocupás de cocinar.
-      </p>
-      <div class="mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row">
-        <button onclick="openModal()" class="btn-accent inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-[15px] font-bold">
-          Empezar ahora
-          <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
-        </button>
-        <button onclick="openModal()" class="link-arrow inline-flex items-center gap-1.5 rounded-full px-4 py-3.5 text-[15px] font-bold text-[#ff6b1a] transition-colors hover:text-[#c8460c]">
-          Ver la demo
-          <span class="material-symbols-outlined text-[20px]">chevron_right</span>
-        </button>
-      </div>
+  <div class="relative mx-auto max-w-6xl px-5 pt-32 text-center md:px-8 md:pt-40">
+    <p class="t-eyebrow reveal in-view text-[#ff9345]">Capta · Sistema operativo gastronómico</p>
+    <h1 class="t-hero reveal in-view mx-auto mt-6 max-w-[13ch] text-[3.3rem] sm:text-7xl md:text-[6.4rem]" data-d="1">
+      El <span class="t-ember">cerebro</span> de tu restaurante.
+    </h1>
+    <p class="reveal in-view mx-auto mt-7 max-w-[36ch] text-lg font-medium leading-relaxed text-white/55 sm:max-w-xl md:text-[1.4rem]" data-d="2">
+      Una IA que atiende, vende, cobra, entrega y piensa por tu local. Todos los días, a toda hora.
+    </p>
+    <div class="reveal in-view mt-9 flex flex-col items-center justify-center gap-3.5 sm:flex-row" data-d="3">
+      <button onclick="openModal()" class="btn-ember inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-[15px] font-bold">
+        Solicitar demo
+        <span class="material-symbols-outlined text-[19px]">arrow_forward</span>
+      </button>
+      <a href="#pricing" class="btn-ghost-dark inline-flex items-center gap-1.5 rounded-full px-7 py-3.5 text-[15px] font-bold">
+        Ver planes
+        <span class="material-symbols-outlined text-[19px]">chevron_right</span>
+      </a>
     </div>
+  </div>
 
-    <!-- Dashboard showcase -->
-    <div class="reveal relative mt-24 w-full max-w-5xl md:mt-28" data-delay="1">
-      <div class="device-frame overflow-hidden rounded-[1.4rem] bg-white md:rounded-[1.9rem]">
-        <div class="flex items-center gap-1.5 border-b border-black/[.06] bg-[#fafafa] px-5 py-3.5">
-          <span class="h-2.5 w-2.5 rounded-full bg-[#ff5f57]"></span>
-          <span class="h-2.5 w-2.5 rounded-full bg-[#febc2e]"></span>
-          <span class="h-2.5 w-2.5 rounded-full bg-[#28c840]"></span>
-          <span class="mx-auto hidden rounded-md bg-black/[.045] px-16 py-1 text-[11px] font-medium text-[#6e6e73] sm:block">app.capta.ar</span>
-        </div>
-        <img src="./dashboard.png" alt="Dashboard operativo de Capta en tiempo real" class="w-full object-cover object-top" style="max-height: 560px;"/>
-      </div>
+  <!-- Circuit scene · desktop -->
+  <div class="relative mx-auto mt-10 hidden max-w-6xl px-8 md:block">
+    <svg viewBox="0 0 1000 620" class="w-full" role="img" aria-label="Capta conecta WhatsApp, Instagram y llamadas con cocina, caja, stock, delivery y cliente">
+      <defs>
+        <linearGradient id="emberLine" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#ff6b1a"/><stop offset="1" stop-color="#ffb27a"/>
+        </linearGradient>
+        <radialGradient id="chipGlow" cx=".5" cy=".5" r=".5">
+          <stop offset="0" stop-color="#ff6b1a" stop-opacity=".5"/><stop offset="1" stop-color="#ff6b1a" stop-opacity="0"/>
+        </radialGradient>
+        <pattern id="dotgrid" width="30" height="30" patternUnits="userSpaceOnUse">
+          <circle cx="1.5" cy="1.5" r="1.2" fill="#fff" opacity=".045"/>
+        </pattern>
+      </defs>
+      <rect width="1000" height="620" fill="url(#dotgrid)"/>
 
-      <!-- Floating glass chips -->
-      <div class="glass-chip float-slow absolute -left-3 top-14 hidden items-center gap-3 rounded-2xl px-5 py-4 md:flex lg:-left-16">
-        <span class="grid h-10 w-10 place-items-center rounded-full bg-[#e8f8ee] text-[#28a052]"><span class="material-symbols-outlined">check_circle</span></span>
-        <div class="text-left">
-          <p class="text-[13px] font-bold text-[#1d1d1f]">Pago verificado</p>
-          <p class="text-[12px] font-medium text-[#6e6e73]">Mercado Pago · recién</p>
-        </div>
-      </div>
-      <div class="glass-chip float-slower absolute -right-3 bottom-16 hidden items-center gap-3 rounded-2xl px-5 py-4 md:flex lg:-right-16">
-        <span class="grid h-10 w-10 place-items-center rounded-full bg-[#fff1e8] text-[#ff6b1a]"><span class="material-symbols-outlined">restaurant_menu</span></span>
-        <div class="text-left">
-          <p class="text-[13px] font-bold text-[#1d1d1f]">Pedido #1842 en cocina</p>
-          <p class="text-[12px] font-medium text-[#6e6e73]">comanda impresa</p>
-        </div>
-      </div>
-    </div>
+      <!-- input traces -->
+      <path id="tin1" class="trace" d="M200 150 H330 Q360 150 360 180 V240 Q360 270 390 270 H420"/>
+      <path id="tin2" class="trace" d="M200 310 H420"/>
+      <path id="tin3" class="trace" d="M200 470 H330 Q360 470 360 440 V380 Q360 350 390 350 H420"/>
+      <use href="#tin1" class="comet" pathLength="100" style="animation-delay:-.4s"/>
+      <use href="#tin2" class="comet" pathLength="100" style="animation-delay:-1.7s"/>
+      <use href="#tin3" class="comet" pathLength="100" style="animation-delay:-2.6s"/>
+
+      <!-- output traces -->
+      <path id="tout1" class="trace" d="M580 270 H620 Q650 270 650 240 V140 Q650 110 680 110 H800"/>
+      <path id="tout2" class="trace" d="M580 290 H640 Q670 290 670 260 V240 Q670 210 700 210 H800"/>
+      <path id="tout3" class="trace" d="M580 310 H800"/>
+      <path id="tout4" class="trace" d="M580 330 H640 Q670 330 670 360 V380 Q670 410 700 410 H800"/>
+      <path id="tout5" class="trace" d="M580 350 H620 Q650 350 650 380 V480 Q650 510 680 510 H800"/>
+      <use href="#tout1" class="comet" pathLength="100" style="animation-delay:-.9s"/>
+      <use href="#tout2" class="comet" pathLength="100" style="animation-delay:-2.1s"/>
+      <use href="#tout3" class="comet" pathLength="100" style="animation-delay:-.1s"/>
+      <use href="#tout4" class="comet" pathLength="100" style="animation-delay:-2.9s"/>
+      <use href="#tout5" class="comet" pathLength="100" style="animation-delay:-1.3s"/>
+
+      <!-- input pills -->
+      <g>
+        <rect x="52" y="128" width="148" height="44" rx="22" class="hero-pill"/>
+        <circle cx="80" cy="150" r="4" fill="#ff6b1a"/>
+        <text x="96" y="155" class="hero-pill-txt">WhatsApp</text>
+      </g>
+      <g>
+        <rect x="52" y="288" width="148" height="44" rx="22" class="hero-pill"/>
+        <circle cx="80" cy="310" r="4" fill="#ff9345"/>
+        <text x="96" y="315" class="hero-pill-txt">Instagram</text>
+      </g>
+      <g>
+        <rect x="52" y="448" width="148" height="44" rx="22" class="hero-pill"/>
+        <circle cx="80" cy="470" r="4" fill="#ffbe8a"/>
+        <text x="96" y="475" class="hero-pill-txt">Llamadas</text>
+      </g>
+
+      <!-- output pills -->
+      <g>
+        <rect x="800" y="88" width="148" height="44" rx="22" class="hero-pill"/>
+        <circle cx="828" cy="110" r="4" fill="#ff6b1a"/>
+        <text x="844" y="115" class="hero-pill-txt">Cocina</text>
+      </g>
+      <g>
+        <rect x="800" y="188" width="148" height="44" rx="22" class="hero-pill"/>
+        <circle cx="828" cy="210" r="4" fill="#ff9345"/>
+        <text x="844" y="215" class="hero-pill-txt">Caja</text>
+      </g>
+      <g>
+        <rect x="800" y="288" width="148" height="44" rx="22" class="hero-pill"/>
+        <circle cx="828" cy="310" r="4" fill="#ffbe8a"/>
+        <text x="844" y="315" class="hero-pill-txt">Stock</text>
+      </g>
+      <g>
+        <rect x="800" y="388" width="148" height="44" rx="22" class="hero-pill"/>
+        <circle cx="828" cy="410" r="4" fill="#ff9345"/>
+        <text x="844" y="415" class="hero-pill-txt">Delivery</text>
+      </g>
+      <g>
+        <rect x="800" y="488" width="148" height="44" rx="22" class="hero-pill"/>
+        <circle cx="828" cy="510" r="4" fill="#ff6b1a"/>
+        <text x="844" y="515" class="hero-pill-txt">Cliente</text>
+      </g>
+
+      <!-- chip -->
+      <circle class="chip-glow" cx="500" cy="310" r="150" fill="url(#chipGlow)"/>
+      <rect class="chip-ring" x="404" y="214" width="192" height="192" rx="44" fill="none" stroke="#ff6b1a"/>
+      <rect x="420" y="230" width="160" height="160" rx="36" fill="#0b0b0d" stroke="url(#emberLine)" stroke-width="2.5"/>
+      <rect x="438" y="248" width="124" height="124" rx="26" fill="none" stroke="#ff6b1a" stroke-opacity=".16"/>
+      <text x="500" y="305" text-anchor="middle" font-size="30" font-weight="800" letter-spacing="-1.5" fill="#fff">Capta</text>
+      <text x="500" y="336" text-anchor="middle" font-size="13" font-weight="700" letter-spacing="4" fill="#ff9345">OS</text>
+    </svg>
+  </div>
+
+  <!-- Circuit scene · mobile -->
+  <div class="relative mx-auto mt-12 max-w-md px-6 md:hidden">
+    <svg viewBox="0 0 400 560" class="w-full" role="img" aria-label="Capta conecta tus canales con toda la operación">
+      <path id="min1" class="trace" d="M70 64 V110 Q70 140 100 140 H140 Q170 140 170 170 V200"/>
+      <path id="min2" class="trace" d="M200 64 V200"/>
+      <path id="min3" class="trace" d="M330 64 V110 Q330 140 300 140 H260 Q230 140 230 170 V200"/>
+      <use href="#min1" class="comet" pathLength="100" style="animation-delay:-.5s"/>
+      <use href="#min2" class="comet" pathLength="100" style="animation-delay:-1.8s"/>
+      <use href="#min3" class="comet" pathLength="100" style="animation-delay:-2.7s"/>
+      <path id="mout1" class="trace" d="M170 340 V370 Q170 400 140 400 H100 Q70 400 70 430 V496"/>
+      <path id="mout2" class="trace" d="M200 340 V496"/>
+      <path id="mout3" class="trace" d="M230 340 V370 Q230 400 260 400 H300 Q330 400 330 430 V496"/>
+      <use href="#mout1" class="comet" pathLength="100" style="animation-delay:-1.1s"/>
+      <use href="#mout2" class="comet" pathLength="100" style="animation-delay:-.2s"/>
+      <use href="#mout3" class="comet" pathLength="100" style="animation-delay:-2.2s"/>
+
+      <g>
+        <rect x="16" y="24" width="108" height="40" rx="20" class="hero-pill"/>
+        <text x="70" y="49" text-anchor="middle" class="hero-pill-txt" font-size="13">WhatsApp</text>
+      </g>
+      <g>
+        <rect x="146" y="24" width="108" height="40" rx="20" class="hero-pill"/>
+        <text x="200" y="49" text-anchor="middle" class="hero-pill-txt" font-size="13">Instagram</text>
+      </g>
+      <g>
+        <rect x="276" y="24" width="108" height="40" rx="20" class="hero-pill"/>
+        <text x="330" y="49" text-anchor="middle" class="hero-pill-txt" font-size="13">Llamadas</text>
+      </g>
+      <g>
+        <rect x="16" y="496" width="108" height="40" rx="20" class="hero-pill"/>
+        <text x="70" y="521" text-anchor="middle" class="hero-pill-txt" font-size="13">Cocina</text>
+      </g>
+      <g>
+        <rect x="146" y="496" width="108" height="40" rx="20" class="hero-pill"/>
+        <text x="200" y="521" text-anchor="middle" class="hero-pill-txt" font-size="13">Delivery</text>
+      </g>
+      <g>
+        <rect x="276" y="496" width="108" height="40" rx="20" class="hero-pill"/>
+        <text x="330" y="521" text-anchor="middle" class="hero-pill-txt" font-size="13">Cliente</text>
+      </g>
+
+      <circle class="chip-glow" cx="200" cy="270" r="110" fill="url(#chipGlow)"/>
+      <rect class="chip-ring" x="118" y="188" width="164" height="164" rx="38" fill="none" stroke="#ff6b1a"/>
+      <rect x="130" y="200" width="140" height="140" rx="32" fill="#0b0b0d" stroke="url(#emberLine)" stroke-width="2.5"/>
+      <text x="200" y="266" text-anchor="middle" font-size="26" font-weight="800" letter-spacing="-1.2" fill="#fff">Capta</text>
+      <text x="200" y="294" text-anchor="middle" font-size="12" font-weight="700" letter-spacing="4" fill="#ff9345">OS</text>
+    </svg>
+  </div>
+
+  <!-- stat strip -->
+  <div class="relative mx-auto flex max-w-4xl flex-wrap items-center justify-center gap-x-10 gap-y-3 px-6 pb-20 pt-14 text-[13px] font-semibold text-white/45 md:pb-24">
+    <span><span class="text-white">24/7</span> atención</span>
+    <span class="hidden h-1 w-1 rounded-full bg-[#ff6b1a] sm:block"></span>
+    <span><span class="text-white">3</span> canales</span>
+    <span class="hidden h-1 w-1 rounded-full bg-[#ff6b1a] sm:block"></span>
+    <span><span class="text-white">1</span> plataforma</span>
+    <span class="hidden h-1 w-1 rounded-full bg-[#ff6b1a] sm:block"></span>
+    <span><span class="text-white">0</span> mensajes sin responder</span>
   </div>
 </section>
 
-<!-- ======================= TICKER ======================= -->
-<section class="border-y border-black/[.05] bg-white py-5" aria-hidden="true">
-  <div class="overflow-hidden [mask-image:linear-gradient(90deg,transparent,#000_12%,#000_88%,transparent)]">
-    <div class="ticker-track text-[13px] font-bold tracking-wide text-[#6e6e73]">
-      <span>WhatsApp</span><span class="text-[#ff6b1a]">·</span>
-      <span>Instagram</span><span class="text-[#ff6b1a]">·</span>
-      <span>Llamadas con IA</span><span class="text-[#ff6b1a]">·</span>
-      <span>Menú digital</span><span class="text-[#ff6b1a]">·</span>
-      <span>Pagos</span><span class="text-[#ff6b1a]">·</span>
-      <span>Comandas</span><span class="text-[#ff6b1a]">·</span>
-      <span>Stock</span><span class="text-[#ff6b1a]">·</span>
-      <span>Delivery</span><span class="text-[#ff6b1a]">·</span>
-      <span>CRM</span><span class="text-[#ff6b1a]">·</span>
-      <span>Marketing automático</span><span class="text-[#ff6b1a]">·</span>
-      <span>WhatsApp</span><span class="text-[#ff6b1a]">·</span>
-      <span>Instagram</span><span class="text-[#ff6b1a]">·</span>
-      <span>Llamadas con IA</span><span class="text-[#ff6b1a]">·</span>
-      <span>Menú digital</span><span class="text-[#ff6b1a]">·</span>
-      <span>Pagos</span><span class="text-[#ff6b1a]">·</span>
-      <span>Comandas</span><span class="text-[#ff6b1a]">·</span>
-      <span>Stock</span><span class="text-[#ff6b1a]">·</span>
-      <span>Delivery</span><span class="text-[#ff6b1a]">·</span>
-      <span>CRM</span><span class="text-[#ff6b1a]">·</span>
-      <span>Marketing automático</span><span class="text-[#ff6b1a]">·</span>
-    </div>
-  </div>
-</section>
-
-<!-- ======================= STATS ======================= -->
-<section class="bg-white px-5 py-24 md:px-8 md:py-28">
-  <div class="mx-auto grid max-w-6xl gap-12 text-center sm:grid-cols-2 lg:grid-cols-4">
+<!-- ════════════════ 01 · ATIENDE ════════════════ -->
+<section id="features" class="scroll-mt-14 bg-white px-5 py-28 md:px-8 md:py-40">
+  <div class="mx-auto grid max-w-6xl items-center gap-16 lg:grid-cols-[1.05fr_.95fr]">
     <div class="reveal">
-      <p class="display text-6xl text-[#1d1d1f] md:text-7xl">24<span class="grad-text">/</span>7</p>
-      <p class="mt-3 text-[15px] font-semibold text-[#6e6e73]">atención automática,<br/>sin descanso</p>
+      <p class="t-eyebrow text-[#ff6b1a]">01 · Atiende</p>
+      <h2 class="t-display mt-5 text-4xl text-[#1d1d1f] sm:text-6xl md:text-[4.4rem]">Cada mensaje,<br/>respondido al segundo.</h2>
+      <p class="mt-7 max-w-lg text-lg font-medium leading-relaxed text-[#6e6e73] md:text-xl">La IA de Capta contesta WhatsApp, Instagram y llamadas: resuelve dudas, pasa el menú, toma el pedido y confirma los datos. Tu equipo no toca el teléfono.</p>
+      <ul class="mt-9 space-y-4 text-[15px] font-semibold text-[#1d1d1f]">
+        <li class="flex items-center gap-3"><span class="grid h-7 w-7 place-items-center rounded-full bg-[#fff1e8] text-[#ff6b1a]"><span class="material-symbols-outlined text-[16px]">bolt</span></span>Responde al instante, incluso en hora pico</li>
+        <li class="flex items-center gap-3"><span class="grid h-7 w-7 place-items-center rounded-full bg-[#fff1e8] text-[#ff6b1a]"><span class="material-symbols-outlined text-[16px]">call</span></span>Atiende varias llamadas a la vez</li>
+        <li class="flex items-center gap-3"><span class="grid h-7 w-7 place-items-center rounded-full bg-[#fff1e8] text-[#ff6b1a]"><span class="material-symbols-outlined text-[16px]">event_available</span></span>Toma reservas y controla mesas</li>
+      </ul>
     </div>
-    <div class="reveal" data-delay="1">
-      <p class="display text-6xl text-[#1d1d1f] md:text-7xl"><span class="grad-text">3</span></p>
-      <p class="mt-3 text-[15px] font-semibold text-[#6e6e73]">canales: WhatsApp,<br/>Instagram y llamadas</p>
-    </div>
-    <div class="reveal" data-delay="2">
-      <p class="display text-6xl text-[#1d1d1f] md:text-7xl"><span class="grad-text">1</span></p>
-      <p class="mt-3 text-[15px] font-semibold text-[#6e6e73]">plataforma para<br/>toda la operación</p>
-    </div>
-    <div class="reveal" data-delay="3">
-      <p class="display text-6xl text-[#1d1d1f] md:text-7xl"><span class="grad-text">0</span></p>
-      <p class="mt-3 text-[15px] font-semibold text-[#6e6e73]">mensajes<br/>sin responder</p>
+
+    <!-- SVG phone chat -->
+    <div class="reveal mx-auto w-full max-w-[380px]" data-d="1">
+      <svg viewBox="0 0 380 560" class="w-full drop-shadow-[0_40px_60px_rgba(29,29,31,0.18)]" role="img" aria-label="Conversación de WhatsApp atendida automáticamente por Capta">
+        <rect x="6" y="6" width="368" height="548" rx="52" fill="#0b0b0d"/>
+        <rect x="18" y="18" width="344" height="524" rx="42" fill="#f6f5f3"/>
+        <!-- header -->
+        <path d="M18 60 Q18 18 60 18 H320 Q362 18 362 60 V86 H18 Z" fill="#141416"/>
+        <circle cx="52" cy="52" r="16" fill="#ff6b1a" opacity=".92"/>
+        <text x="52" y="57" text-anchor="middle" font-size="14" font-weight="800" fill="#fff">P</text>
+        <text x="80" y="48" font-size="14" font-weight="700" fill="#fff">Parrilla Don Justo</text>
+        <text x="80" y="66" font-size="10.5" font-weight="500" fill="#30d158">en línea · IA activa</text>
+
+        <!-- m1 cliente -->
+        <g class="msg m1">
+          <rect x="34" y="108" width="212" height="58" rx="16" fill="#fff" stroke="#e8e6e2"/>
+          <text x="50" y="132" font-size="13" font-weight="500" fill="#1d1d1f">Hola! ¿Hacen envíos</text>
+          <text x="50" y="150" font-size="13" font-weight="500" fill="#1d1d1f">a Palermo?</text>
+          <text x="232" y="158" text-anchor="end" font-size="9" fill="#a9a7a2">21:03</text>
+        </g>
+        <!-- typing 1 -->
+        <g class="msg mt1">
+          <rect x="266" y="108" width="80" height="36" rx="16" fill="#ffe9da"/>
+          <circle class="tydot" cx="292" cy="126" r="3.4" fill="#c8460c"/>
+          <circle class="tydot tydot2" cx="306" cy="126" r="3.4" fill="#c8460c"/>
+          <circle class="tydot tydot3" cx="320" cy="126" r="3.4" fill="#c8460c"/>
+        </g>
+        <!-- m2 IA -->
+        <g class="msg m2">
+          <rect x="122" y="180" width="224" height="92" rx="16" fill="#ffe9da"/>
+          <text x="138" y="204" font-size="13" font-weight="500" fill="#1d1d1f">Sí! Llegamos en 30–40 min.</text>
+          <text x="138" y="222" font-size="13" font-weight="500" fill="#1d1d1f">Elegí tranquilo desde el menú:</text>
+          <rect x="138" y="232" width="192" height="28" rx="9" fill="#fff" opacity=".85"/>
+          <text x="150" y="250" font-size="11.5" font-weight="700" fill="#c8460c">donjusto.menu.net.ar</text>
+          <text x="332" y="264" text-anchor="end" font-size="9" fill="#c78a5e">21:03 ✓✓</text>
+        </g>
+        <!-- m3 cliente -->
+        <g class="msg m3">
+          <rect x="34" y="286" width="230" height="58" rx="16" fill="#fff" stroke="#e8e6e2"/>
+          <text x="50" y="310" font-size="13" font-weight="500" fill="#1d1d1f">Listo! 2 choripanes</text>
+          <text x="50" y="328" font-size="13" font-weight="500" fill="#1d1d1f">y una coca grande 🙌</text>
+          <text x="250" y="336" text-anchor="end" font-size="9" fill="#a9a7a2">21:06</text>
+        </g>
+        <!-- typing 2 -->
+        <g class="msg mt2">
+          <rect x="266" y="358" width="80" height="36" rx="16" fill="#ffe9da"/>
+          <circle class="tydot" cx="292" cy="376" r="3.4" fill="#c8460c"/>
+          <circle class="tydot tydot2" cx="306" cy="376" r="3.4" fill="#c8460c"/>
+          <circle class="tydot tydot3" cx="320" cy="376" r="3.4" fill="#c8460c"/>
+        </g>
+        <!-- m4 IA -->
+        <g class="msg m4">
+          <rect x="122" y="358" width="224" height="76" rx="16" fill="#ffe9da"/>
+          <text x="138" y="382" font-size="13" font-weight="500" fill="#1d1d1f">Perfecto. Total: $9.800.</text>
+          <text x="138" y="400" font-size="13" font-weight="500" fill="#1d1d1f">Te paso el link de pago y el</text>
+          <text x="138" y="418" font-size="13" font-weight="500" fill="#1d1d1f">seguimiento en vivo 🛵</text>
+          <text x="332" y="426" text-anchor="end" font-size="9" fill="#c78a5e">21:06 ✓✓</text>
+        </g>
+        <!-- m5 badge -->
+        <g class="msg m5">
+          <rect x="86" y="456" width="208" height="40" rx="20" fill="#141416"/>
+          <circle cx="112" cy="476" r="9" fill="#30d158"/>
+          <path d="M107.5 476 l3 3 l6 -7" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="130" y="481" font-size="12.5" font-weight="700" fill="#fff">Pedido #1843 confirmado</text>
+        </g>
+      </svg>
     </div>
   </div>
 </section>
 
-<!-- ======================= BENTO FEATURES ======================= -->
-<section id="features" class="scroll-mt-16 bg-[#f5f5f7] px-5 py-28 md:px-8 md:py-36">
+<!-- ════════════════ 02 · VENDE (menús reales) ════════════════ -->
+<section id="menu" class="scroll-mt-14 bg-[#f5f5f7] px-5 py-28 md:px-8 md:py-40">
   <div class="mx-auto max-w-6xl">
     <div class="reveal mx-auto max-w-3xl text-center">
-      <p class="eyebrow text-[#ff6b1a]">La plataforma</p>
-      <h2 class="display mt-4 text-4xl text-[#1d1d1f] sm:text-6xl md:text-[4.6rem]">Todo lo que pasa en tu restaurante. En un solo lugar.</h2>
-      <p class="mx-auto mt-6 max-w-2xl text-lg font-medium leading-relaxed text-[#6e6e73] md:text-xl">Conversación, pedido, pago, comanda, stock, caja, delivery, CRM y marketing. La operación deja de vivir en chats sueltos y planillas.</p>
+      <p class="t-eyebrow text-[#ff6b1a]">02 · Vende</p>
+      <h2 class="t-display mt-5 text-4xl text-[#1d1d1f] sm:text-6xl md:text-[4.4rem]">Un menú que trabaja para vos.</h2>
+      <p class="mx-auto mt-7 max-w-2xl text-lg font-medium leading-relaxed text-[#6e6e73] md:text-xl">Diseño, promos, destacados y una experiencia mobile pensada para cerrar el pedido más rápido. Estos tres están en producción ahora mismo — tocalos.</p>
     </div>
 
-    <div class="mt-16 grid gap-5 md:grid-cols-6">
-      <!-- Atención automática (big) -->
-      <div class="card-soft reveal overflow-hidden md:col-span-4">
-        <div class="p-8 md:p-10">
-          <p class="eyebrow text-[#ff6b1a]">Atención automática</p>
-          <h3 class="display mt-3 text-3xl text-[#1d1d1f] md:text-4xl">Responde, guía y vende<br/>mientras tu equipo cocina.</h3>
-          <p class="mt-4 max-w-md text-[15px] font-medium leading-relaxed text-[#6e6e73]">WhatsApp, Instagram y llamadas: la IA resuelve dudas y lleva a cada cliente hasta el pedido cerrado.</p>
-        </div>
-        <div class="px-8 md:px-10">
-          <img src="./chat.png" alt="Conversación automatizada de Capta con un cliente" class="w-full rounded-t-2xl object-cover object-top shadow-[0_-4px_40px_-20px_rgba(29,29,31,.3)]" style="max-height: 330px;"/>
-        </div>
-      </div>
-
-      <!-- Pedidos sin caos (dark) -->
-      <div class="card-dark reveal p-8 text-white md:col-span-2 md:p-9" data-delay="1">
-        <span class="material-symbols-outlined text-4xl text-[#ff9f45]">receipt_long</span>
-        <h3 class="display mt-5 text-2xl md:text-[1.7rem]">Pedidos sin caos</h3>
-        <p class="mt-3 text-[15px] font-medium leading-relaxed text-white/60">Cada orden llega clara: productos, extras, datos del cliente y estado en vivo.</p>
-        <div class="mt-7 space-y-2.5">
-          <div class="flex items-center justify-between rounded-xl bg-white/[.07] px-4 py-3">
-            <span class="text-[13px] font-bold">#1842 · Combo completo</span>
-            <span class="rounded-full bg-[#ff6b1a] px-2.5 py-0.5 text-[11px] font-black text-white">en cocina</span>
-          </div>
-          <div class="flex items-center justify-between rounded-xl bg-white/[.07] px-4 py-3">
-            <span class="text-[13px] font-bold">#1843 · 2x Pizza napo</span>
-            <span class="rounded-full bg-white/15 px-2.5 py-0.5 text-[11px] font-black text-white/80">pago verificado</span>
-          </div>
-          <div class="flex items-center justify-between rounded-xl bg-white/[.07] px-4 py-3">
-            <span class="text-[13px] font-bold">#1844 · Empanadas x12</span>
-            <span class="rounded-full bg-white/15 px-2.5 py-0.5 text-[11px] font-black text-white/80">en camino</span>
+    <div class="mt-20 grid gap-14 lg:grid-cols-3 lg:gap-8">
+      <div class="reveal min-w-0 lg:mt-10">
+        <div class="shell mx-auto w-[calc(100vw-3rem)] max-w-[20rem] rounded-[2.7rem] p-2.5 shadow-[0_50px_100px_-40px_rgba(0,0,0,.5)] md:w-full lg:max-w-[18.5rem]">
+          <div class="shell-screen relative">
+            <div class="shell-viewport aspect-[9/19.5] bg-white">
+              <iframe src="https://www.menu.net.ar/totta" title="Menú Totta" class="shell-embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              <div class="shell-mask"></div>
+            </div>
           </div>
         </div>
-      </div>
-
-      <!-- Reservas -->
-      <div class="card-soft reveal overflow-hidden md:col-span-3">
-        <div class="p-8 md:p-9">
-          <p class="eyebrow text-[#ff6b1a]">Reservas y mesas</p>
-          <h3 class="display mt-3 text-2xl text-[#1d1d1f] md:text-3xl">Reservas que se gestionan solas.</h3>
-          <p class="mt-3 max-w-sm text-[15px] font-medium leading-relaxed text-[#6e6e73]">La IA toma reservas por chat o llamada y las ordena junto al control de mesas.</p>
-        </div>
-        <div class="px-8 md:px-9">
-          <img src="./RESERVAS.png" alt="Gestión de reservas en Capta" class="w-full rounded-t-2xl object-cover object-top" style="max-height: 250px;"/>
+        <div class="mt-6 text-center">
+          <p class="text-[17px] font-bold text-[#1d1d1f]">Totta</p>
+          <a href="https://www.menu.net.ar/totta" target="_blank" rel="noopener noreferrer" class="mt-1 inline-flex items-center gap-1 text-[13.5px] font-bold text-[#ff6b1a] hover:text-[#c8460c]">Abrir menú real <span class="material-symbols-outlined text-[16px]">arrow_outward</span></a>
         </div>
       </div>
-
-      <!-- Pedidos screen -->
-      <div class="card-soft reveal overflow-hidden md:col-span-3" data-delay="1">
-        <div class="p-8 md:p-9">
-          <p class="eyebrow text-[#ff6b1a]">Torre de control</p>
-          <h3 class="display mt-3 text-2xl text-[#1d1d1f] md:text-3xl">Tu operación, en tiempo real.</h3>
-          <p class="mt-3 max-w-sm text-[15px] font-medium leading-relaxed text-[#6e6e73]">Pedidos, pagos, cocina y delivery visibles en un panel central que respira solo.</p>
+      <div class="reveal min-w-0" data-d="1">
+        <div class="shell mx-auto w-[calc(100vw-3rem)] max-w-[20rem] rounded-[2.7rem] p-2.5 shadow-[0_50px_100px_-40px_rgba(0,0,0,.55)] md:w-full lg:max-w-[18.5rem]">
+          <div class="shell-screen relative">
+            <div class="shell-viewport aspect-[9/19.5] bg-white">
+              <iframe src="https://www.menu.net.ar/burguer" title="Menú Burguer" class="shell-embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              <div class="shell-mask"></div>
+            </div>
+          </div>
         </div>
-        <div class="px-8 md:px-9">
-          <img src="./pedidos.png" alt="Panel de pedidos de Capta" class="w-full rounded-t-2xl object-cover object-top" style="max-height: 250px;"/>
+        <div class="mt-6 text-center">
+          <p class="text-[17px] font-bold text-[#1d1d1f]">Burger</p>
+          <a href="https://www.menu.net.ar/burguer" target="_blank" rel="noopener noreferrer" class="mt-1 inline-flex items-center gap-1 text-[13.5px] font-bold text-[#ff6b1a] hover:text-[#c8460c]">Abrir menú real <span class="material-symbols-outlined text-[16px]">arrow_outward</span></a>
         </div>
       </div>
-
-      <!-- Caja -->
-      <div class="card-soft reveal p-8 md:col-span-2 md:p-9">
-        <span class="material-symbols-outlined text-4xl text-[#ff6b1a]">point_of_sale</span>
-        <h3 class="display mt-5 text-2xl text-[#1d1d1f]">Caja y proveedores</h3>
-        <p class="mt-3 text-[15px] font-medium leading-relaxed text-[#6e6e73]">Ingresos, egresos, retiros, proveedores y cierres diarios desde un solo lugar.</p>
-      </div>
-
-      <!-- Marketing -->
-      <div class="card-soft reveal p-8 md:col-span-2 md:p-9" data-delay="1">
-        <span class="material-symbols-outlined text-4xl text-[#ff6b1a]">campaign</span>
-        <h3 class="display mt-5 text-2xl text-[#1d1d1f]">Marketing automático</h3>
-        <p class="mt-3 text-[15px] font-medium leading-relaxed text-[#6e6e73]">Reactiva clientes, promociona productos y aumenta la recurrencia con mensajes inteligentes.</p>
-      </div>
-
-      <!-- CRM -->
-      <div class="card-soft reveal p-8 md:col-span-2 md:p-9" data-delay="2">
-        <span class="material-symbols-outlined text-4xl text-[#ff6b1a]">groups</span>
-        <h3 class="display mt-5 text-2xl text-[#1d1d1f]">CRM sin cargar datos</h3>
-        <p class="mt-3 text-[15px] font-medium leading-relaxed text-[#6e6e73]">Historial, preferencias, frecuencia y segmentos que se arman solos con cada pedido.</p>
+      <div class="reveal min-w-0 lg:mt-10" data-d="2">
+        <div class="shell mx-auto w-[calc(100vw-3rem)] max-w-[20rem] rounded-[2.7rem] p-2.5 shadow-[0_50px_100px_-40px_rgba(0,0,0,.5)] md:w-full lg:max-w-[18.5rem]">
+          <div class="shell-screen relative">
+            <div class="shell-viewport aspect-[9/19.5] bg-white">
+              <iframe src="https://www.menu.net.ar/heladeria" title="Menú Heladería" class="shell-embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              <div class="shell-mask"></div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-6 text-center">
+          <p class="text-[17px] font-bold text-[#1d1d1f]">Heladería</p>
+          <a href="https://www.menu.net.ar/heladeria" target="_blank" rel="noopener noreferrer" class="mt-1 inline-flex items-center gap-1 text-[13.5px] font-bold text-[#ff6b1a] hover:text-[#c8460c]">Abrir menú real <span class="material-symbols-outlined text-[16px]">arrow_outward</span></a>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ======================= FLOW PIPELINE (dark) ======================= -->
-<section id="operations" class="scroll-mt-16 relative overflow-hidden bg-black px-5 py-28 text-white md:px-8 md:py-40">
-  <div class="pointer-events-none absolute left-1/2 top-0 h-[420px] w-[900px] -translate-x-1/2 rounded-full bg-[#ff6b1a]/[.08] blur-[130px]"></div>
-  <div class="relative mx-auto max-w-6xl">
-    <div class="reveal mx-auto max-w-3xl text-center">
-      <p class="eyebrow text-[#ff9f45]">Operación conectada</p>
-      <h2 class="display mt-4 text-4xl sm:text-6xl md:text-[4.6rem]">Un pedido entra.<br/><span class="grad-text-dark">Capta mueve todo lo demás.</span></h2>
-      <p class="mx-auto mt-6 max-w-2xl text-lg font-medium leading-relaxed text-white/55 md:text-xl">Verifica el pago, imprime la comanda, descuenta stock, asigna repartidor, liquida y mantiene informado al cliente. Sin que nadie toque nada.</p>
+<!-- ════════════════ 03 · COBRA ════════════════ -->
+<section id="operations" class="scroll-mt-14 bg-white px-5 py-28 md:px-8 md:py-40">
+  <div class="mx-auto max-w-6xl">
+    <div class="reveal max-w-3xl">
+      <p class="t-eyebrow text-[#ff6b1a]">03 · Cobra</p>
+      <h2 class="t-display mt-5 text-4xl text-[#1d1d1f] sm:text-6xl md:text-[4.4rem]">El pago se verifica solo.<br/>La comanda se imprime sola.</h2>
+      <p class="mt-7 max-w-xl text-lg font-medium leading-relaxed text-[#6e6e73] md:text-xl">Cuando entra una transferencia, Capta la cruza con el pedido, manda la comanda a cocina y descuenta el stock. Nadie revisa el homebanking en plena hora pico.</p>
     </div>
 
-    <!-- Animated pipeline SVG (desktop) -->
-    <div class="reveal mt-20 hidden md:block" data-delay="1">
-      <svg viewBox="0 0 1200 250" class="w-full" role="img" aria-label="Flujo automático del pedido: llega, se verifica el pago, cocina, delivery y entrega">
+    <!-- SVG payment scene -->
+    <div class="scene reveal mt-16 rounded-[2rem] bg-[#f5f5f7] p-4 md:p-8" data-d="1">
+      <svg viewBox="0 0 560 330" class="w-full" role="img" aria-label="Flujo de cobro: transferencia recibida, pago verificado, comanda impresa y stock actualizado">
         <defs>
-          <linearGradient id="flowGrad" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0" stop-color="#ff6b1a"/>
-            <stop offset="1" stop-color="#ff9f45"/>
-          </linearGradient>
+          <filter id="softDrop" x="-30%" y="-30%" width="160%" height="160%">
+            <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#1d1d1f" flood-opacity=".10"/>
+          </filter>
+          <clipPath id="printSlot"><rect x="390" y="118" width="120" height="150" rx="6"/></clipPath>
         </defs>
-        <!-- connector -->
-        <path class="flow-base" d="M110 110 H1090" fill="none" stroke-width="2"/>
-        <path class="flow-dash" d="M110 110 H1090" fill="none" stroke="url(#flowGrad)" stroke-width="3"/>
 
-        <!-- node 1 -->
-        <g>
-          <circle class="node-pulse" cx="110" cy="110" r="26" fill="none" stroke="#ff6b1a" stroke-width="1.5"/>
-          <circle cx="110" cy="110" r="26" fill="#0d0d0f" stroke="#ff6b1a" stroke-width="2"/>
-          <text x="110" y="117" text-anchor="middle" font-size="17" font-weight="800" fill="#ff9f45" font-family="Inter, sans-serif">01</text>
-          <text x="110" y="172" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff" font-family="Inter, sans-serif">Pedido entra</text>
-          <text x="110" y="194" text-anchor="middle" font-size="12.5" font-weight="500" fill="rgba(255,255,255,.45)" font-family="Inter, sans-serif">WhatsApp · IG · llamada</text>
+        <!-- 1: transferencia -->
+        <g class="ph-card" filter="url(#softDrop)">
+          <rect x="28" y="52" width="180" height="112" rx="18" fill="#fff"/>
+          <text x="48" y="84" font-size="11" font-weight="700" letter-spacing="1.5" fill="#86868b">TRANSFERENCIA</text>
+          <text x="48" y="118" font-size="26" font-weight="800" letter-spacing="-1" fill="#1d1d1f">$9.800</text>
+          <rect x="48" y="132" width="98" height="20" rx="10" fill="#e8f1fd"/>
+          <text x="97" y="146" text-anchor="middle" font-size="10" font-weight="700" fill="#0a68d6">Mercado Pago</text>
         </g>
-        <!-- node 2 -->
-        <g>
-          <circle class="node-pulse node-pulse-2" cx="355" cy="110" r="26" fill="none" stroke="#ff6b1a" stroke-width="1.5"/>
-          <circle cx="355" cy="110" r="26" fill="#0d0d0f" stroke="#ff6b1a" stroke-width="2"/>
-          <text x="355" y="117" text-anchor="middle" font-size="17" font-weight="800" fill="#ff9f45" font-family="Inter, sans-serif">02</text>
-          <text x="355" y="172" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff" font-family="Inter, sans-serif">Pago verificado</text>
-          <text x="355" y="194" text-anchor="middle" font-size="12.5" font-weight="500" fill="rgba(255,255,255,.45)" font-family="Inter, sans-serif">Mercado Pago</text>
+
+        <!-- connector 1 -->
+        <g class="ph-dash1">
+          <path class="dashflow" d="M214 108 H244" stroke="#ff6b1a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
         </g>
-        <!-- node 3 -->
-        <g>
-          <circle class="node-pulse node-pulse-3" cx="600" cy="110" r="26" fill="none" stroke="#ff6b1a" stroke-width="1.5"/>
-          <circle cx="600" cy="110" r="26" fill="#0d0d0f" stroke="#ff6b1a" stroke-width="2"/>
-          <text x="600" y="117" text-anchor="middle" font-size="17" font-weight="800" fill="#ff9f45" font-family="Inter, sans-serif">03</text>
-          <text x="600" y="172" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff" font-family="Inter, sans-serif">Comanda y stock</text>
-          <text x="600" y="194" text-anchor="middle" font-size="12.5" font-weight="500" fill="rgba(255,255,255,.45)" font-family="Inter, sans-serif">impresión + descuento real</text>
+
+        <!-- 2: check -->
+        <g class="ph-check">
+          <circle cx="288" cy="108" r="36" fill="#fff1e8"/>
+          <circle cx="288" cy="108" r="36" fill="none" stroke="#ff6b1a" stroke-width="2.5"/>
+          <path class="ph-tick" pathLength="1" d="M272 108 l11 11 l21 -23" fill="none" stroke="#ff6b1a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
         </g>
-        <!-- node 4 -->
-        <g>
-          <circle class="node-pulse node-pulse-4" cx="845" cy="110" r="26" fill="none" stroke="#ff6b1a" stroke-width="1.5"/>
-          <circle cx="845" cy="110" r="26" fill="#0d0d0f" stroke="#ff6b1a" stroke-width="2"/>
-          <text x="845" y="117" text-anchor="middle" font-size="17" font-weight="800" fill="#ff9f45" font-family="Inter, sans-serif">04</text>
-          <text x="845" y="172" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff" font-family="Inter, sans-serif">Delivery asignado</text>
-          <text x="845" y="194" text-anchor="middle" font-size="12.5" font-weight="500" fill="rgba(255,255,255,.45)" font-family="Inter, sans-serif">zonas + liquidación</text>
+
+        <!-- connector 2 -->
+        <g class="ph-dash2">
+          <path class="dashflow" d="M332 108 H362" stroke="#ff6b1a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
         </g>
-        <!-- node 5 -->
-        <g>
-          <circle class="node-pulse node-pulse-5" cx="1090" cy="110" r="26" fill="none" stroke="#ff9f45" stroke-width="1.5"/>
-          <circle cx="1090" cy="110" r="26" fill="url(#flowGrad)"/>
-          <path d="M1079 110 l8 8 l15 -16" fill="none" stroke="#000" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-          <text x="1090" y="172" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff" font-family="Inter, sans-serif">Cliente informado</text>
-          <text x="1090" y="194" text-anchor="middle" font-size="12.5" font-weight="500" fill="rgba(255,255,255,.45)" font-family="Inter, sans-serif">seguimiento en vivo</text>
+
+        <!-- 3: impresora -->
+        <g filter="url(#softDrop)">
+          <rect x="378" y="52" width="144" height="66" rx="16" fill="#1d1d1f"/>
+          <circle cx="500" cy="70" r="4" fill="#30d158"/>
+          <text x="396" y="82" font-size="11" font-weight="700" fill="#fff" opacity=".85">COCINA · PRINT</text>
+          <rect x="396" y="96" width="108" height="5" rx="2.5" fill="#000"/>
+        </g>
+        <g clip-path="url(#printSlot)">
+          <g class="ph-print">
+            <rect x="402" y="120" width="96" height="128" rx="7" fill="#fff" stroke="#e8e6e2"/>
+            <text x="412" y="142" font-size="10.5" font-weight="800" fill="#1d1d1f">#1843</text>
+            <rect x="412" y="152" width="76" height="5" rx="2.5" fill="#dedcd8"/>
+            <rect x="412" y="164" width="60" height="5" rx="2.5" fill="#dedcd8"/>
+            <rect x="412" y="176" width="70" height="5" rx="2.5" fill="#dedcd8"/>
+            <path d="M412 194 H488" stroke="#dedcd8" stroke-width="1.5" stroke-dasharray="3 4"/>
+            <text x="412" y="214" font-size="10" font-weight="700" fill="#1d1d1f">2x Choripán</text>
+            <text x="412" y="230" font-size="10" font-weight="700" fill="#1d1d1f">1x Coca 1.5L</text>
+          </g>
+        </g>
+
+        <!-- status chips -->
+        <g class="ph-chip1">
+          <rect x="52" y="272" width="136" height="36" rx="18" fill="#fff" filter="url(#softDrop)"/>
+          <circle cx="74" cy="290" r="6" fill="#30d158"/>
+          <text x="88" y="295" font-size="11.5" font-weight="700" fill="#1d1d1f">Pago verificado</text>
+        </g>
+        <g class="ph-chip2">
+          <rect x="204" y="272" width="152" height="36" rx="18" fill="#fff" filter="url(#softDrop)"/>
+          <circle cx="226" cy="290" r="6" fill="#ff6b1a"/>
+          <text x="240" y="295" font-size="11.5" font-weight="700" fill="#1d1d1f">Comanda en cocina</text>
+        </g>
+        <g class="ph-chip3">
+          <rect x="372" y="272" width="150" height="36" rx="18" fill="#fff" filter="url(#softDrop)"/>
+          <circle cx="394" cy="290" r="6" fill="#ff9345"/>
+          <text x="408" y="295" font-size="11.5" font-weight="700" fill="#1d1d1f">Stock actualizado</text>
         </g>
       </svg>
     </div>
 
-    <!-- Vertical pipeline (mobile) -->
-    <div class="reveal mt-14 space-y-9 md:hidden" data-delay="1">
-      <div class="flow-step-v flex gap-5">
-        <span class="grid h-[2.1rem] w-[2.1rem] shrink-0 place-items-center rounded-full border-2 border-[#ff6b1a] bg-[#0d0d0f] text-[12px] font-black text-[#ff9f45]">01</span>
-        <div><p class="text-lg font-bold">Pedido entra</p><p class="mt-0.5 text-sm font-medium text-white/50">WhatsApp · Instagram · llamada</p></div>
+    <div class="mt-10 grid gap-4 sm:grid-cols-3">
+      <div class="reveal rounded-3xl bg-[#f5f5f7] p-7 lift">
+        <span class="material-symbols-outlined text-3xl text-[#ff6b1a]">point_of_sale</span>
+        <h3 class="mt-4 text-lg font-bold text-[#1d1d1f]">Caja completa</h3>
+        <p class="mt-2 text-[14px] font-medium leading-relaxed text-[#6e6e73]">Ingresos, egresos, retiros, proveedores y cierres diarios en un solo panel.</p>
       </div>
-      <div class="flow-step-v flex gap-5">
-        <span class="grid h-[2.1rem] w-[2.1rem] shrink-0 place-items-center rounded-full border-2 border-[#ff6b1a] bg-[#0d0d0f] text-[12px] font-black text-[#ff9f45]">02</span>
-        <div><p class="text-lg font-bold">Pago verificado</p><p class="mt-0.5 text-sm font-medium text-white/50">Mercado Pago</p></div>
+      <div class="reveal rounded-3xl bg-[#f5f5f7] p-7 lift" data-d="1">
+        <span class="material-symbols-outlined text-3xl text-[#ff6b1a]">inventory</span>
+        <h3 class="mt-4 text-lg font-bold text-[#1d1d1f]">Stock que se cuida solo</h3>
+        <p class="mt-2 text-[14px] font-medium leading-relaxed text-[#6e6e73]">Si un producto se termina, Capta deja de venderlo. Cada pedido descuenta en tiempo real.</p>
       </div>
-      <div class="flow-step-v flex gap-5">
-        <span class="grid h-[2.1rem] w-[2.1rem] shrink-0 place-items-center rounded-full border-2 border-[#ff6b1a] bg-[#0d0d0f] text-[12px] font-black text-[#ff9f45]">03</span>
-        <div><p class="text-lg font-bold">Comanda y stock</p><p class="mt-0.5 text-sm font-medium text-white/50">impresión + descuento en tiempo real</p></div>
-      </div>
-      <div class="flow-step-v flex gap-5">
-        <span class="grid h-[2.1rem] w-[2.1rem] shrink-0 place-items-center rounded-full border-2 border-[#ff6b1a] bg-[#0d0d0f] text-[12px] font-black text-[#ff9f45]">04</span>
-        <div><p class="text-lg font-bold">Delivery asignado</p><p class="mt-0.5 text-sm font-medium text-white/50">zonas de envío + liquidación</p></div>
-      </div>
-      <div class="flow-step-v flex gap-5">
-        <span class="grid h-[2.1rem] w-[2.1rem] shrink-0 place-items-center rounded-full bg-gradient-to-br from-[#ff6b1a] to-[#ff9f45] text-black"><span class="material-symbols-outlined text-[18px] font-bold">check</span></span>
-        <div><p class="text-lg font-bold">Cliente informado</p><p class="mt-0.5 text-sm font-medium text-white/50">seguimiento en tiempo real</p></div>
-      </div>
-    </div>
-
-    <!-- Capability grid -->
-    <div class="mt-20 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      <div class="reveal rounded-3xl bg-white/[.06] p-7 ring-1 ring-white/[.07] transition-colors hover:bg-white/[.09]">
-        <span class="material-symbols-outlined text-3xl text-[#ff9f45]">account_balance_wallet</span>
-        <h3 class="mt-4 text-xl font-bold">Mercado Pago</h3>
-        <p class="mt-2 text-[14px] font-medium leading-relaxed text-white/50">Verifica pagos por transferencia para que el pedido avance solo cuando corresponde.</p>
-      </div>
-      <div class="reveal rounded-3xl bg-white/[.06] p-7 ring-1 ring-white/[.07] transition-colors hover:bg-white/[.09]" data-delay="1">
-        <span class="material-symbols-outlined text-3xl text-[#ff9f45]">point_of_sale</span>
-        <h3 class="mt-4 text-xl font-bold">Sistema de caja</h3>
-        <p class="mt-2 text-[14px] font-medium leading-relaxed text-white/50">Ingresos, egresos, proveedores, retiros y cierres en un panel operativo.</p>
-      </div>
-      <div class="reveal rounded-3xl bg-white/[.06] p-7 ring-1 ring-white/[.07] transition-colors hover:bg-white/[.09]" data-delay="2">
-        <span class="material-symbols-outlined text-3xl text-[#ff9f45]">inventory</span>
-        <h3 class="mt-4 text-xl font-bold">Stock real</h3>
-        <p class="mt-2 text-[14px] font-medium leading-relaxed text-white/50">Si un producto se termina, Capta deja de venderlo y descuenta cada pedido.</p>
-      </div>
-      <div class="reveal rounded-3xl bg-white/[.06] p-7 ring-1 ring-white/[.07] transition-colors hover:bg-white/[.09]">
-        <span class="material-symbols-outlined text-3xl text-[#ff9f45]">map</span>
-        <h3 class="mt-4 text-xl font-bold">Zonas de envío</h3>
-        <p class="mt-2 text-[14px] font-medium leading-relaxed text-white/50">Trazá áreas en el mapa y definí precios de delivery por ubicación.</p>
-      </div>
-      <div class="reveal rounded-3xl bg-white/[.06] p-7 ring-1 ring-white/[.07] transition-colors hover:bg-white/[.09]" data-delay="1">
-        <span class="material-symbols-outlined text-3xl text-[#ff9f45]">two_wheeler</span>
-        <h3 class="mt-4 text-xl font-bold">Liquidaciones</h3>
-        <p class="mt-2 text-[14px] font-medium leading-relaxed text-white/50">Asigna pedidos a repartidores y calcula automáticamente cuánto corresponde a cada uno.</p>
-      </div>
-      <div class="reveal rounded-3xl bg-white/[.06] p-7 ring-1 ring-white/[.07] transition-colors hover:bg-white/[.09]" data-delay="2">
-        <span class="material-symbols-outlined text-3xl text-[#ff9f45]">share_location</span>
-        <h3 class="mt-4 text-xl font-bold">Seguimiento</h3>
-        <p class="mt-2 text-[14px] font-medium leading-relaxed text-white/50">El cliente recibe un link para ver el estado del pedido en tiempo real.</p>
+      <div class="reveal rounded-3xl bg-[#f5f5f7] p-7 lift" data-d="2">
+        <span class="material-symbols-outlined text-3xl text-[#ff6b1a]">campaign</span>
+        <h3 class="mt-4 text-lg font-bold text-[#1d1d1f]">Marketing que vuelve</h3>
+        <p class="mt-2 text-[14px] font-medium leading-relaxed text-[#6e6e73]">Promos y mensajes inteligentes que reactivan clientes y suben el ticket promedio.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ======================= WHATSAPP DEMO ======================= -->
-<section class="bg-white px-5 py-28 md:px-8 md:py-36">
-  <div class="mx-auto grid max-w-6xl items-center gap-16 lg:grid-cols-2">
-    <div class="reveal">
-      <p class="eyebrow text-[#ff6b1a]">WhatsApp que vende</p>
-      <h2 class="display mt-4 text-4xl text-[#1d1d1f] sm:text-5xl md:text-[3.6rem]">El cliente escribe.<br/>Capta conversa, vende<br/>y ordena.</h2>
-      <p class="mt-6 max-w-lg text-lg font-medium leading-relaxed text-[#6e6e73]">La conversación no termina en una respuesta automática. Capta lleva al cliente al menú, recibe el pedido, confirma datos y manda el link de seguimiento.</p>
-      <div class="mt-9 grid gap-3 sm:grid-cols-3">
-        <div class="rounded-2xl bg-[#f5f5f7] p-5">
-          <span class="material-symbols-outlined text-[#ff6b1a]">restaurant_menu</span>
-          <p class="mt-2 text-[14px] font-bold text-[#1d1d1f]">Menú al instante</p>
-        </div>
-        <div class="rounded-2xl bg-[#f5f5f7] p-5">
-          <span class="material-symbols-outlined text-[#ff6b1a]">receipt_long</span>
-          <p class="mt-2 text-[14px] font-bold text-[#1d1d1f]">Pedido claro</p>
-        </div>
-        <div class="rounded-2xl bg-[#f5f5f7] p-5">
-          <span class="material-symbols-outlined text-[#ff6b1a]">near_me</span>
-          <p class="mt-2 text-[14px] font-bold text-[#1d1d1f]">Seguimiento</p>
-        </div>
-      </div>
-    </div>
+<!-- ════════════════ 04 · ENTREGA ════════════════ -->
+<section id="entrega" class="scroll-mt-14 bg-[#f5f5f7] px-5 py-28 md:px-8 md:py-40">
+  <div class="mx-auto grid max-w-6xl items-center gap-16 lg:grid-cols-[.95fr_1.05fr]">
+    <!-- SVG map scene -->
+    <div class="scene reveal order-2 lg:order-1">
+      <div class="overflow-hidden rounded-[2rem] shadow-[0_40px_90px_-45px_rgba(29,29,31,.4)]">
+        <svg viewBox="0 0 560 430" class="w-full" role="img" aria-label="Mapa de delivery: zonas de envío, ruta del repartidor y llegada al cliente">
+          <rect width="560" height="430" fill="#edece8"/>
+          <!-- streets -->
+          <g stroke="#fff" stroke-width="13" stroke-linecap="round" fill="none">
+            <path d="M-10 90 H570"/><path d="M-10 210 H570"/><path d="M-10 330 H570"/>
+            <path d="M100 -10 V440"/><path d="M250 -10 V440"/><path d="M400 -10 V440"/>
+          </g>
+          <g stroke="#fff" stroke-width="6" stroke-linecap="round" fill="none" opacity=".7">
+            <path d="M-10 150 H570"/><path d="M-10 270 H570"/><path d="M175 -10 V440"/><path d="M325 -10 V440"/><path d="M475 -10 V440"/>
+          </g>
+          <!-- park -->
+          <rect x="415" y="225" width="130" height="90" rx="14" fill="#dcead2"/>
 
-    <div class="reveal mx-auto w-full max-w-[24rem]" data-delay="1">
-      <div class="phone-shell rounded-[2.8rem] p-3 shadow-[0_45px_100px_-40px_rgba(0,0,0,.5)]">
-        <div class="overflow-hidden rounded-[2.15rem] bg-[#faf9f7]">
-          <div class="flex items-center gap-3 bg-[#1d1d1f] px-5 py-4 text-white">
-            <div class="grid h-10 w-10 place-items-center rounded-full bg-[#ff6b1a]/20 text-[#ff9f45]"><span class="material-symbols-outlined">storefront</span></div>
-            <div><p class="text-[15px] font-bold">Restaurante</p><p class="text-[11px] font-medium text-white/50">En línea por WhatsApp</p></div>
-            <span class="material-symbols-outlined ml-auto text-white/40">more_vert</span>
-          </div>
-          <div class="min-h-[26rem] space-y-3 p-4">
-            <div class="chat-step chat-step-1 max-w-[82%] rounded-2xl rounded-tl-md bg-[#f0f0f2] px-4 py-3">
-              <p class="text-[14px] leading-relaxed text-[#1d1d1f]">Hola! ¿Están tomando pedidos? Quiero pedir algo para esta noche.</p>
-              <p class="mt-1 text-right text-[10px] font-medium text-[#6e6e73]/70">20:47</p>
-            </div>
-            <div class="chat-step chat-step-2 ml-auto max-w-[86%] rounded-2xl rounded-tr-md bg-[#fff1e8] px-4 py-3">
-              <p class="text-[14px] leading-relaxed text-[#1d1d1f]">Sí, estamos tomando pedidos. Te paso el menú para que elijas tranquilo.</p>
-              <div class="mt-3 rounded-xl bg-white/80 p-3 ring-1 ring-[#ff6b1a]/15">
-                <p class="text-[12px] font-bold text-[#1d1d1f]">restaurante.menu.net.ar</p>
-                <p class="text-[11px] font-medium text-[#6e6e73]">Menú, precios, extras y promos</p>
-              </div>
-              <p class="mt-1 text-right text-[10px] font-medium text-[#6e6e73]/70">20:47 · visto</p>
-            </div>
-            <div class="chat-step chat-step-3 max-w-[84%] rounded-2xl rounded-tl-md bg-[#f0f0f2] px-4 py-3">
-              <p class="text-[14px] leading-relaxed text-[#1d1d1f]">Listo, armé el pedido desde el menú: pizza, empanadas y bebida.</p>
-              <p class="mt-1 text-right text-[10px] font-medium text-[#6e6e73]/70">20:51</p>
-            </div>
-            <div class="chat-step chat-step-4 ml-auto max-w-[88%] rounded-2xl rounded-tr-md bg-[#fff1e8] px-4 py-3">
-              <p class="text-[14px] leading-relaxed text-[#1d1d1f]">Perfecto, ya entró. Lo mandamos a cocina y acá podés seguir cómo va.</p>
-              <div class="mt-3 flex flex-wrap gap-2">
-                <span class="rounded-full bg-white/80 px-3 py-1.5 text-[11px] font-bold text-[#1d1d1f] ring-1 ring-black/[.05]">Pedido #1842</span>
-                <span class="inline-flex items-center gap-1.5 rounded-full bg-[#ff6b1a] px-3.5 py-1.5 text-[11px] font-bold text-white"><span class="material-symbols-outlined text-[13px]">near_me</span>Ver seguimiento</span>
-              </div>
-              <p class="mt-1 text-right text-[10px] font-medium text-[#6e6e73]/70">20:52 · visto</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+          <!-- delivery zone -->
+          <path class="zone-pulse" d="M260 60 L540 60 Q548 60 548 68 L548 195 L410 195 L410 130 L260 130 Z" fill="#ff6b1a" fill-opacity=".08" stroke="#ff6b1a" stroke-opacity=".4" stroke-width="1.8" stroke-dasharray="7 7"/>
+          <g>
+            <rect x="432" y="76" width="100" height="26" rx="13" fill="#fff" opacity=".95"/>
+            <text x="482" y="93" text-anchor="middle" font-size="10.5" font-weight="700" fill="#c8460c">Zona Norte · $1.500</text>
+          </g>
 
-<!-- ======================= TRACKING ======================= -->
-<section class="bg-[#f5f5f7] px-5 py-28 md:px-8 md:py-36">
-  <div class="mx-auto grid max-w-6xl items-center gap-16 lg:grid-cols-2">
-    <div class="reveal order-2 mx-auto w-full max-w-[24rem] lg:order-1" data-delay="1">
-      <div class="phone-shell rounded-[2.8rem] p-3 shadow-[0_45px_100px_-40px_rgba(0,0,0,.4)]">
-        <div class="overflow-hidden rounded-[2.15rem] bg-white">
-          <div class="flex items-center gap-2 bg-[#f5f5f7] px-5 py-3.5">
-            <span class="material-symbols-outlined text-[16px] text-[#6e6e73]">lock</span>
-            <span class="truncate text-[13px] font-bold text-[#1d1d1f]">seguimiento.capta.ar</span>
-            <span class="material-symbols-outlined ml-auto text-[18px] text-[#6e6e73]">ios_share</span>
-          </div>
-          <div class="px-6 pb-7 pt-6">
-            <div class="mb-6 grid grid-cols-2 gap-3">
-              <div class="rounded-2xl bg-[#f5f5f7] p-4">
-                <p class="text-[10px] font-black uppercase tracking-[0.14em] text-[#6e6e73]">Cliente</p>
-                <p class="mt-1.5 text-[15px] font-bold text-[#1d1d1f]">Matías R.</p>
-              </div>
-              <div class="rounded-2xl bg-[#f5f5f7] p-4">
-                <p class="text-[10px] font-black uppercase tracking-[0.14em] text-[#6e6e73]">Entrega</p>
-                <p class="mt-1.5 text-[15px] font-bold text-[#1d1d1f]">Suipacha 200</p>
-              </div>
-            </div>
-            <div class="relative py-2">
-              <div class="absolute left-[1.18rem] top-8 h-[15.5rem] w-[3px] rounded-full bg-[#ececee]"></div>
-              <div class="tracking-line-fill absolute left-[1.18rem] top-8 h-[15.5rem] w-[3px] rounded-full bg-gradient-to-b from-[#ff6b1a] to-[#ff9f45]"></div>
-              <div class="relative space-y-7">
-                <div class="tracking-step flex gap-5">
-                  <div class="relative z-10 grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[#ff6b1a] text-white shadow-[0_10px_24px_-12px_rgba(255,107,26,.9)]"><span class="material-symbols-outlined text-[20px]">check</span></div>
-                  <div class="pt-0.5"><p class="text-[17px] font-bold text-[#1d1d1f]">Recibido</p><p class="text-[13px] font-medium text-[#6e6e73]">El local ya tiene tu pedido.</p></div>
-                </div>
-                <div class="tracking-step tracking-step-2 flex gap-5">
-                  <div class="relative z-10 grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[#ff6b1a] text-white shadow-[0_10px_24px_-12px_rgba(255,107,26,.9)]"><span class="material-symbols-outlined text-[20px]">skillet</span></div>
-                  <div class="pt-0.5"><p class="text-[17px] font-bold text-[#1d1d1f]">En preparación</p><p class="text-[13px] font-medium text-[#6e6e73]">La cocina lo está preparando.</p></div>
-                </div>
-                <div class="tracking-step tracking-step-3 flex gap-5">
-                  <div class="relative z-10 grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[#fff1e8] text-[#c8460c] ring-1 ring-[#ff6b1a]/15"><span class="material-symbols-outlined text-[20px]">local_shipping</span></div>
-                  <div class="pt-0.5"><p class="text-[17px] font-bold text-[#6e6e73]">Listo</p><p class="text-[13px] font-medium text-[#6e6e73]/70">Sale del local en unos minutos.</p></div>
-                </div>
-                <div class="tracking-step tracking-step-4 flex gap-5">
-                  <div class="relative z-10 grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[#f5f5f7] text-[#c7c7cc]"><span class="material-symbols-outlined text-[20px]">home_pin</span></div>
-                  <div class="pt-0.5"><p class="text-[17px] font-bold text-[#c7c7cc]">Entregado</p><p class="text-[13px] font-medium text-[#c7c7cc]">Pedido finalizado.</p></div>
-                </div>
-              </div>
-            </div>
-            <div class="mt-5 flex items-center justify-between rounded-2xl bg-[#f5f5f7] p-4">
-              <div><p class="text-[10px] font-black uppercase tracking-[0.14em] text-[#6e6e73]">Detalle</p><p class="mt-1 text-[14px] font-bold text-[#1d1d1f]">1x Combo completo</p></div>
-              <p class="text-[17px] font-extrabold text-[#ff6b1a]">$7.000</p>
-            </div>
-          </div>
-        </div>
+          <!-- route -->
+          <path id="routePath" d="M100 330 H240 Q250 330 250 320 V220 Q250 210 260 210 H390 Q400 210 400 200 V100 Q400 90 410 90 H475" fill="none" stroke="#ff6b1a" stroke-width="5" stroke-linecap="round" class="ph-route" pathLength="1"/>
+
+          <!-- resto pin -->
+          <g>
+            <circle cx="100" cy="330" r="17" fill="#1d1d1f"/>
+            <text x="100" y="336" text-anchor="middle" font-size="15" fill="#fff">🍔</text>
+          </g>
+          <!-- home pin -->
+          <g>
+            <circle class="pin-ring" cx="475" cy="90" r="16" fill="none" stroke="#ff6b1a" stroke-width="2"/>
+            <circle cx="475" cy="90" r="14" fill="#ff6b1a"/>
+            <path d="M468 91 l7 -7 l7 7 M470 89 v7 h10 v-7" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </g>
+
+          <!-- moto -->
+          <g>
+            <circle r="11" fill="#fff" stroke="#ff6b1a" stroke-width="3">
+              <animateMotion dur="10s" repeatCount="indefinite" keyPoints="0;0;1;1" keyTimes="0;0.05;0.38;1" calcMode="linear">
+                <mpath href="#routePath"/>
+              </animateMotion>
+            </circle>
+            <circle r="4" fill="#ff6b1a">
+              <animateMotion dur="10s" repeatCount="indefinite" keyPoints="0;0;1;1" keyTimes="0;0.05;0.38;1" calcMode="linear">
+                <mpath href="#routePath"/>
+              </animateMotion>
+            </circle>
+          </g>
+
+          <!-- ETA chip -->
+          <g class="ph-eta">
+            <rect x="292" y="238" width="128" height="42" rx="21" fill="#1d1d1f"/>
+            <circle cx="314" cy="259" r="5" fill="#30d158"/>
+            <text x="328" y="264" font-size="13" font-weight="700" fill="#fff">Llega 21:42</text>
+          </g>
+        </svg>
       </div>
     </div>
 
     <div class="reveal order-1 lg:order-2">
-      <p class="eyebrow text-[#ff6b1a]">Seguimiento en vivo</p>
-      <h2 class="display mt-4 text-4xl text-[#1d1d1f] sm:text-5xl md:text-[3.6rem]">Tu cliente sabe dónde está su pedido. Sin preguntar.</h2>
-      <p class="mt-6 max-w-lg text-lg font-medium leading-relaxed text-[#6e6e73]">Capta manda un link de seguimiento y actualiza el estado en vivo: recibido, en cocina, en camino y entregado. Menos ansiedad para el cliente, menos mensajes repetidos para tu equipo.</p>
+      <p class="t-eyebrow text-[#ff6b1a]">04 · Entrega</p>
+      <h2 class="t-display mt-5 text-4xl text-[#1d1d1f] sm:text-6xl md:text-[4.4rem]">Zonas, repartidores y clientes. Coordinados.</h2>
+      <p class="mt-7 max-w-lg text-lg font-medium leading-relaxed text-[#6e6e73] md:text-xl">Trazá tus zonas en el mapa con precio por ubicación. Capta asigna el pedido al repartidor, calcula su liquidación y le manda al cliente un link para seguir todo en vivo.</p>
       <div class="mt-9 grid gap-3 sm:grid-cols-2">
-        <div class="rounded-2xl bg-white p-6 shadow-[0_2px_10px_rgba(29,29,31,.04)]">
-          <span class="material-symbols-outlined text-[#ff6b1a]">notifications_active</span>
-          <p class="mt-2 text-[15px] font-bold text-[#1d1d1f]">Estados automáticos</p>
-          <p class="mt-1 text-[13px] font-medium text-[#6e6e73]">Cada cambio importante se refleja al instante.</p>
+        <div class="rounded-2xl bg-white p-6 lift">
+          <span class="material-symbols-outlined text-[#ff6b1a]">map</span>
+          <p class="mt-2 text-[15px] font-bold text-[#1d1d1f]">Zonas con precio propio</p>
+          <p class="mt-1 text-[13px] font-medium text-[#6e6e73]">Dibujás el área, definís la tarifa. Listo.</p>
         </div>
-        <div class="rounded-2xl bg-white p-6 shadow-[0_2px_10px_rgba(29,29,31,.04)]">
+        <div class="rounded-2xl bg-white p-6 lift">
+          <span class="material-symbols-outlined text-[#ff6b1a]">two_wheeler</span>
+          <p class="mt-2 text-[15px] font-bold text-[#1d1d1f]">Liquidaciones automáticas</p>
+          <p class="mt-1 text-[13px] font-medium text-[#6e6e73]">Cada repartidor sabe cuánto le corresponde.</p>
+        </div>
+        <div class="rounded-2xl bg-white p-6 lift">
+          <span class="material-symbols-outlined text-[#ff6b1a]">share_location</span>
+          <p class="mt-2 text-[15px] font-bold text-[#1d1d1f]">Seguimiento en vivo</p>
+          <p class="mt-1 text-[13px] font-medium text-[#6e6e73]">Recibido → en cocina → en camino → entregado.</p>
+        </div>
+        <div class="rounded-2xl bg-white p-6 lift">
           <span class="material-symbols-outlined text-[#ff6b1a]">support_agent</span>
-          <p class="mt-2 text-[15px] font-bold text-[#1d1d1f]">Menos consultas</p>
-          <p class="mt-1 text-[13px] font-medium text-[#6e6e73]">El cliente mira el link en vez de preguntar por chat.</p>
+          <p class="mt-2 text-[15px] font-bold text-[#1d1d1f]">Menos "¿ya sale?"</p>
+          <p class="mt-1 text-[13px] font-medium text-[#6e6e73]">El cliente mira el link en vez de escribir.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ======================= MENÚS ======================= -->
-<section id="menu" class="scroll-mt-16 bg-white px-5 py-28 md:px-8 md:py-36">
-  <div class="mx-auto max-w-6xl">
-    <div class="reveal mx-auto max-w-3xl text-center">
-      <p class="eyebrow text-[#ff6b1a]">Menús digitales</p>
-      <h2 class="display mt-4 text-4xl text-[#1d1d1f] sm:text-6xl md:text-[4.6rem]">Diseñados para vender.<br/>No solo para mostrar.</h2>
-      <p class="mx-auto mt-6 max-w-2xl text-lg font-medium leading-relaxed text-[#6e6e73] md:text-xl">Diseño, orden de categorías, promos, destacados y experiencia mobile pensada para que el cliente termine el pedido más rápido. Probálos: son reales.</p>
-    </div>
-
-    <div class="mt-16 grid gap-12 lg:grid-cols-3 lg:gap-8">
-      <div class="reveal space-y-5 min-w-0">
-        <div class="phone-shell mx-auto w-[calc(100vw-2.5rem)] max-w-[21rem] rounded-[2.9rem] p-3 shadow-[0_40px_90px_-35px_rgba(0,0,0,0.45)] md:w-full lg:max-w-[19rem]">
-          <div class="phone-screen relative">
-            <div class="phone-viewport aspect-[9/19.5] bg-white">
-              <iframe src="https://www.menu.net.ar/totta" title="Menú Totta" class="phone-embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-              <div class="phone-scroll-mask"></div>
-            </div>
-          </div>
-        </div>
-        <div class="text-center">
-          <p class="text-lg font-bold text-[#1d1d1f]">Totta</p>
-          <a href="https://www.menu.net.ar/totta" target="_blank" rel="noopener noreferrer" class="link-arrow mt-1 inline-flex items-center gap-1 text-[14px] font-bold text-[#ff6b1a] hover:text-[#c8460c]">Ver menú en vivo <span class="material-symbols-outlined text-[17px]">arrow_outward</span></a>
-        </div>
-      </div>
-      <div class="reveal space-y-5 min-w-0" data-delay="1">
-        <div class="phone-shell mx-auto w-[calc(100vw-2.5rem)] max-w-[21rem] rounded-[2.9rem] p-3 shadow-[0_40px_90px_-35px_rgba(0,0,0,0.45)] md:w-full lg:max-w-[19rem]">
-          <div class="phone-screen relative">
-            <div class="phone-viewport aspect-[9/19.5] bg-white">
-              <iframe src="https://www.menu.net.ar/burguer" title="Menú Burguer" class="phone-embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-              <div class="phone-scroll-mask"></div>
-            </div>
-          </div>
-        </div>
-        <div class="text-center">
-          <p class="text-lg font-bold text-[#1d1d1f]">Burger</p>
-          <a href="https://www.menu.net.ar/burguer" target="_blank" rel="noopener noreferrer" class="link-arrow mt-1 inline-flex items-center gap-1 text-[14px] font-bold text-[#ff6b1a] hover:text-[#c8460c]">Ver menú en vivo <span class="material-symbols-outlined text-[17px]">arrow_outward</span></a>
-        </div>
-      </div>
-      <div class="reveal space-y-5 min-w-0" data-delay="2">
-        <div class="phone-shell mx-auto w-[calc(100vw-2.5rem)] max-w-[21rem] rounded-[2.9rem] p-3 shadow-[0_40px_90px_-35px_rgba(0,0,0,0.45)] md:w-full lg:max-w-[19rem]">
-          <div class="phone-screen relative">
-            <div class="phone-viewport aspect-[9/19.5] bg-white">
-              <iframe src="https://www.menu.net.ar/heladeria" title="Menú Heladería" class="phone-embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-              <div class="phone-scroll-mask"></div>
-            </div>
-          </div>
-        </div>
-        <div class="text-center">
-          <p class="text-lg font-bold text-[#1d1d1f]">Heladería</p>
-          <a href="https://www.menu.net.ar/heladeria" target="_blank" rel="noopener noreferrer" class="link-arrow mt-1 inline-flex items-center gap-1 text-[14px] font-bold text-[#ff6b1a] hover:text-[#c8460c]">Ver menú en vivo <span class="material-symbols-outlined text-[17px]">arrow_outward</span></a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ======================= GERENTE IA (dark) ======================= -->
-<section class="relative overflow-hidden bg-black px-5 py-28 text-white md:px-8 md:py-40">
-  <div class="pointer-events-none absolute right-[-200px] top-1/3 h-[500px] w-[700px] rounded-full bg-[#ff6b1a]/[.09] blur-[140px]"></div>
-  <div class="relative mx-auto grid max-w-6xl items-center gap-16 lg:grid-cols-[0.9fr_1.1fr]">
+<!-- ════════════════ 05 · PIENSA ════════════════ -->
+<section id="piensa" class="scroll-mt-14 relative overflow-hidden bg-black px-5 py-28 text-white md:px-8 md:py-40">
+  <div class="pointer-events-none absolute right-[-160px] top-1/4 h-[440px] w-[640px] rounded-full bg-[#ff6b1a]/[.08] blur-[130px]"></div>
+  <div class="relative mx-auto grid max-w-6xl items-center gap-16 lg:grid-cols-2">
     <div class="reveal">
-      <p class="eyebrow text-[#ff9f45]">Gerente IA</p>
-      <h2 class="display mt-4 text-4xl sm:text-5xl md:text-[3.8rem]">Preguntale a tu restaurante <span class="grad-text-dark">qué está pasando.</span></h2>
-      <p class="mt-6 max-w-lg text-lg font-medium leading-relaxed text-white/55">Ventas por canal, productos más pedidos, horarios fuertes, clientes inactivos, campañas recomendadas y movimientos clave del negocio. En una conversación.</p>
+      <p class="t-eyebrow text-[#ff9345]">05 · Piensa</p>
+      <h2 class="t-display mt-5 text-4xl sm:text-6xl md:text-[4.4rem]">Preguntale a tu restaurante <span class="t-ember">qué está pasando.</span></h2>
+      <p class="mt-7 max-w-lg text-lg font-medium leading-relaxed text-white/55 md:text-xl">El Gerente IA lee tu negocio y te lo cuenta en simple: ventas por canal, productos top, horas pico, clientes que hace rato no vuelven y qué campaña conviene lanzar.</p>
       <button onclick="openModal('analytic')" class="mt-9 inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-[15px] font-bold text-black transition-transform hover:scale-105 active:scale-95">
-        Ver analítica
-        <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+        Ver la analítica
+        <span class="material-symbols-outlined text-[19px]">arrow_forward</span>
       </button>
     </div>
-    <div class="reveal" data-delay="1">
-      <div class="overflow-hidden rounded-[1.9rem] ring-1 ring-white/10 shadow-[0_50px_120px_-50px_rgba(255,107,26,.35)]">
-        <img alt="Gerente IA de Capta analizando el negocio" src="./GERENTE IA.png" class="w-full object-cover"/>
-      </div>
+
+    <!-- SVG analytics scene -->
+    <div class="scene reveal" data-d="1">
+      <svg viewBox="0 0 560 420" class="w-full" role="img" aria-label="Gerente IA respondiendo cómo viene el día con un gráfico de ventas">
+        <rect x="4" y="4" width="552" height="412" rx="28" fill="#101013" stroke="#ffffff14"/>
+        <!-- query -->
+        <g class="ph-ask">
+          <rect x="32" y="32" width="262" height="44" rx="22" fill="#1e1e22"/>
+          <circle cx="56" cy="54" r="10" fill="#ff6b1a"/>
+          <text x="56" y="58" text-anchor="middle" font-size="10" font-weight="800" fill="#fff">M</text>
+          <text x="76" y="59" font-size="14" font-weight="600" fill="#fff">¿Cómo venimos hoy?</text>
+          <rect class="cursor-blink" x="266" y="44" width="2" height="20" fill="#ff6b1a"/>
+        </g>
+
+        <!-- chart area -->
+        <g>
+          <path d="M48 300 H512" stroke="#ffffff12" stroke-width="1"/>
+          <path d="M48 244 H512" stroke="#ffffff0a" stroke-width="1"/>
+          <path d="M48 188 H512" stroke="#ffffff0a" stroke-width="1"/>
+          <!-- bars -->
+          <rect class="bar bar1" x="66"  y="252" width="40" height="48"  rx="8" fill="#2a2a30"/>
+          <rect class="bar bar2" x="130" y="232" width="40" height="68"  rx="8" fill="#2a2a30"/>
+          <rect class="bar bar3" x="194" y="210" width="40" height="90"  rx="8" fill="#3a3a42"/>
+          <rect class="bar bar4" x="258" y="176" width="40" height="124" rx="8" fill="#4a4038"/>
+          <rect class="bar bar5" x="322" y="140" width="40" height="160" rx="8" fill="#ff6b1a"/>
+          <rect class="bar bar6" x="386" y="164" width="40" height="136" rx="8" fill="#c85512"/>
+          <rect class="bar bar7" x="450" y="196" width="40" height="104" rx="8" fill="#7a4326"/>
+          <!-- trend line -->
+          <path class="ln-draw" pathLength="1" d="M86 236 L150 218 L214 196 L278 160 L342 124 L406 148 L470 180" fill="none" stroke="#ffbe8a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- hour labels -->
+          <text x="86"  y="322" text-anchor="middle" font-size="11" font-weight="600" fill="#ffffff55">18h</text>
+          <text x="150" y="322" text-anchor="middle" font-size="11" font-weight="600" fill="#ffffff55">19h</text>
+          <text x="214" y="322" text-anchor="middle" font-size="11" font-weight="600" fill="#ffffff55">20h</text>
+          <text x="278" y="322" text-anchor="middle" font-size="11" font-weight="600" fill="#ffffff55">21h</text>
+          <text x="342" y="322" text-anchor="middle" font-size="11" font-weight="600" fill="#ff9345">22h</text>
+          <text x="406" y="322" text-anchor="middle" font-size="11" font-weight="600" fill="#ffffff55">23h</text>
+          <text x="470" y="322" text-anchor="middle" font-size="11" font-weight="600" fill="#ffffff55">00h</text>
+          <!-- peak chip -->
+          <g class="ph-peak">
+            <rect x="282" y="96" width="120" height="30" rx="15" fill="#ff6b1a"/>
+            <text x="342" y="116" text-anchor="middle" font-size="11.5" font-weight="800" fill="#000">Pico · 22:00</text>
+          </g>
+        </g>
+
+        <!-- answer chips -->
+        <g class="ph-ans1">
+          <rect x="32" y="346" width="240" height="42" rx="21" fill="#1e1e22" stroke="#ffffff14"/>
+          <circle cx="54" cy="367" r="5" fill="#30d158"/>
+          <text x="68" y="372" font-size="12.5" font-weight="700" fill="#fff">Producto top: burger doble</text>
+        </g>
+        <g class="ph-ans2">
+          <rect x="286" y="346" width="240" height="42" rx="21" fill="#1e1e22" stroke="#ffffff14"/>
+          <circle cx="308" cy="367" r="5" fill="#ff9345"/>
+          <text x="322" y="372" font-size="12.5" font-weight="700" fill="#fff">Sugerencia: promo martes</text>
+        </g>
+      </svg>
     </div>
   </div>
 </section>
 
-<!-- ======================= PRICING ======================= -->
-<section id="pricing" class="scroll-mt-16 bg-[#f5f5f7] px-5 py-28 md:px-8 md:py-36">
+<!-- ════════════════ PRICING ════════════════ -->
+<section id="pricing" class="scroll-mt-14 bg-white px-5 py-28 md:px-8 md:py-40">
   <div class="mx-auto max-w-6xl">
     <div class="reveal mx-auto max-w-3xl text-center">
-      <p class="eyebrow text-[#ff6b1a]">Planes</p>
-      <h2 class="display mt-4 text-4xl text-[#1d1d1f] sm:text-6xl md:text-[4.6rem]">Elegí cómo activar Capta.</h2>
-      <p class="mx-auto mt-6 max-w-2xl text-lg font-medium leading-relaxed text-[#6e6e73] md:text-xl">Planes simples para empezar con atención automática, crecer con marketing y operar con automatización total.</p>
+      <p class="t-eyebrow text-[#ff6b1a]">Planes</p>
+      <h2 class="t-display mt-5 text-4xl text-[#1d1d1f] sm:text-6xl md:text-[4.4rem]">Un plan para cada etapa.</h2>
+      <p class="mx-auto mt-7 max-w-2xl text-lg font-medium leading-relaxed text-[#6e6e73] md:text-xl">Empezá con atención automática, crecé con marketing, operá con automatización total.</p>
     </div>
 
     <div class="mt-16 grid gap-6 lg:grid-cols-3">
       <!-- Base -->
-      <div class="card-soft reveal flex flex-col p-9">
-        <h3 class="text-2xl font-extrabold tracking-tight text-[#1d1d1f]">Plan Base</h3>
-        <p class="mt-2 text-[14px] font-medium text-[#6e6e73]">Ideal para automatizar la atención diaria.</p>
-        <p class="display mt-7 text-5xl text-[#1d1d1f]">$ 50.000</p>
-        <p class="mt-1 text-[14px] font-medium text-[#6e6e73]">por mes</p>
-        <ul class="mt-8 flex-1 space-y-3.5 text-[14px] font-medium text-[#3d3d40]">
-          <li class="flex gap-3"><span class="material-symbols-outlined text-[19px] text-[#ff6b1a]">check</span>Atención automática por WhatsApp e Instagram</li>
-          <li class="flex gap-3"><span class="material-symbols-outlined text-[19px] text-[#ff6b1a]">check</span>Toma de pedidos automática</li>
-          <li class="flex gap-3"><span class="material-symbols-outlined text-[19px] text-[#ff6b1a]">check</span>Gestión de reservas</li>
-          <li class="flex gap-3"><span class="material-symbols-outlined text-[19px] text-[#ff6b1a]">check</span>Control de mesas</li>
-          <li class="flex gap-3"><span class="material-symbols-outlined text-[19px] text-[#ff6b1a]">check</span>Dashboard central en tiempo real</li>
-          <li class="flex gap-3"><span class="material-symbols-outlined text-[19px] text-[#ff6b1a]">check</span>Organización de pedidos y clientes</li>
+      <div class="reveal hairline flex flex-col rounded-[1.8rem] bg-white p-9 lift">
+        <h3 class="text-xl font-extrabold tracking-tight text-[#1d1d1f]">Base</h3>
+        <p class="mt-1.5 text-[13.5px] font-medium text-[#6e6e73]">Automatizá la atención diaria.</p>
+        <p class="t-display mt-7 text-[2.6rem] text-[#1d1d1f]">$ 50.000</p>
+        <p class="text-[13px] font-medium text-[#86868b]">por mes</p>
+        <ul class="mt-8 flex-1 space-y-3 text-[13.5px] font-medium text-[#3d3d40]">
+          <li class="flex gap-2.5"><span class="material-symbols-outlined text-[17px] text-[#ff6b1a]">check</span>Atención automática por WhatsApp e Instagram</li>
+          <li class="flex gap-2.5"><span class="material-symbols-outlined text-[17px] text-[#ff6b1a]">check</span>Toma de pedidos automática</li>
+          <li class="flex gap-2.5"><span class="material-symbols-outlined text-[17px] text-[#ff6b1a]">check</span>Gestión de reservas</li>
+          <li class="flex gap-2.5"><span class="material-symbols-outlined text-[17px] text-[#ff6b1a]">check</span>Control de mesas</li>
+          <li class="flex gap-2.5"><span class="material-symbols-outlined text-[17px] text-[#ff6b1a]">check</span>Dashboard central en tiempo real</li>
+          <li class="flex gap-2.5"><span class="material-symbols-outlined text-[17px] text-[#ff6b1a]">check</span>Organización de pedidos y clientes</li>
         </ul>
-        <button onclick="openModal()" class="btn-primary mt-9 w-full rounded-full py-3.5 text-[15px] font-bold">Empezar con Base</button>
+        <button onclick="openModal()" class="mt-9 w-full rounded-full bg-[#1d1d1f] py-3.5 text-[14px] font-bold text-white transition-transform hover:scale-[1.02] active:scale-95">Empezar</button>
       </div>
 
-      <!-- Growth (featured) -->
-      <div class="reveal relative flex flex-col rounded-[1.75rem] bg-white p-9 shadow-[0_0_0_2px_#ff6b1a,0_40px_90px_-40px_rgba(255,107,26,.45)] transition-transform duration-500 hover:-translate-y-1.5 lg:scale-[1.03]" data-delay="1">
-        <span class="absolute -top-3.5 left-1/2 -translate-x-1/2 rounded-full bg-gradient-to-r from-[#ff6b1a] to-[#ff9f45] px-4 py-1.5 text-[11px] font-black uppercase tracking-widest text-white shadow-[0_10px_25px_-10px_rgba(255,107,26,.8)]">Más elegido</span>
-        <h3 class="text-2xl font-extrabold tracking-tight text-[#1d1d1f]">Plan Growth</h3>
-        <p class="mt-2 text-[14px] font-medium text-[#6e6e73]">Más ventas, marketing y menú personalizado.</p>
-        <p class="display mt-7 text-5xl text-[#1d1d1f]">$ 65.000</p>
-        <p class="mt-1 text-[14px] font-medium text-[#6e6e73]">por mes</p>
-        <ul class="mt-8 flex-1 space-y-3.5 text-[14px] font-medium text-[#3d3d40]">
-          <li class="flex gap-3"><span class="material-symbols-outlined text-[19px] text-[#ff6b1a]">check</span>Todo el Plan Base</li>
-          <li class="flex gap-3"><span class="material-symbols-outlined text-[19px] text-[#ff6b1a]">check</span>Marketing automático con IA</li>
-          <li class="flex gap-3"><span class="material-symbols-outlined text-[19px] text-[#ff6b1a]">check</span>Promociones para reactivar clientes</li>
-          <li class="flex gap-3"><span class="material-symbols-outlined text-[19px] text-[#ff6b1a]">check</span>Recomendaciones para aumentar ticket</li>
-          <li class="flex gap-3"><span class="material-symbols-outlined text-[19px] text-[#ff6b1a]">check</span>Asistente IA para el dueño</li>
-          <li class="flex gap-3"><span class="material-symbols-outlined text-[19px] text-[#ff6b1a]">check</span>Página de menú personalizada</li>
-          <li class="flex gap-3"><span class="material-symbols-outlined text-[19px] text-[#ff6b1a]">check</span>CRM avanzado de clientes</li>
+      <!-- Growth — featured, dark -->
+      <div class="reveal relative flex flex-col rounded-[1.8rem] bg-black p-9 text-white shadow-[0_50px_110px_-45px_rgba(255,107,26,.55)] ring-1 ring-[#ff6b1a]/40 lift" data-d="1">
+        <span class="absolute -top-3.5 left-1/2 -translate-x-1/2 rounded-full bg-gradient-to-r from-[#ff6b1a] to-[#ff9345] px-4 py-1.5 text-[10.5px] font-black uppercase tracking-[0.14em] text-white">Más elegido</span>
+        <h3 class="text-xl font-extrabold tracking-tight">Growth</h3>
+        <p class="mt-1.5 text-[13.5px] font-medium text-white/50">Más ventas, marketing y menú propio.</p>
+        <p class="t-display mt-7 text-[2.6rem]">$ 65.000</p>
+        <p class="text-[13px] font-medium text-white/40">por mes</p>
+        <ul class="mt-8 flex-1 space-y-3 text-[13.5px] font-medium text-white/80">
+          <li class="flex gap-2.5"><span class="material-symbols-outlined text-[17px] text-[#ff9345]">check</span>Todo el plan Base</li>
+          <li class="flex gap-2.5"><span class="material-symbols-outlined text-[17px] text-[#ff9345]">check</span>Marketing automático con IA</li>
+          <li class="flex gap-2.5"><span class="material-symbols-outlined text-[17px] text-[#ff9345]">check</span>Promociones para reactivar clientes</li>
+          <li class="flex gap-2.5"><span class="material-symbols-outlined text-[17px] text-[#ff9345]">check</span>Recomendaciones para aumentar ticket</li>
+          <li class="flex gap-2.5"><span class="material-symbols-outlined text-[17px] text-[#ff9345]">check</span>Asistente IA para el dueño</li>
+          <li class="flex gap-2.5"><span class="material-symbols-outlined text-[17px] text-[#ff9345]">check</span>Página de menú personalizada</li>
+          <li class="flex gap-2.5"><span class="material-symbols-outlined text-[17px] text-[#ff9345]">check</span>CRM avanzado de clientes</li>
         </ul>
-        <button onclick="openModal()" class="btn-accent mt-9 w-full rounded-full py-3.5 text-[15px] font-bold">Empezar con Growth</button>
+        <button onclick="openModal()" class="btn-ember mt-9 w-full rounded-full py-3.5 text-[14px] font-bold">Empezar</button>
       </div>
 
-      <!-- Pro (dark) -->
-      <div class="card-dark reveal flex flex-col p-9 text-white" data-delay="2">
+      <!-- Pro -->
+      <div class="reveal hairline flex flex-col rounded-[1.8rem] bg-white p-9 lift" data-d="2">
         <div class="flex items-center justify-between">
-          <h3 class="text-2xl font-extrabold tracking-tight">Plan Pro</h3>
-          <span class="rounded-full bg-[#ff6b1a]/15 px-3 py-1 text-[11px] font-black uppercase tracking-widest text-[#ff9f45]">Con llamadas</span>
+          <h3 class="text-xl font-extrabold tracking-tight text-[#1d1d1f]">Pro</h3>
+          <span class="rounded-full bg-[#fff1e8] px-3 py-1 text-[10.5px] font-black uppercase tracking-[0.12em] text-[#c8460c]">Con llamadas</span>
         </div>
-        <p class="mt-2 text-[14px] font-medium text-white/50">Automatización total del restaurante.</p>
-        <p class="display mt-7 text-5xl">$ 85.000</p>
-        <p class="mt-1 text-[14px] font-medium text-white/50">por mes</p>
-        <p class="mt-3 text-[14px] font-bold text-[#ff9f45]">+ $ 150 por minuto de llamada</p>
-        <ul class="mt-8 flex-1 space-y-3.5 text-[14px] font-medium text-white/75">
-          <li class="flex gap-3"><span class="material-symbols-outlined text-[19px] text-[#ff9f45]">check</span>Todo el Plan Growth</li>
-          <li class="flex gap-3"><span class="material-symbols-outlined text-[19px] text-[#ff9f45]">check</span>Atención automática de llamadas con IA</li>
-          <li class="flex gap-3"><span class="material-symbols-outlined text-[19px] text-[#ff9f45]">check</span>Toma de pedidos por teléfono</li>
-          <li class="flex gap-3"><span class="material-symbols-outlined text-[19px] text-[#ff9f45]">check</span>Reservas automáticas por llamada</li>
-          <li class="flex gap-3"><span class="material-symbols-outlined text-[19px] text-[#ff9f45]">check</span>Consultas del menú por voz</li>
-          <li class="flex gap-3"><span class="material-symbols-outlined text-[19px] text-[#ff9f45]">check</span>Atención simultánea de múltiples llamadas</li>
+        <p class="mt-1.5 text-[13.5px] font-medium text-[#6e6e73]">Automatización total del restaurante.</p>
+        <p class="t-display mt-7 text-[2.6rem] text-[#1d1d1f]">$ 85.000</p>
+        <p class="text-[13px] font-medium text-[#86868b]">por mes · + $150 por minuto de llamada</p>
+        <ul class="mt-8 flex-1 space-y-3 text-[13.5px] font-medium text-[#3d3d40]">
+          <li class="flex gap-2.5"><span class="material-symbols-outlined text-[17px] text-[#ff6b1a]">check</span>Todo el plan Growth</li>
+          <li class="flex gap-2.5"><span class="material-symbols-outlined text-[17px] text-[#ff6b1a]">check</span>Atención automática de llamadas con IA</li>
+          <li class="flex gap-2.5"><span class="material-symbols-outlined text-[17px] text-[#ff6b1a]">check</span>Toma de pedidos por teléfono</li>
+          <li class="flex gap-2.5"><span class="material-symbols-outlined text-[17px] text-[#ff6b1a]">check</span>Reservas automáticas por llamada</li>
+          <li class="flex gap-2.5"><span class="material-symbols-outlined text-[17px] text-[#ff6b1a]">check</span>Consultas del menú por voz</li>
+          <li class="flex gap-2.5"><span class="material-symbols-outlined text-[17px] text-[#ff6b1a]">check</span>Atención simultánea de múltiples llamadas</li>
         </ul>
-        <button onclick="openModal()" class="mt-9 w-full rounded-full bg-white py-3.5 text-[15px] font-bold text-black transition-transform hover:scale-[1.02] active:scale-95">Empezar con Pro</button>
+        <button onclick="openModal()" class="mt-9 w-full rounded-full bg-[#1d1d1f] py-3.5 text-[14px] font-bold text-white transition-transform hover:scale-[1.02] active:scale-95">Empezar</button>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ======================= FAQ ======================= -->
-<section id="faq" class="scroll-mt-16 bg-white px-5 py-28 md:px-8 md:py-36">
+<!-- ════════════════ FAQ ════════════════ -->
+<section id="faq" class="scroll-mt-14 bg-[#f5f5f7] px-5 py-28 md:px-8 md:py-36">
   <div class="mx-auto max-w-3xl">
     <div class="reveal text-center">
-      <p class="eyebrow text-[#ff6b1a]">Preguntas frecuentes</p>
-      <h2 class="display mt-4 text-4xl text-[#1d1d1f] sm:text-5xl md:text-[3.8rem]">Todo lo que podés automatizar sin perder control.</h2>
+      <p class="t-eyebrow text-[#ff6b1a]">Preguntas frecuentes</p>
+      <h2 class="t-display mt-5 text-4xl text-[#1d1d1f] sm:text-5xl">Lo que todos preguntan antes de automatizar.</h2>
     </div>
 
-    <div class="reveal mt-14" data-delay="1">
-      <div class="faq-item">
-        <button class="faq-toggle flex w-full items-center justify-between gap-6 py-6 text-left" aria-expanded="false">
-          <span class="text-lg font-bold text-[#1d1d1f] md:text-xl">¿Qué es Capta?</span>
-          <span class="faq-chevron material-symbols-outlined shrink-0 text-[#ff6b1a]">add</span>
+    <div class="reveal mt-12 space-y-3.5" data-d="1">
+      <div class="qa">
+        <button class="qa-toggle flex w-full items-center justify-between gap-6 px-7 py-5 text-left" aria-expanded="false">
+          <span class="text-[16px] font-bold text-[#1d1d1f] md:text-lg">¿Qué es Capta?</span>
+          <span class="qa-x material-symbols-outlined shrink-0 text-[#ff6b1a]">add</span>
         </button>
-        <div class="faq-answer"><div><p class="pb-6 text-[15px] font-medium leading-relaxed text-[#6e6e73]">Capta es un sistema operativo con IA para restaurantes que automatiza atención, pedidos, pagos, caja, stock, delivery, menú digital, CRM, marketing y seguimiento del pedido.</p></div></div>
+        <div class="qa-body"><div><p class="px-7 pb-6 text-[14.5px] font-medium leading-relaxed text-[#6e6e73]">Capta es un sistema operativo con IA para restaurantes que automatiza atención, pedidos, pagos, caja, stock, delivery, menú digital, CRM, marketing y seguimiento del pedido.</p></div></div>
       </div>
-      <div class="faq-item">
-        <button class="faq-toggle flex w-full items-center justify-between gap-6 py-6 text-left" aria-expanded="false">
-          <span class="text-lg font-bold text-[#1d1d1f] md:text-xl">¿Qué partes del restaurante ordena?</span>
-          <span class="faq-chevron material-symbols-outlined shrink-0 text-[#ff6b1a]">add</span>
+      <div class="qa">
+        <button class="qa-toggle flex w-full items-center justify-between gap-6 px-7 py-5 text-left" aria-expanded="false">
+          <span class="text-[16px] font-bold text-[#1d1d1f] md:text-lg">¿Qué partes del restaurante ordena?</span>
+          <span class="qa-x material-symbols-outlined shrink-0 text-[#ff6b1a]">add</span>
         </button>
-        <div class="faq-answer"><div><p class="pb-6 text-[15px] font-medium leading-relaxed text-[#6e6e73]">Atención por WhatsApp e Instagram, pedidos, pagos, comandas, caja, stock, delivery, menú digital, CRM y marketing automático.</p></div></div>
+        <div class="qa-body"><div><p class="px-7 pb-6 text-[14.5px] font-medium leading-relaxed text-[#6e6e73]">Atención por WhatsApp e Instagram, pedidos, pagos, comandas, caja, stock, delivery, menú digital, CRM y marketing automático.</p></div></div>
       </div>
-      <div class="faq-item">
-        <button class="faq-toggle flex w-full items-center justify-between gap-6 py-6 text-left" aria-expanded="false">
-          <span class="text-lg font-bold text-[#1d1d1f] md:text-xl">¿Para qué tipo de local sirve?</span>
-          <span class="faq-chevron material-symbols-outlined shrink-0 text-[#ff6b1a]">add</span>
+      <div class="qa">
+        <button class="qa-toggle flex w-full items-center justify-between gap-6 px-7 py-5 text-left" aria-expanded="false">
+          <span class="text-[16px] font-bold text-[#1d1d1f] md:text-lg">¿Para qué tipo de local sirve?</span>
+          <span class="qa-x material-symbols-outlined shrink-0 text-[#ff6b1a]">add</span>
         </button>
-        <div class="faq-answer"><div><p class="pb-6 text-[15px] font-medium leading-relaxed text-[#6e6e73]">Restaurantes, bares, cafeterías, heladerías, hamburgueserías, pizzerías y locales gastronómicos que venden por delivery, take away o salón.</p></div></div>
+        <div class="qa-body"><div><p class="px-7 pb-6 text-[14.5px] font-medium leading-relaxed text-[#6e6e73]">Restaurantes, bares, cafeterías, heladerías, hamburgueserías, pizzerías y locales gastronómicos que venden por delivery, take away o salón.</p></div></div>
       </div>
-      <div class="faq-item">
-        <button class="faq-toggle flex w-full items-center justify-between gap-6 py-6 text-left" aria-expanded="false">
-          <span class="text-lg font-bold text-[#1d1d1f] md:text-xl">¿Qué canales automatiza?</span>
-          <span class="faq-chevron material-symbols-outlined shrink-0 text-[#ff6b1a]">add</span>
+      <div class="qa">
+        <button class="qa-toggle flex w-full items-center justify-between gap-6 px-7 py-5 text-left" aria-expanded="false">
+          <span class="text-[16px] font-bold text-[#1d1d1f] md:text-lg">¿Qué canales automatiza?</span>
+          <span class="qa-x material-symbols-outlined shrink-0 text-[#ff6b1a]">add</span>
         </button>
-        <div class="faq-answer"><div><p class="pb-6 text-[15px] font-medium leading-relaxed text-[#6e6e73]">WhatsApp, Instagram, llamadas, menú digital, pedidos web, pagos, comandas, seguimiento del pedido y marketing automático.</p></div></div>
+        <div class="qa-body"><div><p class="px-7 pb-6 text-[14.5px] font-medium leading-relaxed text-[#6e6e73]">WhatsApp, Instagram, llamadas, menú digital, pedidos web, pagos, comandas, seguimiento del pedido y marketing automático.</p></div></div>
       </div>
-      <div class="faq-item">
-        <button class="faq-toggle flex w-full items-center justify-between gap-6 py-6 text-left" aria-expanded="false">
-          <span class="text-lg font-bold text-[#1d1d1f] md:text-xl">¿Qué cambia en el día a día?</span>
-          <span class="faq-chevron material-symbols-outlined shrink-0 text-[#ff6b1a]">add</span>
+      <div class="qa">
+        <button class="qa-toggle flex w-full items-center justify-between gap-6 px-7 py-5 text-left" aria-expanded="false">
+          <span class="text-[16px] font-bold text-[#1d1d1f] md:text-lg">¿Qué cambia en el día a día?</span>
+          <span class="qa-x material-symbols-outlined shrink-0 text-[#ff6b1a]">add</span>
         </button>
-        <div class="faq-answer"><div><p class="pb-6 text-[15px] font-medium leading-relaxed text-[#6e6e73]">Ningún mensaje sin responder, ningún pedido incompleto, pagos automatizados, equipo ordenado y clientes informados en tiempo real.</p></div></div>
+        <div class="qa-body"><div><p class="px-7 pb-6 text-[14.5px] font-medium leading-relaxed text-[#6e6e73]">Ningún mensaje sin responder, ningún pedido incompleto, pagos automatizados, equipo ordenado y clientes informados en tiempo real.</p></div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ======================= FINAL CTA ======================= -->
+<!-- ════════════════ CTA FINAL ════════════════ -->
 <section class="relative overflow-hidden bg-black px-5 py-32 text-center text-white md:px-8 md:py-44">
-  <div class="pointer-events-none absolute left-1/2 top-1/2 h-[600px] w-[900px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#ff6b1a]/[.12] blur-[150px]"></div>
+  <div class="pointer-events-none absolute left-1/2 top-1/2 h-[520px] w-[820px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#ff6b1a]/[.1] blur-[140px]"></div>
   <div class="relative mx-auto max-w-4xl">
     <div class="reveal">
-      <h2 class="display-hero text-5xl sm:text-7xl md:text-[5.6rem]">Imaginá tu restaurante<br/><span class="grad-text-dark">funcionando solo.</span></h2>
-      <p class="mx-auto mt-8 max-w-2xl text-lg font-medium leading-relaxed text-white/55 md:text-xl">Te mostramos cómo entra un pedido, cómo se verifica el pago, cómo se imprime la comanda, cómo se descuenta stock y cómo el cliente sigue su orden en tiempo real.</p>
-      <button onclick="openModal()" class="btn-accent mt-11 inline-flex items-center gap-2.5 rounded-full px-10 py-4.5 text-lg font-bold" style="padding-top:1.1rem;padding-bottom:1.1rem;">
+      <svg viewBox="0 0 120 120" class="mx-auto w-20" aria-hidden="true">
+        <circle class="chip-glow" cx="60" cy="60" r="56" fill="url(#chipGlow)"/>
+        <rect x="22" y="22" width="76" height="76" rx="20" fill="#0b0b0d" stroke="url(#emberLine)" stroke-width="2"/>
+        <circle cx="60" cy="60" r="13" fill="#ff6b1a"/>
+      </svg>
+      <h2 class="t-hero mt-10 text-[2.9rem] sm:text-7xl md:text-[5.4rem]">Ponelo a trabajar<br/><span class="t-ember">esta misma semana.</span></h2>
+      <p class="mx-auto mt-8 max-w-xl text-lg font-medium leading-relaxed text-white/55 md:text-xl">En la demo te mostramos un pedido entrando en vivo: pago verificado, comanda impresa, stock descontado y el cliente siguiendo su orden.</p>
+      <button onclick="openModal()" class="btn-ember mt-11 inline-flex items-center gap-2.5 rounded-full px-10 py-4 text-lg font-bold">
         Solicitar demo
         <span class="material-symbols-outlined">arrow_forward</span>
       </button>
-      <p class="mt-6 text-[13px] font-medium text-white/35">Demo guiada, sin compromiso.</p>
+      <p class="mt-6 text-[13px] font-medium text-white/30">Demo guiada · sin compromiso</p>
     </div>
   </div>
 </section>
 </main>
 
-<!-- ======================= FOOTER ======================= -->
+<!-- ════════════════ FOOTER ════════════════ -->
 <footer class="bg-[#f5f5f7] px-5 py-16 md:px-8">
   <div class="mx-auto grid max-w-6xl gap-12 md:grid-cols-4">
     <div class="space-y-5 md:col-span-2">
       <div class="flex items-center gap-2.5">
         <img src="/logo-capta.png?v=capta-20260619" alt="Capta" class="h-9 w-9 object-contain"/>
-        <span class="text-xl font-extrabold tracking-[-0.03em] text-[#1d1d1f]">Capta</span>
+        <span class="text-lg font-extrabold tracking-[-0.02em] text-[#1d1d1f]">Capta</span>
       </div>
       <p class="max-w-sm text-[14px] font-medium leading-relaxed text-[#6e6e73]">El sistema operativo para restaurantes que quieren vender más, operar mejor y dejar de depender de procesos manuales.</p>
     </div>
     <div>
-      <h4 class="text-[13px] font-black uppercase tracking-widest text-[#1d1d1f]">Producto</h4>
+      <h4 class="text-[12px] font-black uppercase tracking-[0.14em] text-[#1d1d1f]">Producto</h4>
       <ul class="mt-5 space-y-3 text-[14px] font-medium text-[#6e6e73]">
         <li><a href="#features" class="transition-colors hover:text-[#1d1d1f]">Plataforma</a></li>
         <li><a href="#operations" class="transition-colors hover:text-[#1d1d1f]">Operación</a></li>
@@ -1095,7 +1051,7 @@
       </ul>
     </div>
     <div>
-      <h4 class="text-[13px] font-black uppercase tracking-widest text-[#1d1d1f]">Boletín</h4>
+      <h4 class="text-[12px] font-black uppercase tracking-[0.14em] text-[#1d1d1f]">Boletín</h4>
       <form name="newsletter" onsubmit="submitNewsletter(event)" class="mt-5 flex" id="newsletter-form">
         <input name="phone" id="newsletter-phone" class="w-full rounded-l-full border-0 bg-white px-4 py-3 text-sm shadow-[inset_0_0_0_1px_rgba(0,0,0,.06)] placeholder:text-[#a1a1a6] focus:ring-2 focus:ring-[#ff6b1a]" placeholder="Tu celular" type="tel" required/>
         <button type="submit" class="rounded-r-full bg-[#1d1d1f] px-5 text-[11px] font-black uppercase tracking-wide text-white transition-colors hover:bg-black">Unirse</button>
@@ -1105,21 +1061,21 @@
   </div>
   <div class="mx-auto mt-14 flex max-w-6xl items-center justify-between border-t border-black/[.07] pt-6 text-[13px] font-medium text-[#a1a1a6]">
     <span>&copy; 2026 Capta. Todos los derechos reservados.</span>
-    <span class="hidden sm:block">Hecho en Argentina 🇦🇷</span>
+    <span class="hidden sm:block">Hecho en Argentina</span>
   </div>
 </footer>
 
-<!-- ======================= MODAL ======================= -->
+<!-- ════════════════ MODAL ════════════════ -->
 <div id="demoModal" class="fixed inset-0 z-[100] hidden flex items-center justify-center">
-  <div class="absolute inset-0 bg-black/50 backdrop-blur-md" onclick="closeModal()"></div>
+  <div class="absolute inset-0 bg-black/60 backdrop-blur-md" onclick="closeModal()"></div>
 
-  <div class="relative z-10 mx-4 w-full max-w-lg transform overflow-hidden rounded-[1.9rem] bg-white p-8 opacity-0 scale-95 shadow-[0_60px_140px_-40px_rgba(0,0,0,.5)] transition-all md:p-10" id="modalContent">
+  <div class="relative z-10 mx-4 w-full max-w-lg transform overflow-hidden rounded-[2rem] bg-white p-8 opacity-0 scale-95 shadow-[0_60px_140px_-40px_rgba(0,0,0,.6)] transition-all md:p-10" id="modalContent">
     <button class="absolute right-5 top-5 grid h-9 w-9 place-items-center rounded-full bg-[#f5f5f7] text-[#6e6e73] transition-colors hover:bg-[#ececee] hover:text-[#1d1d1f]" onclick="closeModal()" aria-label="Cerrar">
       <span class="material-symbols-outlined text-[20px]">close</span>
     </button>
 
     <div id="modalForm">
-      <h3 class="display text-3xl text-[#1d1d1f]" id="modalTitle">Solicitar demo</h3>
+      <h3 class="t-display text-3xl text-[#1d1d1f]" id="modalTitle">Solicitar demo</h3>
       <p class="mt-2 text-[15px] font-medium text-[#6e6e73]" id="modalDesc">Dejanos tus datos y nuestro equipo te contactará en breve.</p>
 
       <form name="contact" onsubmit="submitDemo(event)" class="mt-7 space-y-4 text-left">
@@ -1135,7 +1091,7 @@
           <label class="mb-1.5 block text-[13px] font-bold text-[#1d1d1f]" for="phone">Número de celular</label>
           <input type="tel" name="phone" id="phone" required class="w-full rounded-xl border-0 bg-[#f5f5f7] px-4 py-3.5 text-[15px] placeholder:text-[#a1a1a6] focus:ring-2 focus:ring-[#ff6b1a]" placeholder="Ej. +54 9 11...">
         </div>
-        <button type="submit" class="btn-accent mt-2 w-full rounded-full py-4 text-[16px] font-bold">
+        <button type="submit" class="btn-ember mt-2 w-full rounded-full py-4 text-[16px] font-bold">
           Enviar solicitud
         </button>
       </form>
@@ -1145,15 +1101,15 @@
       <div class="mb-6 grid h-20 w-20 place-items-center rounded-full bg-[#fff1e8] text-[#ff6b1a]">
         <span class="material-symbols-outlined text-5xl">check_circle</span>
       </div>
-      <h3 class="display text-3xl text-[#1d1d1f]">¡Solicitud recibida!</h3>
+      <h3 class="t-display text-3xl text-[#1d1d1f]">¡Solicitud recibida!</h3>
       <p class="mt-3 text-[15px] font-medium leading-relaxed text-[#6e6e73]">Nuestro equipo revisará los datos de tu restaurante y te contactaremos a la brevedad.</p>
-      <button onclick="closeModal()" class="btn-primary mt-8 rounded-full px-8 py-3.5 text-[15px] font-bold">Volver al inicio</button>
+      <button onclick="closeModal()" class="mt-8 rounded-full bg-[#1d1d1f] px-8 py-3.5 text-[15px] font-bold text-white transition-transform hover:scale-[1.02] active:scale-95">Volver al inicio</button>
     </div>
   </div>
 </div>
 
 <script>
-  /* ---------- Modal ---------- */
+  /* ── Modal ── */
   function openModal(type = 'demo') {
     const modal = document.getElementById('demoModal');
     const content = document.getElementById('modalContent');
@@ -1187,7 +1143,7 @@
     setTimeout(() => { modal.classList.add('hidden'); }, 200);
   }
 
-  /* ---------- Forms ---------- */
+  /* ── Forms ── */
   async function postForm(type, form) {
     const payload = Object.fromEntries(new FormData(form).entries());
     const response = await fetch('/api/form', {
@@ -1241,31 +1197,25 @@
     }
   }
 
-  /* ---------- Scroll reveal ---------- */
-  const revealObserver = new IntersectionObserver((entries) => {
+  /* ── Reveal + scene start ── */
+  const io = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add('in-view');
-        revealObserver.unobserve(entry.target);
+        io.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.14, rootMargin: '0px 0px -6% 0px' });
-  document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
+  }, { threshold: 0.15, rootMargin: '0px 0px -5% 0px' });
+  document.querySelectorAll('.reveal, .scene').forEach((el) => io.observe(el));
 
-  /* ---------- Nav scroll state ---------- */
-  const nav = document.getElementById('siteNav');
-  const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 12);
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-
-  /* ---------- FAQ accordion ---------- */
-  document.querySelectorAll('.faq-toggle').forEach((btn) => {
+  /* ── FAQ ── */
+  document.querySelectorAll('.qa-toggle').forEach((btn) => {
     btn.addEventListener('click', () => {
-      const item = btn.closest('.faq-item');
+      const item = btn.closest('.qa');
       const isOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item.open').forEach((openItem) => {
-        openItem.classList.remove('open');
-        openItem.querySelector('.faq-toggle').setAttribute('aria-expanded', 'false');
+      document.querySelectorAll('.qa.open').forEach((o) => {
+        o.classList.remove('open');
+        o.querySelector('.qa-toggle').setAttribute('aria-expanded', 'false');
       });
       if (!isOpen) {
         item.classList.add('open');
