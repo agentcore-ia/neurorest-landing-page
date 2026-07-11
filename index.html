@@ -345,6 +345,10 @@
   .ph-push { opacity:0; animation: ph-push 11s cubic-bezier(.2,.7,.3,1) infinite; }
   @keyframes ph-push { 0%,42% {opacity:0; transform:translateY(-64px);} 50%,88% {opacity:1; transform:translateY(0);} 96%,100% {opacity:0; transform:translateY(-30px);} }
 
+  /* ============ Scene 02c — calendario de campañas ============ */
+  .ph-cal { opacity: 0; animation: ph-cal .65s cubic-bezier(.2,.7,.3,1) forwards; }
+  @keyframes ph-cal { from { opacity: 0; transform: translateY(7px) scale(.96); } to { opacity: 1; transform: none; } }
+
   /* ============ Funciones — mini SVGs ============ */
   .qr-line { animation: qr-line 2.4s ease-in-out infinite alternate; }
   @keyframes qr-line { from { transform: translateY(0); } to { transform: translateY(74px); } }
@@ -692,6 +696,211 @@
           <li class="flex items-center gap-3"><span class="grid h-7 w-7 place-items-center rounded-full bg-[#fff1e8] text-[#ff6b1a]"><span class="material-symbols-outlined text-[16px]">redeem</span></span>Canje por productos o descuentos</li>
           <li class="flex items-center gap-3"><span class="grid h-7 w-7 place-items-center rounded-full bg-[#fff1e8] text-[#ff6b1a]"><span class="material-symbols-outlined text-[16px]">notifications_active</span></span>Notificaciones push al celular del cliente</li>
         </ul>
+      </div>
+    </div>
+
+    <!-- 02c · Calendario de campañas -->
+    <div class="scene reveal mt-24 md:mt-32">
+      <div class="mx-auto mb-12 max-w-3xl text-center">
+        <span class="inline-flex items-center gap-2 rounded-full bg-[#fff1e8] px-4 py-1.5 text-[12px] font-black uppercase tracking-widest text-[#c8460c]">Calendario de campañas</span>
+        <h3 class="t-display mt-5 text-3xl text-[#1d1d1f] sm:text-5xl">Todo lo que Capta envía, lo ves antes.</h3>
+        <p class="mx-auto mt-6 max-w-xl text-lg font-medium leading-relaxed text-[#6e6e73]">Promos, reactivaciones y fechas especiales quedan planificadas: qué sale, cuándo y por qué canal. Vos aprobás, Capta ejecuta.</p>
+      </div>
+
+      <div class="card-fn overflow-hidden rounded-[2rem]">
+        <div class="grid lg:grid-cols-[1fr_290px]">
+          <!-- calendar -->
+          <div class="p-5 md:p-7">
+            <!-- toolbar -->
+            <div class="flex flex-wrap items-center justify-between gap-3">
+              <div class="flex items-center gap-2">
+                <span class="hairline grid h-8 w-8 place-items-center rounded-full text-[#6e6e73]"><span class="material-symbols-outlined text-[18px]">chevron_left</span></span>
+                <span class="hairline grid h-8 w-8 place-items-center rounded-full text-[#6e6e73]"><span class="material-symbols-outlined text-[18px]">chevron_right</span></span>
+                <span class="hairline rounded-full px-3.5 py-1.5 text-[12px] font-bold text-[#1d1d1f]">Hoy</span>
+              </div>
+              <p class="text-[16px] font-extrabold tracking-tight text-[#1d1d1f]">Julio 2026 <span class="material-symbols-outlined align-middle text-[16px] text-[#86868b]">expand_more</span></p>
+              <div class="hidden items-center gap-1 rounded-full bg-[#f5f5f7] p-1 sm:flex">
+                <span class="rounded-full bg-white px-3.5 py-1 text-[11.5px] font-bold text-[#c8460c] shadow-sm">Mes</span>
+                <span class="px-3.5 py-1 text-[11.5px] font-semibold text-[#86868b]">Semana</span>
+                <span class="px-3.5 py-1 text-[11.5px] font-semibold text-[#86868b]">Agenda</span>
+              </div>
+            </div>
+
+            <!-- grid -->
+            <div class="mt-5 overflow-x-auto">
+              <div class="min-w-[660px]">
+                <div class="grid grid-cols-7 text-center text-[10.5px] font-black uppercase tracking-widest text-[#a1a1a6]">
+                  <span class="pb-2">Lun</span><span class="pb-2">Mar</span><span class="pb-2">Mié</span><span class="pb-2">Jue</span><span class="pb-2">Vie</span><span class="pb-2">Sáb</span><span class="pb-2">Dom</span>
+                </div>
+                <div class="grid grid-cols-7 border-l border-t border-black/[.05]">
+                  <!-- w1 -->
+                  <div class="min-h-[92px] border-b border-r border-black/[.05] p-1.5"><p class="text-[11px] font-semibold text-[#c7c7cc]">29</p></div>
+                  <div class="min-h-[92px] border-b border-r border-black/[.05] p-1.5"><p class="text-[11px] font-semibold text-[#c7c7cc]">30</p></div>
+                  <div class="min-h-[92px] border-b border-r border-black/[.05] p-1.5">
+                    <p class="text-[11px] font-semibold text-[#6e6e73]">1</p>
+                    <div class="ph-cal mt-1 rounded-lg bg-[#eefaf1] p-1.5" style="animation-delay:.05s">
+                      <p class="flex items-center gap-1 text-[9px] font-black uppercase tracking-wide text-[#1f9d4d]"><span class="h-1.5 w-1.5 rounded-full bg-[#30d158]"></span>Enviada</p>
+                      <p class="mt-0.5 truncate text-[10.5px] font-bold text-[#1d1d1f]">Reactivación · 24 clientes</p>
+                      <p class="mt-0.5 flex items-center justify-between text-[9.5px] font-medium text-[#86868b]">10:00 <span class="grid h-3.5 w-3.5 place-items-center rounded-full bg-[#25d366]"><span class="material-symbols-outlined text-[9px] text-white">chat</span></span></p>
+                    </div>
+                  </div>
+                  <div class="min-h-[92px] border-b border-r border-black/[.05] p-1.5"><p class="text-[11px] font-semibold text-[#6e6e73]">2</p></div>
+                  <div class="min-h-[92px] border-b border-r border-black/[.05] p-1.5">
+                    <p class="text-[11px] font-semibold text-[#6e6e73]">3</p>
+                    <div class="ph-cal mt-1 rounded-lg bg-[#eefaf1] p-1.5" style="animation-delay:.1s">
+                      <p class="flex items-center gap-1 text-[9px] font-black uppercase tracking-wide text-[#1f9d4d]"><span class="h-1.5 w-1.5 rounded-full bg-[#30d158]"></span>Enviada</p>
+                      <p class="mt-0.5 truncate text-[10.5px] font-bold text-[#1d1d1f]">Promo finde · 2x1 burgers</p>
+                      <p class="mt-0.5 flex items-center justify-between text-[9.5px] font-medium text-[#86868b]">18:00 <span class="grid h-3.5 w-3.5 place-items-center rounded-full bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7]"><span class="material-symbols-outlined text-[9px] text-white">photo_camera</span></span></p>
+                    </div>
+                  </div>
+                  <div class="min-h-[92px] border-b border-r border-black/[.05] p-1.5"><p class="text-[11px] font-semibold text-[#6e6e73]">4</p></div>
+                  <div class="min-h-[92px] border-b border-r border-black/[.05] p-1.5"><p class="text-[11px] font-semibold text-[#6e6e73]">5</p></div>
+                  <!-- w2 -->
+                  <div class="min-h-[92px] border-b border-r border-black/[.05] p-1.5"><p class="text-[11px] font-semibold text-[#6e6e73]">6</p></div>
+                  <div class="min-h-[92px] border-b border-r border-black/[.05] p-1.5">
+                    <p class="text-[11px] font-semibold text-[#6e6e73]">7</p>
+                    <div class="ph-cal mt-1 rounded-lg bg-[#eefaf1] p-1.5" style="animation-delay:.15s">
+                      <p class="flex items-center gap-1 text-[9px] font-black uppercase tracking-wide text-[#1f9d4d]"><span class="h-1.5 w-1.5 rounded-full bg-[#30d158]"></span>Enviada</p>
+                      <p class="mt-0.5 truncate text-[10.5px] font-bold text-[#1d1d1f]">Cumpleaños · Sofía G.</p>
+                      <p class="mt-0.5 flex items-center justify-between text-[9.5px] font-medium text-[#86868b]">09:00 <span class="grid h-3.5 w-3.5 place-items-center rounded-full bg-[#25d366]"><span class="material-symbols-outlined text-[9px] text-white">chat</span></span></p>
+                    </div>
+                  </div>
+                  <div class="min-h-[92px] border-b border-r border-black/[.05] p-1.5"><p class="text-[11px] font-semibold text-[#6e6e73]">8</p></div>
+                  <div class="min-h-[92px] border-b border-r border-black/[.05] bg-[#fffaf5] p-1.5">
+                    <span class="pulse-dot grid h-5 w-5 place-items-center rounded-full bg-[#ff6b1a] text-[11px] font-extrabold text-white">9</span>
+                    <div class="ph-cal mt-1 rounded-lg bg-[#fff4ec] p-1.5" style="animation-delay:.2s">
+                      <p class="flex items-center gap-1 text-[9px] font-black uppercase tracking-wide text-[#c8460c]"><span class="h-1.5 w-1.5 rounded-full bg-[#ff6b1a]"></span>Programada</p>
+                      <p class="mt-0.5 truncate text-[10.5px] font-bold text-[#1d1d1f]">Promo jueves · 30% pizzas</p>
+                      <p class="mt-0.5 flex items-center justify-between text-[9.5px] font-medium text-[#86868b]">19:00 <span class="grid h-3.5 w-3.5 place-items-center rounded-full bg-[#25d366]"><span class="material-symbols-outlined text-[9px] text-white">chat</span></span></p>
+                    </div>
+                  </div>
+                  <div class="min-h-[92px] border-b border-r border-black/[.05] p-1.5"><p class="text-[11px] font-semibold text-[#6e6e73]">10</p></div>
+                  <div class="min-h-[92px] border-b border-r border-black/[.05] p-1.5">
+                    <p class="text-[11px] font-semibold text-[#6e6e73]">11</p>
+                    <div class="ph-cal mt-1 rounded-lg bg-[#fff4ec] p-1.5" style="animation-delay:.25s">
+                      <p class="flex items-center gap-1 text-[9px] font-black uppercase tracking-wide text-[#c8460c]"><span class="h-1.5 w-1.5 rounded-full bg-[#ff6b1a]"></span>Programada</p>
+                      <p class="mt-0.5 truncate text-[10.5px] font-bold text-[#1d1d1f]">Puntos x2 · Capta Club</p>
+                      <p class="mt-0.5 flex items-center justify-between text-[9.5px] font-medium text-[#86868b]">12:00 <span class="grid h-3.5 w-3.5 place-items-center rounded-full bg-[#1d1d1f]"><span class="material-symbols-outlined text-[9px] text-white">notifications</span></span></p>
+                    </div>
+                  </div>
+                  <div class="min-h-[92px] border-b border-r border-black/[.05] p-1.5"><p class="text-[11px] font-semibold text-[#6e6e73]">12</p></div>
+                  <!-- w3 -->
+                  <div class="min-h-[92px] border-b border-r border-black/[.05] p-1.5"><p class="text-[11px] font-semibold text-[#6e6e73]">13</p></div>
+                  <div class="min-h-[92px] border-b border-r border-black/[.05] p-1.5">
+                    <p class="text-[11px] font-semibold text-[#6e6e73]">14</p>
+                    <div class="ph-cal mt-1 rounded-lg bg-[#fff4ec] p-1.5" style="animation-delay:.3s">
+                      <p class="flex items-center gap-1 text-[9px] font-black uppercase tracking-wide text-[#c8460c]"><span class="h-1.5 w-1.5 rounded-full bg-[#ff6b1a]"></span>Programada</p>
+                      <p class="mt-0.5 truncate text-[10.5px] font-bold text-[#1d1d1f]">Reactivación · 20+ días</p>
+                      <p class="mt-0.5 flex items-center justify-between text-[9.5px] font-medium text-[#86868b]">10:30 <span class="grid h-3.5 w-3.5 place-items-center rounded-full bg-[#25d366]"><span class="material-symbols-outlined text-[9px] text-white">chat</span></span></p>
+                    </div>
+                  </div>
+                  <div class="min-h-[92px] border-b border-r border-black/[.05] p-1.5"><p class="text-[11px] font-semibold text-[#6e6e73]">15</p></div>
+                  <div class="min-h-[92px] border-b border-r border-black/[.05] p-1.5"><p class="text-[11px] font-semibold text-[#6e6e73]">16</p></div>
+                  <div class="min-h-[92px] border-b border-r border-black/[.05] p-1.5">
+                    <p class="text-[11px] font-semibold text-[#6e6e73]">17</p>
+                    <div class="ph-cal mt-1 rounded-lg bg-[#f4f4f5] p-1.5" style="animation-delay:.35s">
+                      <p class="flex items-center gap-1 text-[9px] font-black uppercase tracking-wide text-[#86868b]"><span class="h-1.5 w-1.5 rounded-full bg-[#a1a1a6]"></span>Borrador</p>
+                      <p class="mt-0.5 truncate text-[10.5px] font-bold text-[#1d1d1f]">Promo helados · verano</p>
+                      <p class="mt-0.5 flex items-center justify-between text-[9.5px] font-medium text-[#86868b]">18:00 <span class="grid h-3.5 w-3.5 place-items-center rounded-full bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7]"><span class="material-symbols-outlined text-[9px] text-white">photo_camera</span></span></p>
+                    </div>
+                  </div>
+                  <div class="min-h-[92px] border-b border-r border-black/[.05] p-1.5"><p class="text-[11px] font-semibold text-[#6e6e73]">18</p></div>
+                  <div class="min-h-[92px] border-b border-r border-black/[.05] p-1.5"><p class="text-[11px] font-semibold text-[#6e6e73]">19</p></div>
+                  <!-- w4 -->
+                  <div class="min-h-[92px] border-b border-r border-black/[.05] p-1.5"><p class="text-[11px] font-semibold text-[#6e6e73]">20</p></div>
+                  <div class="min-h-[92px] border-b border-r border-black/[.05] p-1.5"><p class="text-[11px] font-semibold text-[#6e6e73]">21</p></div>
+                  <div class="min-h-[92px] border-b border-r border-black/[.05] p-1.5">
+                    <p class="text-[11px] font-semibold text-[#6e6e73]">22</p>
+                    <div class="ph-cal mt-1 rounded-lg bg-[#fff4ec] p-1.5" style="animation-delay:.4s">
+                      <p class="flex items-center gap-1 text-[9px] font-black uppercase tracking-wide text-[#c8460c]"><span class="h-1.5 w-1.5 rounded-full bg-[#ff6b1a]"></span>Programada</p>
+                      <p class="mt-0.5 truncate text-[10.5px] font-bold text-[#1d1d1f]">Cumpleaños · Martín R.</p>
+                      <p class="mt-0.5 flex items-center justify-between text-[9.5px] font-medium text-[#86868b]">09:00 <span class="grid h-3.5 w-3.5 place-items-center rounded-full bg-[#25d366]"><span class="material-symbols-outlined text-[9px] text-white">chat</span></span></p>
+                    </div>
+                  </div>
+                  <div class="min-h-[92px] border-b border-r border-black/[.05] p-1.5"><p class="text-[11px] font-semibold text-[#6e6e73]">23</p></div>
+                  <div class="min-h-[92px] border-b border-r border-black/[.05] p-1.5">
+                    <p class="text-[11px] font-semibold text-[#6e6e73]">24</p>
+                    <div class="ph-cal mt-1 rounded-lg bg-[#f4f4f5] p-1.5" style="animation-delay:.45s">
+                      <p class="flex items-center gap-1 text-[9px] font-black uppercase tracking-wide text-[#86868b]"><span class="h-1.5 w-1.5 rounded-full bg-[#a1a1a6]"></span>Borrador</p>
+                      <p class="mt-0.5 truncate text-[10.5px] font-bold text-[#1d1d1f]">Combo familiar · finde</p>
+                      <p class="mt-0.5 flex items-center justify-between text-[9.5px] font-medium text-[#86868b]">17:00 <span class="grid h-3.5 w-3.5 place-items-center rounded-full bg-[#25d366]"><span class="material-symbols-outlined text-[9px] text-white">chat</span></span></p>
+                    </div>
+                  </div>
+                  <div class="min-h-[92px] border-b border-r border-black/[.05] p-1.5"><p class="text-[11px] font-semibold text-[#6e6e73]">25</p></div>
+                  <div class="min-h-[92px] border-b border-r border-black/[.05] p-1.5"><p class="text-[11px] font-semibold text-[#6e6e73]">26</p></div>
+                  <!-- w5 -->
+                  <div class="min-h-[92px] border-b border-r border-black/[.05] p-1.5"><p class="text-[11px] font-semibold text-[#6e6e73]">27</p></div>
+                  <div class="min-h-[92px] border-b border-r border-black/[.05] p-1.5"><p class="text-[11px] font-semibold text-[#6e6e73]">28</p></div>
+                  <div class="min-h-[92px] border-b border-r border-black/[.05] p-1.5"><p class="text-[11px] font-semibold text-[#6e6e73]">29</p></div>
+                  <div class="min-h-[92px] border-b border-r border-black/[.05] p-1.5"><p class="text-[11px] font-semibold text-[#6e6e73]">30</p></div>
+                  <div class="min-h-[92px] border-b border-r border-black/[.05] p-1.5">
+                    <p class="text-[11px] font-semibold text-[#6e6e73]">31</p>
+                    <div class="ph-cal mt-1 rounded-lg bg-[#fff4ec] p-1.5" style="animation-delay:.5s">
+                      <p class="flex items-center gap-1 text-[9px] font-black uppercase tracking-wide text-[#c8460c]"><span class="h-1.5 w-1.5 rounded-full bg-[#ff6b1a]"></span>Programada</p>
+                      <p class="mt-0.5 truncate text-[10.5px] font-bold text-[#1d1d1f]">Cierre de mes · promo</p>
+                      <p class="mt-0.5 flex items-center justify-between text-[9.5px] font-medium text-[#86868b]">20:00 <span class="grid h-3.5 w-3.5 place-items-center rounded-full bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7]"><span class="material-symbols-outlined text-[9px] text-white">photo_camera</span></span></p>
+                    </div>
+                  </div>
+                  <div class="min-h-[92px] border-b border-r border-black/[.05] p-1.5"><p class="text-[11px] font-semibold text-[#c7c7cc]">1</p></div>
+                  <div class="min-h-[92px] border-b border-r border-black/[.05] p-1.5"><p class="text-[11px] font-semibold text-[#c7c7cc]">2</p></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- legend -->
+            <div class="mt-5 flex flex-wrap items-center justify-between gap-3 border-t border-black/[.05] pt-4">
+              <div class="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-[11.5px] font-semibold text-[#6e6e73]">
+                <span class="flex items-center gap-1.5"><span class="h-2 w-2 rounded-full bg-[#ff6b1a]"></span>5 programadas</span>
+                <span class="flex items-center gap-1.5"><span class="h-2 w-2 rounded-full bg-[#30d158]"></span>3 enviadas</span>
+                <span class="flex items-center gap-1.5"><span class="h-2 w-2 rounded-full bg-[#a1a1a6]"></span>2 borradores</span>
+              </div>
+              <button onclick="openModal()" class="btn-ember inline-flex items-center gap-1 rounded-full px-4 py-1.5 text-[11.5px] font-bold"><span class="material-symbols-outlined text-[14px]">add</span>Crear campaña</button>
+            </div>
+          </div>
+
+          <!-- sidebar -->
+          <div class="border-t border-black/[.06] bg-[#fafafa] p-5 md:p-6 lg:border-l lg:border-t-0">
+            <div class="flex items-center justify-between">
+              <p class="text-[14px] font-extrabold tracking-tight text-[#1d1d1f]">Próximos envíos</p>
+              <span class="hairline rounded-full px-3 py-1 text-[10.5px] font-bold text-[#6e6e73]">Ver todo</span>
+            </div>
+            <div class="mt-4 space-y-3">
+              <div class="ph-cal flex items-start gap-3 rounded-2xl bg-white p-3.5 shadow-[0_1px_4px_rgba(29,29,31,.05)]" style="animation-delay:.3s">
+                <span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-[#25d366]"><span class="material-symbols-outlined text-[18px] text-white">chat</span></span>
+                <div class="min-w-0 flex-1">
+                  <p class="text-[11px] font-semibold text-[#86868b]">Hoy · 19:00</p>
+                  <p class="truncate text-[12.5px] font-bold text-[#1d1d1f]">Promo jueves · 30% en pizzas</p>
+                  <span class="mt-1.5 inline-block rounded-full bg-[#fff4ec] px-2 py-0.5 text-[9.5px] font-black uppercase tracking-wide text-[#c8460c]">Programada</span>
+                </div>
+              </div>
+              <div class="ph-cal flex items-start gap-3 rounded-2xl bg-white p-3.5 shadow-[0_1px_4px_rgba(29,29,31,.05)]" style="animation-delay:.45s">
+                <span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-[#1d1d1f]"><span class="material-symbols-outlined text-[18px] text-white">notifications</span></span>
+                <div class="min-w-0 flex-1">
+                  <p class="text-[11px] font-semibold text-[#86868b]">Sáb 11 · 12:00</p>
+                  <p class="truncate text-[12.5px] font-bold text-[#1d1d1f]">Puntos x2 · Capta Club</p>
+                  <span class="mt-1.5 inline-block rounded-full bg-[#fff4ec] px-2 py-0.5 text-[9.5px] font-black uppercase tracking-wide text-[#c8460c]">Programada</span>
+                </div>
+              </div>
+              <div class="ph-cal flex items-start gap-3 rounded-2xl bg-white p-3.5 shadow-[0_1px_4px_rgba(29,29,31,.05)]" style="animation-delay:.6s">
+                <span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-[#25d366]"><span class="material-symbols-outlined text-[18px] text-white">chat</span></span>
+                <div class="min-w-0 flex-1">
+                  <p class="text-[11px] font-semibold text-[#86868b]">Mar 14 · 10:30</p>
+                  <p class="truncate text-[12.5px] font-bold text-[#1d1d1f]">Reactivación · inactivos 20+ días</p>
+                  <span class="mt-1.5 inline-block rounded-full bg-[#fff4ec] px-2 py-0.5 text-[9.5px] font-black uppercase tracking-wide text-[#c8460c]">Programada</span>
+                </div>
+              </div>
+              <div class="ph-cal flex items-start gap-3 rounded-2xl bg-white p-3.5 shadow-[0_1px_4px_rgba(29,29,31,.05)]" style="animation-delay:.75s">
+                <span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7]"><span class="material-symbols-outlined text-[18px] text-white">photo_camera</span></span>
+                <div class="min-w-0 flex-1">
+                  <p class="text-[11px] font-semibold text-[#86868b]">Vie 17 · 18:00</p>
+                  <p class="truncate text-[12.5px] font-bold text-[#1d1d1f]">Promo helados · verano</p>
+                  <span class="mt-1.5 inline-block rounded-full bg-[#f4f4f5] px-2 py-0.5 text-[9.5px] font-black uppercase tracking-wide text-[#86868b]">Borrador</span>
+                </div>
+              </div>
+            </div>
+            <p class="ph-cal mt-5 flex items-center gap-1 text-[12px] font-bold text-[#ff6b1a]" style="animation-delay:.9s">Ir al calendario completo <span class="material-symbols-outlined text-[15px]">arrow_forward</span></p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1329,9 +1538,12 @@
       <div id="newsletter-success" class="mt-2 hidden text-sm font-bold text-[#ff6b1a]">Gracias por unirte!</div>
     </div>
   </div>
-  <div class="mx-auto mt-14 flex max-w-6xl items-center justify-between border-t border-black/[.07] pt-6 text-[13px] font-medium text-[#a1a1a6]">
+  <div class="mx-auto mt-14 flex max-w-6xl flex-col items-center justify-between gap-3 border-t border-black/[.07] pt-6 text-[13px] font-medium text-[#a1a1a6] sm:flex-row">
     <span>&copy; 2026 Capta. Todos los derechos reservados.</span>
-    <span class="hidden sm:block">Hecho en Argentina</span>
+    <div class="flex items-center gap-5">
+      <a href="/privacidad.html" class="transition-colors hover:text-[#1d1d1f]">Pol&iacute;tica de privacidad</a>
+      <span class="hidden sm:block">Hecho en Argentina</span>
+    </div>
   </div>
 </footer>
 
