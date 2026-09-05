@@ -161,7 +161,7 @@
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <style>
   :root {
@@ -396,6 +396,8 @@
     .reveal { opacity: 1; transform: none; }
   }
 </style>
+<link rel="stylesheet" href="/capta-refresh.css"/>
+<script defer src="/capta-refresh.js"></script>
 <link rel="alternate" type="text/plain" href="/llms.txt" title="Contexto de Capta para asistentes de IA"/>
 <link rel="alternate" type="application/json" href="/capta-ai-context.json" title="Datos estructurados de Capta para asistentes de IA"/>
 </head>
@@ -408,7 +410,8 @@
       <img src="/logo-capta.png?v=capta-20260619" alt="Capta" class="h-8 w-8 object-contain"/>
       <span class="text-[16px] font-extrabold tracking-[-0.03em] text-[#1d1d1f]">Capta</span>
     </a>
-    <div class="hidden items-center gap-9 md:flex">
+    <button id="navToggle" type="button" class="mobile-nav-toggle" aria-label="Abrir navegación" aria-expanded="false" aria-controls="navLinks"><span class="material-symbols-outlined" aria-hidden="true">menu</span></button>
+    <div id="navLinks" class="hidden items-center gap-9 md:flex">
       <a class="text-[13px] font-medium text-[#1d1d1f]/70 transition-colors hover:text-[#1d1d1f]" href="#features">Plataforma</a>
       <a class="text-[13px] font-medium text-[#1d1d1f]/70 transition-colors hover:text-[#1d1d1f]" href="#operations">Operación</a>
       <a class="text-[13px] font-medium text-[#1d1d1f]/70 transition-colors hover:text-[#1d1d1f]" href="#menu">Menús</a>
@@ -422,63 +425,46 @@
 <main id="top">
 
 <!-- ════════════════ HERO ════════════════ -->
-<section class="hero-aurora relative overflow-hidden">
-  <!-- orbit rings -->
-  <svg class="hero-orbit" viewBox="0 0 900 900" aria-hidden="true">
-    <circle class="orbit-ring" cx="450" cy="450" r="210"/>
-    <circle class="orbit-ring" cx="450" cy="450" r="315"/>
-    <circle class="orbit-ring" cx="450" cy="450" r="425"/>
-    <g class="orbit-spin">
-      <circle cx="450" cy="240" r="5.5" fill="#ff6b1a"/>
-      <circle cx="450" cy="240" r="12" fill="none" stroke="#ff6b1a" stroke-opacity=".25"/>
-    </g>
-    <g class="orbit-spin-2">
-      <circle cx="450" cy="135" r="4.5" fill="#ff9345"/>
-      <circle cx="765" cy="450" r="3.5" fill="#1d1d1f" opacity=".28"/>
-    </g>
-    <g class="orbit-spin-3">
-      <circle cx="450" cy="25" r="4" fill="#c8460c" opacity=".55"/>
-      <circle cx="25" cy="450" r="3" fill="#ff6b1a" opacity=".45"/>
-    </g>
-  </svg>
-
-  <div class="relative mx-auto flex max-w-6xl flex-col items-center px-5 pb-24 pt-32 text-center md:px-8 md:pb-32 md:pt-44">
-    <span class="inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-1.5 text-[12px] font-bold tracking-wide text-[#c8460c] shadow-[0_8px_30px_-14px_rgba(200,70,12,.4)] ring-1 ring-black/[.045] backdrop-blur">
-      <span class="pulse-dot h-1.5 w-1.5 rounded-full bg-[#ff6b1a]"></span>
-      IA para gastronomía · 24/7
-    </span>
-    <h1 class="t-hero mx-auto mt-7 max-w-[15ch] text-[3.1rem] text-[#1d1d1f] sm:text-7xl md:text-[6.2rem]">
-      Tu restaurante,<br/>
-      <span class="relative inline-block">
-        <span class="t-ember">en piloto automático.</span>
-        <svg class="absolute -bottom-4 left-0 w-full md:-bottom-7" viewBox="0 0 400 22" fill="none" aria-hidden="true">
-          <path class="underline-draw" pathLength="1" d="M6 16 C 90 6, 260 6, 394 14" stroke="#ff6b1a" stroke-width="4" stroke-linecap="round" opacity=".8"/>
-        </svg>
-      </span>
-    </h1>
-    <p class="mx-auto mt-9 max-w-[34ch] text-lg font-medium leading-relaxed text-[#6e6e73] sm:max-w-xl md:text-[1.4rem]">
-      Capta atiende, vende, cobra y organiza toda tu operación con IA. Vos te ocupás de cocinar.
-    </p>
-    <div class="mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row">
-      <button onclick="openModal()" class="btn-ember inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-[15px] font-bold">
-        Empezar ahora
-        <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
-      </button>
-      <button onclick="openModal()" class="link-arrow inline-flex items-center gap-1.5 rounded-full px-4 py-3.5 text-[15px] font-bold text-[#ff6b1a] transition-colors hover:text-[#c8460c]">
-        Ver la demo
-        <span class="material-symbols-outlined text-[20px]">chevron_right</span>
-      </button>
+<section class="capta-hero" aria-labelledby="hero-heading">
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <p class="eyeline"><span class="live-dot"></span> TU RESTAURANTE. TODO CONECTADO.</p>
+      <h1 id="hero-heading">El ritmo lo<br/>ponés vos.<br/><span>El resto, Capta.</span></h1>
+      <p class="hero-description">La cocina a pleno. Los pedidos en orden. Automatizá la atención, las ventas y la operación de tu restaurante desde un solo lugar.</p>
+      <div class="hero-actions">
+        <button class="btn-ember hero-primary" onclick="openModal()">Conocé Capta <span aria-hidden="true">↗</span></button>
+        <a href="#features" class="hero-secondary">Explorá la plataforma <span aria-hidden="true">↓</span></a>
+      </div>
+      <p class="hero-note">Hecho para gastronomía. Pensado para tu tranquilidad.</p>
     </div>
-
-    <!-- Closing statement -->
-    <div class="mt-16 flex max-w-4xl flex-col items-center md:mt-20">
-      <span aria-hidden="true" class="relative mb-11 h-16 w-px bg-gradient-to-b from-transparent to-[#ff6b1a]/70">
-        <span class="pulse-dot absolute -bottom-1 left-1/2 h-2 w-2 -translate-x-1/2 rounded-full bg-[#ff6b1a]"></span>
-      </span>
-      <p class="t-eyebrow text-[#c8460c]">El día que lo activás</p>
-      <p class="t-display mt-5 text-[2.5rem] text-[#1d1d1f] sm:text-6xl md:text-[4.6rem]">Imaginá tu negocio<br class="hidden sm:block"/> <span class="t-ember italic">atendiéndose solo.</span></p>
+    <div class="service-stage" aria-label="Demostración ilustrativa de un pedido automatizado">
+      <div class="stage-orbit" aria-hidden="true"></div>
+      <div class="stage-label"><span class="live-dot"></span> ASÍ TRABAJA CAPTA <span>21:34</span></div>
+      <div class="order-receipt">
+        <div class="receipt-head"><img src="/logo-capta.png" alt="" width="38" height="38"/><div>Tu restaurante<small>Una noche con todo bajo control</small></div><span class="material-symbols-outlined">more_horiz</span></div>
+        <div class="receipt-title"><span>PEDIDO #0248</span><span class="receipt-tag">Delivery</span></div>
+        <h2>Sale un pedido.<br/>Entra tranquilidad.</h2>
+        <div class="receipt-item"><span class="food-icon material-symbols-outlined">lunch_dining</span><div><strong>2 × Burger de la casa</strong><small>Con papas · sin cebolla</small></div><span>$18.000</span></div>
+        <div class="receipt-divider"></div>
+        <div class="order-steps">
+          <div class="order-step" data-step="0"><span class="step-check">✓</span><div>Pedido recibido<small>WhatsApp → tu panel</small></div><span class="step-time">21:34</span></div>
+          <div class="order-step" data-step="1"><span class="step-check">✓</span><div>Pago verificado<small>Transferencia en Mercado Pago</small></div><span class="step-time">21:34</span></div>
+          <div class="order-step" data-step="2"><span class="step-check">✓</span><div>En preparación<small>Comanda impresa · stock actualizado</small></div><span class="step-time">21:35</span></div>
+          <div class="order-step" data-step="3"><span class="step-check">✓</span><div>En camino<small>Tu cliente recibe el seguimiento</small></div><span class="step-time">21:48</span></div>
+        </div>
+        <div class="receipt-bottom"><span>Tu equipo cocina. Capta conecta.</span><span class="material-symbols-outlined">auto_awesome</span></div>
+      </div>
+      <div class="floating-message"><span class="material-symbols-outlined">chat_bubble</span><div><strong>¡Hola! Quiero pedir 🙌</strong><span>Capta ya está respondiendo.</span></div></div>
+      <div class="floating-status"><span class="material-symbols-outlined">moped</span><div><strong>Todo sigue su curso.</strong><span>El cliente lo ve en tiempo real.</span></div></div>
+      <p class="stage-footnote">Ejemplo de flujo automatizado <button id="motionToggle" type="button" aria-pressed="false" aria-label="Pausar animaciones">Pausar <span aria-hidden="true">Ⅱ</span></button></p>
     </div>
   </div>
+  <div class="hero-bottom"><span>DE LA PRIMERA CONSULTA AL PRÓXIMO PEDIDO.</span><div>Atención <i>↗</i> Operación <i>↗</i> Fidelización</div><a href="#features" aria-label="Explorar funciones">↓</a></div>
+</section>
+<section id="comparison" class="shift-section">
+  <div class="shift-intro reveal"><p class="eyeline">CAMBIÁ EL RITMO DE TU NEGOCIO</p><h2>Hora pico.<br/><em>Cero caos.</em></h2><p>Que crezcan los pedidos.<br/>Que vuelva la calma.</p></div>
+  <div class="shift-before reveal"><span class="shift-label">SIN CAPTA</span><h3>Todo pasa por vos.</h3><div class="paper-note">“¿Me confirmás el pedido?”<small>WhatsApp · sin responder</small></div><div class="paper-note">“¿Ya llegó la transferencia?”<small>Caja · pendiente de revisar</small></div><div class="paper-note">“¿Quién lleva este pedido?”<small>Cocina · esperando respuesta</small></div></div>
+  <div class="shift-after reveal"><span class="shift-label">CON CAPTA</span><h3>Todo tiene su lugar.</h3><div><span>01</span><p>Clientes atendidos<small>La conversación sigue, incluso en hora pico.</small></p><b>✓</b></div><div><span>02</span><p>Pagos automatizados<small>Transferencias verificadas y pedidos organizados.</small></p><b>✓</b></div><div><span>03</span><p>Equipo conectado<small>Cocina, caja y delivery en la misma página.</small></p><b>✓</b></div><p class="shift-signature">Más restaurante. Más vos.</p></div>
 </section>
 
 <!-- ════════════════ 01 · ATIENDE ════════════════ -->
@@ -1585,7 +1571,7 @@
 </footer>
 
 <!-- ════════════════ MODAL ════════════════ -->
-<div id="demoModal" class="fixed inset-0 z-[100] hidden flex items-center justify-center">
+<div id="demoModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" class="fixed inset-0 z-[100] hidden flex items-center justify-center">
   <div class="absolute inset-0 bg-black/60 backdrop-blur-md" onclick="closeModal()"></div>
 
   <div class="relative z-10 mx-4 w-full max-w-lg transform overflow-hidden rounded-[2rem] bg-white p-8 opacity-0 scale-95 shadow-[0_60px_140px_-40px_rgba(0,0,0,.6)] transition-all md:p-10" id="modalContent">
@@ -1629,7 +1615,9 @@
 
 <script>
   /* ── Modal ── */
+  let modalTrigger;
   function openModal(type = 'demo') {
+    modalTrigger = document.activeElement;
     const modal = document.getElementById('demoModal');
     const content = document.getElementById('modalContent');
     const title = document.getElementById('modalTitle');
@@ -1648,6 +1636,8 @@
     }
 
     modal.classList.remove('hidden');
+    document.body.style.overflowY = 'hidden';
+    content.querySelector('button').focus();
     setTimeout(() => {
       content.classList.remove('scale-95', 'opacity-0');
       content.classList.add('scale-100', 'opacity-100');
@@ -1659,7 +1649,11 @@
     const content = document.getElementById('modalContent');
     content.classList.remove('scale-100', 'opacity-100');
     content.classList.add('scale-95', 'opacity-0');
-    setTimeout(() => { modal.classList.add('hidden'); }, 200);
+    setTimeout(() => {
+      modal.classList.add('hidden');
+      document.body.style.overflowY = '';
+      modalTrigger?.focus();
+    }, 200);
   }
 
   /* ── Forms ── */
