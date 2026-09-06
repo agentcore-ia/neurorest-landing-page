@@ -425,41 +425,61 @@
 <main id="top">
 
 <!-- ════════════════ HERO ════════════════ -->
-<section class="capta-hero" aria-labelledby="hero-heading">
+<section class="capta-hero mascot-hero" aria-labelledby="hero-heading">
   <div class="hero-grid">
     <div class="hero-copy">
-      <p class="eyeline"><span class="live-dot"></span> TU RESTAURANTE. TODO CONECTADO.</p>
-      <h1 id="hero-heading">El ritmo lo<br/>ponés vos.<br/><span>El resto, Capta.</span></h1>
-      <p class="hero-description">La cocina a pleno. Los pedidos en orden. Automatizá la atención, las ventas y la operación de tu restaurante desde un solo lugar.</p>
+      <p class="eyeline"><span class="live-dot"></span> CONOCÉ A TU NUEVO INTEGRANTE</p>
+      <h1 id="hero-heading">Imaginá tu<br/>restaurante<br/><span>atendiéndose solo.</span></h1>
+      <p class="hero-description">Capta responde consultas, toma pedidos, verifica pagos y conecta a tu equipo. Vos te enfocás en tu restaurante.</p>
       <div class="hero-actions">
-        <button class="btn-ember hero-primary" onclick="openModal()">Conocé Capta <span aria-hidden="true">↗</span></button>
-        <a href="#features" class="hero-secondary">Explorá la plataforma <span aria-hidden="true">↓</span></a>
+        <button class="btn-ember hero-primary" onclick="openModal()">Ver Capta en acción <span aria-hidden="true">↗</span></button>
+        <a href="#features" class="hero-secondary">Explorar funciones <span aria-hidden="true">↓</span></a>
       </div>
-      <p class="hero-note">Hecho para gastronomía. Pensado para tu tranquilidad.</p>
+      <p class="hero-note"><span class="material-symbols-outlined" aria-hidden="true">restaurant</span> Hecho para gastronomía. Listo para acompañarte.</p>
     </div>
-    <div class="service-stage" aria-label="Demostración ilustrativa de un pedido automatizado">
-      <div class="stage-orbit" aria-hidden="true"></div>
-      <div class="stage-label"><span class="live-dot"></span> ASÍ TRABAJA CAPTA <span>21:34</span></div>
-      <div class="order-receipt">
-        <div class="receipt-head"><img src="/logo-capta.png" alt="" width="38" height="38"/><div>Tu restaurante<small>Una noche con todo bajo control</small></div><span class="material-symbols-outlined">more_horiz</span></div>
-        <div class="receipt-title"><span>PEDIDO #0248</span><span class="receipt-tag">Delivery</span></div>
-        <h2>Sale un pedido.<br/>Entra tranquilidad.</h2>
-        <div class="receipt-item"><span class="food-icon material-symbols-outlined">lunch_dining</span><div><strong>2 × Burger de la casa</strong><small>Con papas · sin cebolla</small></div><span>$18.000</span></div>
-        <div class="receipt-divider"></div>
-        <div class="order-steps">
-          <div class="order-step" data-step="0"><span class="step-check">✓</span><div>Pedido recibido<small>WhatsApp → tu panel</small></div><span class="step-time">21:34</span></div>
-          <div class="order-step" data-step="1"><span class="step-check">✓</span><div>Pago verificado<small>Transferencia en Mercado Pago</small></div><span class="step-time">21:34</span></div>
-          <div class="order-step" data-step="2"><span class="step-check">✓</span><div>En preparación<small>Comanda impresa · stock actualizado</small></div><span class="step-time">21:35</span></div>
-          <div class="order-step" data-step="3"><span class="step-check">✓</span><div>En camino<small>Tu cliente recibe el seguimiento</small></div><span class="step-time">21:48</span></div>
+    <div class="mascot-demo" aria-label="Ejemplo animado: Capta responde una consulta, confirma un pedido y envía la comanda a cocina.">
+      <div class="mascot-scene" data-beat="0">
+        <div class="scene-atmosphere" aria-hidden="true"></div>
+        <div class="scene-ring ring-one" aria-hidden="true"></div>
+        <div class="scene-ring ring-two" aria-hidden="true"></div>
+        <svg class="scene-connections" viewBox="0 0 600 560" fill="none" aria-hidden="true">
+          <defs><linearGradient id="capta-flow-light"><stop stop-color="#ffd7a6"/><stop offset=".6" stop-color="#f76724"/><stop offset="1" stop-color="#ffc58c"/></linearGradient></defs>
+          <path class="connection-track" d="M170 143 V220 Q170 254 212 254 H275"/>
+          <path class="connection-track" d="M338 268 H425 Q453 268 453 229 V210"/>
+          <path class="connection-track" d="M300 324 V375 Q300 407 264 407 H210"/>
+          <path class="connection-light light-chat" pathLength="1" d="M170 143 V220 Q170 254 212 254 H275"/>
+          <path class="connection-light light-order" pathLength="1" d="M338 268 H425 Q453 268 453 229 V210"/>
+          <path class="connection-light light-kitchen" pathLength="1" d="M300 324 V375 Q300 407 264 407 H210"/>
+          <circle cx="170" cy="143" r="4" fill="#f76724"/><circle cx="453" cy="210" r="4" fill="#f76724"/><circle cx="210" cy="407" r="4" fill="#f76724"/>
+        </svg>
+        <div class="mascot-center">
+          <div class="mascot-halo" aria-hidden="true"></div>
+          <div class="mascot-character"><img src="/logo-capta.png?v=capta-20260619" alt="La mascota de Capta, con su gorro de chef" width="560" height="584" fetchpriority="high"/></div>
+          <div class="mascot-name">capta<span class="live-dot"></span></div>
         </div>
-        <div class="receipt-bottom"><span>Tu equipo cocina. Capta conecta.</span><span class="material-symbols-outlined">auto_awesome</span></div>
+        <article class="activity-card chat-card is-active" data-scene-step="0">
+          <div class="activity-heading"><span class="activity-icon material-symbols-outlined" aria-hidden="true">chat_bubble</span><span>ATENCIÓN</span><span class="activity-number">01</span></div>
+          <p class="chat-question">¡Hola! ¿Están tomando pedidos?</p>
+          <div class="chat-answer"><span class="answer-typing" aria-hidden="true"><i></i><i></i><i></i></span><p>¡Sí! Te paso nuestro menú.<br/>¿Qué te gustaría pedir?</p></div>
+          <div class="activity-footer"><span class="mini-check">✓</span> Consulta respondida <span>ahora</span></div>
+        </article>
+        <article class="activity-card order-card" data-scene-step="1">
+          <div class="activity-heading"><span class="activity-icon material-symbols-outlined" aria-hidden="true">shopping_bag</span><span>PEDIDOS</span><span class="activity-number">02</span></div>
+          <div class="demo-order"><span class="burger-art material-symbols-outlined" aria-hidden="true">lunch_dining</span><div><strong>Sale una cena para dos.</strong><p>2 burgers + papas</p></div></div>
+          <div class="payment-confirmed"><span class="material-symbols-outlined" aria-hidden="true">verified</span> Pago verificado</div>
+          <div class="activity-footer"><span class="mini-check">✓</span> Pedido confirmado <span>#0248</span></div>
+        </article>
+        <article class="activity-card kitchen-card" data-scene-step="2">
+          <div class="activity-heading"><span class="activity-icon material-symbols-outlined" aria-hidden="true">receipt_long</span><span>COCINA</span><span class="activity-number">03</span></div>
+          <div class="kitchen-body"><div class="mini-printer" aria-hidden="true"><span></span><div class="printer-paper"><i></i><i></i><i></i></div></div><div><strong>¡Marcha ese pedido!</strong><p>Comanda enviada a cocina.<br/>Tu equipo ya sabe qué preparar.</p></div></div>
+          <div class="activity-footer"><span class="mini-check">✓</span> Todo conectado <span>listo</span></div>
+        </article>
+        <div class="scene-signature"><span class="signature-spark" aria-hidden="true">✳</span> Un integrante más.<br/><strong>Mil tareas menos.</strong></div>
       </div>
-      <div class="floating-message"><span class="material-symbols-outlined">chat_bubble</span><div><strong>¡Hola! Quiero pedir 🙌</strong><span>Capta ya está respondiendo.</span></div></div>
-      <div class="floating-status"><span class="material-symbols-outlined">moped</span><div><strong>Todo sigue su curso.</strong><span>El cliente lo ve en tiempo real.</span></div></div>
-      <p class="stage-footnote">Ejemplo de flujo automatizado <button id="motionToggle" type="button" aria-pressed="false" aria-label="Pausar animaciones">Pausar <span aria-hidden="true">Ⅱ</span></button></p>
+      <div class="demo-controls"><span><span class="live-dot"></span> Así trabaja Capta <span class="demo-disclaimer">· Ejemplo ilustrativo</span></span><button id="motionToggle" type="button" aria-pressed="false" aria-label="Pausar animaciones">Pausar Ⅱ</button></div>
     </div>
   </div>
-  <div class="hero-bottom"><span>DE LA PRIMERA CONSULTA AL PRÓXIMO PEDIDO.</span><div>Atención <i>↗</i> Operación <i>↗</i> Fidelización</div><a href="#features" aria-label="Explorar funciones">↓</a></div>
+  <div class="hero-bottom"><span>VOS LE PONÉS EL SABOR. CAPTA CONECTA EL RESTO.</span><div>Atiende <i>↗</i> Organiza <i>↗</i> Acompaña</div><a href="#features" aria-label="Explorar funciones">↓</a></div>
 </section>
 <section id="comparison" class="shift-section">
   <div class="shift-intro reveal"><p class="eyeline">CAMBIÁ EL RITMO DE TU NEGOCIO</p><h2>Hora pico.<br/><em>Cero caos.</em></h2><p>Que crezcan los pedidos.<br/>Que vuelva la calma.</p></div>

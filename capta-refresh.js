@@ -31,8 +31,8 @@
       if (!document.getElementById('demoModal').classList.contains('hidden')) window.closeModal();
     }
   });
-  const stage = document.querySelector('.service-stage');
-  const steps = [...document.querySelectorAll('.order-step')];
+  const stage = document.querySelector('.mascot-scene');
+  const steps = [...document.querySelectorAll('[data-scene-step]')];
   const toggle = document.getElementById('motionToggle');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   let visible = false;
@@ -42,9 +42,9 @@
 
   function paint() {
     steps.forEach((step, index) => {
-      step.classList.toggle('is-complete', index <= current);
-      step.classList.toggle('is-current', index === current);
+      step.classList.toggle('is-active', index === current);
     });
+    stage.dataset.beat = String(current);
   }
 
   function schedule() {
@@ -54,7 +54,7 @@
       current = (current + 1) % steps.length;
       paint();
       schedule();
-    }, current === steps.length - 1 ? 4000 : 1800);
+    }, 3800);
   }
 
   function updateToggle() {
@@ -70,6 +70,7 @@
     updateToggle();
     new IntersectionObserver(([entry]) => {
       visible = entry.isIntersecting;
+      stage.classList.toggle('is-visible', visible);
       schedule();
     }, { threshold: 0.15 }).observe(stage);
     toggle.addEventListener('click', () => {
@@ -88,7 +89,7 @@
   }
 
   // Pause decorative SVG loops outside the viewport.
-  const scenes = document.querySelectorAll('main svg:not(.hero-orbit)');
+  const scenes = document.querySelectorAll('main svg:not(.hero-orbit):not(.scene-connections)');
   const sceneObserver = new IntersectionObserver((entries) => {
     entries.forEach(({ target, isIntersecting }) => {
       target.getAnimations({ subtree: true }).forEach((animation) => {
