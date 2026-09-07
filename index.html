@@ -404,82 +404,28 @@
 <body class="selection:bg-[#ff6b1a] selection:text-white">
 
 <!-- ════════════════ NAV ════════════════ -->
-<nav id="siteNav" class="nav-glass fixed inset-x-0 top-0 z-50">
-  <div class="mx-auto flex h-[54px] max-w-6xl items-center justify-between px-5 md:px-8">
-    <a href="#top" class="flex items-center gap-2.5" aria-label="Capta inicio">
-      <img src="/logo-capta.png?v=capta-20260619" alt="Capta" class="h-8 w-8 object-contain"/>
-      <span class="text-[16px] font-extrabold tracking-[-0.03em] text-[#1d1d1f]">Capta</span>
-    </a>
+<nav id="siteNav" class="nav-glass reference-nav fixed inset-x-0 top-0 z-50" aria-label="Navegación principal">
+  <div class="reference-nav-inner">
+    <a href="#top" class="reference-brand" aria-label="Capta inicio"><img src="/logo-capta.png?v=capta-20260619" alt="" width="56" height="58"/><span>Capta</span></a>
     <button id="navToggle" type="button" class="mobile-nav-toggle" aria-label="Abrir navegación" aria-expanded="false" aria-controls="navLinks"><span class="material-symbols-outlined" aria-hidden="true">menu</span></button>
-    <div id="navLinks" class="hidden items-center gap-9 md:flex">
-      <a class="text-[13px] font-medium text-[#1d1d1f]/70 transition-colors hover:text-[#1d1d1f]" href="#features">Plataforma</a>
-      <a class="text-[13px] font-medium text-[#1d1d1f]/70 transition-colors hover:text-[#1d1d1f]" href="#operations">Operación</a>
-      <a class="text-[13px] font-medium text-[#1d1d1f]/70 transition-colors hover:text-[#1d1d1f]" href="#menu">Menús</a>
-      <a class="text-[13px] font-medium text-[#1d1d1f]/70 transition-colors hover:text-[#1d1d1f]" href="#pricing">Precios</a>
-      <a class="text-[13px] font-medium text-[#1d1d1f]/70 transition-colors hover:text-[#1d1d1f]" href="#faq">FAQ</a>
+    <div id="navLinks" class="reference-nav-links">
+      <a href="#features">Cómo funciona</a>
+      <a href="#comparison">Beneficios</a>
+      <a href="#pricing">Precios</a>
+      <a class="mobile-login" href="https://app.capta.ar/">Iniciar sesión</a>
+      <details class="nav-resources"><summary>Recursos <svg viewBox="0 0 16 16" width="16" height="16" fill="none" aria-hidden="true"><path d="m3 6 5 5 5-5" stroke="currentColor" stroke-width="1.7"/></svg></summary><div class="resources-menu"><a href="#menu">Menús de ejemplo</a><a href="#faq">Preguntas frecuentes</a><a href="/automatizacion-gastronomica.html">Automatización gastronómica</a></div></details>
     </div>
-    <button onclick="openModal()" class="btn-ember rounded-full px-5 py-2 text-[13px] font-bold">Comenzar</button>
+    <div class="reference-nav-actions"><a class="login-link" href="https://app.capta.ar/">Iniciar sesión</a><button onclick="openModal()" class="reference-start">Comenzar ahora</button></div>
   </div>
 </nav>
-
 <main id="top">
-
-<!-- ════════════════ HERO ════════════════ -->
-<section class="capta-hero mascot-hero" aria-labelledby="hero-heading">
-  <div class="hero-grid">
-    <div class="hero-copy">
-      <p class="eyeline"><span class="live-dot"></span> CONOCÉ A TU NUEVO INTEGRANTE</p>
-      <h1 id="hero-heading">Imaginá tu<br/>restaurante<br/><span>atendiéndose solo.</span></h1>
-      <p class="hero-description">Capta responde consultas, toma pedidos, verifica pagos y conecta a tu equipo. Vos te enfocás en tu restaurante.</p>
-      <div class="hero-actions">
-        <button class="btn-ember hero-primary" onclick="openModal()">Ver Capta en acción <span aria-hidden="true">↗</span></button>
-        <a href="#features" class="hero-secondary">Explorar funciones <span aria-hidden="true">↓</span></a>
-      </div>
-      <p class="hero-note"><span class="material-symbols-outlined" aria-hidden="true">restaurant</span> Hecho para gastronomía. Listo para acompañarte.</p>
-    </div>
-    <div class="mascot-demo" aria-label="Ejemplo animado: Capta responde una consulta, confirma un pedido y envía la comanda a cocina.">
-      <div class="mascot-scene" data-beat="0">
-        <div class="scene-atmosphere" aria-hidden="true"></div>
-        <div class="scene-ring ring-one" aria-hidden="true"></div>
-        <div class="scene-ring ring-two" aria-hidden="true"></div>
-        <svg class="scene-connections" viewBox="0 0 600 560" fill="none" aria-hidden="true">
-          <defs><linearGradient id="capta-flow-light"><stop stop-color="#ffd7a6"/><stop offset=".6" stop-color="#f76724"/><stop offset="1" stop-color="#ffc58c"/></linearGradient></defs>
-          <path class="connection-track" d="M170 143 V220 Q170 254 212 254 H275"/>
-          <path class="connection-track" d="M338 268 H425 Q453 268 453 229 V210"/>
-          <path class="connection-track" d="M300 324 V375 Q300 407 264 407 H210"/>
-          <path class="connection-light light-chat" pathLength="1" d="M170 143 V220 Q170 254 212 254 H275"/>
-          <path class="connection-light light-order" pathLength="1" d="M338 268 H425 Q453 268 453 229 V210"/>
-          <path class="connection-light light-kitchen" pathLength="1" d="M300 324 V375 Q300 407 264 407 H210"/>
-          <circle cx="170" cy="143" r="4" fill="#f76724"/><circle cx="453" cy="210" r="4" fill="#f76724"/><circle cx="210" cy="407" r="4" fill="#f76724"/>
-        </svg>
-        <div class="mascot-center">
-          <div class="mascot-halo" aria-hidden="true"></div>
-          <div class="mascot-character"><img src="/logo-capta.png?v=capta-20260619" alt="La mascota de Capta, con su gorro de chef" width="560" height="584" fetchpriority="high"/></div>
-          <div class="mascot-name">capta<span class="live-dot"></span></div>
-        </div>
-        <article class="activity-card chat-card is-active" data-scene-step="0">
-          <div class="activity-heading"><span class="activity-icon material-symbols-outlined" aria-hidden="true">chat_bubble</span><span>ATENCIÓN</span><span class="activity-number">01</span></div>
-          <p class="chat-question">¡Hola! ¿Están tomando pedidos?</p>
-          <div class="chat-answer"><span class="answer-typing" aria-hidden="true"><i></i><i></i><i></i></span><p>¡Sí! Te paso nuestro menú.<br/>¿Qué te gustaría pedir?</p></div>
-          <div class="activity-footer"><span class="mini-check">✓</span> Consulta respondida <span>ahora</span></div>
-        </article>
-        <article class="activity-card order-card" data-scene-step="1">
-          <div class="activity-heading"><span class="activity-icon material-symbols-outlined" aria-hidden="true">shopping_bag</span><span>PEDIDOS</span><span class="activity-number">02</span></div>
-          <div class="demo-order"><span class="burger-art material-symbols-outlined" aria-hidden="true">lunch_dining</span><div><strong>Sale una cena para dos.</strong><p>2 burgers + papas</p></div></div>
-          <div class="payment-confirmed"><span class="material-symbols-outlined" aria-hidden="true">verified</span> Pago verificado</div>
-          <div class="activity-footer"><span class="mini-check">✓</span> Pedido confirmado <span>#0248</span></div>
-        </article>
-        <article class="activity-card kitchen-card" data-scene-step="2">
-          <div class="activity-heading"><span class="activity-icon material-symbols-outlined" aria-hidden="true">receipt_long</span><span>COCINA</span><span class="activity-number">03</span></div>
-          <div class="kitchen-body"><div class="mini-printer" aria-hidden="true"><span></span><div class="printer-paper"><i></i><i></i><i></i></div></div><div><strong>¡Marcha ese pedido!</strong><p>Comanda enviada a cocina.<br/>Tu equipo ya sabe qué preparar.</p></div></div>
-          <div class="activity-footer"><span class="mini-check">✓</span> Todo conectado <span>listo</span></div>
-        </article>
-        <div class="scene-signature"><span class="signature-spark" aria-hidden="true">✳</span> Un integrante más.<br/><strong>Mil tareas menos.</strong></div>
-      </div>
-      <div class="demo-controls"><span><span class="live-dot"></span> Así trabaja Capta <span class="demo-disclaimer">· Ejemplo ilustrativo</span></span><button id="motionToggle" type="button" aria-pressed="false" aria-label="Pausar animaciones">Pausar Ⅱ</button></div>
-    </div>
+<section class="capta-hero reference-hero" aria-labelledby="hero-heading">
+  <div class="reference-art"><img src="/hero-capta-scene.png" width="1672" height="941" fetchpriority="high" alt="La mascota de Capta responde una consulta, confirma un pedido y envía la comanda a cocina."/></div>
+  <div class="reference-copy">
+    <h1 id="hero-heading">Imaginá tu restaurante<span>atendiéndose solo.</span></h1>
+    <p>Capta responde consultas, toma pedidos, verifica pagos y conecta a tu equipo. Vos te enfocás en tu restaurante.</p>
+    <div class="reference-hero-actions"><a href="#features" class="reference-primary">Ver cómo funciona <svg width="29" height="26" viewBox="0 0 29 26" fill="none" aria-hidden="true"><path d="M2 13h23M16 4l9 9-9 9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a><button type="button" class="reference-demo" onclick="openModal()"><span>Mirá una demo</span><svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true"><circle cx="18" cy="18" r="16.5" stroke="currentColor" stroke-width="1.6"/><path d="m14 10 12 8-12 8V10Z" fill="currentColor"/></svg></button></div>
   </div>
-  <div class="hero-bottom"><span>VOS LE PONÉS EL SABOR. CAPTA CONECTA EL RESTO.</span><div>Atiende <i>↗</i> Organiza <i>↗</i> Acompaña</div><a href="#features" aria-label="Explorar funciones">↓</a></div>
 </section>
 <section id="comparison" class="shift-section">
   <div class="shift-intro reveal"><p class="eyeline">CAMBIÁ EL RITMO DE TU NEGOCIO</p><h2>Hora pico.<br/><em>Cero caos.</em></h2><p>Que crezcan los pedidos.<br/>Que vuelva la calma.</p></div>
