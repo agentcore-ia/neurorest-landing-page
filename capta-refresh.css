@@ -189,7 +189,8 @@ svg rect[fill="#f5f5f7"] { fill:#f4f0e7; }
 .reference-nav-actions { display:flex; align-items:center; gap:14px; margin-left:auto; }
 .reference-nav .login-link { font-size:18px; color:#10151e; padding:15px 29px; border:1px solid #e6e7eb; border-radius:24px; white-space:nowrap; background:#ffffff9c; }
 .reference-nav button.reference-start { font-size:18px; font-weight:600; padding:17px 31px; border-radius:24px; white-space:nowrap; background:linear-gradient(125deg,#ff7d0b,#ff6508); color:white; box-shadow:0 12px 40px #ff790c12; }
-.reference-hero { position:relative; isolation:isolate; overflow:hidden; padding:0; min-height:clamp(740px,56.28vw,1020px); background:#fff; }
+.reference-hero { position:relative; isolation:isolate; overflow:hidden; padding:0; min-height:clamp(740px,56.28vw,1020px); background:radial-gradient(ellipse at 78% 58%,#fff0dc80 0,#fff7ed38 38%,transparent 63%),linear-gradient(180deg,#fff 0%,#fff 64%,#fefcf8 80%,var(--paper) 100%); }
+.reference-hero::after { content:''; position:absolute; z-index:0; left:-8%; bottom:-82px; width:116%; height:158px; border-radius:50% 50% 0 0 / 100% 100% 0 0; background:var(--paper); box-shadow:0 -22px 55px #f5eadb42; pointer-events:none; }
 .reference-art { position:absolute; z-index:-1; width:90%; right:0; top:5.5%; pointer-events:none; }
 .reference-art img { width:100%; height:auto; display:block; }
 .reference-copy { position:relative; padding-top:17.3vw; margin-left:4.9%; width:46%; max-width:800px; padding-bottom:80px; }
@@ -242,7 +243,8 @@ svg rect[fill="#f5f5f7"] { fill:#f4f0e7; }
   .reference-nav-actions { margin-left:0; }
   .reference-nav .login-link { display:none; }
   .reference-nav button.reference-start { padding:12px 15px; font-size:11px; border-radius:17px; }
-  .reference-hero { min-height:0; padding:118px 0 0; display:flex; flex-direction:column; }
+  .reference-hero { min-height:0; padding:118px 0 0; display:flex; flex-direction:column; background:radial-gradient(ellipse at 50% 77%,#fff0dc78 0,#fff8ef2e 42%,transparent 65%),linear-gradient(180deg,#fff 0%,#fff 57%,#fefcf8 79%,var(--paper) 100%); }
+  .reference-hero::after { left:-22%; bottom:-58px; width:144%; height:112px; box-shadow:0 -16px 40px #f5eadb38; }
   .reference-copy { order:0; margin:0 22px; width:auto; padding:0; max-width:560px; }
   .reference-copy h1 { white-space:normal; font-size:clamp(36px,8.9vw,58px); line-height:1.14; letter-spacing:-.05em; max-width:540px; }
   .reference-copy h1 span { margin-top:5px; }
