@@ -40,8 +40,24 @@
     if (event.key === 'Escape') resources.open = false;
   });
 
-  // Pause decorative SVG loops outside the viewport.
-  const scenes = document.querySelectorAll('main svg:not(.hero-orbit):not(.scene-connections)');
+  const vectorArt = document.querySelector('.vector-art');
+  const motionToggle = vectorArt.querySelector('.vector-motion-toggle');
+  let vectorVisible = false;
+  const syncVectorVisibility = () => vectorArt.classList.toggle('is-offscreen', !vectorVisible || document.hidden);
+  new IntersectionObserver(([entry]) => {
+    vectorVisible = entry.isIntersecting;
+    syncVectorVisibility();
+  }, { threshold: 0.1 }).observe(vectorArt);
+  document.addEventListener('visibilitychange', syncVectorVisibility);
+  motionToggle.addEventListener('click', () => {
+    const paused = vectorArt.classList.toggle('is-paused');
+    motionToggle.setAttribute('aria-pressed', String(paused));
+    motionToggle.setAttribute('aria-label', paused ? 'Reanudar animación de Capta' : 'Pausar animación de Capta');
+    motionToggle.textContent = paused ? 'Reanudar animación ▷' : 'Pausar animación Ⅱ';
+  });
+
+  // The hero has its own pause control; other scenes retain viewport pausing.
+  const scenes = document.querySelectorAll('main svg:not(.hero-orbit):not(.scene-connections):not(.capta-vector)');
   const sceneObserver = new IntersectionObserver((entries) => {
     entries.forEach(({ target, isIntersecting }) => {
       target.getAnimations({ subtree: true }).forEach((animation) => {
@@ -50,5 +66,7 @@
       });
     });
   }, { rootMargin: '80px' });
-  scenes.forEach((scene) => sceneObserver.observe(scene));
+  scenes.forEach((scene) => {
+    if (!scene.closest('.capta-vector')) sceneObserver.observe(scene);
+  });
 })();
