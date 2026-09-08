@@ -294,9 +294,7 @@ svg rect[fill="#f5f5f7"] { fill:#f4f0e7; }
 .v-arrow-draw { stroke-dasharray:1; stroke-dashoffset:0; }
 .v-arrow-one .v-arrow-draw { animation:v-path-one 16s ease-in-out infinite; }
 .v-arrow-two .v-arrow-draw { animation:v-path-two 16s ease-in-out infinite; }
-.vector-motion-toggle { display:flex; align-items:center; gap:8px; margin:-5px 5% 0 auto; position:relative; z-index:1; color:#7d756d; font-size:11px; padding:10px; border-radius:20px; background:#ffffffb3; }
-.vector-motion-toggle:hover { color:#e66315; background:#fff0de; }
-.vector-art.is-paused .capta-vector *,.vector-art.is-offscreen .capta-vector * { animation-play-state:paused!important; }
+.vector-art.is-offscreen .capta-vector * { animation-play-state:paused!important; }
 @keyframes v-float { 0%,100% { transform:translateY(0) rotate(-.5deg); } 50% { transform:translateY(-9px) rotate(.5deg); } }
 @keyframes v-thumb { 0%,43%,75%,100% { transform:rotate(0); } 52%,63% { transform:rotate(-6deg); } }
 @keyframes v-question { 0% { opacity:0; transform:translateY(5px); } 5%,94% { opacity:1; transform:none; } 100% { opacity:0; } }
@@ -318,12 +316,10 @@ svg rect[fill="#f5f5f7"] { fill:#f4f0e7; }
   .reference-art.vector-art { width:100%; margin:32px 0 0; top:auto; right:auto; padding:0 10px 15px; }
   .capta-vector .v-message { font-size:21px; }
   .capta-vector .v-item { font-size:20px; }
-  .vector-motion-toggle { font-size:10px; margin-top:2px; }
 }
 @media(prefers-reduced-motion:reduce) {
   .capta-vector * { animation:none!important; }
   .v-question,.v-reply,.v-confirm,.v-kitchen,.v-print-paper,.v-arrow-one,.v-arrow-two { opacity:1; }
   .v-arrow-draw,.v-confirm-check { stroke-dashoffset:0; }
   .capta-vector .v-typing { display:none; }
-  .vector-motion-toggle { display:none; }
 }

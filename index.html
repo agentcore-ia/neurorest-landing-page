@@ -511,7 +511,6 @@
   </g>
 </g>
 </svg>
-    <button class="vector-motion-toggle" type="button" aria-pressed="false" aria-label="Pausar animación de Capta">Pausar animación <span aria-hidden="true">Ⅱ</span></button>
   </div>
   <div class="reference-copy">
     <h1 id="hero-heading">Imaginá tu restaurante<span>atendiéndose solo.</span></h1>
@@ -1590,7 +1589,7 @@
 
 <!-- ════════════════ FOOTER ════════════════ -->
 <footer class="bg-[#f5f5f7] px-5 py-16 md:px-8">
-  <div class="mx-auto grid max-w-6xl gap-12 md:grid-cols-4">
+  <div class="mx-auto grid max-w-6xl gap-12 md:grid-cols-3">
     <div class="space-y-5 md:col-span-2">
       <div class="flex items-center gap-2.5">
         <img src="/logo-capta.png?v=capta-20260619" alt="Capta" class="h-9 w-9 object-contain"/>
@@ -1609,14 +1608,6 @@
         <li><a href="#pricing" class="transition-colors hover:text-[#1d1d1f]">Precios</a></li>
         <li><a href="/automatizacion-gastronomica.html" class="transition-colors hover:text-[#1d1d1f]">Automatizaci&oacute;n gastron&oacute;mica</a></li>
       </ul>
-    </div>
-    <div>
-      <h4 class="text-[12px] font-black uppercase tracking-[0.14em] text-[#1d1d1f]">Boletín</h4>
-      <form name="newsletter" onsubmit="submitNewsletter(event)" class="mt-5 flex" id="newsletter-form">
-        <input name="phone" id="newsletter-phone" class="w-full rounded-l-full border-0 bg-white px-4 py-3 text-sm shadow-[inset_0_0_0_1px_rgba(0,0,0,.06)] placeholder:text-[#a1a1a6] focus:ring-2 focus:ring-[#ff6b1a]" placeholder="Tu celular" type="tel" required/>
-        <button type="submit" class="rounded-r-full bg-[#1d1d1f] px-5 text-[11px] font-black uppercase tracking-wide text-white transition-colors hover:bg-black">Unirse</button>
-      </form>
-      <div id="newsletter-success" class="mt-2 hidden text-sm font-bold text-[#ff6b1a]">Gracias por unirte!</div>
     </div>
   </div>
   <div class="mx-auto mt-14 flex max-w-6xl flex-col items-center justify-between gap-3 border-t border-black/[.07] pt-6 text-[13px] font-medium text-[#a1a1a6] sm:flex-row">
@@ -1748,23 +1739,6 @@
     } catch (error) {
       console.error('Error submitting form:', error);
       alert(error.message || 'No pudimos enviar el formulario. Intenta nuevamente en unos minutos.');
-    }
-  }
-
-  async function submitNewsletter(e) {
-    e.preventDefault();
-    const form = e.target;
-    const phone = document.getElementById('newsletter-phone').value;
-    if (phone.trim() !== '') {
-      try {
-        await postForm('newsletter', form);
-        document.getElementById('newsletter-form').classList.add('hidden');
-        document.getElementById('newsletter-success').classList.remove('hidden');
-        form.reset();
-      } catch (error) {
-        console.error('Error submitting newsletter:', error);
-        alert(error.message || 'No pudimos guardar tu número. Intenta nuevamente en unos minutos.');
-      }
     }
   }
 

@@ -41,7 +41,6 @@
   });
 
   const vectorArt = document.querySelector('.vector-art');
-  const motionToggle = vectorArt.querySelector('.vector-motion-toggle');
   let vectorVisible = false;
   const syncVectorVisibility = () => vectorArt.classList.toggle('is-offscreen', !vectorVisible || document.hidden);
   new IntersectionObserver(([entry]) => {
@@ -49,14 +48,8 @@
     syncVectorVisibility();
   }, { threshold: 0.1 }).observe(vectorArt);
   document.addEventListener('visibilitychange', syncVectorVisibility);
-  motionToggle.addEventListener('click', () => {
-    const paused = vectorArt.classList.toggle('is-paused');
-    motionToggle.setAttribute('aria-pressed', String(paused));
-    motionToggle.setAttribute('aria-label', paused ? 'Reanudar animación de Capta' : 'Pausar animación de Capta');
-    motionToggle.textContent = paused ? 'Reanudar animación ▷' : 'Pausar animación Ⅱ';
-  });
 
-  // The hero has its own pause control; other scenes retain viewport pausing.
+  // Pause animated scenes when they are outside the viewport.
   const scenes = document.querySelectorAll('main svg:not(.hero-orbit):not(.scene-connections):not(.capta-vector)');
   const sceneObserver = new IntersectionObserver((entries) => {
     entries.forEach(({ target, isIntersecting }) => {
