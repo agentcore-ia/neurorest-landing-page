@@ -9,7 +9,7 @@ name: IndexNow
 on:
   push:
     branches: [main]
-    paths-ignore: ["docs/**", "herramientas/**", "scripts/**", ".github/**"]
+    paths-ignore: ["docs/**", "herramientas/**", "scripts/**"]
   workflow_dispatch:
 
 jobs:
@@ -17,13 +17,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Ver cómo responde capta.ar
+        run: |
+          curl -sS -m 20 -o /dev/null -w "capta.ar -> %{http_code} %{redirect_url}\n" https://capta.ar/ || true
+          curl -sS -m 20 -o /dev/null -w "www.capta.ar -> %{http_code} %{redirect_url}\n" https://www.capta.ar/ || true
       - name: Esperar a que Vercel publique
         run: |
           for i in $(seq 1 20); do
-            if curl -fsS https://capta.ar/92e744073a6a5fb3a74c00ef3acc4da2.txt | grep -q 92e744073a6a5fb3a74c00ef3acc4da2; then exit 0; fi
+            if curl -fsSL -m 20 https://capta.ar/92e744073a6a5fb3a74c00ef3acc4da2.txt | grep -q 92e744073a6a5fb3a74c00ef3acc4da2; then exit 0; fi
             sleep 15
           done
-          echo "La clave de IndexNow no está publicada en capta.ar" && exit 1
+          echo "::error::La clave de IndexNow no está publicada en capta.ar" && exit 1
       - name: Enviar las URLs del sitemap
         run: |
           python3 - <<'PY'
@@ -37,6 +41,6 @@ jobs:
           }).encode()
           pedido = urllib.request.Request("https://api.indexnow.org/indexnow", data=cuerpo,
                                           headers={"Content-Type": "application/json; charset=utf-8"})
-          with urllib.request.urlopen(pedido) as r:
+          with urllib.request.urlopen(pedido, timeout=30) as r:
               print(r.status, len(urls), "URLs enviadas")
           PY
