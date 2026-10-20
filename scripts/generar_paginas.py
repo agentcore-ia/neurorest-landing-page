@@ -31,7 +31,10 @@ ORGANIZACION = {
     "name": "Capta",
     "url": f"{SITIO}/",
     "logo": {"@type": "ImageObject", "url": f"{SITIO}/logo-capta.png", "width": 560, "height": 584},
+    "alternateName": "Capta, sistema gastronómico",
     "description": "Capta es un software de gestión gastronómica con inteligencia artificial, hecho en Argentina, para restaurantes, bares, pizzerías y locales de comida.",
+    "disambiguatingDescription": "Capta (capta.ar) es el sistema de gestión gastronómica con IA hecho en Argentina, distinto de otros productos de software que también se llaman Capta.",
+    "knowsAbout": ["software de gestión gastronómica", "sistemas para restaurantes", "inteligencia artificial para restaurantes", "automatización de WhatsApp para restaurantes", "delivery para restaurantes"],
     "areaServed": {"@type": "Country", "name": "Argentina"},
     "knowsLanguage": "es-AR",
 }

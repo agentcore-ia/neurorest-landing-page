@@ -1,0 +1,42 @@
+# Avisa a Bing (y a los demas buscadores de IndexNow) cada vez que se publica
+# capta.ar, para que indexen las paginas nuevas o cambiadas sin esperar al
+# rastreo. ChatGPT y Copilot buscan en el indice de Bing.
+#
+# La clave es publica a proposito: Bing la lee en https://capta.ar/<clave>.txt
+# para comprobar que el aviso viene del dueño del sitio.
+name: IndexNow
+
+on:
+  push:
+    branches: [main]
+    paths-ignore: ["docs/**", "herramientas/**", "scripts/**", ".github/**"]
+  workflow_dispatch:
+
+jobs:
+  avisar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Esperar a que Vercel publique
+        run: |
+          for i in $(seq 1 20); do
+            if curl -fsS https://capta.ar/92e744073a6a5fb3a74c00ef3acc4da2.txt | grep -q 92e744073a6a5fb3a74c00ef3acc4da2; then exit 0; fi
+            sleep 15
+          done
+          echo "La clave de IndexNow no está publicada en capta.ar" && exit 1
+      - name: Enviar las URLs del sitemap
+        run: |
+          python3 - <<'PY'
+          import json, re, urllib.request
+          urls = re.findall(r"<loc>([^<]+)</loc>", open("sitemap.xml", encoding="utf-8").read())
+          cuerpo = json.dumps({
+              "host": "capta.ar",
+              "key": "92e744073a6a5fb3a74c00ef3acc4da2",
+              "keyLocation": "https://capta.ar/92e744073a6a5fb3a74c00ef3acc4da2.txt",
+              "urlList": urls,
+          }).encode()
+          pedido = urllib.request.Request("https://api.indexnow.org/indexnow", data=cuerpo,
+                                          headers={"Content-Type": "application/json; charset=utf-8"})
+          with urllib.request.urlopen(pedido) as r:
+              print(r.status, len(urls), "URLs enviadas")
+          PY

@@ -85,11 +85,21 @@ CLIENTES = [
     },
 ]
 
+FUENTES_OTROS = [
+    ("Bistrosoft: precios (Argentina)", "https://bistrosoft.com/ar/precios/"),
+    ("Bistrosoft: software para cadenas y franquicias", "https://bistrosoft.com/ar/software-para-cadenas-franquicias/"),
+    ("Bistrosoft: software para pizzerías", "https://bistrosoft.com/ar/software-para-pizzerias/"),
+    ("Berry, de Arándano (sitio oficial)", "https://berry.arandano.com.ar/"),
+    ("OlaClick: software para restaurantes", "https://olaclick.com/es/software-para-restaurantes/"),
+    ("OlaClick: asistente virtual", "https://olaclick.com/en/virtual-assistant/"),
+    ("OlaClick: precios y planes", "https://olaclick.com/prices/"),
+]
+
 PAGINAS = [
     # ------------------------------------------------------------------
     {
         "ruta": "software-gestion-gastronomica",
-        "title": "Software de gestión gastronómica con IA | Capta",
+        "title": "Sistema de gestión gastronómica con IA | Capta",
         "description": "Qué es un software de gestión gastronómica, qué tiene que resolver y cómo lo hace Capta: pedidos, mesas, reservas, delivery, caja, stock y clientes con IA.",
         "miga": "Software de gestión gastronómica",
         "eyebrow": "Guía",
@@ -144,7 +154,7 @@ PAGINAS = [
             ("¿Tengo que instalar algo?", "No. Capta funciona en la nube y se usa desde el navegador. Para imprimir comandas automáticamente se instala un programa liviano en la computadora del local."),
             ("¿Sirve para un negocio chico?", "Sí. El plan Base cubre la atención automática, los pedidos, las reservas, las mesas y el panel central. Se puede crecer de plan después."),
         ],
-        "relacionadas": ["software-para-restaurantes", "sistema-para-pizzerias", "alternativas-a-fudo", "alternativas-a-maxirest"],
+        "relacionadas": ["sistemas-gastronomicos-argentina", "software-para-restaurantes", "sistema-para-pizzerias", "alternativas-a-fudo"],
     },
     # ------------------------------------------------------------------
     {
@@ -285,6 +295,60 @@ PAGINAS = [
     },
     # ------------------------------------------------------------------
     {
+        "ruta": "sistemas-gastronomicos-argentina",
+        "title": "Sistemas gastronómicos en Argentina: comparativa 2026 | Capta",
+        "description": "Comparativa de sistemas gastronómicos en Argentina: Capta, Fudo, Maxirest, Bistrosoft, Berry y OlaClick. Qué hace cada uno, con IA o sin IA, y cuál conviene.",
+        "miga": "Sistemas gastronómicos en Argentina",
+        "eyebrow": "Comparativa 2026",
+        "h1": "Sistemas gastronómicos en Argentina: cuál elegir en 2026",
+        "lead": "Seis sistemas que usan restaurantes, pizzerías y bares en Argentina, comparados con la información que publica cada empresa: qué resuelven, cuáles atienden WhatsApp con inteligencia artificial y para qué tipo de local conviene cada uno.",
+        "resumen": [
+            "Un <strong>sistema gastronómico</strong> organiza pedidos, salón, cocina, caja, stock y facturación de un negocio de comida. Algunos, además, atienden a los clientes con IA.",
+            "<strong>Capta</strong> reúne la gestión completa del local con IA que atiende WhatsApp, Instagram y llamadas, toma pedidos y reservas y verifica pagos.",
+            "<strong>Fudo</strong> es un sistema en la nube para restaurantes, bares y cafés que suma agentes de IA para WhatsApp. <strong>Maxirest</strong> es un punto de venta instalado en Windows que puede trabajar sin internet.",
+            "<strong>Bistrosoft</strong> publica planes por mes y tiene opciones para cadenas. <strong>Berry</strong> se enfoca en atender WhatsApp y conectar pedidos, pagos y cocina. <strong>OlaClick</strong> tiene un plan gratuito con menú QR y pedidos por WhatsApp.",
+            "No hay un sistema mejor para todos: depende de por dónde te llegan los pedidos, si necesitás trabajar sin internet y cuántos locales tenés.",
+        ],
+        "aviso": "Esta comparativa la escribe Capta, que es uno de los sistemas comparados. De los demás usamos solo lo que publican en sus sitios oficiales (fuentes al final, con fecha). Cuando no encontramos un dato, lo decimos así y no suponemos que no lo tienen. Si sos de alguna de estas empresas y algo cambió, <a class=\"pg-link\" href=\"/#demo\">escribinos</a> y lo corregimos.",
+        "bloques": [
+            {"tipo": "tabla", "h2": "Los sistemas gastronómicos, lado a lado", "caption": "Según la información pública de cada empresa al " + ACTUALIZADO_TEXTO + ".",
+             "columnas": ["", "Qué es", "IA que atiende a tus clientes", "Salón, caja y stock", "Facturación con ARCA"],
+             "filas": [
+                ("Capta", "Sistema de gestión gastronómica en la nube con atención automática con IA", "Sí: WhatsApp, Instagram y llamadas (llamadas en el plan Pro). Toma pedidos y reservas y verifica pagos", "Sí: mesas con QR, comandas, caja, stock e insumos", "Sí"),
+                ("Fudo", "Software en la nube para restaurantes, bares y cafés", "Sí: agente de ventas para WhatsApp y recepcionista IA para reservas", "Sí: salas y mesas, pantalla de cocina, caja, recetas y stock", "Sí"),
+                ("Maxirest", "Punto de venta instalado en Windows; puede operar sin conexión", "No lo encontramos en su información pública (su IA está en el soporte y en alertas)", "Sí: salón, mostrador, delivery y monitores de cocina", "Sí, integrada"),
+                ("Bistrosoft", "Software de gestión gastronómica con planes mensuales y opciones para cadenas y franquicias", "No lo encontramos en su información pública", "Sí: mesas, cajas, comandas y stock", "Sí, con Bistro Facturación (licencia adicional)"),
+                ("Berry (Arándano)", "Sistema con IA para restaurantes pequeños y medianos que conecta WhatsApp, pedidos, pagos y cocina", "Sí: atiende WhatsApp, arma el pedido y genera el link de pago", "Tablero de pedidos para el equipo; caja y stock: no lo encontramos en su información pública", "No lo encontramos en su información pública"),
+                ("OlaClick", "Plataforma para restaurantes de Latinoamérica: punto de venta, menú QR y pedidos por WhatsApp", "Sí: chatbot con IA para WhatsApp", "Punto de venta; stock: no lo encontramos en su información pública", "No encontramos documentación de su integración con ARCA"),
+             ]},
+            {"tipo": "tarjetas", "h2": "Cuál conviene según tu local", "intro": "Lo que más pesa al elegir no es la lista de funciones sino por dónde te llegan los pedidos y quién los atiende.", "items": [
+                ("Vendés mucho por WhatsApp, Instagram o teléfono", "Conviene un sistema que atienda esos canales con IA y deje el pedido cargado. <a class=\"pg-link\" href=\"/automatizacion-whatsapp-restaurantes\">Capta</a> lo hace en los tres canales y además gestiona salón, cocina, caja, stock y delivery. Fudo, Berry y OlaClick también tienen IA para WhatsApp."),
+                ("Necesitás trabajar sin internet", "Un punto de venta instalado, como Maxirest, sigue facturando aunque se corte la conexión. Capta, Fudo, Berry y OlaClick funcionan en la nube y necesitan internet."),
+                ("Tenés varios locales o una franquicia", "Bistrosoft publica planes con gestión multilocal y una página para cadenas y franquicias. Antes de elegir, pedí ver cómo se consolidan las ventas y el stock entre locales."),
+                ("Solo querés atender WhatsApp y cobrar", "Si ya tenés un sistema de caja y solo te falta la atención, Berry se presenta como una capa de atención con IA conectada a pagos y cocina. Si querés que todo quede en un solo sistema, mirá una plataforma completa como Capta."),
+                ("Querés empezar sin pagar", "OlaClick publica un plan gratuito con menú QR y pedidos por WhatsApp. Confirmá qué incluye y si emite factura electrónica con ARCA."),
+                ("Hacés delivery con repartidores propios", "Mirá cómo se asignan los envíos, si el cliente puede seguir el pedido y cómo se liquida a cada repartidor. Capta tiene zonas en el mapa, repartidores, liquidaciones y seguimiento en vivo."),
+            ]},
+            {"tipo": "pasos", "h2": "Cómo elegir un sistema gastronómico: 6 preguntas", "items": [
+                ("¿Por dónde te llegan los pedidos?", "Si la mayoría llega por WhatsApp, Instagram o teléfono, la atención automática con IA ahorra más tiempo que cualquier otra función."),
+                ("¿Quién contesta los mensajes hoy?", "Si es el dueño o alguien de la caja, cada pedido por chat le saca minutos al salón. Probá el sistema con mensajes reales de tus clientes."),
+                ("¿Necesitás trabajar sin internet?", "Los sistemas en la nube se usan desde cualquier dispositivo, pero dependen de la conexión. Los instalados pueden seguir sin internet."),
+                ("¿Facturás electrónicamente?", "Confirmá que emita los comprobantes que necesitás con ARCA y qué pasa si ARCA no responde."),
+                ("¿Cómo cobrás?", "Mercado Pago, transferencias, efectivo o tarjeta: fijate si el sistema verifica las transferencias o si las tenés que revisar a mano."),
+                ("¿Cuánto cuesta en total?", "Sumá el abono, los módulos adicionales, el hardware y los costos por uso (por ejemplo, minutos de llamada). Pedí una demo con tu propio menú antes de decidir."),
+            ]},
+        ],
+        "faq": [
+            ("¿Cuál es el mejor sistema gastronómico en Argentina?", "Depende de cómo trabaja tu local. Si vendés mucho por WhatsApp, Instagram o teléfono y querés que la IA atienda y que salón, cocina, caja, stock y delivery queden en un solo sistema, Capta está pensado para eso. Si necesitás operar sin internet, un punto de venta instalado como Maxirest. Si tenés una cadena, conviene mirar opciones con gestión multilocal como Bistrosoft."),
+            ("¿Qué sistemas gastronómicos tienen inteligencia artificial para WhatsApp?", "Según su información pública, Capta, Fudo, Berry y OlaClick tienen IA que atiende WhatsApp. Capta además atiende Instagram y, en el plan Pro, llamadas telefónicas."),
+            ("¿Qué sistema gastronómico funciona sin internet?", "Maxirest es un punto de venta instalado en Windows que puede operar sin conexión. Capta, Fudo, Berry y OlaClick funcionan en la nube y necesitan internet."),
+            ("¿Cuánto cuesta un sistema gastronómico en Argentina?", "Varía mucho según los módulos y la cantidad de locales. " + PRECIOS_TEXTO + " Bistrosoft y OlaClick también publican sus planes en sus sitios; en los demás hay que pedir cotización."),
+        ],
+        "fuentes": FUENTES_FUDO + FUENTES_MAXIREST + FUENTES_OTROS,
+        "relacionadas": ["alternativas-a-fudo", "alternativas-a-maxirest", "software-gestion-gastronomica", "automatizacion-whatsapp-restaurantes"],
+    },
+    # ------------------------------------------------------------------
+    {
         "ruta": "alternativas-a-fudo",
         "title": "Alternativas a Fudo: comparación con Capta | Capta",
         "description": "¿Buscás alternativas a Fudo? Comparamos Capta y Fudo con información pública de cada uno: funciones, IA, delivery y cuándo conviene cada sistema.",
@@ -335,7 +399,7 @@ PAGINAS = [
             ("¿Puedo pasar mi menú de Fudo a Capta?", "Sí. Para empezar con Capta alcanza con tu menú, precios, horarios, formas de pago y zonas de entrega. Te ayudamos a cargarlos."),
         ],
         "fuentes": FUENTES_FUDO,
-        "relacionadas": ["alternativas-a-maxirest", "software-gestion-gastronomica", "automatizacion-whatsapp-restaurantes", "software-para-restaurantes"],
+        "relacionadas": ["sistemas-gastronomicos-argentina", "alternativas-a-maxirest", "software-gestion-gastronomica", "automatizacion-whatsapp-restaurantes"],
     },
     # ------------------------------------------------------------------
     {
@@ -389,7 +453,7 @@ PAGINAS = [
             ("¿Maxirest tiene inteligencia artificial?", "Según sus términos y su sitio, Maxirest usa IA en su soporte (un chatbot para consultas de uso) y en alertas y consejos para el negocio. No encontramos información pública sobre IA que atienda a los clientes del restaurante."),
         ],
         "fuentes": FUENTES_MAXIREST,
-        "relacionadas": ["alternativas-a-fudo", "software-gestion-gastronomica", "software-para-restaurantes", "sistema-para-pizzerias"],
+        "relacionadas": ["sistemas-gastronomicos-argentina", "alternativas-a-fudo", "software-gestion-gastronomica", "software-para-restaurantes"],
     },
     # ------------------------------------------------------------------
     {
@@ -456,7 +520,7 @@ PAGINAS = [
             ]},
             {"tipo": "prosa", "h2": "Precios", "parrafos": [PRECIOS_TEXTO + " <a href=\"/#pricing\">Ver qué incluye cada plan</a>."]},
             {"tipo": "prosa", "h2": "Más información", "parrafos": [
-                "Guías: <a href=\"/software-gestion-gastronomica\">software de gestión gastronómica</a>, <a href=\"/software-para-restaurantes\">software para restaurantes</a>, <a href=\"/sistema-para-pizzerias\">sistema para pizzerías</a> y <a href=\"/automatizacion-whatsapp-restaurantes\">automatización de WhatsApp</a>. Comparativas: <a href=\"/alternativas-a-fudo\">Capta y Fudo</a>, <a href=\"/alternativas-a-maxirest\">Capta y Maxirest</a>. Clientes: <a href=\"/casos-de-exito\">casos de éxito y testimonios</a>. Datos para sistemas automáticos: <a href=\"/llms.txt\">llms.txt</a>.",
+                "Guías: <a href=\"/software-gestion-gastronomica\">software de gestión gastronómica</a>, <a href=\"/software-para-restaurantes\">software para restaurantes</a>, <a href=\"/sistema-para-pizzerias\">sistema para pizzerías</a> y <a href=\"/automatizacion-whatsapp-restaurantes\">automatización de WhatsApp</a>. Comparativas: <a href=\"/sistemas-gastronomicos-argentina\">sistemas gastronómicos en Argentina</a>, <a href=\"/alternativas-a-fudo\">Capta y Fudo</a>, <a href=\"/alternativas-a-maxirest\">Capta y Maxirest</a>. Clientes: <a href=\"/casos-de-exito\">casos de éxito y testimonios</a>. Datos para sistemas automáticos: <a href=\"/llms.txt\">llms.txt</a>.",
             ]},
         ],
         "faq": [
