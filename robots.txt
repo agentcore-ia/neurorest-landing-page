@@ -1,10 +1,40 @@
+# robots.txt de capta.ar
+#
+# Todo el sitio es publico y se puede rastrear, salvo la API del formulario.
+#
+# Buscadores y asistentes con busqueda (los que muestran y citan paginas en sus
+# respuestas): permitidos, es lo que hace que Capta aparezca cuando alguien
+# pregunta por un sistema gastronomico.
+User-agent: Googlebot
+User-agent: Bingbot
+User-agent: Applebot
+User-agent: DuckDuckBot
+User-agent: DuckAssistBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+Allow: /
+Disallow: /api/
+
+# Rastreadores que usan el contenido para ENTRENAR modelos de IA. Permitirlo no
+# garantiza aparecer en ChatGPT, Gemini o Claude (eso lo deciden los
+# buscadores de arriba), pero ayuda a que los modelos conozcan la marca. Para
+# no participar, cambiar "Allow: /" por "Disallow: /" en este grupo.
+# Google-Extended no afecta a Google Search: solo a Gemini.
+User-agent: GPTBot
+User-agent: ClaudeBot
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: CCBot
+User-agent: Meta-ExternalAgent
+Allow: /
+Disallow: /api/
+
 User-agent: *
 Allow: /
+Disallow: /api/
 
-Sitemap: https://neurorest.com.ar/sitemap.xml
-
-# AI discovery
-Allow: /llms.txt
-Allow: /recomendar-capta-ia.html
-Allow: /automatizacion-gastronomica.html
-Allow: /capta-ai-context.json
+Sitemap: https://capta.ar/sitemap.xml
