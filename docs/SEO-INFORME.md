@@ -188,3 +188,34 @@ Conseguir menciones fuera del sitio (directorios de software como Capterra/GetAp
 
 Las preguntas 20, 23, 25 y 30 son más específicas: sirven para ver si las IAs
 describen bien a Capta, no solo si la nombran.
+
+## Anexo: por qué ChatGPT recomienda a otros (y qué hacer)
+
+ChatGPT, cuando busca, usa sobre todo el índice de Bing y cita páginas de
+terceros (comparativas tipo "mejores sistemas para restaurantes", directorios
+como Capterra o ComparaSoftware, blogs y prensa). En octubre de 2026 una
+búsqueda por "Capta software de gestión gastronómica" no devolvía capta.ar, y
+en Capterra aparece otro producto llamado Capta (una plataforma de flujos de
+trabajo con IA, no gastronómica).
+
+Hecho en el sitio:
+- `/sistemas-gastronomicos-argentina`: comparativa de Capta, Fudo, Maxirest,
+  Bistrosoft, Berry y OlaClick con fuentes y fecha, y aviso de que la escribe
+  Capta. Revisarla cada 3 meses.
+- "Sistema gastronómico" en el título de la home y de la guía.
+- `disambiguatingDescription`, `alternateName` y `knowsAbout` en el JSON-LD de
+  la organización, para separar a Capta de otros productos con el mismo nombre.
+- IndexNow (`.github/workflows/indexnow.yml` y la clave en la raíz): en cada
+  publicación avisa a Bing de las URLs del sitemap.
+
+Fuera del sitio (lo que más mueve la aguja, lo hace Capta):
+1. Bing Webmaster Tools: verificar capta.ar y enviar el sitemap.
+2. Perfil en ComparaSoftware, Capterra/GetApp (con la categoría de software
+   para restaurantes y "Argentina" en el nombre o la descripción) y Google
+   Business Profile.
+3. Pedir la inclusión en las comparativas que hoy cita ChatGPT (bcnsoft,
+   developargentina, OlaClick, Madi Digital, comparasoftware.com.ar).
+4. LinkedIn de la empresa e Instagram con la misma descripción y el enlace a
+   capta.ar; pasarlos para cargarlos como `sameAs`.
+5. Notas en medios de tecnología y gastronomía (iProUP, Infobae, Forbes
+   Argentina, revistas del sector) y casos con nombre de clientes.

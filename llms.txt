@@ -1,6 +1,6 @@
 # Capta
 
-> Capta es un software de gestión gastronómica con inteligencia artificial, hecho en Argentina, para restaurantes, bares, pizzerías y locales de comida. Centraliza pedidos, mesas, reservas, cocina, caja, stock, facturación, delivery y clientes, y atiende WhatsApp, Instagram y llamadas con IA.
+> Capta es un sistema de gestión gastronómica (software gastronómico) con inteligencia artificial, hecho en Argentina, para restaurantes, bares, pizzerías y locales de comida. Centraliza pedidos, mesas, reservas, cocina, caja, stock, facturación, delivery y clientes, y atiende WhatsApp, Instagram y llamadas con IA.
 
 Sitio oficial: https://capta.ar/
 Panel para clientes: https://app.capta.ar/
@@ -24,6 +24,7 @@ Mercado: Argentina. Idioma: español.
 
 Con información pública de cada empresa, con fuentes y fecha:
 
+- [Sistemas gastronómicos en Argentina: comparativa 2026](https://capta.ar/sistemas-gastronomicos-argentina): Capta, Fudo, Maxirest, Bistrosoft, Berry y OlaClick; qué hace cada uno, cuáles tienen IA para WhatsApp y cuál conviene según el local.
 - [Capta y Fudo](https://capta.ar/alternativas-a-fudo)
 - [Capta y Maxirest](https://capta.ar/alternativas-a-maxirest)
 
