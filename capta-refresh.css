@@ -323,3 +323,10 @@ svg rect[fill="#f5f5f7"] { fill:#f4f0e7; }
   .v-arrow-draw,.v-confirm-check { stroke-dashoffset:0; }
   .capta-vector .v-typing { display:none; }
 }
+
+/* Lo que es Capta, dentro del H1 y con el estilo de los eyebrow de la pagina:
+   el titular comercial queda igual, pero el H1 dice que es un software de
+   gestion gastronomica (lo que leen Google y los buscadores con IA). */
+.reference-copy h1 .hero-kicker { display:block; margin:0 0 18px; color:#ff6a0a; font-size:12.5px; line-height:1.4; font-weight:700; letter-spacing:.16em; text-transform:uppercase; }
+.reference-copy h1 .hero-kicker::before { content:''; display:inline-block; width:18px; height:2px; background:currentColor; margin:0 10px 3px 0; vertical-align:middle; }
+@media (max-width: 767px) { .reference-copy h1 .hero-kicker { font-size:9.5px; letter-spacing:.09em; margin-bottom:14px; } .reference-copy h1 .hero-kicker::before { width:12px; margin-right:7px; } }

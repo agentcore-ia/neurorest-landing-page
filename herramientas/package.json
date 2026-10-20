@@ -1,0 +1,21 @@
+{
+  "name": "capta-landing-herramientas",
+  "private": true,
+  "description": "Herramientas de build de la landing. No se publican (ver .vercelignore).",
+  "scripts": {
+    "css": "tailwindcss -c tailwind.config.cjs -i entrada.css -o ../assets/capta.css --minify",
+    "paginas": "python3 ../scripts/generar_paginas.py",
+    "todo": "npm run paginas && npm run css",
+    "og": "node og.cjs",
+    "imagenes": "node imagenes.cjs",
+    "verificar": "python3 ../scripts/verificar_sitio.py"
+  },
+  "devDependencies": {
+    "@fontsource/dm-sans": "^5.3.0",
+    "@fontsource/manrope": "^5.3.0",
+    "@tailwindcss/container-queries": "^0.1.1",
+    "@tailwindcss/forms": "^0.5.9",
+    "sharp": "^0.33.5",
+    "tailwindcss": "^3.4.17"
+  }
+}

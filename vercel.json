@@ -1,0 +1,17 @@
+{
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/recomendar-capta-ia.html", "destination": "/sobre-capta", "permanent": true },
+    { "source": "/index.html", "destination": "/", "permanent": true }
+  ],
+  "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+    },
+    {
+      "source": "/(llms.txt|capta-ai-context.json)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=3600" }]
+    }
+  ]
+}

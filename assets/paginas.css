@@ -1,0 +1,60 @@
+/* Paginas de soluciones y comparativas (las arma scripts/generar_paginas.py).
+ *
+ * Usan la misma base que la home: capta-refresh.css (colores, tipografias,
+ * navegacion) y el Tailwind compilado de assets/capta.css. Aca va solo lo que
+ * es propio de estas paginas de lectura: ancho de texto, tablas y bloques. */
+
+.pg { background:#fff; }
+.pg main { padding-top:118px; }
+@media (max-width:767px) { .pg main { padding-top:96px; } }
+
+/* La navegacion de la home tiene el boton "Comenzar ahora" como <button>;
+   aca es un enlace a /#demo, con el mismo aspecto. */
+.reference-nav a.reference-start { font-size:18px; font-weight:600; padding:17px 31px; border-radius:24px; white-space:nowrap; background:linear-gradient(125deg,#ff7d0b,#ff6508); color:#fff; box-shadow:0 12px 40px #ff790c12; }
+@media (max-width:1279px) { .reference-nav a.reference-start { font-size:14px; padding:15px 22px; border-radius:20px; } }
+@media (max-width:767px) { .reference-nav a.reference-start { padding:12px 15px; font-size:11px; border-radius:17px; } }
+.reference-nav { background:#ffffffed; backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); box-shadow:0 1px 0 #ececec; }
+
+.pg-migas { font-size:13px; font-weight:600; color:#86868b; }
+.pg-migas a { color:#6e6e73; }
+.pg-migas a:hover { color:#ff6b1a; }
+.pg-migas li + li::before { content:'/'; margin:0 8px; color:#c7c7cc; }
+
+.pg-hero { background:radial-gradient(60% 70% at 85% 10%, rgba(255,147,69,.13), transparent 62%), linear-gradient(180deg,#fff 0%,#fbf7f3 100%); }
+.pg-h1 { font-family:'Manrope',sans-serif; font-weight:800; letter-spacing:-.045em; line-height:1.04; color:#1d1d1f; font-size:clamp(38px,5.4vw,68px); }
+.pg-lead { font-size:clamp(17px,1.5vw,20px); line-height:1.6; color:#5d5d63; font-weight:500; }
+
+.pg-resumen { border-radius:1.75rem; background:#fff; box-shadow:0 0 0 1px rgba(0,0,0,.05), 0 30px 80px -50px rgba(29,29,31,.35); }
+.pg-resumen li { position:relative; padding-left:28px; }
+.pg-resumen li::before { content:''; position:absolute; left:4px; top:.6em; width:9px; height:9px; border-radius:50%; background:#ff6b1a; }
+
+.pg-prosa p { font-size:17px; line-height:1.75; color:#4a4a50; font-weight:500; }
+.pg-prosa p + p { margin-top:16px; }
+.pg-prosa a, .pg-tarjeta a.pg-link { color:#1d1d1f; font-weight:700; text-decoration:underline; text-decoration-color:#ffb27a; text-underline-offset:3px; }
+
+.pg-tarjeta { border-radius:1.75rem; background:#f5f5f7; padding:28px; }
+.pg-tarjeta h3 { font-family:'Manrope',sans-serif; font-size:19px; font-weight:800; letter-spacing:-.02em; color:#1d1d1f; }
+.pg-tarjeta p { margin-top:8px; font-size:15px; line-height:1.65; color:#6e6e73; font-weight:500; }
+.pg-num { display:inline-grid; place-items:center; width:34px; height:34px; border-radius:11px; background:#fff1e8; color:#f25b06; font-weight:800; font-size:15px; }
+
+.pg-tabla-wrap { overflow-x:auto; border-radius:1.5rem; box-shadow:0 0 0 1px rgba(0,0,0,.06); background:#fff; }
+.pg-tabla { width:100%; min-width:680px; border-collapse:collapse; font-size:14.5px; }
+.pg-tabla caption { text-align:left; padding:16px 20px 0; font-size:13px; color:#86868b; font-weight:600; }
+.pg-tabla th, .pg-tabla td { padding:14px 20px; text-align:left; vertical-align:top; line-height:1.55; }
+.pg-tabla thead th { font-family:'Manrope',sans-serif; font-weight:800; color:#1d1d1f; background:#fbf7f3; font-size:14px; }
+.pg-tabla tbody tr + tr td, .pg-tabla tbody tr + tr th { border-top:1px solid #f0f0f2; }
+.pg-tabla tbody th { font-weight:700; color:#1d1d1f; width:24%; }
+.pg-tabla td { color:#4a4a50; font-weight:500; }
+
+.pg-faq details { border-radius:1.25rem; background:#f5f5f7; }
+.pg-faq details[open] { background:#fff1e8; }
+.pg-faq summary { cursor:pointer; list-style:none; padding:20px 26px; font-weight:700; font-size:16.5px; color:#1d1d1f; display:flex; justify-content:space-between; gap:18px; }
+.pg-faq summary::-webkit-details-marker { display:none; }
+.pg-faq summary::after { content:'+'; color:#ff6b1a; font-size:24px; line-height:1; font-weight:500; }
+.pg-faq details[open] summary::after { content:'−'; }
+.pg-faq details > div { padding:0 26px 22px; font-size:15px; line-height:1.7; color:#5d5d63; font-weight:500; }
+
+.pg-cta { border-radius:2rem; background:#1d1d1f; color:#fff; background-image:radial-gradient(60% 90% at 90% 0%, rgba(255,107,26,.35), transparent 60%); }
+
+.pg-nota { font-size:13px; line-height:1.6; color:#86868b; }
+.pg-nota a { text-decoration:underline; }
