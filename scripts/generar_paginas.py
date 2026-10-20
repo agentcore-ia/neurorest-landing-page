@@ -20,7 +20,7 @@ from pathlib import Path
 RAIZ = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from contenido import ACTUALIZADO, ACTUALIZADO_TEXTO, PAGINAS  # noqa: E402
+from contenido import ACTUALIZADO, ACTUALIZADO_TEXTO, PAGINAS, TESTIMONIOS  # noqa: E402
 
 SITIO = "https://capta.ar"
 VERSION = "20261020"
@@ -158,6 +158,13 @@ def h2(texto: str, id_: str) -> str:
     return f'<h2 id="{id_}" class="t-display text-3xl text-[#1d1d1f] md:text-5xl">{texto}</h2>'
 
 
+def testimonio(t: dict) -> str:
+    return (f'<figure class="flex flex-col rounded-[1.75rem] bg-[#f5f5f7] p-7">'
+            f'<p class="text-[13px] font-bold uppercase tracking-[0.14em] text-[#ff6b1a]">{e(t["tema"])}</p>'
+            f'<blockquote class="mt-4 flex-1 text-[16px] font-medium leading-relaxed text-[#3a3a3f]"><p>“{e(t["texto"])}”</p></blockquote>'
+            f'<figcaption class="mt-6 text-[14px] font-bold text-[#1d1d1f]">{e(t["autor"])}</figcaption></figure>')
+
+
 def bloque(b: dict, n: int) -> str:
     id_ = f"s{n}"
     intro = f'<p class="mt-5 max-w-3xl text-[17px] font-medium leading-relaxed text-[#6e6e73]">{b["intro"]}</p>' if b.get("intro") else ""
@@ -200,6 +207,12 @@ def bloque(b: dict, n: int) -> str:
   <div class="mx-auto max-w-6xl">{h2(b["h2"], id_)}
     <div class="mt-10 grid gap-4 md:grid-cols-2">{col(*b["izquierda"], "bg-[#ff6b1a]")}{col(*b["derecha"], "bg-[#86868b]")}</div>
   </div>
+</section>'''
+    if b["tipo"] == "testimonios":
+        items = "".join(testimonio(TESTIMONIOS[i]) for i in b["items"])
+        mas = '<p class="mt-8"><a href="/casos-de-exito" class="text-[15px] font-bold text-[#1d1d1f] underline decoration-[#ffb27a] underline-offset-4">Ver casos de éxito →</a></p>' if b.get("mas") else ""
+        return f'''<section class="px-5 py-16 md:px-8 md:py-20" aria-labelledby="{id_}">
+  <div class="mx-auto max-w-6xl">{h2(b["h2"], id_)}{intro}<div class="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">{items}</div>{mas}</div>
 </section>'''
     raise ValueError(f"Bloque desconocido: {b['tipo']}")
 
@@ -404,9 +417,30 @@ def link_de_iconos(index: str) -> str:
             f'wght,FILL@100..700,0..1&icon_names={nombres}&display=block" rel="stylesheet"/><!-- iconos:fin -->')
 
 
+def testimonios_de_la_home() -> str:
+    """La seccion de testimonios de la home, antes de los precios."""
+    items = "".join(testimonio(t) for t in TESTIMONIOS[:3])
+    return f'''<!-- testimonios:inicio (lo escribe scripts/generar_paginas.py) -->
+<section id="testimonios" class="scroll-mt-14 bg-white px-5 pt-24 md:px-8 md:pt-32" aria-labelledby="testimonios-heading">
+  <div class="mx-auto max-w-6xl">
+    <div class="mx-auto max-w-3xl text-center">
+      <p class="t-eyebrow text-[#ff6b1a]">Clientes</p>
+      <h2 id="testimonios-heading" class="t-display mt-5 text-4xl text-[#1d1d1f] md:text-6xl">Lo que cuentan los locales que usan Capta.</h2>
+    </div>
+    <div class="mt-14 grid gap-4 md:grid-cols-3">{items}</div>
+    <p class="mt-10 text-center"><a href="/casos-de-exito" class="text-[16px] font-bold text-[#1d1d1f] underline decoration-[#ffb27a] underline-offset-4">Ver casos de éxito y más testimonios →</a></p>
+  </div>
+</section>
+<!-- testimonios:fin -->'''
+
+
 def actualizar_home() -> int:
     ruta = RAIZ / "index.html"
     index = ruta.read_text(encoding="utf-8")
+    if "<!-- testimonios:inicio" in index:
+        index = re.sub(r"<!-- testimonios:inicio.*?<!-- testimonios:fin -->", lambda _: testimonios_de_la_home(), index, flags=re.S)
+    else:
+        index = index.replace('<section id="pricing"', testimonios_de_la_home() + '\n\n<section id="pricing"', 1)
     index = re.sub(r"<!-- iconos:inicio -->.*?<!-- iconos:fin -->", lambda _: link_de_iconos(index), index, flags=re.S)
     inicio = "<!-- jsonld:inicio (lo escribe scripts/generar_paginas.py) -->\n"
     fin = "\n<!-- jsonld:fin -->"

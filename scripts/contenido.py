@@ -7,7 +7,8 @@
 #   * Nada de un competidor que no este en SU sitio o en una fuente citada, con
 #     fecha. No se inventan carencias: si no sabemos si algo lo tiene, no se
 #     dice que no lo tiene.
-#   * Ni testimonios, ni cifras de clientes, ni premios que no existan.
+#   * Ni cifras de clientes ni premios que no existan. Los testimonios van en
+#     TESTIMONIOS: solo textuales, de clientes reales que aceptaron publicarlos.
 #   * Cada pagina responde una busqueda distinta: no copiar parrafos de una a
 #     otra.
 #
@@ -35,6 +36,37 @@ FUENTES_MAXIREST = [
     ("Maxirest: quiénes somos", "https://uy.maxirest.com/quienes-somos/"),
     ("Maxirest Manager", "https://maxirest.com/manager"),
     ("Maxirest: términos y condiciones (soporte con IA)", "https://maxirest.com.ar/terminos-y-condiciones/"),
+]
+
+# Testimonios textuales de clientes de Capta. Se identifican por rubro, sin el
+# nombre del local. Se usan en la home, en /casos-de-exito y, por numero de
+# indice, en los bloques "testimonios" de las paginas.
+TESTIMONIOS = [
+    {
+        "texto": "Lo de las transferencias nos solucionó un problema enorme. Antes teníamos que revisar cada comprobante y entrar al banco para confirmar los pagos. Ahora Capta los verifica automáticamente y nos ahorra muchísimo trabajo.",
+        "autor": "Encargado de restaurante",
+        "tema": "Verificación automática de transferencias",
+    },
+    {
+        "texto": "Antes teníamos que estar pendientes del WhatsApp mientras preparábamos los pedidos. Con Capta podemos organizar mejor la atención y concentrarnos en la cocina.",
+        "autor": "Dueño de pizzería",
+        "tema": "Gestión de pedidos y WhatsApp",
+    },
+    {
+        "texto": "El menú digital nos simplificó muchísimo el trabajo. Los clientes pueden ver los productos y hacer sus pedidos de una manera mucho más cómoda.",
+        "autor": "Responsable de heladería",
+        "tema": "Menú digital y pedidos online",
+    },
+    {
+        "texto": "Los viernes y sábados el delivery era un caos. Con Capta podemos ver qué pedidos están listos, cuáles salieron y cuáles faltan entregar. Nos ayudó muchísimo a organizarnos en los horarios de más movimiento.",
+        "autor": "Dueño de hamburguesería",
+        "tema": "Control de entregas",
+    },
+    {
+        "texto": "Lo mejor es que no necesitamos tener varias aplicaciones abiertas para manejar el negocio. Los pedidos, los pagos y el delivery están conectados. Hoy tenemos mucho más control de lo que pasa en el local.",
+        "autor": "Propietario de local gastronómico",
+        "tema": "Administración centralizada",
+    },
 ]
 
 PAGINAS = [
@@ -88,6 +120,7 @@ PAGINAS = [
                 "Si estás comparando, armamos dos comparativas con información pública de cada uno: <a href=\"/alternativas-a-fudo\">Capta y Fudo</a> y <a href=\"/alternativas-a-maxirest\">Capta y Maxirest</a>.",
             ]},
             {"tipo": "prosa", "h2": "Cuánto cuesta", "parrafos": [PRECIOS_TEXTO + " Todos incluyen el panel central; los planes más altos suman marketing automático, el Gerente IA y la atención de llamadas. <a href=\"/#pricing\">Ver qué incluye cada plan</a>."]},
+            {"tipo": "testimonios", "h2": "Lo que cuentan los clientes de Capta", "items": [4, 0], "mas": True},
         ],
         "faq": [
             ("¿Qué es un software de gestión gastronómica?", "Es el sistema que organiza la operación de un negocio de comida: pedidos, salón y mesas, cocina, caja, stock, delivery y clientes, con reportes para tomar decisiones."),
@@ -133,6 +166,7 @@ PAGINAS = [
                 "La IA de Capta contesta esas preguntas con la información real de tu local (menú, horarios, precios, disponibilidad) y, si el cliente quiere pedir o reservar, lo deja anotado en el panel. Si una conversación necesita a una persona, la podés tomar vos en cualquier momento. Más detalle en <a href=\"/automatizacion-whatsapp-restaurantes\">automatización de WhatsApp para restaurantes</a>.",
             ]},
             {"tipo": "prosa", "h2": "Planes", "parrafos": [PRECIOS_TEXTO + " La toma de reservas y el control de mesas están desde el plan Base. <a href=\"/#pricing\">Ver los planes</a>."]},
+            {"tipo": "testimonios", "h2": "Lo que cuentan los restaurantes que usan Capta", "items": [0, 3], "mas": True},
         ],
         "faq": [
             ("¿Capta sirve para un restaurante con salón y delivery a la vez?", "Sí. Las mesas con QR, las reservas y la cocina conviven con los pedidos de WhatsApp, Instagram y el menú digital en el mismo panel."),
@@ -176,6 +210,7 @@ PAGINAS = [
                 "En las ciudades donde opera, <strong>Capta Delivery</strong> suma una red de repartidores que toman los pedidos de los locales adheridos, y una app de pedidos donde los clientes de la ciudad encuentran tu pizzería. Consultanos si está disponible en tu ciudad.",
             ]},
             {"tipo": "prosa", "h2": "Planes", "parrafos": [PRECIOS_TEXTO + " <a href=\"/#pricing\">Ver qué incluye cada plan</a>."]},
+            {"tipo": "testimonios", "h2": "Lo que cuentan los locales que usan Capta", "items": [1, 3], "mas": True},
         ],
         "faq": [
             ("¿La IA entiende pedidos como “una docena y media de empanadas”?", "Sí. Capta interpreta cantidades por docena, media docena y docena y media, y las asigna a cada gusto, no al pedido entero."),
@@ -222,6 +257,7 @@ PAGINAS = [
                 "Tu número de WhatsApp, el menú con precios, los horarios, las formas de pago y las zonas de entrega. Con eso se configura Capta para que empiece a atender.",
                 PRECIOS_TEXTO + " La atención automática por WhatsApp e Instagram está desde el plan Base. <a href=\"/#pricing\">Ver los planes</a>.",
             ]},
+            {"tipo": "testimonios", "h2": "Lo que cuentan los clientes de Capta", "items": [1, 0], "mas": True},
         ],
         "faq": [
             ("¿Puedo usar mi número de WhatsApp actual?", "Sí. Capta se conecta al número de WhatsApp del local, así los clientes siguen escribiendo al mismo lugar."),
@@ -341,6 +377,42 @@ PAGINAS = [
     },
     # ------------------------------------------------------------------
     {
+        "ruta": "casos-de-exito",
+        "title": "Casos de éxito y testimonios de clientes | Capta",
+        "description": "Cómo trabajan con Capta restaurantes, pizzerías, heladerías y hamburgueserías: pedidos, transferencias, delivery y menú digital, contado por sus clientes.",
+        "miga": "Casos de éxito",
+        "eyebrow": "Caso de éxito · Gestión de pedidos, pagos y delivery",
+        "h1": "De gestionar todo a mano a tener el restaurante bajo control con Capta",
+        "lead": "Pedidos que llegan por varios canales, comprobantes para revisar, una cocina que necesita saber qué preparar y repartidores que esperan sus entregas. Así cambió la operación de un restaurante cuando la conectó con Capta.",
+        "resumen": [
+            "<strong>El problema:</strong> en los horarios de más demanda, coordinar pedidos, pagos, cocina y reparto a mano consumía tiempo y generaba confusiones.",
+            "<strong>Lo que se implementó:</strong> gestión de pedidos, verificación automática de transferencias, delivery por estados y menú digital, en una sola plataforma.",
+            "<strong>El resultado:</strong> un proceso claro, que va del pedido al pago, la preparación y la entrega desde el mismo sistema, con menos tareas manuales.",
+        ],
+        "bloques": [
+            {"tipo": "prosa", "h2": "El desafío: demasiadas tareas, poco tiempo", "parrafos": [
+                "En un restaurante con un alto volumen de pedidos, mantener todo organizado puede convertirse en uno de los mayores desafíos del día.",
+                "Los pedidos llegan por diferentes canales, los comprobantes de transferencia necesitan verificarse, la cocina debe saber qué preparar y los repartidores necesitan tener claras sus entregas.",
+                "En los horarios de mayor demanda, coordinar todo manualmente consume tiempo, genera confusiones y dificulta el seguimiento de cada venta.",
+            ]},
+            {"tipo": "tarjetas", "h2": "La solución: toda la operación conectada con Capta", "intro": "La implementación de Capta permite centralizar la gestión del restaurante en una sola plataforma.", "items": [
+                ("Gestión de pedidos", "Cada pedido queda registrado y organizado en un panel centralizado. El equipo puede consultar los productos solicitados, revisar el estado de preparación y hacer el seguimiento hasta completar la entrega."),
+                ("Verificación automática de transferencias", "Capta automatiza la verificación de transferencias, reduce la necesidad de revisar comprobantes a mano y facilita la confirmación de pagos."),
+                ("Gestión de delivery", "Los pedidos para entrega a domicilio se organizan según su estado, desde la preparación hasta la salida y la entrega. Así se coordina mejor el trabajo entre la cocina y el reparto."),
+                ("Menú digital integrado", "Los clientes consultan productos, precios y promociones desde un menú digital. El negocio mantiene su oferta actualizada y gestiona los pedidos desde la plataforma."),
+                ("Información centralizada", "Pedidos, pagos, clientes y operaciones se administran desde un mismo entorno, sin depender de varias herramientas desconectadas."),
+            ]},
+            {"tipo": "prosa", "h2": "El resultado: una operación más simple y organizada", "parrafos": [
+                "Con Capta, el restaurante trabaja con un proceso mucho más claro: recibe el pedido, verifica el pago, organiza la preparación y coordina la entrega desde un mismo sistema.",
+                "Eso permite reducir tareas manuales, mejorar la organización interna y dedicar más tiempo a la atención y al crecimiento del negocio.",
+                "Capta no se limita a digitalizar pedidos: conecta las distintas etapas de la operación gastronómica para que el negocio trabaje de manera más eficiente, incluso en los momentos de mayor demanda. <strong>Menos tareas manuales. Más control. Todo conectado con Capta.</strong>",
+            ]},
+            {"tipo": "testimonios", "h2": "Qué dicen los clientes de Capta", "intro": "Testimonios textuales de clientes de Capta, identificados por rubro.", "items": [0, 1, 2, 3, 4]},
+        ],
+        "relacionadas": ["software-para-restaurantes", "sistema-para-pizzerias", "automatizacion-whatsapp-restaurantes", "software-gestion-gastronomica"],
+    },
+    # ------------------------------------------------------------------
+    {
         "ruta": "sobre-capta",
         "title": "Sobre Capta: qué es, qué ofrece y para quién es | Capta",
         "description": "Capta es un software de gestión gastronómica con IA hecho en Argentina. Qué productos ofrece, para qué negocios es, en qué mercado opera y cómo contactarnos.",
@@ -367,7 +439,7 @@ PAGINAS = [
             ]},
             {"tipo": "prosa", "h2": "Precios", "parrafos": [PRECIOS_TEXTO + " <a href=\"/#pricing\">Ver qué incluye cada plan</a>."]},
             {"tipo": "prosa", "h2": "Más información", "parrafos": [
-                "Guías: <a href=\"/software-gestion-gastronomica\">software de gestión gastronómica</a>, <a href=\"/software-para-restaurantes\">software para restaurantes</a>, <a href=\"/sistema-para-pizzerias\">sistema para pizzerías</a> y <a href=\"/automatizacion-whatsapp-restaurantes\">automatización de WhatsApp</a>. Comparativas: <a href=\"/alternativas-a-fudo\">Capta y Fudo</a>, <a href=\"/alternativas-a-maxirest\">Capta y Maxirest</a>. Datos para sistemas automáticos: <a href=\"/llms.txt\">llms.txt</a>.",
+                "Guías: <a href=\"/software-gestion-gastronomica\">software de gestión gastronómica</a>, <a href=\"/software-para-restaurantes\">software para restaurantes</a>, <a href=\"/sistema-para-pizzerias\">sistema para pizzerías</a> y <a href=\"/automatizacion-whatsapp-restaurantes\">automatización de WhatsApp</a>. Comparativas: <a href=\"/alternativas-a-fudo\">Capta y Fudo</a>, <a href=\"/alternativas-a-maxirest\">Capta y Maxirest</a>. Clientes: <a href=\"/casos-de-exito\">casos de éxito y testimonios</a>. Datos para sistemas automáticos: <a href=\"/llms.txt\">llms.txt</a>.",
             ]},
         ],
         "faq": [

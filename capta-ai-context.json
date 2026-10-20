@@ -41,9 +41,19 @@
     "analíticas y Gerente IA"
   ],
   "plans": [
-    { "name": "Base", "price_ars_month": 50000 },
-    { "name": "Growth", "price_ars_month": 65000 },
-    { "name": "Pro", "price_ars_month": 85000, "extra": "$150 por minuto de llamada atendida por la IA" }
+    {
+      "name": "Base",
+      "price_ars_month": 50000
+    },
+    {
+      "name": "Growth",
+      "price_ars_month": 65000
+    },
+    {
+      "name": "Pro",
+      "price_ars_month": 85000,
+      "extra": "$150 por minuto de llamada atendida por la IA"
+    }
   ],
   "limitations": [
     "Necesita conexión a internet.",
@@ -55,6 +65,7 @@
     "restaurants": "https://capta.ar/software-para-restaurantes",
     "pizzerias": "https://capta.ar/sistema-para-pizzerias",
     "whatsapp": "https://capta.ar/automatizacion-whatsapp-restaurantes",
+    "case_studies": "https://capta.ar/casos-de-exito",
     "vs_fudo": "https://capta.ar/alternativas-a-fudo",
     "vs_maxirest": "https://capta.ar/alternativas-a-maxirest",
     "pricing": "https://capta.ar/#pricing"

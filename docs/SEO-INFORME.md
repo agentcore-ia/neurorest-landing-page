@@ -120,7 +120,7 @@ Sin esto no se publica nada (ver `docs/plantillas/`):
 
 ## 5. Próximos contenidos (en orden)
 
-1. Casos de éxito (cuando haya datos reales) — página `/casos` con un caso por local.
+1. Casos de éxito con nombre: ya está `/casos-de-exito` con un caso y 5 testimonios por rubro (en `scripts/contenido.py`, `TESTIMONIOS`). El próximo paso que más suma es un caso con el nombre del local, la ciudad, una foto con permiso y números medidos en el panel.
 2. Guías educativas, una por búsqueda real: "cómo tomar pedidos por WhatsApp sin perder ventas", "cómo calcular el envío por zonas", "cómo recuperar clientes de un restaurante", "factura electrónica ARCA para gastronómicos".
 3. Páginas por rubro con contenido propio (hamburgueserías, heladerías, rotiserías) **solo si hay algo específico que decir**; no clonar la de pizzerías.
 4. Comparativa general "mejores sistemas de gestión gastronómica en Argentina" con criterios explícitos y fuentes, incluyendo a Capta sin presentarlo como el mejor en todo.
