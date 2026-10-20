@@ -69,6 +69,22 @@ TESTIMONIOS = [
     },
 ]
 
+# Locales que autorizaron aparecer con su nombre y su foto.
+CLIENTES = [
+    {
+        "nombre": "Pizzería Angelín",
+        "detalle": "Pizzería · Buenos Aires",
+        "foto": "/assets/clientes/pizzeria-angelin.webp",
+        "alt": "Mostrador de Pizzería Angelín, con la carta de pizzas y empanadas y la computadora de la caja",
+    },
+    {
+        "nombre": "Lucciano's",
+        "detalle": "Heladería",
+        "foto": "/assets/clientes/heladeria-luccianos.webp",
+        "alt": "Mostrador de helados de Lucciano's con el cartel de neón de la marca",
+    },
+]
+
 PAGINAS = [
     # ------------------------------------------------------------------
     {
@@ -379,7 +395,7 @@ PAGINAS = [
     {
         "ruta": "casos-de-exito",
         "title": "Casos de éxito y testimonios de clientes | Capta",
-        "description": "Cómo trabajan con Capta restaurantes, pizzerías, heladerías y hamburgueserías: pedidos, transferencias, delivery y menú digital, contado por sus clientes.",
+        "description": "Cómo trabajan con Capta locales como Pizzería Angelín y Lucciano's: pedidos, transferencias, delivery y menú digital, contado por sus clientes.",
         "miga": "Casos de éxito",
         "eyebrow": "Caso de éxito · Gestión de pedidos, pagos y delivery",
         "h1": "De gestionar todo a mano a tener el restaurante bajo control con Capta",
@@ -407,6 +423,7 @@ PAGINAS = [
                 "Eso permite reducir tareas manuales, mejorar la organización interna y dedicar más tiempo a la atención y al crecimiento del negocio.",
                 "Capta no se limita a digitalizar pedidos: conecta las distintas etapas de la operación gastronómica para que el negocio trabaje de manera más eficiente, incluso en los momentos de mayor demanda. <strong>Menos tareas manuales. Más control. Todo conectado con Capta.</strong>",
             ]},
+            {"tipo": "clientes", "h2": "Locales que trabajan con Capta"},
             {"tipo": "testimonios", "h2": "Qué dicen los clientes de Capta", "intro": "Testimonios textuales de clientes de Capta, identificados por rubro.", "items": [0, 1, 2, 3, 4]},
         ],
         "relacionadas": ["software-para-restaurantes", "sistema-para-pizzerias", "automatizacion-whatsapp-restaurantes", "software-gestion-gastronomica"],

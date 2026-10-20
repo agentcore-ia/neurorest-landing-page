@@ -18,7 +18,7 @@ Mercado: Argentina. Idioma: español.
 - [Software para restaurantes](https://capta.ar/software-para-restaurantes): salón, mesas con QR, reservas, cocina y caja.
 - [Sistema para pizzerías](https://capta.ar/sistema-para-pizzerias): pedidos por WhatsApp, empanadas por docena, zonas de delivery y repartidores.
 - [Automatización de WhatsApp para restaurantes](https://capta.ar/automatizacion-whatsapp-restaurantes): cómo la IA responde, toma pedidos y reservas y verifica pagos.
-- [Casos de éxito y testimonios](https://capta.ar/casos-de-exito): cómo usan Capta restaurantes, pizzerías, heladerías y hamburgueserías, con testimonios textuales de clientes identificados por rubro.
+- [Casos de éxito y testimonios](https://capta.ar/casos-de-exito): locales que trabajan con Capta, como Pizzería Angelín (Buenos Aires) y la heladería Lucciano's, un caso de gestión de pedidos, pagos y delivery y testimonios textuales de clientes.
 
 ## Comparativas
 

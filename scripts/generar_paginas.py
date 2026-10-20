@@ -20,7 +20,7 @@ from pathlib import Path
 RAIZ = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from contenido import ACTUALIZADO, ACTUALIZADO_TEXTO, PAGINAS, TESTIMONIOS  # noqa: E402
+from contenido import ACTUALIZADO, ACTUALIZADO_TEXTO, PAGINAS, TESTIMONIOS, CLIENTES  # noqa: E402
 
 SITIO = "https://capta.ar"
 VERSION = "20261020"
@@ -165,6 +165,16 @@ def testimonio(t: dict) -> str:
             f'<figcaption class="mt-6 text-[14px] font-bold text-[#1d1d1f]">{e(t["autor"])}</figcaption></figure>')
 
 
+def clientes() -> str:
+    return "".join(
+        f'<figure class="overflow-hidden rounded-[1.75rem] bg-[#f5f5f7]">'
+        f'<img src="{c["foto"]}" alt="{e(c["alt"])}" width="1200" height="800" loading="lazy" decoding="async" class="aspect-[3/2] w-full object-cover"/>'
+        f'<figcaption class="px-7 py-5"><span class="block text-lg font-extrabold tracking-[-0.02em] text-[#1d1d1f]">{e(c["nombre"])}</span>'
+        f'<span class="mt-1 block text-[14px] font-medium text-[#6e6e73]">{e(c["detalle"])}</span></figcaption></figure>'
+        for c in CLIENTES
+    )
+
+
 def bloque(b: dict, n: int) -> str:
     id_ = f"s{n}"
     intro = f'<p class="mt-5 max-w-3xl text-[17px] font-medium leading-relaxed text-[#6e6e73]">{b["intro"]}</p>' if b.get("intro") else ""
@@ -207,6 +217,10 @@ def bloque(b: dict, n: int) -> str:
   <div class="mx-auto max-w-6xl">{h2(b["h2"], id_)}
     <div class="mt-10 grid gap-4 md:grid-cols-2">{col(*b["izquierda"], "bg-[#ff6b1a]")}{col(*b["derecha"], "bg-[#86868b]")}</div>
   </div>
+</section>'''
+    if b["tipo"] == "clientes":
+        return f'''<section class="px-5 py-16 md:px-8 md:py-20" aria-labelledby="{id_}">
+  <div class="mx-auto max-w-6xl">{h2(b["h2"], id_)}{intro}<div class="mt-10 grid gap-4 md:grid-cols-2">{clientes()}</div></div>
 </section>'''
     if b["tipo"] == "testimonios":
         items = "".join(testimonio(TESTIMONIOS[i]) for i in b["items"])
@@ -427,7 +441,8 @@ def testimonios_de_la_home() -> str:
       <p class="t-eyebrow text-[#ff6b1a]">Clientes</p>
       <h2 id="testimonios-heading" class="t-display mt-5 text-4xl text-[#1d1d1f] md:text-6xl">Lo que cuentan los locales que usan Capta.</h2>
     </div>
-    <div class="mt-14 grid gap-4 md:grid-cols-3">{items}</div>
+    <div class="mt-14 grid gap-4 md:grid-cols-2">{clientes()}</div>
+    <div class="mt-4 grid gap-4 md:grid-cols-3">{items}</div>
     <p class="mt-10 text-center"><a href="/casos-de-exito" class="text-[16px] font-bold text-[#1d1d1f] underline decoration-[#ffb27a] underline-offset-4">Ver casos de éxito y más testimonios →</a></p>
   </div>
 </section>
